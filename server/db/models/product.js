@@ -22,5 +22,6 @@ const Product = db.define("product", {
         type: Sequelize.TEXT,
         allowNull: false
     }
-    
 });
+
+module.exports = Product;
