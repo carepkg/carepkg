@@ -21,3 +21,5 @@ const PricingHistory = db.define(
     }
   }
 );
+
+module.exports = PricingHistory;
