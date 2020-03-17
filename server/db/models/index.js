@@ -20,10 +20,13 @@ Product.hasMany(Review);
 Review.belongsTo(Product);
 
 Product.belongsToMany(Order, { through: OrderProduct });
-Order.belongsToMany(Product);
+Order.belongsToMany(Product, { through: OrderProduct });
 
 Product.belongsToMany(Category);
 Category.belongsToMany(Product);
+
+Product.hasMany(PricingHistory);
+PricingHistory.belongsTo(Product);
 
 module.exports = {
   User,
