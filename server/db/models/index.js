@@ -2,6 +2,7 @@ const User = require("./user");
 const Product = require("./product");
 const Review = require("./review");
 const PurchaseProfile = require("./purchaseProfile");
+const OrderProduct = require("./orderProduct");
 
 // --------- ASSOCIATIONS --------- \\
 
@@ -13,6 +14,9 @@ Review.belongsTo(User);
 
 Product.hasMany(Review);
 Review.belongsTo(Product);
+
+Product.belongsToMany(Order, { through: OrderProduct });
+Order.belongsToMany(Product);
 
 module.exports = {
   User,
