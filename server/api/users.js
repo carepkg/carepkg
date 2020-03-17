@@ -14,6 +14,7 @@ const isAdmin = (req, res, next) => {
   }
 };
 
+//only admins should be able to grab all users info
 router.get("/", isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll();

@@ -11,12 +11,13 @@ const {
   Review
 } = require("../server/db/models/");
 const faker = require("faker");
-
+const randomNum = () => Math.random() * 100;
 class Price {
   constructor() {
     this.price = randomNum(100);
   }
 }
+const qty = 1000;
 
 async function seed() {
   await db.sync({ force: true });
@@ -39,6 +40,23 @@ async function seed() {
       userName: "igriffith",
       email: "isley@carepkg.com",
       role: "Admin"
+    }),
+    User.create({
+      firstName: "Rufus",
+      lastName: "Griffith",
+      age: 1,
+      userName: "roof",
+      email: "rufus@email.com",
+      role: "Customer"
+    })
+  ]);
+
+  // --------- Products -------- \\
+  const products = await Promise.all([
+    Product.create({
+      price: new Price(),
+      qty: qty,
+      name: ""
     })
   ]);
   console.log("seeded successfully");
