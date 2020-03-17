@@ -11,10 +11,10 @@ const {
   Review
 } = require("../server/db/models/");
 const faker = require("faker");
-const randomNum = () => Math.random() * 100;
+const randomNum = () => Math.floor(Math.random() * 100) - 0.01;
 class Price {
   constructor() {
-    this.price = randomNum(100);
+    this.price = randomNum();
   }
 }
 const qty = 1000;
@@ -54,7 +54,7 @@ async function seed() {
   // --------- Products -------- \\
   const products = await Promise.all([
     Product.create({
-      price: new Price(),
+      price: new Price().price,
       qty: qty,
       name: "Tent",
       description: "Place to sleep. Easy set up"
