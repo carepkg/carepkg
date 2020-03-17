@@ -56,7 +56,8 @@ async function seed() {
     Product.create({
       price: new Price(),
       qty: qty,
-      name: ""
+      name: "Tent",
+      description: "Place to sleep. Easy set up"
     })
   ]);
   console.log("seeded successfully");
