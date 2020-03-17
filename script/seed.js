@@ -17,6 +17,7 @@ class Price {
     this.price = randomNum();
   }
 }
+
 const qty = 1000;
 
 async function seed() {
@@ -58,6 +59,18 @@ async function seed() {
       qty: qty,
       name: "Tent",
       description: "Place to sleep. Easy set up"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Swiss Army Knife",
+      description: "A jack of all trades inside your pocket"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Headlamp",
+      description: "A lamp but for your head"
     })
   ]);
   console.log("seeded successfully");

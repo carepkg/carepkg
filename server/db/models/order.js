@@ -6,11 +6,11 @@ const Order = db.define(
   {
     status: {
       type: Sequelize.ENUM("pending", "purchased", "cancelled", "completed"),
-      defaultValue: "Pending"
+      defaultValue: "pending"
     },
     purchasedAt: Sequelize.DATE,
     cancelledAt: Sequelize.DATE,
-    fulfilledAt: Sequelize.DATE,
+    completedAt: Sequelize.DATE,
     totalPriceAtPurchase: Sequelize.FLOAT
   },
   {
@@ -27,10 +27,10 @@ const Order = db.define(
         )
           return orderInstance.update({ cancelledAt: Date.now() });
         else if (
-          orderInstance.status === "fulfilled" &&
+          orderInstance.status === "completed" &&
           orderInstance.fulfilledAt === null
         )
-          return orderInstance.update({ fulfilledAt: Date.now() });
+          return orderInstance.update({ completedAt: Date.now() });
         return orderInstance;
       }
     }

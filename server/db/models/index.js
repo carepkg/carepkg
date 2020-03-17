@@ -6,7 +6,6 @@ const OrderProduct = require("./orderProduct");
 const Category = require("./category");
 const PricingHistory = require("./pricingHistory");
 const Order = require("./order");
-const OrderProduct = require("./orderProduct");
 
 // --------- ASSOCIATIONS --------- \\
 
@@ -22,8 +21,8 @@ Review.belongsTo(Product);
 Product.belongsToMany(Order, { through: OrderProduct });
 Order.belongsToMany(Product, { through: OrderProduct });
 
-Product.belongsToMany(Category);
-Category.belongsToMany(Product);
+Product.belongsToMany(Category, { through: "productCategory" });
+Category.belongsToMany(Product, { through: "productCategory" });
 
 Product.hasMany(PricingHistory);
 PricingHistory.belongsTo(Product);
@@ -32,5 +31,9 @@ module.exports = {
   User,
   Product,
   Review,
-  PurchaseProfile
+  PurchaseProfile,
+  OrderProduct,
+  Category,
+  PricingHistory,
+  Order
 };
