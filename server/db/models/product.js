@@ -15,8 +15,7 @@ const Product = db.define("product", {
     allowNull: false
   },
   image: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   description: {
     type: Sequelize.TEXT,
