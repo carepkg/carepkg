@@ -6,7 +6,6 @@ const OrderProduct = require("./orderProduct");
 const Category = require("./category");
 const PricingHistory = require("./pricingHistory");
 const Order = require("./order");
-const OrderProduct = require("./orderProduct");
 
 // --------- ASSOCIATIONS --------- \\
 
