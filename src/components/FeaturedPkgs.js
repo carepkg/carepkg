@@ -1,7 +1,8 @@
 import React from "react";
 
 const FeaturedPkgs = () => {
-  let packages = [1, 2, 3, 4];
+  const packages = [1, 2, 3, 4];
+
   return (
     <div id="home-featured-container">
       {packages.map(pkg => {

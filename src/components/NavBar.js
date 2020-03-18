@@ -4,21 +4,13 @@ const NavBar = () => {
   return (
     <div id="navbar">
       <div className="navlinks navleft">
-        <a className="navlink">
-          <span>Home</span>
-        </a>
-        <a className="navlink">
-          <span>Products</span>
-        </a>
+        <a className="navlink">Home</a>
+        <a className="navlink">Products</a>
       </div>
       <h2 id="nav-coname">carepkg</h2>
       <div className="navlinks navright">
-        <a className="navlink">
-          <span>Login</span>
-        </a>
-        <a className="navlink">
-          <span>Signup</span>
-        </a>
+        <a className="navlink">Login</a>
+        <a className="navlink">Sign up</a>
       </div>
     </div>
   );
