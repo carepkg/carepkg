@@ -5,13 +5,11 @@ const FeaturedPkgs = () => {
 
   return (
     <div id="home-featured-container">
-      {packages.map(pkg => {
-        return (
-          <div className="home-featured-package">
-            <div></div>
-          </div>
-        );
-      })}
+      <div id="featured-container">
+        {packages.map(pkg => {
+          return <div className="home-featured-package"></div>;
+        })}
+      </div>
     </div>
   );
 };
