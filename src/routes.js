@@ -1,7 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { withRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
+import AllProducts from "./components/AllProducts";
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -10,7 +11,7 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        {/* <Route exact path="/products" component={AllProducts} /> */}
+        <Route exact path="/products" component={AllProducts} />
         <Route path="/" component={LandingPage} />
       </Switch>
     );

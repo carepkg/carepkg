@@ -11,7 +11,10 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "compression": "^1.7.4",
+    "connect-session-sequelize": "^6.1.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "faker": "^4.1.0",
     "history": "^4.10.1",
     "material-ui": "^0.20.2",
@@ -31,6 +34,7 @@
     "redux-thunk": "^2.3.0",
     "sequelize": "^5.21.5"
   },
+  "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -52,5 +56,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000/"
 }

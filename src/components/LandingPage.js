@@ -3,6 +3,14 @@ import FeaturedPkgs from "./FeaturedPkgs";
 import MainSearchBar from "./MainSearchBar";
 
 export default class LandingPage extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  componentDidMount() {
+    //fetch bundles
+    //need to make them in db
+  }
   render() {
     return (
       <div id="landing-page">

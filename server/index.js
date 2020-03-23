@@ -1,17 +1,22 @@
 const path = require("path");
+const cors = require("cors");
 const express = require("express");
 const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 const morgan = require("morgan");
 const compression = require("compression");
 const session = require("express-session");
-const PORT = process.env.PORT || 8080;
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
+const sessionStore = new SequelizeStore({ db });
+const PORT = 5000;
+
 const app = express();
 
 const createApp = () => {
   // logging middleware
   app.use(morgan("dev"));
-
+  app.use(cors());
   // body parsing middleware
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -78,3 +83,4 @@ if (require.main === module) {
 } else {
   createApp();
 }
+module.exports = app;

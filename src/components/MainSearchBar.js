@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "material-ui-search-bar";
-import AutoComplete from "material-ui/AutoComplete";
+// import AutoComplete from "material-ui/AutoComplete";
 import { MuiThemeProvider } from "material-ui/styles";
 
 const MainSearchBar = () => {
