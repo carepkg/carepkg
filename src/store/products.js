@@ -10,13 +10,11 @@ const getProducts = products => ({
 // export const getProductsThunk = (queryString = "") => async dispatch => {
 export const getProductsThunk = () => async dispatch => {
   try {
-    console.log("IN GETPRODUCTS THUNK");
-    const response = await axios.get("api/products"); //+ queryString
-    console.log(response);
+    const response = await axios.get("/api/products"); //+ queryString
     const products = response.data;
     dispatch(getProducts(products));
   } catch (error) {
-    console.error(error.message, "error here boi");
+    console.error(error.message);
   }
 };
 

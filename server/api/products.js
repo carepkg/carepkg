@@ -11,7 +11,7 @@ const Sequelize = require("sequelize");
 // const Op = Sequelize.Op;
 // const db = require("../db");
 
-router.get("/products", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({});
     res.json(products);
