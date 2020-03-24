@@ -46,6 +46,7 @@ class AllProducts extends React.Component {
           {products.map(product => {
             return (
               <div>
+                <img src={product.image}></img>
                 <h5 key={product.id}>{product.name}</h5>
                 <h6>{product.price}n </h6>
               </div>
