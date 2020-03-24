@@ -13,7 +13,6 @@ class AllProducts extends React.Component {
   componentDidMount() {
     // this.props.getProducts(this.props.location.search);
     this.props.getProductsThunk();
-    console.log("cdm");
   }
   // componentDidUpdate(prevProps) {
   //   console.log("in cdu");
@@ -40,7 +39,9 @@ class AllProducts extends React.Component {
     const { products } = this.props;
     return products ? (
       <div id="all-products-container">
-        {console.log("here")}
+        <div id="products-header">
+          <h2 id="products-header-text">Products</h2>
+        </div>
         <div>
           {products.map(product => {
             return (
