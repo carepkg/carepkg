@@ -71,7 +71,62 @@ async function seed() {
       qty: qty,
       name: "Headlamp",
       description: "A lamp but for your head"
-    })
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Tarp",
+      description: "Put this thing under tent"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Claymore",
+      description: "Execute your enemies"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Fanny Pack",
+      description: "Make it like, camping"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Fire Starter",
+      description: "Great fire starter that never doesn't ignite"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Flint and Steel",
+      description: "Minecraft style"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Cobblestone Block",
+      description: "Unsung hero"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Compass",
+      description: "Works 50% of the time"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Flashlight",
+      description: "Flickers when you're scared"
+    }),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Bear Safe",
+      description: "Does not work against polar bears"
+    }),
+
   ]);
   console.log("seeded successfully");
 }
