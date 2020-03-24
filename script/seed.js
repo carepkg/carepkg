@@ -58,75 +58,93 @@ async function seed() {
       price: new Price().price,
       qty: qty,
       name: "Tent",
-      description: "Place to sleep. Easy set up"
+      description: "Place to sleep. Easy set up",
+      image: "/product-images/tent.jpg"
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Swiss Army Knife",
-      description: "A jack of all trades inside your pocket"
+      description: "A jack of all trades inside your pocket",
+      image: "/product-images/swiss-army-knife.jpg"
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Headlamp",
-      description: "A lamp but for your head"
+      description: "A lamp but for your head",
+      image: "/product-images/head-lamp.jpg"
+
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Tarp",
-      description: "Put this thing under tent"
+      description: "Put this thing under tent",
+      image: "/product-images/tarp.jpg"
+
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Claymore",
-      description: "Execute your enemies"
+      description: "Execute your enemies",
+      image: "/product-images/claymore.jpg"
+
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Fanny Pack",
-      description: "Make it like, camping"
+      description: "Make it like, camping",
+      image: "/product-images/fanny-pack.jpg"
+
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Fire Starter",
-      description: "Great fire starter that never doesn't ignite"
+      description: "Great fire starter that never doesn't ignite",
+      image: "/product-images/fire-starter.jpg"
+
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Flint and Steel",
-      description: "Minecraft style"
+      description: "Minecraft style",
+      image: "/product-images/flint-and-steel.jpg"
+
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Cobblestone Block",
-      description: "Unsung hero"
+      name: "Cobblestone",
+      description: "Unsung hero",
+      image: "/product-images/cobblestone.jpg"
+
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Compass",
-      description: "Works 50% of the time"
+      description: "Works 50% of the time",
+      image: "/product-images/compass.jpg"
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Flashlight",
-      description: "Flickers when you're scared"
+      description: "Flickers when you're scared",
+      image: "/product-images/flashlight.jpg"
     }),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Bear Safe",
-      description: "Does not work against polar bears"
+      description: "Does not work against polar bears",
+      image: "/product-images/bear-safe.jpg"
     }),
-
   ]);
   console.log("seeded successfully");
 }
