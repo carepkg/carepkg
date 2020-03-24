@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getProductsThunk } from "../store/products";
+import { __promisify__ } from "glob";
 
 class AllProducts extends React.Component {
   constructor() {
@@ -41,12 +42,13 @@ class AllProducts extends React.Component {
       <div id="all-products-container">
         {console.log("here")}
         <div>
-          {products.map(prod => {
+          {products.map(product => {
             return (
               <div>
-                <h1 key={prod.id}>{prod.name}</h1>
-                <h4>{prod.price}</h4>
-                <h4>{prod.description}</h4>
+                <div className="product-img"></div>
+                <h5 key={product.id}>{product.name}</h5>
+                <h6>{product.price}</h6>
+                <h6>{product.description}</h6>
               </div>
             );
           })}
