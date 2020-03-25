@@ -144,6 +144,7 @@ body,
     height: 94%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 #products-header{
     height: 10%;
@@ -153,17 +154,21 @@ body,
 }
 #products-header-text{
     font-weight: 200;
+    font-size: 2rem;
+    color: #666;
+
 }
 #products-container{
     height: 90%;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
 }
 .product-card{
     height: 280px;
-    margin: 0 8px;
-    padding: 0 8px;
+    margin: 0.5em;
+    padding: 0.5em;
     border: 1px solid rgba(51, 51, 51, 0.1);
 }
 .product-img{
