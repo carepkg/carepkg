@@ -45,13 +45,12 @@ class AllProducts extends React.Component {
         <div id="products-container">
           {products.map(product => {
             return (
-              <div className="product-card">
-                <img src={product.image}></img>
+              <div key={product.id} className="product-card">
+                <img src={product.image} className="product-img"></img>
                 <div className="product-info-container">
-                  <h4 key={product.id} className="product-name">
+                  <h4 className="product-name">
                     {product.name}
                   </h4>
-
                   <h6 className="product-price">${product.price}</h6>
                 </div>
                 <button className="add-cart-btn">Add to Cart</button>

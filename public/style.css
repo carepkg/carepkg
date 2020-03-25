@@ -163,16 +163,16 @@ body,
 .product-card{
     height: 280px;
     margin: 0 8px;
+    padding: 0 8px;
     border: 1px solid rgba(51, 51, 51, 0.1);
+}
+.product-img{
+    border-bottom: 1px solid rgba(51, 51, 51, 0.1)
+    
 }
 .product-info-container{
     height: 17.5%;
 }
-.product-name{
-    text-indent: 2%;
-}
-.product-price{
-    text-indent: 2%;
-}
 .add-cart-btn{
+
 }
