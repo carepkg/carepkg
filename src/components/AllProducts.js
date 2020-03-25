@@ -54,7 +54,7 @@ class AllProducts extends React.Component {
 
                   <h6 className="product-price">${product.price}</h6>
                 </div>
-                <button>Add to Cart</button>
+                <button className="add-cart-btn">Add to Cart</button>
               </div>
             );
           })}
