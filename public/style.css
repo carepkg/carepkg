@@ -1,3 +1,6 @@
+:root {
+    --main-text-color: #666;
+}
 html,
 body,
 #root{
@@ -181,3 +184,77 @@ body,
 .add-cart-btn{
 
 }
+a{
+    text-decoration: none;
+    color: var(--main-text-color);
+}
+
+/* SINGLE PRODUCT */
+#single-product-container {
+    width: 100%;
+    height: 94%;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#single-product-content {
+    width: 90%;
+    height: 90%;
+    border: 1px solid blue;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+#single-product-left {
+    width: 40%;
+    height: 80%;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#single-product-right {
+    width: 50%;
+    height: 80%;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.single-product-image {
+    width: 90%;
+    height: 85%;
+    border: 1px solid rgba(51, 51, 51, 0.1)
+}
+
+#button-menu {
+    width: 60%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-product-button {
+    margin: 0px 8px;
+    width: 40%;
+    height: 40%;
+}
+
+.single-product-button-left {
+    background-color: lightblue;
+    
+}
+
+.single-product-button-right {
+    background-color: lightyellow;
+}
+
+#single-product-avail {
+    color: rgb(164, 164, 164);
+}
+
+

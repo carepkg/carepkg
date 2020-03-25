@@ -3,6 +3,7 @@ import React from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import AllProducts from "./components/AllProducts";
+import SingleProduct from "./components/SingleProduct";
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -11,8 +12,10 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
+        <Route exact path="/products/:id" component={SingleProduct}/>
         <Route exact path="/products" component={AllProducts} />
         <Route path="/" component={LandingPage} />
+
       </Switch>
     );
   }

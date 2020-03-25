@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import { getProductsThunk } from "../store/products";
 import { __promisify__ } from "glob";
 
@@ -46,12 +46,12 @@ class AllProducts extends React.Component {
           {products.map(product => {
             return (
               <div key={product.id} className="product-card">
-                <img src={product.image} className="product-img"></img>
+                <NavLink to={`/products/${product.id}`}><img src={product.image} className="product-img"/></NavLink>
                 <div className="product-info-container">
-                  <h4 className="product-name">
+                <NavLink to={`/products/${product.id}`}><h4 className="product-name">
                     {product.name}
-                  </h4>
-                  <h6 className="product-price">${product.price}</h6>
+                  </h4></NavLink>
+                  <NavLink to={`/products/${product.id}`}><h6 className="product-price">${product.price}</h6></NavLink>
                 </div>
                 <button className="add-cart-btn">Add to Cart</button>
               </div>
