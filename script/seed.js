@@ -11,10 +11,13 @@ const {
   Review
 } = require("../server/db/models/");
 const faker = require("faker");
-const randomNum = () => Math.floor(Math.random() * 100) - 0.01;
+const randomPrice = () => Math.floor(Math.random() * 100) - 0.01;
+const randomNum = (num) => Math.floor(Math.random() * num) + 1
+const randomInd = (num) => Math.floor(Math.random() * num)
+
 class Price {
   constructor() {
-    this.price = randomNum();
+    this.price = randomPrice();
   }
 }
 
@@ -52,7 +55,8 @@ async function seed() {
     })
   ]);
 
-  // --------- Products -------- \\
+
+  // --------- PRODUCTS -------- \\
   const products = await Promise.all([
     Product.create({
       price: new Price().price,
@@ -146,6 +150,33 @@ async function seed() {
       image: "/product-images/bear-safe.jpg"
     }),
   ]);
+
+    // --------- CATEGORIES -------- \\
+  const categories = await Promise.all([
+    Category.create({name: 'Camp Furniture'}),
+    Category.create({name: 'Clothing'}),
+    Category.create({name: 'Gadgets'}),
+    Category.create({name: 'Hiking'}),
+    Category.create({name: 'Kitchenware'}),
+    Category.create({name: 'Nutrition'}),
+    Category.create({name: 'Sleeping'}),
+    Category.create({name: 'Tents'}),
+    Category.create({name: 'Tools'})
+  ])
+    // --------- REVIEWS -------- \\
+  const reviews = []
+  for (let i = 0; i < 30; i++) {
+    reviews.push(
+      await Review.create({
+        productId: randomNum(products.length),
+        rating: randomNum(5),
+        text: faker.lorem.sentence(randomNum(10))
+      }).then(rev => {
+        rev.setUser(users[randomInd(users.length)])
+      })
+    )
+  }
+
   console.log("seeded successfully");
 }
 
