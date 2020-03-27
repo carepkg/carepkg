@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const {
-  Product
-  //   Category,
-  //   PricingHistory,
-  //   Review,
-  //   User
+  Product,
+  Category,
+  PricingHistory,
+  Review,
+  User
 } = require("../db/models");
 const Sequelize = require("sequelize");
 // const Op = Sequelize.Op;
@@ -13,8 +13,25 @@ const Sequelize = require("sequelize");
 
 router.get("/", async (req, res, next) => {
   try {
-    const products = await Product.findAll({});
-    res.json(products);
+    const products = await Product.findAll({
+      include: {
+        model: Review
+      }
+    });
+    res.send(products);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/:productId", async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(Number(req.params.productId), {
+      include: [{ model: Review }]
+    });
+    // include: [{ model: Review, include: { model: User } }, { model: Category }]
+    if (product) res.json(product);
+    else res.sendStatus(404);
   } catch (err) {
     next(err);
   }

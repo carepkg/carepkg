@@ -11,6 +11,7 @@ const getProducts = products => ({
 export const getProductsThunk = () => async dispatch => {
   try {
     const response = await axios.get("/api/products"); //+ queryString
+    console.log(response);
     const products = response.data;
     dispatch(getProducts(products));
   } catch (error) {
