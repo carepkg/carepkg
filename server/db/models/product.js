@@ -20,6 +20,10 @@ const Product = db.define("product", {
   description: {
     type: Sequelize.TEXT,
     allowNull: false
+  },
+  isAvailable: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: true
   }
 });
 

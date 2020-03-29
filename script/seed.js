@@ -12,8 +12,8 @@ const {
 } = require("../server/db/models/");
 const faker = require("faker");
 const randomPrice = () => Math.floor(Math.random() * 100) - 0.01;
-const randomNum = (num) => Math.floor(Math.random() * num) + 1
-const randomInd = (num) => Math.floor(Math.random() * num)
+const randomNum = num => Math.floor(Math.random() * num) + 1;
+const randomInd = num => Math.floor(Math.random() * num);
 
 class Price {
   constructor() {
@@ -47,14 +47,13 @@ async function seed() {
     }),
     User.create({
       firstName: "Rufus",
-      lastName: "Griffith",
+      lastName: "Lam-Griffith",
       age: 1,
       userName: "roof",
       email: "rufus@email.com",
       role: "Customer"
     })
   ]);
-
 
   // --------- PRODUCTS -------- \\
   const products = await Promise.all([
@@ -78,7 +77,6 @@ async function seed() {
       name: "Headlamp",
       description: "A lamp but for your head",
       image: "/product-images/head-lamp.jpg"
-
     }),
     Product.create({
       price: new Price().price,
@@ -86,7 +84,6 @@ async function seed() {
       name: "Tarp",
       description: "Put this thing under tent",
       image: "/product-images/tarp.jpg"
-
     }),
     Product.create({
       price: new Price().price,
@@ -94,7 +91,6 @@ async function seed() {
       name: "Claymore",
       description: "Execute your enemies",
       image: "/product-images/claymore.jpg"
-
     }),
     Product.create({
       price: new Price().price,
@@ -102,7 +98,6 @@ async function seed() {
       name: "Fanny Pack",
       description: "Make it like, camping",
       image: "/product-images/fanny-pack.jpg"
-
     }),
     Product.create({
       price: new Price().price,
@@ -110,7 +105,6 @@ async function seed() {
       name: "Fire Starter",
       description: "Great fire starter that never doesn't ignite",
       image: "/product-images/fire-starter.jpg"
-
     }),
     Product.create({
       price: new Price().price,
@@ -118,7 +112,6 @@ async function seed() {
       name: "Flint and Steel",
       description: "Minecraft style",
       image: "/product-images/flint-and-steel.jpg"
-
     }),
     Product.create({
       price: new Price().price,
@@ -126,7 +119,6 @@ async function seed() {
       name: "Cobblestone",
       description: "Unsung hero",
       image: "/product-images/cobblestone.jpg"
-
     }),
     Product.create({
       price: new Price().price,
@@ -148,33 +140,38 @@ async function seed() {
       name: "Bear Safe",
       description: "Does not work against polar bears",
       image: "/product-images/bear-safe.jpg"
-    }),
+    })
   ]);
 
-    // --------- CATEGORIES -------- \\
+  // --------- CATEGORIES -------- \\
   const categories = await Promise.all([
-    Category.create({name: 'Camp Furniture'}),
-    Category.create({name: 'Clothing'}),
-    Category.create({name: 'Gadgets'}),
-    Category.create({name: 'Hiking'}),
-    Category.create({name: 'Kitchenware'}),
-    Category.create({name: 'Nutrition'}),
-    Category.create({name: 'Sleeping'}),
-    Category.create({name: 'Tents'}),
-    Category.create({name: 'Tools'})
-  ])
-    // --------- REVIEWS -------- \\
-  const reviews = []
+    Category.create({ name: "Camp Furniture" }),
+    Category.create({ name: "Clothing" }),
+    Category.create({ name: "Gadgets" }),
+    Category.create({ name: "Hiking" }),
+    Category.create({ name: "Kitchenware" }),
+    Category.create({ name: "Nutrition" }),
+    Category.create({ name: "Sleeping" }),
+    Category.create({ name: "Tents" }),
+    Category.create({ name: "Tools" })
+  ]);
+
+  const getCategory = name => {
+    categories.find(cat => (cat.name = name));
+  };
+
+  // --------- REVIEWS -------- \\
+  const reviews = [];
   for (let i = 0; i < 30; i++) {
     reviews.push(
       await Review.create({
         productId: randomNum(products.length),
         rating: randomNum(5),
-        text: faker.lorem.sentence(randomNum(10))
+        text: faker.lorem.sentence(randomNum(100))
       }).then(rev => {
-        rev.setUser(users[randomInd(users.length)])
+        rev.setUser(users[randomInd(users.length)]);
       })
-    )
+    );
   }
 
   console.log("seeded successfully");
