@@ -7,6 +7,7 @@ class Login extends React.Component {
       email: "",
       password: ""
     };
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
     this.setState({
@@ -18,7 +19,7 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="sign-in-content">
         <div id="login-form">
           <h2>Login</h2>
 
@@ -29,6 +30,7 @@ class Login extends React.Component {
               type="email"
               placeholder="Enter email..."
               value={this.state.email}
+              onChange={this.handleChange}
             />
           </div>
           <div className="input-group">
@@ -38,6 +40,7 @@ class Login extends React.Component {
               type="password"
               placeholder="Enter Password..."
               value={this.state.password}
+              onChange={this.handleChange}
             />
           </div>
           <button

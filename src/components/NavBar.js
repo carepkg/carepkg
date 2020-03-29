@@ -15,11 +15,8 @@ const NavBar = () => {
         </div>
         <h2 id="nav-coname">carepkg</h2>
         <div className="navlinks navright">
-          <NavLink to="/login" className="navlink">
-            Login
-          </NavLink>
-          <NavLink to="/signup" className="navlink">
-            Sign up
+          <NavLink to="/sign-in" className="navlink">
+            Sign In
           </NavLink>
         </div>
       </div>

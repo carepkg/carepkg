@@ -10,6 +10,7 @@ class SignUp extends React.Component {
       email: "",
       password: ""
     };
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
     this.setState({
@@ -21,25 +22,27 @@ class SignUp extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="sign-in-content">
         <div id="signup-form">
           <h2>Login</h2>
           <div className="input-group">
-            <label htmlFor="firstName">Email</label>
+            <label htmlFor="firstName">First Name</label>
             <input
-              type="email"
+              type="text"
               name="firstName"
-              placeholder="Enter email..."
+              placeholder="First Name"
               value={this.state.email}
+              onChange={this.handleChange}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="lastName">Email</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
-              type="email"
+              type="text"
               name="lastName"
-              placeholder="Enter email..."
+              placeholder="Last Name"
               value={this.state.email}
+              onChange={this.handleChange}
             />
           </div>
           <div className="input-group">
@@ -49,6 +52,7 @@ class SignUp extends React.Component {
               name="email"
               placeholder="Enter email..."
               value={this.state.email}
+              onChange={this.handleChange}
             />
           </div>
           <div className="input-group">
@@ -58,6 +62,7 @@ class SignUp extends React.Component {
               name="password"
               placeholder="Enter Password..."
               value={this.state.password}
+              onChange={this.handleChange}
             />
           </div>
           <button
@@ -76,4 +81,4 @@ class SignUp extends React.Component {
     );
   }
 }
-export default Login;
+export default SignUp;
