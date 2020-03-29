@@ -2,11 +2,10 @@ import React from "react";
 
 const ReviewCard = props => {
   const { review } = props;
-  console.log(review);
   const user = review.user;
   return (
     <div className="review-container">
-      <h4>
+      <h4 className="review-author">
         {user.firstName} {user.lastName}
       </h4>
       <div className="review-info">Rating: {review.rating}/5</div>

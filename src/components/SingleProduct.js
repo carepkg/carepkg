@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getSingleProductThunk } from "../store/singleProduct";
-import ReviewCard from "./ReviewCard";
+import ReviewList from "./ReviewList";
 
 class SingleProduct extends React.Component {
   componentDidMount() {
@@ -10,8 +10,6 @@ class SingleProduct extends React.Component {
   render() {
     const { product } = this.props;
     const { reviews } = product;
-    console.log(product);
-    console.log(reviews);
     return (
       <div id="page-container">
         <div id="single-product-container">
@@ -54,20 +52,7 @@ class SingleProduct extends React.Component {
           </div>
         </div>
         <div>
-          <div id="single-product-review-list">
-            {reviews
-              ? reviews.map(review => {
-                  console.log(review);
-                  return (
-                    <ReviewCard
-                      key={review.id}
-                      review={review}
-                      user={review.user}
-                    />
-                  );
-                })
-              : null}
-          </div>
+          <ReviewList reviews={reviews} />
         </div>
       </div>
     );

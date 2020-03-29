@@ -32,10 +32,10 @@ router.get("/:productId", async (req, res, next) => {
           model: Review,
           include: [
             {
-              model: User,
-              where: {
-                id: Review.userId
-              }
+              model: User
+              // where: {
+              //   id: Review.userId
+              // }
             }
           ]
         },
