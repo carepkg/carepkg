@@ -4,7 +4,7 @@ import { withRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import AllProducts from "./components/AllProducts";
 import SingleProduct from "./components/SingleProduct";
-import Login from "./components/Login";
+import SignIn from "./components/SignIn";
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -13,7 +13,7 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/sign-in" component={SignIn} />
         <Route exact path="/products/:id" component={SingleProduct} />
         <Route exact path="/products" component={AllProducts} />
         <Route path="/" component={LandingPage} />

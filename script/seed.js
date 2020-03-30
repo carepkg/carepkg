@@ -8,10 +8,13 @@ const {
   PurchaseProfile,
   Category,
   Product,
-  Review
+  Review,
+  Order,
+  PricingHistory,
+  ProductCategory
 } = require("../server/db/models/");
 const faker = require("faker");
-const randomPrice = () => Math.floor(Math.random() * 100) - 0.01;
+const randomPrice = () => Math.floor(Math.random() * 100) + 0.99;
 const randomNum = num => Math.floor(Math.random() * num) + 1;
 const randomInd = num => Math.floor(Math.random() * num);
 
@@ -52,94 +55,14 @@ async function seed() {
       userName: "roof",
       email: "rufus@email.com",
       role: "Customer"
-    })
-  ]);
-
-  // --------- PRODUCTS -------- \\
-  const products = await Promise.all([
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Tent",
-      description: "Place to sleep. Easy set up",
-      image: "/product-images/tent.jpg"
     }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Swiss Army Knife",
-      description: "A jack of all trades inside your pocket",
-      image: "/product-images/swiss-army-knife.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Headlamp",
-      description: "A lamp but for your head",
-      image: "/product-images/head-lamp.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Tarp",
-      description: "Put this thing under tent",
-      image: "/product-images/tarp.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Claymore",
-      description: "Execute your enemies",
-      image: "/product-images/claymore.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Fanny Pack",
-      description: "Make it like, camping",
-      image: "/product-images/fanny-pack.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Fire Starter",
-      description: "Great fire starter that never doesn't ignite",
-      image: "/product-images/fire-starter.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Flint and Steel",
-      description: "Minecraft style",
-      image: "/product-images/flint-and-steel.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Cobblestone",
-      description: "Unsung hero",
-      image: "/product-images/cobblestone.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Compass",
-      description: "Works 50% of the time",
-      image: "/product-images/compass.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Flashlight",
-      description: "Flickers when you're scared",
-      image: "/product-images/flashlight.jpg"
-    }),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Bear Safe",
-      description: "Does not work against polar bears",
-      image: "/product-images/bear-safe.jpg"
+    User.create({
+      firstName: "Steven",
+      lastName: "Bruno",
+      age: 2,
+      userName: "sbruno",
+      email: "sbruno@carepkg.com",
+      role: "Admin"
     })
   ]);
 
@@ -153,12 +76,313 @@ async function seed() {
     Category.create({ name: "Nutrition" }),
     Category.create({ name: "Sleeping" }),
     Category.create({ name: "Tents" }),
-    Category.create({ name: "Tools" })
+    Category.create({ name: "Tools" }),
+    Category.create({ name: "Storage" })
   ]);
 
-  const getCategory = name => {
-    categories.find(cat => (cat.name = name));
+  const fetchCategory = name => {
+    return categories.find(cat => (cat.name = name));
   };
+  function fetchCategories() {
+    const found = [];
+    [...arguments].forEach(arg => {
+      found.push(fetchCategory(arg));
+    });
+    return found;
+  }
+  // console.log(getCategories("Sleeping", "Tents"));
+
+  // --------- PRODUCTS -------- \\
+  const products = await Promise.all([
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Tent",
+      description: "Place to sleep. Easy set up",
+      image: "/product-images/tent.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Sleeping", "Tents").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Swiss Army Knife",
+      description: "A jack of all trades inside your pocket",
+      image: "/product-images/swiss-army-knife.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Headlamp",
+      description: "A lamp but for your head",
+      image: "/product-images/head-lamp.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Gadgets").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Tarp",
+      description: "Put this thing under tent",
+      image: "/product-images/tarp.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Sleeping").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Claymore",
+      description: "Execute your enemies",
+      image: "/product-images/claymore.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Gadgets").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Fanny Pack",
+      description: "Make it like, camping",
+      image: "/product-images/fanny-pack.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Clothing").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Fire Starter",
+      description: "Great fire starter that never doesn't ignite",
+      image: "/product-images/fire-starter.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Flint and Steel",
+      description: "Minecraft style",
+      image: "/product-images/flint-and-steel.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Cobblestone",
+      description: "Unsung hero",
+      image: "/product-images/cobblestone.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Compass",
+      description: "Works 50% of the time",
+      image: "/product-images/compass.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Gadgets", "Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Flashlight",
+      description: "Flickers when you're scared",
+      image: "/product-images/flashlight.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Gadgets", "Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Bear Safe",
+      description: "Does not work against polar bears",
+      image: "/product-images/bear-safe.jpg"
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Storage").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error))
+  ]);
 
   // --------- REVIEWS -------- \\
   const reviews = [];
@@ -170,6 +394,16 @@ async function seed() {
         text: faker.lorem.sentence(randomNum(100))
       }).then(rev => {
         rev.setUser(users[randomInd(users.length)]);
+      })
+    );
+  }
+
+  // --------- Orders -------- \\
+  const orders = [];
+  for (let i = 0; i < 4; i++) {
+    orders.push(
+      await Order.create({}).then(ord => {
+        ord.setUser(users[i]);
       })
     );
   }
