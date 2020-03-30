@@ -52,6 +52,14 @@ async function seed() {
       userName: "roof",
       email: "rufus@email.com",
       role: "Customer"
+    }),
+    User.create({
+      firstName: "Steven",
+      lastName: "Bruno",
+      age: 2,
+      userName: "sbruno",
+      email: "sbruno@carepkg.com",
+      role: "Admin"
     })
   ]);
 
