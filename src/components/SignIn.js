@@ -25,10 +25,8 @@ const SignIn = () => {
             Sign Up
           </button>
         </div>
-        <div>
-          {loginOpen && <Login />}
-          {signUpOpen && <SignUp />}
-        </div>
+        {loginOpen && <Login />}
+        {signUpOpen && <SignUp />}
       </div>
     </div>
   );

@@ -10,7 +10,8 @@ const {
   Product,
   Review,
   Order,
-  PricingHistory
+  PricingHistory,
+  ProductCategory
 } = require("../server/db/models/");
 const faker = require("faker");
 const randomPrice = () => Math.floor(Math.random() * 100) + 0.99;
@@ -65,6 +66,31 @@ async function seed() {
     })
   ]);
 
+  // --------- CATEGORIES -------- \\
+  const categories = await Promise.all([
+    Category.create({ name: "Camp Furniture" }),
+    Category.create({ name: "Clothing" }),
+    Category.create({ name: "Gadgets" }),
+    Category.create({ name: "Hiking" }),
+    Category.create({ name: "Kitchenware" }),
+    Category.create({ name: "Nutrition" }),
+    Category.create({ name: "Sleeping" }),
+    Category.create({ name: "Tents" }),
+    Category.create({ name: "Tools" })
+  ]);
+
+  const fetchCategory = name => {
+    return categories.find(cat => (cat.name = name));
+  };
+  function fetchCategories() {
+    const found = [];
+    [...arguments].forEach(arg => {
+      found.push(fetchCategory(arg));
+    });
+    return found;
+  }
+  // console.log(getCategories("Sleeping", "Tents"));
+
   // --------- PRODUCTS -------- \\
   const products = await Promise.all([
     Product.create({
@@ -73,11 +99,24 @@ async function seed() {
       name: "Tent",
       description: "Place to sleep. Easy set up",
       image: "/product-images/tent.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Sleeping", "Tents").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
@@ -200,23 +239,6 @@ async function seed() {
       );
     })
   ]);
-
-  // --------- CATEGORIES -------- \\
-  const categories = await Promise.all([
-    Category.create({ name: "Camp Furniture" }),
-    Category.create({ name: "Clothing" }),
-    Category.create({ name: "Gadgets" }),
-    Category.create({ name: "Hiking" }),
-    Category.create({ name: "Kitchenware" }),
-    Category.create({ name: "Nutrition" }),
-    Category.create({ name: "Sleeping" }),
-    Category.create({ name: "Tents" }),
-    Category.create({ name: "Tools" })
-  ]);
-
-  const getCategory = name => {
-    categories.find(cat => (cat.name = name));
-  };
 
   // --------- REVIEWS -------- \\
   const reviews = [];

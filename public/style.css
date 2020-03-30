@@ -336,34 +336,84 @@ a{
 #sign-in-page {
     display: flex;
     width: 100%;
-    height: 60%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+#sign-in-container {
+    margin-top: 24px;
+    width: 42.5%;
+    height: 62.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid rgba(51, 51, 51, 0.1)
+}
+#sign-in-menu {
+    width: 50%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.sign-in-btn {
+    width: 47.5%;
+}
+#sign-up-login-container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#sign-in-container {
-    width: 42.5%;
-    height: 75%;
+.sign-in-content {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(51, 51, 51, 0.1)
-}
-.sign-in-content {
-    
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 80%;
 }
 label {
     font-size: 0.875em;
 }
+#sign-up-name-group {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
 .input-group {
+    width: 100%;
+    height: 20%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-#sign-in-page input[type='text'] {
-    width: 20%;
+#sign-up-name-group .input-group {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
-#sign-in-page input[type='email'] {
+#sign-up-name-group input[type='text'] {
+    width: 70%;
+    height: 50%;
+}
+
+.sign-in-content input[type='email'] {
     width: 60%;
+    height: 50%;
 }
-#sign-in-page input[type='password'] {
+.sign-in-content input[type='password'] {
     width: 60%;
+    height: 50%;
+}
+.login-btn {
+    width: 30%;
+    background-color: darkgreen;
+    color: white;
+    margin: 1em;
 }
 
