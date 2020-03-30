@@ -76,7 +76,8 @@ async function seed() {
     Category.create({ name: "Nutrition" }),
     Category.create({ name: "Sleeping" }),
     Category.create({ name: "Tents" }),
-    Category.create({ name: "Tools" })
+    Category.create({ name: "Tools" }),
+    Category.create({ name: "Storage" })
   ]);
 
   const fetchCategory = name => {
@@ -123,121 +124,264 @@ async function seed() {
       name: "Swiss Army Knife",
       description: "A jack of all trades inside your pocket",
       image: "/product-images/swiss-army-knife.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Headlamp",
       description: "A lamp but for your head",
       image: "/product-images/head-lamp.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Gadgets").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Tarp",
       description: "Put this thing under tent",
       image: "/product-images/tarp.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Sleeping").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Claymore",
       description: "Execute your enemies",
       image: "/product-images/claymore.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Gadgets").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Fanny Pack",
       description: "Make it like, camping",
       image: "/product-images/fanny-pack.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Clothing").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Fire Starter",
       description: "Great fire starter that never doesn't ignite",
       image: "/product-images/fire-starter.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Flint and Steel",
       description: "Minecraft style",
       image: "/product-images/flint-and-steel.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Cobblestone",
       description: "Unsung hero",
       image: "/product-images/cobblestone.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Compass",
       description: "Works 50% of the time",
       image: "/product-images/compass.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Gadgets", "Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Flashlight",
       description: "Flickers when you're scared",
       image: "/product-images/flashlight.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
-    }),
+    })
+      .then(async prod => {
+        try {
+          fetchCategories("Gadgets", "Tools").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
     Product.create({
       price: new Price().price,
       qty: qty,
       name: "Bear Safe",
       description: "Does not work against polar bears",
       image: "/product-images/bear-safe.jpg"
-    }).then(async prod => {
-      prod.addPricingHistory(
-        await PricingHistory.create({ price: prod.price })
-      );
     })
+      .then(async prod => {
+        try {
+          fetchCategories("Storage").forEach(async cat => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: cat.id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error))
   ]);
 
   // --------- REVIEWS -------- \\
