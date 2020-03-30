@@ -15,6 +15,9 @@ PurchaseProfile.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(Review);
 Review.belongsTo(User);
 
+User.hasMany(Order);
+Order.belongsTo(User);
+
 Product.hasMany(Review);
 Review.belongsTo(Product);
 

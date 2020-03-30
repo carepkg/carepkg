@@ -8,10 +8,12 @@ const {
   PurchaseProfile,
   Category,
   Product,
-  Review
+  Review,
+  Order,
+  PricingHistory
 } = require("../server/db/models/");
 const faker = require("faker");
-const randomPrice = () => Math.floor(Math.random() * 100) - 0.01;
+const randomPrice = () => Math.floor(Math.random() * 100) + 0.99;
 const randomNum = num => Math.floor(Math.random() * num) + 1;
 const randomInd = num => Math.floor(Math.random() * num);
 
@@ -71,6 +73,10 @@ async function seed() {
       name: "Tent",
       description: "Place to sleep. Easy set up",
       image: "/product-images/tent.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -78,6 +84,10 @@ async function seed() {
       name: "Swiss Army Knife",
       description: "A jack of all trades inside your pocket",
       image: "/product-images/swiss-army-knife.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -85,6 +95,10 @@ async function seed() {
       name: "Headlamp",
       description: "A lamp but for your head",
       image: "/product-images/head-lamp.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -92,6 +106,10 @@ async function seed() {
       name: "Tarp",
       description: "Put this thing under tent",
       image: "/product-images/tarp.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -99,6 +117,10 @@ async function seed() {
       name: "Claymore",
       description: "Execute your enemies",
       image: "/product-images/claymore.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -106,6 +128,10 @@ async function seed() {
       name: "Fanny Pack",
       description: "Make it like, camping",
       image: "/product-images/fanny-pack.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -113,6 +139,10 @@ async function seed() {
       name: "Fire Starter",
       description: "Great fire starter that never doesn't ignite",
       image: "/product-images/fire-starter.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -120,6 +150,10 @@ async function seed() {
       name: "Flint and Steel",
       description: "Minecraft style",
       image: "/product-images/flint-and-steel.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -127,6 +161,10 @@ async function seed() {
       name: "Cobblestone",
       description: "Unsung hero",
       image: "/product-images/cobblestone.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -134,6 +172,10 @@ async function seed() {
       name: "Compass",
       description: "Works 50% of the time",
       image: "/product-images/compass.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -141,6 +183,10 @@ async function seed() {
       name: "Flashlight",
       description: "Flickers when you're scared",
       image: "/product-images/flashlight.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     }),
     Product.create({
       price: new Price().price,
@@ -148,6 +194,10 @@ async function seed() {
       name: "Bear Safe",
       description: "Does not work against polar bears",
       image: "/product-images/bear-safe.jpg"
+    }).then(async prod => {
+      prod.addPricingHistory(
+        await PricingHistory.create({ price: prod.price })
+      );
     })
   ]);
 
@@ -178,6 +228,16 @@ async function seed() {
         text: faker.lorem.sentence(randomNum(100))
       }).then(rev => {
         rev.setUser(users[randomInd(users.length)]);
+      })
+    );
+  }
+
+  // --------- Orders -------- \\
+  const orders = [];
+  for (let i = 0; i < 4; i++) {
+    orders.push(
+      await Order.create({}).then(ord => {
+        ord.setUser(users[i]);
       })
     );
   }
