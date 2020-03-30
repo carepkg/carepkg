@@ -27,8 +27,10 @@ Product.hasMany(Review);
 Review.belongsTo(Product);
 
 //The same product can be in numerous orders, an order can have multiple products.
-Product.belongsToMany(Order, { through: OrderProduct });
-Order.belongsToMany(Product, { through: OrderProduct });
+//commented out because will create manually similar to ProductCategory
+
+// Product.belongsToMany(Order, { through: OrderProduct });
+// Order.belongsToMany(Product, { through: OrderProduct });
 
 //Product can have many categories it belongs to, categories hold many products
 //Deleted association due to Sequelize Unique Constraint Validation on IDs. Annoying.
