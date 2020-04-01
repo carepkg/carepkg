@@ -1,5 +1,5 @@
 :root {
-    --main-text-color: #666;
+    --main-text-color: #555;
 }
 html,
 body,
@@ -417,3 +417,52 @@ label {
     margin: 1em;
 }
 
+/* ------- CART ------- */
+
+#cart-page {
+    width: 100%;
+    height: 94%;
+}
+
+/* ------- PROFILE ------- */
+
+#profile-page {
+    width: 100%;
+    height: 94%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+#profile-header {
+    height: 15%;
+    border: 1px solid green;
+    display: flex;
+}
+#profile-user-info {
+    height: 100%;
+    display: flex;
+}
+#profile-user-pic {
+    width: 80px;
+    height: 80px;
+}
+#profile-user-names {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#profile-body {
+    height: 85%;
+    border: 1px solid orange;
+    display: flex;
+}
+#profile-nav-menu {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+#profile-content {
+    width: 75vw;
+    border: 1px solid blue;
+}

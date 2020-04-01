@@ -3,6 +3,7 @@ const cors = require("cors");
 const express = require("express");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+const passport = require("passport");
 const morgan = require("morgan");
 const compression = require("compression");
 const session = require("express-session");
@@ -21,12 +22,53 @@ const createApp = () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
+  // session middleware with passport
+  passport.serializeUser((user, done) => done(null, user.id));
+
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await db.models.user.findByPk(id, {
+        include: [
+          {
+            model: Review
+          },
+          {
+            model: PurchaseProfile,
+            include: [
+              {
+                model: Order,
+                where: {
+                  status: {
+                    [Op.or]: ["purchased", "cancelled", "fulfilled"]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      });
+      done(null, user);
+    } catch (err) {
+      done(err);
+    }
+  });
   // compression middleware
   app.use(compression());
 
-  // session middleware with passport
+  //session middleware with passport
+  // app.use(
+  //   session({
+  //     secret: process.env.SESSION_SECRET || 'my best friend is Cody',
+  //     store: sessionStore,
+  //     resave: false,
+  //     saveUninitialized: true
+  //   })
+  // )
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // auth and api routes
+  app.use("/auth", require("./auth"));
   app.use("/api", require("./api"));
 
   // static file-serving middleware

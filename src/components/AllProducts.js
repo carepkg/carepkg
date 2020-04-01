@@ -14,11 +14,11 @@ class AllProducts extends React.Component {
     this.props.getProductsThunk();
   }
   // componentDidUpdate(prevProps) {
-  //   console.log("in cdu");
+  //
   //   if (prevProps.location.searc !== this.props.location.search) {
   //     this.props.getProducts(this.props.location.search);
   //   }
-  //   console.log("cdu");
+  //
   // }
   // page(int) {
   //   let nextQueryStr = this.props.location.search.split("&page=");

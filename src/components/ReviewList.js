@@ -2,7 +2,7 @@ import React from "react";
 import ReviewCard from "./ReviewCard";
 
 const ReviewList = props => {
-  const { reviews } = props;
+  const { reviews, product, onProfilePage } = props;
   return (
     <div id="single-product-review-list">
       <div id="review-list-header">
@@ -10,9 +10,14 @@ const ReviewList = props => {
       </div>
       {reviews
         ? reviews.map(review => {
-            console.log(review);
             return (
-              <ReviewCard key={review.id} review={review} user={review.user} />
+              <ReviewCard
+                key={review.id}
+                review={review}
+                user={review.user}
+                product={product}
+                onProfilePage={onProfilePage}
+              />
             );
           })
         : null}

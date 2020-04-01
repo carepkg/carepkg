@@ -37,7 +37,8 @@ async function seed() {
       lastName: "Griffith",
       age: 23,
       userName: "hgriffith",
-      email: "henry@carepkg.com",
+      email: "h",
+      password: "h",
       role: "Admin"
     }),
     User.create({
@@ -46,6 +47,7 @@ async function seed() {
       age: 21,
       userName: "igriffith",
       email: "isley@carepkg.com",
+      password: "ig",
       role: "Admin"
     }),
     User.create({
@@ -54,6 +56,7 @@ async function seed() {
       age: 1,
       userName: "roof",
       email: "rufus@email.com",
+      password: "rlg",
       role: "Customer"
     }),
     User.create({
@@ -62,6 +65,7 @@ async function seed() {
       age: 2,
       userName: "sbruno",
       email: "sbruno@carepkg.com",
+      password: "sb",
       role: "Admin"
     })
   ]);
