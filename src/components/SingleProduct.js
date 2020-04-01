@@ -52,7 +52,11 @@ class SingleProduct extends React.Component {
           </div>
         </div>
         <div>
-          <ReviewList reviews={reviews} />
+          <ReviewList
+            reviews={reviews}
+            product={product}
+            onProfilePage={false}
+          />
         </div>
       </div>
     );

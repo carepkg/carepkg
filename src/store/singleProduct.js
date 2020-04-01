@@ -12,9 +12,9 @@ const getSingleProduct = product => {
 export const getSingleProductThunk = id => async dispatch => {
   try {
     const response = await axios.get(`/api/products/${id}`);
-    console.log(response);
+
     const product = response.data;
-    console.log(product);
+
     dispatch(getSingleProduct(product));
   } catch (error) {
     console.error(error.message);

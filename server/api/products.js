@@ -38,13 +38,9 @@ router.get("/:productId", async (req, res, next) => {
               // }
             }
           ]
-        },
-        {
-          model: Category
         }
       ]
     });
-
     if (product) res.json(product);
     else res.sendStatus(404);
   } catch (err) {

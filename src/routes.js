@@ -7,6 +7,7 @@ import SingleProduct from "./components/SingleProduct";
 import { Login } from "./components/AuthForm";
 import { Signup } from "./components/AuthForm";
 import Cart from "./components/Cart";
+import UserProfile from "./components/UserProfile";
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
+        <Route exact path="/profile" component={UserProfile} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />

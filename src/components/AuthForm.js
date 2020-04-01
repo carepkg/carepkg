@@ -8,9 +8,7 @@ import { auth } from "../store";
  * COMPONENT FOR LOGIN AND SIGNUP
  */
 const AuthForm = props => {
-  console.log(props);
   const { name, displayName, handleLogin, handleSignup, error } = props;
-  console.log(name);
   return (
     <div>
       <form
@@ -124,11 +122,11 @@ export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
 /**
  * PROP TYPES
  */
-// AuthForm.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   displayName: PropTypes.string.isRequired,
-//   handleLogin: PropTypes.func.isRequired,
-//   handleSignup: PropTypes.func.isRequired,
-//   error: PropTypes.object
-// };
+AuthForm.propTypes = {
+  name: PropTypes.string.isRequired,
+  displayName: PropTypes.string.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleSignup: PropTypes.func.isRequired,
+  error: PropTypes.object
+};
 export default AuthForm;

@@ -10,9 +10,7 @@ const REMOVE_USER = "REMOVE_USER";
 /**
  * INITIAL STATE
  */
-const defaultUser = {
-  firstName: "Todd"
-};
+const guest = {};
 
 /**
  * ACTION CREATORS
@@ -26,8 +24,8 @@ const removeUser = () => ({ type: REMOVE_USER });
 export const me = () => async dispatch => {
   try {
     const res = await axios.get("/auth/me");
-    console.log(res.data);
-    dispatch(getUser(res.data || defaultUser));
+
+    dispatch(getUser(res.data || guest));
   } catch (err) {
     console.error(err);
   }
@@ -35,7 +33,7 @@ export const me = () => async dispatch => {
 
 export const auth = (user, method) => async dispatch => {
   let res;
-  console.log("beginning of auth thunk");
+
   try {
     if (method === "signup") {
       res = await axios.post(`/auth/${method}`, {
@@ -57,7 +55,6 @@ export const auth = (user, method) => async dispatch => {
   }
 
   try {
-    console.log(res.data);
     dispatch(getUser(res.data));
     history.push("/");
   } catch (dispatchOrHistoryErr) {
@@ -65,25 +62,25 @@ export const auth = (user, method) => async dispatch => {
   }
 };
 
-// export const logout = () => async dispatch => {
-//   try {
-//     await axios.post("/auth/logout");
-//     dispatch(removeUser());
-//     history.push("/");
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
+export const logout = () => async dispatch => {
+  try {
+    await axios.post("/auth/logout");
+    dispatch(removeUser());
+    history.push("/");
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 /**
  * REDUCER
  */
-const userReducer = (state = defaultUser, action) => {
+const userReducer = (state = guest, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user;
     case REMOVE_USER:
-      return defaultUser;
+      return guest;
     default:
       return state;
   }

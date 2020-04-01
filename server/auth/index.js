@@ -1,24 +1,24 @@
 const router = require("express").Router();
-const { User, Review, Order } = require("../db/models");
+const { User, Review, Order, Product } = require("../db/models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+const session = require("express-session");
 
 router.post("/login", async (req, res, next) => {
   try {
     console.log(req.body);
     const user = await User.findOne({
-      where: { email: req.body.email, password: req.body.password }
-      // include: [
-      //   { model: Review },
-      //   {
-      //     model: Order,
-      //     where: {
-      //       status: {
-      //         [Op.or]: ["cancelled", "purchased", "completed"]
-      //       }
-      //     }
-      //   }
-      // ]
+      where: { email: req.body.email, password: req.body.password },
+      include: [
+        {
+          model: Review,
+          include: [
+            {
+              model: Product
+            }
+          ]
+        }
+      ]
     });
     console.log(user);
     if (!user) {
@@ -44,11 +44,11 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-// router.post("/logout", (req, res, next) => {
-//   req.logout();
-//   req.session.destroy();
-//   res.redirect("/");
-// });
+router.post("/logout", (req, res, next) => {
+  req.logout();
+  // req.session.destroy();
+  res.redirect("/");
+});
 
 router.get("/me", (req, res) => {
   res.json(req.user);
