@@ -11,7 +11,9 @@ const {
   Review,
   Order,
   PricingHistory,
-  ProductCategory
+  ProductCategory,
+  LineItem,
+  CartLineItem
 } = require("../server/db/models/");
 const faker = require("faker");
 const randomPrice = () => Math.floor(Math.random() * 100) + 0.99;
@@ -411,6 +413,30 @@ async function seed() {
       })
     );
   }
+  const lineItems = [];
+  lineItems.push(
+    await LineItem.create({
+      qty: 1,
+      orderId: 1,
+      productId: 4
+    })
+  );
+  lineItems.push(
+    await LineItem.create({
+      qty: 1,
+      orderId: 1,
+      productId: 2
+    })
+  );
+  lineItems.push(
+    await LineItem.create({
+      qty: 1,
+      orderId: 1,
+      productId: 3
+    })
+  );
+
+  // User.addProduct(products[1]);
 
   console.log("seeded successfully");
 }

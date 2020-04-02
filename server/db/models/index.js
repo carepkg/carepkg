@@ -2,11 +2,13 @@ const User = require("./user");
 const Product = require("./product");
 const Review = require("./review");
 const PurchaseProfile = require("./purchaseProfile");
-const OrderProduct = require("./orderProduct");
+const OrderProduct = require("./lineItem");
 const Category = require("./category");
 const PricingHistory = require("./pricingHistory");
 const Order = require("./order");
-const ProductCategory = require("./ProductCategory");
+const ProductCategory = require("./productCategory");
+const LineItem = require("./lineItem");
+const CartLineItem = require("./cartLineItem");
 
 // --------- ASSOCIATIONS --------- \\
 
@@ -26,11 +28,13 @@ Order.belongsTo(User);
 Product.hasMany(Review);
 Review.belongsTo(Product);
 
-//The same product can be in numerous orders, an order can have multiple products.
-//commented out because will create manually similar to ProductCategory
+//User has many products in their cart. Products can be in many users' carts. Each cartlineitem is a row in the 'cart'
+User.belongsToMany(Product, { through: CartLineItem });
+Product.belongsToMany(User, { through: CartLineItem });
 
-// Product.belongsToMany(Order, { through: OrderProduct });
-// Order.belongsToMany(Product, { through: OrderProduct });
+//This is the replacement for OrderProduct
+Product.belongsToMany(Order, { through: LineItem });
+Order.belongsToMany(Product, { through: LineItem });
 
 //Product can have many categories it belongs to, categories hold many products
 //Deleted association due to Sequelize Unique Constraint Validation on IDs. Annoying.
@@ -49,5 +53,7 @@ module.exports = {
   Category,
   PricingHistory,
   Order,
-  ProductCategory
+  ProductCategory,
+  LineItem,
+  CartLineItem
 };
