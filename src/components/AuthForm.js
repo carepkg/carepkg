@@ -10,58 +10,60 @@ import { auth } from "../store";
 const AuthForm = props => {
   const { name, displayName, handleLogin, handleSignup, error } = props;
   return (
-    <div>
-      <form
-        className="SignupForm"
-        onSubmit={name === "login" ? handleLogin : handleSignup}
-        // onSubmit={name === "login" ? handleLogin : handleSignup}
-        name={name}
-      >
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="text" />
-        </div>
-        {name === "signup" && (
-          <div>
-            <div>
-              <label htmlFor="firstname">
-                <small>First Name</small>
-              </label>
-              <input className="Signup" name="firstname" type="text" required />
-            </div>
-            <div>
-              <label htmlFor="lastname">
-                <small>Last Name</small>
-              </label>
-              <input className="signup" name="lastname" type="text" />
-            </div>
-            <div>
-              <label htmlFor="username">
-                <small>Username</small>
-              </label>
-              <input className="signup" name="username" type="text" />
-            </div>
+    <div id="auth-page">
+      <div id="auth-form-container">
+        <form
+          className="signup-form"
+          onSubmit={name === "login" ? handleLogin : handleSignup}
+          // onSubmit={name === "login" ? handleLogin : handleSignup}
+          name={name}
+        >
+          <h2>{displayName}</h2>
+          {name === "signup" && (
+            <React.Fragment>
+              <div className="input-group">
+                <label htmlFor="firstname">First Name</label>
+                <input
+                  className="auth-name-input"
+                  name="firstname"
+                  type="text"
+                  required
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="lastname">Last Name</label>
+                <input
+                  className="signup"
+                  name="lastname"
+                  type="text"
+                  required
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="username">Username</label>
+                <input
+                  className="signup"
+                  name="username"
+                  type="text"
+                  required
+                />
+              </div>
+            </React.Fragment>
+          )}
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input name="email" type="email" required />
           </div>
-        )}
-        <div>
-          <button
-            style={{ width: 50, height: 50, backgroundColor: "blue" }}
-            type="submit"
-          >
-            {displayName}
-          </button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input name="password" type="text" required />
+          </div>
+
+          <button type="submit">{displayName}</button>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+        {/* <a href="/auth/google">{displayName} with Google</a> */}
+      </div>
     </div>
   );
 };

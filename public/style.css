@@ -7,6 +7,8 @@ body,
     width: 100%;
     height: 100%;
     font-family: 'Exo 2', sans-serif;
+    min-height: 600px;
+    min-width: 800px;
 }
 *{
     box-sizing: border-box;
@@ -333,86 +335,71 @@ a{
 }
 
 /* -------- SIGN IN -------- */
-#sign-in-page {
+#auth-page {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: flex-start;
+    
 }
-#sign-in-container {
-    margin-top: 24px;
-    width: 42.5%;
-    height: 62.5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    border: 1px solid rgba(51, 51, 51, 0.1)
-}
-#sign-in-menu {
+#auth-form-container {
+    margin-top: 1em;
+    height: 70%;
     width: 50%;
-    height: 10%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 24px;
-}
-.sign-in-btn {
-    width: 47.5%;
-}
-#sign-up-login-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.sign-in-content {
+.signup-form {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 80%;
+    height: 100%;
+    border: 1px solid rgba(51, 51, 51, 0.25);
+    border-radius: 4px;
 }
+.signup-form input {
+    border: none;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   -webkit-box-shadow: 0 0 3.125px #777 inset;
+   -moz-box-shadow: 0 0 3.125px #777 inset;
+   box-shadow: 0 0 3.125px #777 inset;
+   line-height: 25px;
+   width: 200px;
+   text-indent: 8px;
+}
+.signup-form input:focus {
+    outline: none;
+}
+.signup-form h2 {
+    padding: 0.5em 0;
+    color: rgb(12, 131, 12);
+    font-size: 2em;
+}
+
 label {
     font-size: 0.875em;
 }
-#sign-up-name-group {
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-}
 .input-group {
     width: 100%;
-    height: 20%;
+    height: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 8px;
 }
-#sign-up-name-group .input-group {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+input[type='text'], input[type='email'] {
+    width: 50%;
 }
-#sign-up-name-group input[type='text'] {
-    width: 70%;
-    height: 50%;
-}
-
-.sign-in-content input[type='email'] {
-    width: 60%;
-    height: 50%;
-}
-.sign-in-content input[type='password'] {
-    width: 60%;
-    height: 50%;
-}
-.login-btn {
-    width: 30%;
-    background-color: darkgreen;
+button[type='submit'] {
+    width: 120px;
+    height: 50px;
+    background-color: rgb(12, 142, 12);
     color: white;
     margin: 1em;
 }
