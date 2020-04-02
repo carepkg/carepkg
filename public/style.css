@@ -490,8 +490,10 @@ button[type='submit'] {
 /* ------- CART ------- */
 
 #cart-page {
+    position: relative;
+    top: 17.25%;
     width: 100%;
-    height: 94%;
+    height: 83.75%;
 }
 
 /* ------- PROFILE ------- */

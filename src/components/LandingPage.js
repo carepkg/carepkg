@@ -22,6 +22,7 @@ export default class LandingPage extends Component {
           <p id="landing-text-3">All things nature</p>
           <button id="landing-text-btn">See Sales</button>
         </div>
+        <div style={{ width: "100%", height: "100%" }}></div>
         {/* <h1 id="featured-pkg-text">Featured Packages</h1>
         <div id="main-half-2">
           <FeaturedPkgs />

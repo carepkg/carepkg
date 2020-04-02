@@ -43,8 +43,14 @@ const NavBar = props => {
       <hr className="nav-break" />
       <div id="navbar-bot">
         <div className="navlinks navleft">
+          <NavLink to="/bundles" className="navlink nav-product-link">
+            Packages
+          </NavLink>
           <NavLink to="/products" className="navlink nav-product-link">
             Products
+          </NavLink>
+          <NavLink to="/bundles" className="navlink nav-product-link">
+            Contact
           </NavLink>
         </div>
 

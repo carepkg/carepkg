@@ -12,8 +12,9 @@ const MainSearchBar = () => {
         value={searchText}
         onChange={newValue => setSearchText(newValue)}
         style={{
-          width: "40%",
-          height: "40px",
+          lineHeight: "32px",
+          width: "58.3%",
+          height: "45px",
           borderRadius: 8,
           margin: "4px"
         }}
