@@ -16,6 +16,12 @@ export default class LandingPage extends Component {
           src="/background-images/main-bg.jpg"
           style={{ width: "100%", height: "100%" }}
         />
+        <div id="landing-text">
+          <p id="landing-text-1">carepkg</p>
+          <p id="landing-text-2">The One and Only Place to Shop</p>
+          <p id="landing-text-3">All things nature</p>
+          <button id="landing-text-btn">See Sales</button>
+        </div>
         {/* <h1 id="featured-pkg-text">Featured Packages</h1>
         <div id="main-half-2">
           <FeaturedPkgs />
