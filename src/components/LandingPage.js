@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import FeaturedPkgs from "./FeaturedPkgs";
-import MainSearchBar from "./MainSearchBar";
-
 export default class LandingPage extends Component {
   constructor() {
     super();
@@ -14,16 +12,14 @@ export default class LandingPage extends Component {
   render() {
     return (
       <div id="landing-page">
-        <div id="home-main">
-          <div id="main-half-1">
-            <MainSearchBar />
-          </div>
-          <h1 id="featured-pkg-text">Featured Packages</h1>
-          <div id="main-half-2">
-            <FeaturedPkgs />
-          </div>
-          <div id="section-one-end"></div>
-        </div>
+        <img
+          src="/background-images/main-bg.jpg"
+          style={{ width: "100%", height: "100%" }}
+        />
+        {/* <h1 id="featured-pkg-text">Featured Packages</h1>
+        <div id="main-half-2">
+          <FeaturedPkgs />
+        </div> */}
       </div>
     );
   }

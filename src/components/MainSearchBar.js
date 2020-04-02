@@ -11,7 +11,12 @@ const MainSearchBar = () => {
         name="searchText"
         value={searchText}
         onChange={newValue => setSearchText(newValue)}
-        style={{ width: "60%", marginBottom: 72, borderRadius: 8 }}
+        style={{
+          width: "40%",
+          height: "40px",
+          borderRadius: 8,
+          margin: "4px"
+        }}
       />
     </MuiThemeProvider>
   );
