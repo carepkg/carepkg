@@ -8,7 +8,7 @@ import { render } from "@testing-library/react";
 const UserProfile = props => {
   const { user } = props;
   const { reviews } = user;
-  console.log(reviews);
+  console.log(user);
   return (
     <div id="profile-page">
       <div id="profile-header">

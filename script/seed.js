@@ -405,39 +405,51 @@ async function seed() {
   }
 
   // --------- Orders -------- \\
-  const orders = [];
-  for (let i = 0; i < 1; i++) {
-    orders.push(
-      await Order.create({
-        status: "completed"
-      }).then(ord => {
-        ord.setUser(users[i]);
-        console.log(ord);
-      })
-    );
-  }
-  const lineItems = [];
-  lineItems.push(
-    await LineItem.create({
-      qty: 1,
-      orderId: 2,
-      productId: 4
+  const orders = await Promise.all([
+    Order.create({
+      status: "completed"
+    }).then(async order => {
+      await order.addProduct(products[2]);
+    }),
+    Order.create({
+      status: "completed"
+    }).then(async order => {
+      await order.addProduct(products[4]);
     })
-  );
-  lineItems.push(
-    await LineItem.create({
-      qty: 1,
-      orderId: 2,
-      productId: 2
-    })
-  );
-  lineItems.push(
-    await LineItem.create({
-      qty: 1,
-      orderId: 2,
-      productId: 3
-    })
-  );
+  ]).then(orders => console.log(orders));
+
+  // for (let i = 0; i < 2; i++) {
+  //   orders.push(
+  //     await Order.create({
+  //       status: "completed"
+  //     }).then(order => {
+  //       order.addProduct(products[2])
+  //       order.setUser(users[i]);
+  //     })
+  //   );
+  // }
+  // const lineItems = [];
+  // lineItems.push(
+  //   await LineItem.create({
+  //     qty: 1,
+  //     orderId: 2,
+  //     productId: 4
+  //   })
+  // );
+  // lineItems.push(
+  //   await LineItem.create({
+  //     qty: 1,
+  //     orderId: 2,
+  //     productId: 2
+  //   })
+  // );
+  // lineItems.push(
+  //   await LineItem.create({
+  //     qty: 1,
+  //     orderId: 2,
+  //     productId: 3
+  //   })
+  // );
 
   // User.addProduct(products[1]);
 
