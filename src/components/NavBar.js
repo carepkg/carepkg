@@ -25,7 +25,9 @@ const NavBar = props => {
                 <NavLink to="/profile" className="navlink">
                   Profile
                 </NavLink>
-                <button onClick={handleLogout}>Logout</button>
+                <NavLink to="/login" className="navlink" onClick={handleLogout}>
+                  Logout
+                </NavLink>
               </React.Fragment>
             ) : (
               <React.Fragment>

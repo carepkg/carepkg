@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ReviewList from "./ReviewCard";
+import { render } from "@testing-library/react";
 
 // SMOOTH SCROLL FOR NAV (?)
 const UserProfile = props => {

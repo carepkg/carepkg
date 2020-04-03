@@ -406,10 +406,13 @@ async function seed() {
 
   // --------- Orders -------- \\
   const orders = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 1; i++) {
     orders.push(
-      await Order.create({}).then(ord => {
+      await Order.create({
+        status: "completed"
+      }).then(ord => {
         ord.setUser(users[i]);
+        console.log(ord);
       })
     );
   }
@@ -417,21 +420,21 @@ async function seed() {
   lineItems.push(
     await LineItem.create({
       qty: 1,
-      orderId: 1,
+      orderId: 2,
       productId: 4
     })
   );
   lineItems.push(
     await LineItem.create({
       qty: 1,
-      orderId: 1,
+      orderId: 2,
       productId: 2
     })
   );
   lineItems.push(
     await LineItem.create({
       qty: 1,
-      orderId: 1,
+      orderId: 2,
       productId: 3
     })
   );
@@ -440,7 +443,6 @@ async function seed() {
 
   console.log("seeded successfully");
 }
-
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.

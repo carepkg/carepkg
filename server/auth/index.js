@@ -1,15 +1,25 @@
 const router = require("express").Router();
-const { User, Review, Order, Product } = require("../db/models");
+const { User, Review, Order, Product, LineItem } = require("../db/models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const session = require("express-session");
 
 router.post("/login", async (req, res, next) => {
   try {
-    console.log(req.body);
     const user = await User.findOne({
       where: { email: req.body.email, password: req.body.password },
       include: [
+        {
+          model: Order,
+          include: [
+            {
+              model: Product
+              // through: {
+              //   attributes: [qty, orderId, productId]
+              // }
+            }
+          ]
+        },
         {
           model: Review,
           include: [
