@@ -33,8 +33,8 @@ User.belongsToMany(Product, { through: CartLineItem });
 Product.belongsToMany(User, { through: CartLineItem });
 
 //This is the replacement for OrderProduct
-Product.belongsToMany(Order, { through: LineItem });
-Order.belongsToMany(Product, { through: LineItem });
+// Product.belongsToMany(Order, { through: LineItem });
+// Order.belongsToMany(Product, { through: LineItem });
 
 //Product can have many categories it belongs to, categories hold many products
 //Deleted association due to Sequelize Unique Constraint Validation on IDs. Annoying.
