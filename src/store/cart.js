@@ -11,15 +11,18 @@ const getCart = cart => ({
 const addToCart = () => ({
   type: ADD_TO_CART
 });
-const deleteFromCart = () => ({
-  type: DELETE_FROM_CART
-});
+const deleteFromCart = productId => {
+  console.log(productId);
+  return {
+    type: DELETE_FROM_CART,
+    productId
+  };
+};
 
 export const getCartThunk = userId => async dispatch => {
   try {
     const response = await axios.get(`/api/cart/${userId}`);
     const cart = response.data;
-    console.log(cart);
     dispatch(getCart(cart));
   } catch (err) {
     console.error(err);
@@ -36,7 +39,17 @@ export const addToCartThunk = (qty, productId, userId) => async dispatch => {
     console.error(err);
   }
 };
-const deleteFromCartThunk = productId;
+export const deleteFromCartThunk = productId => dispatch => {
+  try {
+    console.log("sos");
+    axios
+      .delete(`/api/cart/${productId}`)
+      .then(() => console.log("can you hear this"));
+    // dispatch(deleteFromCart(productId))
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 const cartReducer = (state = {}, action) => {
   switch (action.type) {
@@ -45,7 +58,12 @@ const cartReducer = (state = {}, action) => {
     case ADD_TO_CART:
       return action.cart;
     case DELETE_FROM_CART:
-      return action.cart;
+      return {
+        ...state,
+        cart: state.cart.filter(
+          lineItem => lineItem.productId !== action.productId
+        )
+      };
     default:
       return state;
   }

@@ -33,11 +33,12 @@ router.post("/:productId", async (req, res, next) => {
 
 router.delete("/:productId", async (req, res, next) => {
   try {
-    await CartLineItem.delete({
+    await CartLineItem.destroy({
       where: {
         productId: req.params.productId
       }
     });
+    console.log("goodbye");
   } catch (err) {
     next(err);
   }

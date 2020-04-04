@@ -9,7 +9,6 @@ const UserProfile = props => {
   const [profileBody, setProfileBody] = useState("cart");
   const { user } = props;
   const { reviews, orders } = user;
-  console.log(user);
 
   const myCart = () => {
     setProfileBody("cart");

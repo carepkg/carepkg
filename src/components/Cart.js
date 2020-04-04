@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { render } from "@testing-library/react";
-import { getCartThunk } from "../store/cart";
+import { getCartThunk, deleteFromCartThunk } from "../store/cart";
 
 class Cart extends React.Component {
   componentDidMount() {
     this.props.fetchCart(this.props.user.id);
   }
   render() {
-    const { user, cart } = this.props;
+    const { user, cart, removeFromCart } = this.props;
+    console.log(cart);
     return (
       <div id="cart-page">
         <h1>{`${user.firstName}'s` || "Your"} cart</h1>
@@ -25,6 +26,7 @@ class Cart extends React.Component {
                     style={{ width: "100px", height: "100px" }}
                     src={product.image}
                   />
+                  <button onClick={() => removeFromCart(product.id)}>X</button>
                 </div>
               );
             })
@@ -42,6 +44,7 @@ const mapState = state => ({
   user: state.user
 });
 const mapDispatch = dispatch => ({
-  fetchCart: userId => dispatch(getCartThunk(userId))
+  fetchCart: userId => dispatch(getCartThunk(userId)),
+  removeFromCart: productId => dispatch(deleteFromCartThunk(productId))
 });
 export default connect(mapState, mapDispatch)(Cart);
