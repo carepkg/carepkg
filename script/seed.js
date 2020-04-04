@@ -403,7 +403,6 @@ async function seed() {
       })
     );
   }
-  // --------- Line Items -------- \\
 
   // --------- Orders -------- \\
   const orders = [];

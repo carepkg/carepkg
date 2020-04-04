@@ -19,9 +19,9 @@ User.hasMany(Order);
 User.hasMany(CartLineItem);
 
 Product.hasMany(Review);
-Product.hasMany(LineItem);
 Product.hasMany(CartLineItem);
 Product.hasMany(PricingHistory);
+Product.hasMany(LineItem);
 
 Order.hasMany(LineItem);
 
