@@ -18,13 +18,14 @@ router.get("/:userId", async (req, res, next) => {
 
 router.post("/:productId", async (req, res, next) => {
   try {
-    const product = await Product.findByPk(productId);
+    const product = await Product.findByPk(req.params.productId);
     const cartLineItem = await CartLineItem.create({
       qty: req.body.qty,
-      price: product.price * req.body.qty,
+      totalPriceAtPurchase: product.price * req.body.qty,
       userId: req.body.userId,
-      productid: req.params.productId
+      productId: req.params.productId
     });
+    res.send(cartLineItem);
   } catch (err) {
     next(err);
   }

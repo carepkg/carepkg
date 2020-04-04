@@ -10,7 +10,7 @@ class AllProducts extends React.Component {
     this.props.getProductsThunk();
   }
   render() {
-    const { products, cartId, userId, addToCartThunk } = this.props;
+    const { products, userId, addToCartThunk } = this.props;
     return products ? (
       <div id="products-component">
         <div id="products-header">
@@ -33,7 +33,6 @@ class AllProducts extends React.Component {
                 </div>
                 <AddToCart
                   userId={userId}
-                  cartId={cartId}
                   productId={product.id}
                   addToCartThunk={addToCartThunk}
                 />
@@ -49,7 +48,6 @@ class AllProducts extends React.Component {
 const mapStateToProps = state => {
   return {
     products: state.products,
-    cartId: state.cart.id,
     userId: state.user.id
   };
 };
@@ -57,8 +55,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getProductsThunk: () => dispatch(getProductsThunk()),
-    addToCartThunk: (cartId, qty, productId, userId) =>
-      dispatch(addToCartThunk())
+    addToCartThunk: (qty, productId, userId) =>
+      dispatch(addToCartThunk(qty, productId, userId))
   };
 };
 

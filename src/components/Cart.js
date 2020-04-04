@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { render } from "@testing-library/react";
-// import {getCartThunk} from '../store/cart'
+import { getCartThunk } from "../store/cart";
 
 class Cart extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.fetchCart(this.props.user.id);
+  }
   render() {
     const { user, cart } = this.props;
     return (
@@ -39,7 +41,7 @@ const mapState = state => ({
   cart: state.cart,
   user: state.user
 });
-// const mapDispatch = dispatch => ({
-//   getCartThunk: () => dispatch(getCartThunk())
-// });
-export default connect(mapState, null)(Cart);
+const mapDispatch = dispatch => ({
+  fetchCart: userId => dispatch(getCartThunk(userId))
+});
+export default connect(mapState, mapDispatch)(Cart);
