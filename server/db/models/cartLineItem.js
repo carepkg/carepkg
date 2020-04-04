@@ -13,6 +13,10 @@ const CartLineItem = db.define("cartLineItem", {
     type: Sequelize.INTEGER,
     allowNull: false
   },
+  productId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   unitPriceAtPurchase: Sequelize.INTEGER,
   totalPriceAtPurchase: Sequelize.INTEGER
 });

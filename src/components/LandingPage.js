@@ -1,13 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import FeaturedPkgs from "./FeaturedPkgs";
-export default class LandingPage extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+import { getCartThunk } from "../store/cart";
+class LandingPage extends Component {
   componentDidMount() {
+    //fetch cart
+    this.props.fetchCart(this.props.user.id);
     //fetch bundles
-    //need to make them in db
   }
   render() {
     return (
@@ -19,7 +18,6 @@ export default class LandingPage extends Component {
           <p id="landing-text-3">All things nature</p>
           <button id="landing-text-btn">See Sales</button>
         </div>
-        <div id="test-div"></div>
         {/* <h1 id="featured-pkg-text">Featured Packages</h1>
         <div id="main-half-2">
           <FeaturedPkgs />
@@ -28,3 +26,12 @@ export default class LandingPage extends Component {
     );
   }
 }
+
+const mapState = state => ({
+  user: state.user
+});
+const mapDispatch = dispatch => ({
+  fetchCart: userId => dispatch(getCartThunk(userId))
+});
+
+export default connect(mapState, mapDispatch)(LandingPage);

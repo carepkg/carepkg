@@ -2,40 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, NavLink } from "react-router-dom";
 import { getProductsThunk } from "../store/products";
+import { addToCartThunk } from "../store/cart";
+import AddToCart from "./AddToCart";
 
 class AllProducts extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-    // this.page = this.page.bind(this);
-  }
   componentDidMount() {
-    // this.props.getProducts(this.props.location.search);
     this.props.getProductsThunk();
   }
-  // componentDidUpdate(prevProps) {
-  //
-  //   if (prevProps.location.searc !== this.props.location.search) {
-  //     this.props.getProducts(this.props.location.search);
-  //   }
-  //
-  // }
-  // page(int) {
-  //   let nextQueryStr = this.props.location.search.split("&page=");
-  //   if (nextQueryStr.length === 1) {
-  //     nextQueryStr = nextQueryStr[0] + `&page=${Math.max(1, 1 + int)}`;
-  //   } else {
-  //     const temp = nextQueryStr[1].split("&");
-  //     temp[0] = String(Math.max(1, Number(temp[0]) + int));
-  //     nextQueryStr[1] = temp.join("&");
-  //     nextQueryStr = nextQueryStr.join("&page=");
-  //   }
-  //   if (nextQueryStr[0] !== "?") nextQueryStr = "?" + nextQueryStr;
-
-  //   this.props.history.push(nextQueryStr);
-
   render() {
-    const { products } = this.props;
+    const { products, cartId, userId, addToCartThunk } = this.props;
     return products ? (
       <div id="products-component">
         <div id="products-header">
@@ -56,7 +31,12 @@ class AllProducts extends React.Component {
                     <h6 className="product-price">${product.price}</h6>
                   </NavLink>
                 </div>
-                <button className="add-cart-btn">Add to Cart</button>
+                <AddToCart
+                  userId={userId}
+                  cartId={cartId}
+                  productId={product.id}
+                  addToCartThunk={addToCartThunk}
+                />
               </div>
             );
           })}
@@ -68,14 +48,17 @@ class AllProducts extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: state.products,
+    cartId: state.cart.id,
+    userId: state.user.id
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    // getProducts: queryString => dispatch(getProductsThunk(queryString))
-    getProductsThunk: () => dispatch(getProductsThunk())
+    getProductsThunk: () => dispatch(getProductsThunk()),
+    addToCartThunk: (cartId, qty, productId, userId) =>
+      dispatch(addToCartThunk())
   };
 };
 

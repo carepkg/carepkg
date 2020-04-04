@@ -16,13 +16,20 @@ const CartLineItem = require("./cartLineItem");
 User.hasMany(PurchaseProfile);
 User.hasMany(Review);
 User.hasMany(Order);
-User.hasMany(LineItem);
 User.hasMany(CartLineItem);
 
 Product.hasMany(Review);
 Product.hasMany(LineItem);
 Product.hasMany(CartLineItem);
-Product.hasMany(PricingHIstory);
+Product.hasMany(PricingHistory);
+
+Order.hasMany(LineItem);
+
+LineItem.belongsTo(Product);
+LineItem.belongsTo(Order);
+
+CartLineItem.belongsTo(User);
+CartLineItem.belongsTo(Product);
 
 PurchaseProfile.belongsTo(User);
 Review.belongsTo(User);

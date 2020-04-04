@@ -1,20 +1,45 @@
-import axios from "axios";
-import { nextTick } from "q";
+const router = require("express").Router();
+const Sequelize = "sequelize";
+const { CartLineItem, Product } = require("../db/models");
 
-const GET_CART = "GET_CART";
-// const ADD_TO_CART = "ADD_TO_CART";
-// const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-const MAKE_CART = "MAKE_CART";
-
-const getCart = cart => ({
-  type: GET_CART,
-  cart
+router.get("/:userId", async (req, res, next) => {
+  try {
+    const cart = await CartLineItem.findAll({
+      where: {
+        userId: req.params.userId
+      },
+      include: [{ model: Product }]
+    });
+    res.json(cart);
+  } catch (err) {
+    next(err);
+  }
 });
 
-export const getCartThunk = cart => async dispatch => {
+router.post("/:productId", async (req, res, next) => {
   try {
-    const res = await axios.get("/api/cart");
+    const product = await Product.findByPk(productId);
+    const cartLineItem = await CartLineItem.create({
+      qty: req.body.qty,
+      price: product.price * req.body.qty,
+      userId: req.body.userId,
+      productid: req.params.productId
+    });
   } catch (err) {
-    console.error(error);
+    next(err);
   }
-};
+});
+
+router.delete("/:productId", async (req, res, next) => {
+  try {
+    await CartLineItem.delete({
+      where: {
+        productId: req.params.productId
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+module.exports = router;

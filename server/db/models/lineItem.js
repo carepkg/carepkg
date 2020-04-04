@@ -9,14 +9,14 @@ const LineItem = db.define("lineItem", {
       min: 0
     }
   },
-  // orderId: {
-  //   type: Sequelize.INTEGER,
-  //   allowNull: false
-  // },
-  // productId: {
-  //   type: Sequelize.INTEGER,
-  //   allowNull: false
-  // },
+  orderId: {
+    type: Sequelize.INTEGER,
+    unique: false
+  },
+  productId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   unitPriceAtPurchase: Sequelize.INTEGER,
   totalPriceAtPurchase: Sequelize.INTEGER
 });

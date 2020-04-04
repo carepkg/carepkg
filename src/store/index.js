@@ -4,11 +4,13 @@ import thunkMiddleware from "redux-thunk";
 import products from "./products";
 import product from "./singleProduct";
 import user from "./user";
+import cart from "./cart";
 
 const reducer = combineReducers({
   products: products,
   product: product,
-  user: user
+  user: user,
+  cart: cart
 });
 
 // const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware));

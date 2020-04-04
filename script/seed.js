@@ -403,55 +403,54 @@ async function seed() {
       })
     );
   }
+  // --------- Line Items -------- \\
 
   // --------- Orders -------- \\
-  const orders = await Promise.all([
-    Order.create({
-      status: "completed"
-    }).then(async order => {
-      await order.addProduct(products[2]);
+  const orders = [];
+  for (let i = 0; i < 12; i++) {
+    orders.push(
+      await Order.create({
+        status: "completed"
+      }).then(order => {
+        order.setUser(users[i % users.length]);
+      })
+    );
+  }
+
+  const lineItems = await Promise.all([
+    LineItem.create({
+      qty: 1,
+      orderId: 2,
+      productId: 1
     }),
-    Order.create({
-      status: "completed"
-    }).then(async order => {
-      await order.addProduct(products[4]);
+    LineItem.create({
+      qty: 1,
+      orderId: 2,
+      productId: 2
+    }),
+    LineItem.create({
+      qty: 1,
+      orderId: 2,
+      productId: 4
     })
-  ]).then(orders => console.log(orders));
-
-  // for (let i = 0; i < 2; i++) {
-  //   orders.push(
-  //     await Order.create({
-  //       status: "completed"
-  //     }).then(order => {
-  //       order.addProduct(products[2])
-  //       order.setUser(users[i]);
-  //     })
-  //   );
-  // }
-  // const lineItems = [];
-  // lineItems.push(
-  //   await LineItem.create({
-  //     qty: 1,
-  //     orderId: 2,
-  //     productId: 4
-  //   })
-  // );
-  // lineItems.push(
-  //   await LineItem.create({
-  //     qty: 1,
-  //     orderId: 2,
-  //     productId: 2
-  //   })
-  // );
-  // lineItems.push(
-  //   await LineItem.create({
-  //     qty: 1,
-  //     orderId: 2,
-  //     productId: 3
-  //   })
-  // );
-
-  // User.addProduct(products[1]);
+  ]);
+  const cartLineItems = await Promise.all([
+    CartLineItem.create({
+      qty: 1,
+      userId: 2,
+      productId: 8
+    }),
+    CartLineItem.create({
+      qty: 2,
+      userId: 2,
+      productId: 9
+    }),
+    CartLineItem.create({
+      qty: 3,
+      userId: 2,
+      productId: 10
+    })
+  ]);
 
   console.log("seeded successfully");
 }

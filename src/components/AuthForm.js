@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { auth } from "../store";
-// import {getCartThunk} from '../store/cart'
+import { getCartThunk } from "../store/cart";
 
 /**
  * COMPONENT FOR LOGIN AND SIGNUP
@@ -99,9 +99,6 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value;
       const password = evt.target.password.value;
       dispatch(auth({ email, password }, formName));
-      //   .then(() =>
-      //     dispatch(getCartThunk())
-      //   );
     },
     handleSignup(evt) {
       evt.preventDefault();

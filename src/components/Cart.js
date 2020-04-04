@@ -6,16 +6,37 @@ import { render } from "@testing-library/react";
 class Cart extends React.Component {
   componentDidMount() {}
   render() {
-    const { user } = this.props;
+    const { user, cart } = this.props;
     return (
       <div id="cart-page">
         <h1>{`${user.firstName}'s` || "Your"} cart</h1>
+
+        <div id="cart-container">
+          {cart && cart.length ? (
+            cart.map(lineItem => {
+              const { product } = lineItem;
+              return (
+                <div>
+                  <p>Product: {product.name}</p>
+                  <p>qty: {lineItem.qty}</p>
+                  <img
+                    style={{ width: "100px", height: "100px" }}
+                    src={product.image}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <h1>Your Cart is Empty</h1>
+          )}
+        </div>
       </div>
     );
   }
 }
 
 const mapState = state => ({
+  cart: state.cart,
   user: state.user
 });
 // const mapDispatch = dispatch => ({
