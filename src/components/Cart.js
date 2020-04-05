@@ -26,7 +26,9 @@ class Cart extends React.Component {
                     style={{ width: "100px", height: "100px" }}
                     src={product.image}
                   />
-                  <button onClick={() => removeFromCart(product.id)}>X</button>
+                  <button onClick={() => removeFromCart(product.id, user.id)}>
+                    X
+                  </button>
                 </div>
               );
             })
@@ -45,6 +47,7 @@ const mapState = state => ({
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),
-  removeFromCart: productId => dispatch(deleteFromCartThunk(productId))
+  removeFromCart: (productId, userId) =>
+    dispatch(deleteFromCartThunk(productId, userId))
 });
 export default connect(mapState, mapDispatch)(Cart);

@@ -39,13 +39,12 @@ export const addToCartThunk = (qty, productId, userId) => async dispatch => {
     console.error(err);
   }
 };
-export const deleteFromCartThunk = productId => dispatch => {
+export const deleteFromCartThunk = (productId, userId) => async dispatch => {
   try {
-    console.log("sos");
-    axios
-      .delete(`/api/cart/${productId}`)
-      .then(() => console.log("can you hear this"));
-    // dispatch(deleteFromCart(productId))
+    await axios.delete(`/api/cart/${productId}`, {
+      data: { userId: userId }
+    });
+    dispatch(deleteFromCart(productId));
   } catch (err) {
     console.error(err);
   }
@@ -58,12 +57,9 @@ const cartReducer = (state = {}, action) => {
     case ADD_TO_CART:
       return action.cart;
     case DELETE_FROM_CART:
-      return {
-        ...state,
-        cart: state.cart.filter(
-          lineItem => lineItem.productId !== action.productId
-        )
-      };
+      return [
+        ...state.filter(lineItem => lineItem.productId !== action.productId)
+      ];
     default:
       return state;
   }

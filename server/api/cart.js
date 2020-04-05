@@ -25,7 +25,7 @@ router.post("/:productId", async (req, res, next) => {
       userId: req.body.userId,
       productId: req.params.productId
     });
-    res.send(cartLineItem);
+    console.log(cartLineItem);
   } catch (err) {
     next(err);
   }
@@ -35,10 +35,10 @@ router.delete("/:productId", async (req, res, next) => {
   try {
     await CartLineItem.destroy({
       where: {
+        userId: req.body.userId,
         productId: req.params.productId
       }
     });
-    console.log("goodbye");
   } catch (err) {
     next(err);
   }
