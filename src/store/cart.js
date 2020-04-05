@@ -12,7 +12,7 @@ const addToCart = () => ({
   type: ADD_TO_CART
 });
 const deleteFromCart = productId => {
-  console.log(productId);
+  console.log("in deleteFromCart", productId);
   return {
     type: DELETE_FROM_CART,
     productId
@@ -41,10 +41,12 @@ export const addToCartThunk = (qty, productId, userId) => async dispatch => {
 };
 export const deleteFromCartThunk = (productId, userId) => async dispatch => {
   try {
+    dispatch(deleteFromCart(productId));
+    console.log("dispatched");
     await axios.delete(`/api/cart/${productId}`, {
       data: { userId: userId }
     });
-    dispatch(deleteFromCart(productId));
+    console.log("done deleting");
   } catch (err) {
     console.error(err);
   }
