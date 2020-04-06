@@ -35,6 +35,7 @@ router.post("/login", async (req, res, next) => {
     if (!user) {
       res.status(401).send("Wrong username and/or password");
     } else {
+      console.log(req.session.id, req.session.cookie);
       req.login(user, err => (err ? next(err) : res.json(user)));
     }
   } catch (err) {
@@ -57,11 +58,12 @@ router.post("/signup", async (req, res, next) => {
 
 router.post("/logout", (req, res, next) => {
   req.logout();
-  // req.session.destroy();
+  req.session.destroy();
   res.redirect("/");
 });
 
 router.get("/me", (req, res) => {
+  console.log(req.user);
   res.json(req.user);
 });
 

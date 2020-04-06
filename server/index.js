@@ -11,13 +11,14 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
 const PORT = 5000;
-
+console.log(session);
 const app = express();
 
 const createApp = () => {
   // logging middleware
   app.use(morgan("dev"));
   app.use(cors());
+
   // body parsing middleware
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -27,26 +28,7 @@ const createApp = () => {
 
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await db.models.user.findByPk(id, {
-        include: [
-          {
-            model: Review
-          },
-          {
-            model: PurchaseProfile,
-            include: [
-              {
-                model: Order,
-                where: {
-                  status: {
-                    [Op.or]: ["purchased", "cancelled", "fulfilled"]
-                  }
-                }
-              }
-            ]
-          }
-        ]
-      });
+      const user = await db.models.user.findByPk(id);
       done(null, user);
     } catch (err) {
       done(err);
@@ -56,14 +38,16 @@ const createApp = () => {
   app.use(compression());
 
   //session middleware with passport
-  // app.use(
-  //   session({
-  //     secret: process.env.SESSION_SECRET || 'my best friend is Cody',
-  //     store: sessionStore,
-  //     resave: false,
-  //     saveUninitialized: true
-  //   })
-  // )
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET || "my best friend is Cody",
+      store: sessionStore,
+      resave: false,
+      saveUninitialized: true,
+      // cookie: { secure: true },
+      proxy: true
+    })
+  );
   app.use(passport.initialize());
   app.use(passport.session());
 
