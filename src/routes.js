@@ -8,10 +8,12 @@ import { Login } from "./components/AuthForm";
 import { Signup } from "./components/AuthForm";
 import Cart from "./components/Cart";
 import UserProfile from "./components/UserProfile";
+import { me } from "./store/user";
+import { connect } from "react-redux";
 
 class Routes extends React.Component {
   componentDidMount() {
-    // this.props.loadInitialData();
+    this.props.loadInitialData();
   }
   render() {
     return (
@@ -27,4 +29,7 @@ class Routes extends React.Component {
     );
   }
 }
-export default withRouter(Routes);
+const mapDispatch = dispatch => ({
+  loadInitialData: () => dispatch(me())
+});
+export default withRouter(connect(null, mapDispatch)(Routes));

@@ -6,7 +6,7 @@ router.get("/:userId", async (req, res, next) => {
   try {
     const cart = await CartLineItem.findAll({
       where: {
-        userId: req.params.userId
+        userId: req.user.id
       },
       include: [{ model: Product }]
     });
