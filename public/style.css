@@ -593,3 +593,13 @@ button[type='submit'] {
     background-color: rgb(233, 178, 76);
     border-radius: 6px;
 }
+
+/* ----- CHECKOUT ----- */
+
+#checkout-page {
+    position: relative;
+    top: 17.25%;
+    height: 82.75%;
+    width: 100%;
+    
+}
