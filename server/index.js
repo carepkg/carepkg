@@ -10,6 +10,7 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
+const { Review, Product, LineItem, Order } = require("./db/models");
 const PORT = 5000;
 console.log(session);
 const app = express();
@@ -28,7 +29,31 @@ const createApp = () => {
 
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await db.models.user.findByPk(id);
+      const user = await db.models.user.findByPk(id, {
+        include: [
+          {
+            model: Order,
+            include: [
+              {
+                model: LineItem,
+                include: [
+                  {
+                    model: Product
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            model: Review,
+            include: [
+              {
+                model: Product
+              }
+            ]
+          }
+        ]
+      });
       done(null, user);
     } catch (err) {
       done(err);
