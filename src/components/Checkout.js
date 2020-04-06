@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Checkout = props => {
   return (
@@ -7,8 +8,9 @@ const Checkout = props => {
       <div className="checkout-details-box">Cart</div>
       <div className="checkout-details-box">Shipping</div>
       <div className="checkout-details-box">Payment</div>
-
-      <button id="complete-order-btn">Complete Order</button>
+      <NavLink to="/cart/success">
+        <button id="complete-order-btn">Complete Order</button>
+      </NavLink>
     </div>
   );
 };
