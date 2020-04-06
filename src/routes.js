@@ -8,6 +8,8 @@ import { Login } from "./components/AuthForm";
 import { Signup } from "./components/AuthForm";
 import Cart from "./components/Cart";
 import UserProfile from "./components/UserProfile";
+import PurchaseProfile from "./components/PurchaseProfile";
+import Checkout from "./components/Checkout";
 import { me } from "./store/user";
 import { connect } from "react-redux";
 
@@ -18,6 +20,8 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
+        <Route exact path="/cart/checkout" component={Checkout} />
+        <Route exact path="/cart/pp" component={PurchaseProfile} />
         <Route exact path="/profile" component={UserProfile} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/login" component={Login} />

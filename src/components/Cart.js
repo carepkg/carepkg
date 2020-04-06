@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { render } from "@testing-library/react";
 import { getCartThunk, deleteFromCartThunk } from "../store/cart";
-
+import { NavLink } from "react-router-dom";
 class Cart extends React.Component {
   componentDidMount() {
     if (this.props.user) {
@@ -11,7 +11,6 @@ class Cart extends React.Component {
   }
   render() {
     const { user, cart, removeFromCart } = this.props;
-    console.log(cart);
     return (
       <div id="cart-page">
         <h1>{`${user.firstName}'s` || "Your"} cart</h1>
@@ -36,6 +35,11 @@ class Cart extends React.Component {
             })
           ) : (
             <h1>Your Cart is Empty</h1>
+          )}
+          {cart.length && (
+            <NavLink to="/cart/pp">
+              <button>Review Order</button>
+            </NavLink>
           )}
         </div>
       </div>

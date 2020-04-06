@@ -556,3 +556,40 @@ button[type='submit'] {
     border: 1px solid black;
     height: 40%;
 }
+
+/* ----- PP -------*/
+
+#pp-page {
+    position: relative;
+    top: 17.25%;
+    height: 82.75%;
+    width: 100%;
+}
+.pp-card {
+    position: relative;
+    left: 40px;
+    margin-top: 24px;
+    width: 50%;
+    height: 200px;
+    border: 1px solid rgba(51, 51, 51, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+.pp-address-no {
+    text-decoration: underline;
+    margin: 8px;
+}
+.pp-ship-info {
+    height: 40px;
+    width: 100%;
+}
+#checkout-btn {
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: rgb(233, 178, 76);
+    border-radius: 6px;
+}
