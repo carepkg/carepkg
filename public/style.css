@@ -549,3 +549,10 @@ button[type='submit'] {
     width: 75vw;
     border: 1px solid blue;
 }
+
+/* ------- CART -------- */
+
+.cart-item {
+    border: 1px solid black;
+    height: 40%;
+}

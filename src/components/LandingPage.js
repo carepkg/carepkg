@@ -5,7 +5,10 @@ import { getCartThunk } from "../store/cart";
 class LandingPage extends Component {
   componentDidMount() {
     //fetch cart
-    this.props.fetchCart(this.props.user.id);
+    if (this.props.user.id) {
+      console.log("here");
+      this.props.fetchCart(this.props.user.id);
+    }
     //fetch bundles
   }
   render() {

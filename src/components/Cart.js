@@ -5,7 +5,9 @@ import { getCartThunk, deleteFromCartThunk } from "../store/cart";
 
 class Cart extends React.Component {
   componentDidMount() {
-    this.props.fetchCart(this.props.user.id);
+    if (this.props.user) {
+      this.props.fetchCart(this.props.user.id);
+    }
   }
   render() {
     const { user, cart, removeFromCart } = this.props;
@@ -19,7 +21,7 @@ class Cart extends React.Component {
             cart.map(lineItem => {
               const { product } = lineItem;
               return (
-                <div>
+                <div className="cart-item">
                   <p>Product: {product.name}</p>
                   <p>qty: {lineItem.qty}</p>
                   <img
