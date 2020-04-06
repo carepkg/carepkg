@@ -10,7 +10,13 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
-const { Review, Product, LineItem, Order } = require("./db/models");
+const {
+  Review,
+  Product,
+  LineItem,
+  Order,
+  PurchaseProfile
+} = require("./db/models");
 const PORT = 5000;
 console.log(session);
 const app = express();
@@ -51,6 +57,9 @@ const createApp = () => {
                 model: Product
               }
             ]
+          },
+          {
+            model: PurchaseProfile
           }
         ]
       });
