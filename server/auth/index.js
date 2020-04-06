@@ -1,15 +1,27 @@
 const router = require("express").Router();
-const { User, Review, Order, Product } = require("../db/models");
+const { User, Review, Order, Product, LineItem } = require("../db/models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const session = require("express-session");
 
 router.post("/login", async (req, res, next) => {
   try {
-    console.log(req.body);
     const user = await User.findOne({
       where: { email: req.body.email, password: req.body.password },
       include: [
+        {
+          model: Order,
+          include: [
+            {
+              model: LineItem,
+              include: [
+                {
+                  model: Product
+                }
+              ]
+            }
+          ]
+        },
         {
           model: Review,
           include: [
@@ -20,7 +32,6 @@ router.post("/login", async (req, res, next) => {
         }
       ]
     });
-    console.log(user);
     if (!user) {
       res.status(401).send("Wrong username and/or password");
     } else {

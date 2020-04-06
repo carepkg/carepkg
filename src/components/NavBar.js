@@ -25,7 +25,9 @@ const NavBar = props => {
                 <NavLink to="/profile" className="navlink">
                   Profile
                 </NavLink>
-                <button onClick={handleLogout}>Logout</button>
+                <NavLink to="/login" className="navlink" onClick={handleLogout}>
+                  Logout
+                </NavLink>
               </React.Fragment>
             ) : (
               <React.Fragment>
@@ -43,8 +45,14 @@ const NavBar = props => {
       <hr className="nav-break" />
       <div id="navbar-bot">
         <div className="navlinks navleft">
+          <NavLink to="/bundles" className="navlink nav-product-link">
+            Packages
+          </NavLink>
           <NavLink to="/products" className="navlink nav-product-link">
             Products
+          </NavLink>
+          <NavLink to="/bundles" className="navlink nav-product-link">
+            Contact
           </NavLink>
         </div>
 

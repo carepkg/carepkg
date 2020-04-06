@@ -11,7 +11,9 @@ const {
   Review,
   Order,
   PricingHistory,
-  ProductCategory
+  ProductCategory,
+  LineItem,
+  CartLineItem
 } = require("../server/db/models/");
 const faker = require("faker");
 const randomPrice = () => Math.floor(Math.random() * 100) + 0.99;
@@ -404,17 +406,53 @@ async function seed() {
 
   // --------- Orders -------- \\
   const orders = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 12; i++) {
     orders.push(
-      await Order.create({}).then(ord => {
-        ord.setUser(users[i]);
+      await Order.create({
+        status: "completed"
+      }).then(order => {
+        order.setUser(users[i % users.length]);
       })
     );
   }
 
+  const lineItems = await Promise.all([
+    LineItem.create({
+      qty: 1,
+      orderId: 2,
+      productId: 1
+    }),
+    LineItem.create({
+      qty: 1,
+      orderId: 2,
+      productId: 2
+    }),
+    LineItem.create({
+      qty: 1,
+      orderId: 2,
+      productId: 4
+    })
+  ]);
+  const cartLineItems = await Promise.all([
+    CartLineItem.create({
+      qty: 1,
+      userId: 2,
+      productId: 8
+    }),
+    CartLineItem.create({
+      qty: 2,
+      userId: 2,
+      productId: 9
+    }),
+    CartLineItem.create({
+      qty: 3,
+      userId: 2,
+      productId: 10
+    })
+  ]);
+
   console.log("seeded successfully");
 }
-
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.

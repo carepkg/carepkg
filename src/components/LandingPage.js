@@ -1,21 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import FeaturedPkgs from "./FeaturedPkgs";
-export default class LandingPage extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+import { getCartThunk } from "../store/cart";
+class LandingPage extends Component {
   componentDidMount() {
+    //fetch cart
+    if (this.props.user.id) {
+      console.log("here");
+      this.props.fetchCart(this.props.user.id);
+    }
     //fetch bundles
-    //need to make them in db
   }
   render() {
     return (
       <div id="landing-page">
-        <img
-          src="/background-images/main-bg.jpg"
-          style={{ width: "100%", height: "100%" }}
-        />
+        <img src="/background-images/main-bg.jpg" className="bg-image" />
         <div id="landing-text">
           <p id="landing-text-1">carepkg</p>
           <p id="landing-text-2">The One and Only Place to Shop</p>
@@ -30,3 +29,12 @@ export default class LandingPage extends Component {
     );
   }
 }
+
+const mapState = state => ({
+  user: state.user
+});
+const mapDispatch = dispatch => ({
+  fetchCart: userId => dispatch(getCartThunk(userId))
+});
+
+export default connect(mapState, mapDispatch)(LandingPage);
