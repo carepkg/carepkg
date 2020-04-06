@@ -38,7 +38,7 @@ class Cart extends React.Component {
           )}
           {cart.length && (
             <NavLink to="/cart/pp">
-              <button>Review Order</button>
+              <button id="cart-review-btn">Review Order</button>
             </NavLink>
           )}
         </div>
