@@ -1,5 +1,12 @@
 const router = require("express").Router();
-const { User, Review, Order, Product, LineItem } = require("../db/models");
+const {
+  User,
+  Review,
+  Order,
+  Product,
+  LineItem,
+  PurchaseProfile
+} = require("../db/models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const session = require("express-session");
@@ -29,6 +36,9 @@ router.post("/login", async (req, res, next) => {
               model: Product
             }
           ]
+        },
+        {
+          model: PurchaseProfile
         }
       ]
     });

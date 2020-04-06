@@ -415,6 +415,7 @@ async function seed() {
       })
     );
   }
+  // ----- LINE ITEMS ----- \\
 
   const lineItems = await Promise.all([
     LineItem.create({
@@ -433,6 +434,9 @@ async function seed() {
       productId: 4
     })
   ]);
+
+  // ----- CART ---- \\
+
   const cartLineItems = await Promise.all([
     CartLineItem.create({
       qty: 1,
@@ -448,6 +452,19 @@ async function seed() {
       qty: 3,
       userId: 2,
       productId: 10
+    })
+  ]);
+
+  // ----- PURCHASE PROFILE ----- \\
+
+  const purchaseProfiles = await Promise.all([
+    PurchaseProfile.create({
+      userId: 2,
+      email: "isley@carepkg.com",
+      shipToAddress: faker.address.streetAddress(),
+      shipToCity: faker.address.city(),
+      shipToState: faker.address.stateAbbr(),
+      shipToPostalCode: faker.address.zipCode()
     })
   ]);
 

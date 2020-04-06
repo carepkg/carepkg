@@ -51,6 +51,9 @@ const createApp = () => {
                 model: Product
               }
             ]
+          },
+          {
+            model: PurchaseProfile
           }
         ]
       });
