@@ -11,11 +11,14 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
 const {
+  User,
   Review,
   Product,
   LineItem,
   Order,
-  PurchaseProfile
+  PurchaseProfile,
+  Package,
+  PackageLineItem
 } = require("./db/models");
 const PORT = 5000;
 console.log(session);
@@ -31,39 +34,82 @@ const createApp = () => {
   app.use(express.urlencoded({ extended: true }));
 
   // session middleware with passport
-  passport.serializeUser((user, done) => done(null, user.id));
+  passport.serializeUser((obj, done) => {
+    if (obj instanceof User) {
+      done(null, { id: obj.id, type: "user" });
+    } else {
+      done(null, { id: obj.id, type: "company" });
+    }
+  });
 
-  passport.deserializeUser(async (id, done) => {
+  passport.deserializeUser(async (obj, done) => {
     try {
-      const user = await db.models.user.findByPk(id, {
-        include: [
-          {
-            model: Order,
+      let user, company;
+      if (obj.type === "user") {
+        user = await db.models.user
+          .findByPk(obj.id, {
             include: [
               {
-                model: LineItem,
+                model: Order,
+                include: [
+                  {
+                    model: LineItem,
+                    include: [
+                      {
+                        model: Product
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                model: Review,
                 include: [
                   {
                     model: Product
                   }
                 ]
+              },
+              {
+                model: PurchaseProfile
+              },
+              {
+                model: Package,
+                include: [
+                  {
+                    model: PackageLineItem,
+                    include: [
+                      {
+                        model: Product
+                      }
+                    ]
+                  }
+                ]
               }
             ]
-          },
-          {
-            model: Review,
+          })
+          .then(user => done(null, user));
+      } else if (obj.type === "company") {
+        company = await db.models.company
+          .findByPk(obj.id, {
             include: [
               {
-                model: Product
+                model: Package,
+                include: [
+                  {
+                    model: PackageLineItem,
+                    include: [
+                      {
+                        model: Product
+                      }
+                    ]
+                  }
+                ]
               }
             ]
-          },
-          {
-            model: PurchaseProfile
-          }
-        ]
-      });
-      done(null, user);
+          })
+          .then(company => done(null, company));
+      }
     } catch (err) {
       done(err);
     }
