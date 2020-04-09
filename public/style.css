@@ -669,3 +669,15 @@ button[type='submit'] {
     color: blue;
     text-decoration: underline;
 }
+
+
+/* ------ COMPANY PROFILE ------- */
+
+#company-profile-page {
+    position: relative;
+    top: 17.25%;
+    height: 82.75%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
