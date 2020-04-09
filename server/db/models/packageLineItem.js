@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const PackageLineItem = db.define("cartLineItem", {
+const PackageLineItem = db.define("packageLineItem", {
   qty: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -9,16 +9,10 @@ const PackageLineItem = db.define("cartLineItem", {
       min: 0
     }
   },
-  userId: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
   productId: {
     type: Sequelize.INTEGER,
     allowNull: false
-  },
-  unitPriceAtPurchase: Sequelize.FLOAT,
-  totalPriceAtPurchase: Sequelize.FLOAT
+  }
 });
 
 module.exports = PackageLineItem;

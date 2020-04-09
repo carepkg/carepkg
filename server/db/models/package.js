@@ -6,7 +6,7 @@ const Package = db.define("package", {
     type: Sequelize.STRING,
     allowNull: false
   },
-  numPurchase: {
+  numPurchases: {
     type: Sequelize.INTEGER,
     validate: {
       min: 0

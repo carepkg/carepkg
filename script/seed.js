@@ -13,7 +13,10 @@ const {
   PricingHistory,
   ProductCategory,
   LineItem,
-  CartLineItem
+  CartLineItem,
+  Company,
+  Package,
+  PackageLineItem
 } = require("../server/db/models/");
 const faker = require("faker");
 const randomPrice = () => Math.floor(Math.random() * 100) + 0.99;
@@ -69,6 +72,44 @@ async function seed() {
       email: "sbruno@carepkg.com",
       password: "sb",
       role: "Admin"
+    })
+  ]);
+
+  const companies = await Promise.all([
+    Company.create({
+      name: "Tentacity",
+      membership: "Basic",
+      coEmail: "tents@tentacity.com",
+      coPassword: "tentacity"
+    }),
+    Company.create({
+      name: "Climber's Haven",
+      membership: "Premium",
+      coEmail: "weclimb@climbershaven.com",
+      coPassword: "climbershaven"
+    })
+  ]);
+
+  // ----- PACKAGES ----- \\
+
+  const packages = await Promise.all([
+    Package.create({
+      name: "Beginner Climbing Gear",
+      numPurchases: 13,
+      upvotes: 10,
+      companyId: 1
+    }),
+    Package.create({
+      name: "Shelter Starter Kit",
+      numPurchases: 24,
+      upvotes: 75,
+      companyId: 2
+    }),
+    Package.create({
+      name: "My Favorites",
+      numPurchases: 2,
+      upvotes: 2,
+      userId: 2
     })
   ]);
 
@@ -452,6 +493,51 @@ async function seed() {
       qty: 3,
       userId: 2,
       productId: 10
+    })
+  ]);
+
+  // ---- PACKAGE LINE ITEM ---- \\
+  //for companies and user Isley
+  const packageLineItems = await Promise.all([
+    PackageLineItem.create({
+      qty: 1,
+      packageId: 1,
+      productId: 5
+    }),
+    PackageLineItem.create({
+      qty: 2,
+      packageId: 1,
+      productId: 7
+    }),
+    PackageLineItem.create({
+      qty: 1,
+      packageId: 1,
+      productId: 10
+    }),
+    PackageLineItem.create({
+      qty: 3,
+      packageId: 2,
+      productId: 11
+    }),
+    PackageLineItem.create({
+      qty: 1,
+      packageId: 2,
+      productId: 8
+    }),
+    PackageLineItem.create({
+      qty: 2,
+      packageId: 2,
+      productId: 9
+    }),
+    PackageLineItem.create({
+      qty: 1,
+      packageId: 3,
+      productId: 4
+    }),
+    PackageLineItem.create({
+      qty: 3,
+      packageId: 3,
+      productId: 1
     })
   ]);
 
