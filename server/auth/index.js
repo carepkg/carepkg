@@ -109,10 +109,15 @@ router.post("/logout", (req, res, next) => {
 });
 
 router.get("/me", (req, res) => {
-  if (req.user) {
-    res.json(req.user);
-  } else {
-    res.json(req.company);
+  try {
+    console.log(req.session);
+    if (req.user) {
+      res.json(req.user);
+    } else {
+      res.json({ id: "1" });
+    }
+  } catch (err) {
+    next(err);
   }
 });
 

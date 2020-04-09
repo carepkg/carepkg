@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ReviewList from "./ReviewCard";
 import { render } from "@testing-library/react";
+import CompanyProfile from "./CompanyProfile";
 
 // SMOOTH SCROLL FOR NAV (?)
 const UserProfile = props => {
   const [profileBody, setProfileBody] = useState("cart");
   const { user } = props;
   const { reviews, orders } = user;
+  console.log(user);
 
   const myCart = () => {
     setProfileBody("cart");
@@ -20,7 +22,9 @@ const UserProfile = props => {
     setProfileBody("reviews");
   };
 
-  return (
+  return user.type === "company" ? (
+    <CompanyProfile />
+  ) : (
     <div id="profile-page">
       <div id="profile-header">
         <div id="profile-user-info">

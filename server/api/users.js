@@ -23,24 +23,24 @@ router.get("/", isAdmin, async (req, res, next) => {
     next(err);
   }
 });
-router.get("/user", async (req, res, next) => {
-  try {
-    //currently grabbing Henry Griffith's cart for testing purposes
-    const user = await User.findByPk(1, {
-      include: [
-        {
-          model: Order,
-          where: {
-            userId: 1
-          },
-          include: [{ model: Product }]
-        }
-      ]
-    });
-    if (user) res.json(user);
-  } catch (err) {
-    console.log(err);
-  }
-});
+// router.get("/user", async (req, res, next) => {
+//   try {
+//     //currently grabbing Henry Griffith's cart for testing purposes
+//     const user = await User.findByPk(1, {
+//       include: [
+//         {
+//           model: Order,
+//           where: {
+//             userId: 1
+//           },
+//           include: [{ model: Product }]
+//         }
+//       ]
+//     });
+//     if (user) res.json(user);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 module.exports = router;

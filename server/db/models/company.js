@@ -19,6 +19,10 @@ const Company = db.define("company", {
   coPassword: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  type: {
+    type: Sequelize.STRING,
+    defaultValue: "company"
   }
 });
 
