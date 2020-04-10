@@ -5,7 +5,10 @@ const {
   Order,
   Product,
   LineItem,
-  PurchaseProfile
+  PurchaseProfile,
+  Company,
+  Package,
+  PackageLineItem
 } = require("../db/models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
@@ -39,13 +42,45 @@ router.post("/login", async (req, res, next) => {
         },
         {
           model: PurchaseProfile
+        },
+        {
+          model: Package,
+          include: [
+            {
+              model: PackageLineItem,
+              include: [
+                {
+                  model: Product
+                }
+              ]
+            }
+          ]
         }
       ]
     });
-    if (!user) {
+    const company = await Company.findOne({
+      where: { coEmail: req.body.email, coPassword: req.body.password },
+      include: [
+        {
+          model: Package,
+          include: [
+            {
+              model: PackageLineItem,
+              include: [
+                {
+                  model: Product
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    });
+    if (!company && !user) {
       res.status(401).send("Wrong username and/or password");
-    } else {
-      console.log(req.session.id, req.session.cookie);
+    } else if (company) {
+      req.login(company, err => (err ? next(err) : res.json(company)));
+    } else if (user) {
       req.login(user, err => (err ? next(err) : res.json(user)));
     }
   } catch (err) {
@@ -53,6 +88,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+//need to do separate company sign up
 router.post("/signup", async (req, res, next) => {
   try {
     const user = await User.create(req.body);
@@ -73,8 +109,16 @@ router.post("/logout", (req, res, next) => {
 });
 
 router.get("/me", (req, res) => {
-  console.log(req.user);
-  res.json(req.user);
+  try {
+    console.log(req.session);
+    if (req.user) {
+      res.json(req.user);
+    } else {
+      res.json({ id: "1" });
+    }
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;
