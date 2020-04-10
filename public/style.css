@@ -27,6 +27,7 @@ body,
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-width: 100vw;
     
 }
 #bg-img-content {
@@ -84,17 +85,24 @@ body,
 #featured-pkgs-container {
     margin-top: 40px;
     display: flex;
-    border: 1px solid rgba(51, 51, 51, 0.2);
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
 .featured-pkg {
-   width: 250px;
-   height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 220px;
+    height: 300px;
+    border: 1px solid rgba(51, 51, 51, 0.2);
+    margin: 12px;
+    padding: 24px;
 }
 .featured-pkg-img {
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
 }
 
 

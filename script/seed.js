@@ -110,6 +110,18 @@ async function seed() {
       numPurchases: 2,
       upvotes: 2,
       userId: 2
+    }),
+    Package.create({
+      name: "Chef's Picks",
+      numPurchases: 22,
+      upvotes: 18,
+      userId: 1
+    }),
+    Package.create({
+      name: "Birthday Treat",
+      numPurchases: 100,
+      upvotes: 156,
+      companyId: 2
     })
   ]);
 
@@ -538,6 +550,31 @@ async function seed() {
       qty: 3,
       packageId: 3,
       productId: 1
+    }),
+    PackageLineItem.create({
+      qty: 2,
+      packageId: 4,
+      productId: 3
+    }),
+    PackageLineItem.create({
+      qty: 2,
+      packageId: 4,
+      productId: 7
+    }),
+    PackageLineItem.create({
+      qty: 2,
+      packageId: 4,
+      productId: 3
+    }),
+    PackageLineItem.create({
+      qty: 2,
+      packageId: 5,
+      productId: 2
+    }),
+    PackageLineItem.create({
+      qty: 1,
+      packageId: 5,
+      productId: 9
     })
   ]);
 

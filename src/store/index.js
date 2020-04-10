@@ -6,13 +6,15 @@ import product from "./singleProduct";
 import user from "./user";
 import cart from "./cart";
 import packages from "./packages";
+import upvote from "./upvote";
 
 const reducer = combineReducers({
   products: products,
   product: product,
   user: user,
   cart: cart,
-  packages: packages
+  packages: packages,
+  upvote: upvote
 });
 
 // const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware));
