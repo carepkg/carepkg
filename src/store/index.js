@@ -5,12 +5,14 @@ import products from "./products";
 import product from "./singleProduct";
 import user from "./user";
 import cart from "./cart";
+import packages from "./packages";
 
 const reducer = combineReducers({
   products: products,
   product: product,
   user: user,
-  cart: cart
+  cart: cart,
+  packages: packages
 });
 
 // const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware));
