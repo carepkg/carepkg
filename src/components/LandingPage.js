@@ -13,6 +13,7 @@ class LandingPage extends Component {
     this.props.fetchPackages();
   }
   render() {
+    const { packages } = this.props;
     return (
       <div id="landing-page">
         <div id="bg-img-content">
@@ -23,14 +24,32 @@ class LandingPage extends Component {
             <button id="landing-text-btn">See Sales</button>
           </div>
         </div>
-        <div id="test-2"></div>
+        <div id="landing-section-2">
+          <h1>Featured Packages</h1>
+          <div id="featured-pkgs-container">
+            {packages
+              ? packages.map(pkg => {
+                  return (
+                    <div className="featured-pkg">
+                      <h3>{pkg.name}</h3>
+                      <img
+                        src={pkg.imageUrl}
+                        className="featured-pkg-img"
+                      ></img>
+                    </div>
+                  );
+                })
+              : null}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 const mapState = state => ({
-  user: state.user
+  user: state.user,
+  packages: state.packages
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),

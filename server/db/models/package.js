@@ -8,8 +8,9 @@ const Package = db.define("package", {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue: "http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png"
-  }
+    defaultValue:
+      "http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png"
+  },
   numPurchases: {
     type: Sequelize.INTEGER,
     validate: {

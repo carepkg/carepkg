@@ -8,7 +8,7 @@ router.get("/", async (req, res, next) => {
       order: [["upvotes", "DESC"]],
       limit: 6
     });
-    res.json();
+    res.json(packages);
   } catch (err) {
     next(err);
   }

@@ -17,7 +17,7 @@ export const getPackagesThunk = () => async dispatch => {
   }
 };
 
-const packagesReducer = (state = {}, action) => {
+const packagesReducer = (state = [], action) => {
   switch (action.type) {
     case GET_PACKAGES:
       return action.packages;
