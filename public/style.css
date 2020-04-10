@@ -681,3 +681,9 @@ button[type='submit'] {
     display: flex;
     flex-direction: column;
 }
+.company-profile-pkg {
+    border: 1px dashed red;
+}
+.company-profile-prod-img {
+    border: 1px solid rgba(51, 51, 51, 0.1)
+}
