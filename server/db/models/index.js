@@ -12,7 +12,7 @@ const CartLineItem = require("./cartLineItem");
 const Package = require("./package");
 const Company = require("./company");
 const PackageLineItem = require("./packageLineItem");
-const Upvotes = require("./upvotes");
+const Upvote = require("./upvotes");
 
 // --------- ASSOCIATIONS --------- \\
 
@@ -67,5 +67,6 @@ module.exports = {
   CartLineItem,
   Company,
   PackageLineItem,
-  Package
+  Package,
+  Upvote
 };

@@ -104,7 +104,17 @@ body,
     width: 160px;
     height: 160px;
 }
-
+.featured-pkg-name {
+    text-decoration: underline;
+    margin-top: 8px;
+}
+.upvote-pkg-btn {
+    margin-top: 24px;
+    background-color: rgb(92, 92, 254);
+    color: white;
+    width: 60px;
+    border-radius: 6px;
+}
 
 
 /* NAVBAR */

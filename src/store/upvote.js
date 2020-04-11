@@ -11,6 +11,7 @@ export const getUpvoteThunk = (userId, packageId) => async dispatch => {
   try {
     const res = await axios.get(`/api/upvotes/${packageId}/${userId}`);
     const upvote = res.data;
+    console.log(upvote);
     dispatch(getUpvote(upvote));
   } catch (err) {
     console.error(err);

@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const Upvotes = db.define("upvotes", {});
+const Upvote = db.define("upvotes", {});
 
-module.exports = Upvotes;
+module.exports = Upvote;

@@ -96,31 +96,31 @@ async function seed() {
     Package.create({
       name: "Beginner Climbing Gear",
       numPurchases: 13,
-      upvotes: 10,
+      numUpvotes: 10,
       companyId: 1
     }),
     Package.create({
       name: "Shelter Starter Kit",
       numPurchases: 24,
-      upvotes: 75,
+      numUpvotes: 75,
       companyId: 2
     }),
     Package.create({
       name: "My Favorites",
       numPurchases: 2,
-      upvotes: 2,
+      numUpvotes: 2,
       userId: 2
     }),
     Package.create({
       name: "Chef's Picks",
       numPurchases: 22,
-      upvotes: 18,
+      numUpvotes: 18,
       userId: 1
     }),
     Package.create({
       name: "Birthday Treat",
       numPurchases: 100,
-      upvotes: 156,
+      numUpvotes: 156,
       companyId: 2
     })
   ]);

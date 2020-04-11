@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const Sequelize = require("sequelize");
-const { Package, PackageLineItem, Product } = require("../db/models");
+const { Package, PackageLineItem, Product, Upvote } = require("../db/models");
 
 router.get("/", async (req, res, next) => {
   try {
     const packages = await Package.findAll({
-      order: [["upvotes", "DESC"]],
+      order: [["numUpvotes", "DESC"]],
       limit: 6,
       include: [
         {
@@ -15,6 +15,9 @@ router.get("/", async (req, res, next) => {
               model: Product
             }
           ]
+        },
+        {
+          model: Upvote
         }
       ]
     });

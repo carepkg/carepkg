@@ -18,8 +18,8 @@ class LandingPage extends Component {
     this.props.fetchPackages();
   }
   render() {
-    const { packages } = this.props;
-    console.log(packages);
+    const { packages, user } = this.props;
+    console.log(this.props.exists);
     return (
       <div id="landing-page">
         <div id="bg-img-content">
@@ -49,9 +49,23 @@ class LandingPage extends Component {
                         src={pkg.imageUrl}
                         className="featured-pkg-img"
                       ></img>
-                      <h4>{pkg.name}</h4>
+                      <h5 className="featured-pkg-name">{pkg.name}</h5>
                       <h5>${price}</h5>
-                      <h5>Upvotes: {pkg.upvotes}</h5>
+                      <h5>Upvotes: {pkg.numUpvotes + pkg.upvotes.length}</h5>
+                      <button
+                        className="upvote-pkg-btn"
+                        onClick={() =>
+                          this.props.fetchUpvote(user.id, pkg.id).then(() => {
+                            if (this.props.upvote.exists) {
+                              this.props.deleteUpvote(user.id, pkg.id);
+                            } else {
+                              this.props.createUpvote(user.id, pkg.id);
+                            }
+                          })
+                        }
+                      >
+                        Like
+                      </button>
                     </div>
                   );
                 })
@@ -66,7 +80,7 @@ class LandingPage extends Component {
 const mapState = state => ({
   user: state.user,
   packages: state.packages,
-  exists: state.upvote
+  upvote: state.upvote
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),

@@ -17,7 +17,7 @@ const Package = db.define("package", {
       min: 0
     }
   },
-  upvotes: {
+  numUpvotes: {
     type: Sequelize.INTEGER,
     validate: {
       min: 0
