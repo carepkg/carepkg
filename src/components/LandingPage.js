@@ -9,17 +9,27 @@ import {
   deleteUpvoteThunk
 } from "../store/upvote";
 class LandingPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      packages: []
+    };
+  }
   componentDidMount() {
     if (this.props.user.id) {
       console.log("here");
       this.props.fetchCart(this.props.user.id);
     }
     //fetch packages
-    this.props.fetchPackages();
+    this.props.fetchPackages().then(() => {
+      this.setState({
+        packages: Array(this.props.packages.length).fill(1)
+      });
+    });
   }
   render() {
     const { packages, user } = this.props;
-    console.log(this.props.exists);
+    console.log(this.state.packages);
     return (
       <div id="landing-page">
         <div id="bg-img-content">
@@ -35,6 +45,7 @@ class LandingPage extends Component {
           <div id="featured-pkgs-container">
             {packages
               ? packages.map(pkg => {
+                  console.log(pkg);
                   const price =
                     pkg.packageLineItems &&
                     pkg.packageLineItems
@@ -50,15 +61,22 @@ class LandingPage extends Component {
                         className="featured-pkg-img"
                       ></img>
                       <h5 className="featured-pkg-name">{pkg.name}</h5>
-                      <h5>${price}</h5>
-                      <h5>Upvotes: {pkg.numUpvotes + pkg.upvotes.length}</h5>
+                      <h5>Total: ${price}</h5>
+                      <h5>
+                        Upvotes:{" "}
+                        {pkg.upvotes.length + this.state.packages
+                          ? this.state.packages[pkg.id - 1]
+                          : 0}
+                      </h5>
                       <button
                         className="upvote-pkg-btn"
                         onClick={() =>
                           this.props.fetchUpvote(user.id, pkg.id).then(() => {
                             if (this.props.upvote.exists) {
                               this.props.deleteUpvote(user.id, pkg.id);
+                              this.state.packages[pkg.id - 1] = 0;
                             } else {
+                              this.state.packages[pkg.id - 1] = 1;
                               this.props.createUpvote(user.id, pkg.id);
                             }
                           })
@@ -80,7 +98,8 @@ class LandingPage extends Component {
 const mapState = state => ({
   user: state.user,
   packages: state.packages,
-  upvote: state.upvote
+  upvote: state.upvote,
+  upvotePkg: state.pkg
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),

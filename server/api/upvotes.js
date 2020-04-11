@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Sequelize = require("sequelize");
-const { Upvote } = require("../db/models");
+const { Upvote, Package } = require("../db/models");
 
 router.get("/:packageId/:userId", async (req, res, next) => {
   try {
@@ -10,8 +10,6 @@ router.get("/:packageId/:userId", async (req, res, next) => {
         packageId: req.params.packageId
       }
     });
-    console.log("here");
-    console.log(hasBeenLiked);
     if (hasBeenLiked) {
       res.json({ exists: true });
     } else {
@@ -23,14 +21,18 @@ router.get("/:packageId/:userId", async (req, res, next) => {
 });
 router.post("/:packageId", async (req, res, next) => {
   try {
-    console.log("beg of post");
-    console.log("body: ", req.body, "params: ", req.params);
-    const newUpvote = await Upvote.create({
+    await Upvote.create({
       userId: req.body.userId,
       packageId: req.params.packageId
     });
-    console.log("end of post");
-    res.json(newUpvote);
+    const package = await Package.findByPk(req.params.userId, {
+      include: [
+        {
+          model: Upvote
+        }
+      ]
+    });
+    res.json(package);
   } catch (err) {
     next(err);
   }
@@ -38,14 +40,20 @@ router.post("/:packageId", async (req, res, next) => {
 
 router.delete("/:packageId/:userId", async (req, res, next) => {
   try {
-    console.log("beg of delete");
     await Upvote.destroy({
       where: {
         userId: req.params.userId,
         packageId: req.params.packageId
       }
     });
-    console.log("end of delete");
+    const package = await Package.findByPk(req.params.packageId, {
+      include: [
+        {
+          model: Upvote
+        }
+      ]
+    });
+    res.json(package);
   } catch (err) {
     next(err);
   }
