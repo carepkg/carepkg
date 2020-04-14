@@ -21,10 +21,12 @@ class LandingPage extends Component {
       this.props.fetchCart(this.props.user.id);
     }
     //fetch packages
-    this.props.fetchPackages().then(res =>
-      this.setState({
-        packages: res
-      })
+    this.props.fetchPackages().then(
+      res =>
+        this.setState({
+          packages: res
+        })
+      // ^^^^ not working
     );
   }
   render() {
