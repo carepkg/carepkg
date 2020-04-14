@@ -21,11 +21,11 @@ class LandingPage extends Component {
       this.props.fetchCart(this.props.user.id);
     }
     //fetch packages
-    this.props.fetchPackages().then(() => {
+    this.props.fetchPackages().then(res =>
       this.setState({
-        packages: Array(this.props.packages.length).fill(1)
-      });
-    });
+        packages: res
+      })
+    );
   }
   render() {
     const { packages, user } = this.props;
@@ -45,7 +45,6 @@ class LandingPage extends Component {
           <div id="featured-pkgs-container">
             {packages
               ? packages.map(pkg => {
-                  console.log(pkg);
                   const price =
                     pkg.packageLineItems &&
                     pkg.packageLineItems
@@ -62,22 +61,20 @@ class LandingPage extends Component {
                       ></img>
                       <h5 className="featured-pkg-name">{pkg.name}</h5>
                       <h5>Total: ${price}</h5>
-                      <h5>
-                        Upvotes:{" "}
-                        {pkg.upvotes.length + this.state.packages
-                          ? this.state.packages[pkg.id - 1]
-                          : 0}
-                      </h5>
+                      <h5>Upvotes: {pkg.upvotes.length}</h5>
                       <button
                         className="upvote-pkg-btn"
                         onClick={() =>
                           this.props.fetchUpvote(user.id, pkg.id).then(() => {
                             if (this.props.upvote.exists) {
                               this.props.deleteUpvote(user.id, pkg.id);
-                              this.state.packages[pkg.id - 1] = 0;
+                              this.setState({ state: this.state });
                             } else {
                               this.state.packages[pkg.id - 1] = 1;
                               this.props.createUpvote(user.id, pkg.id);
+                              this.setState({
+                                state: this.state
+                              });
                             }
                           })
                         }

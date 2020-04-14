@@ -16,7 +16,8 @@ const {
   CartLineItem,
   Company,
   Package,
-  PackageLineItem
+  PackageLineItem,
+  Upvote
 } = require("../server/db/models/");
 const faker = require("faker");
 const randomPrice = () => Math.floor(Math.random() * 100) + 0.99;
@@ -124,6 +125,29 @@ async function seed() {
       companyId: 2
     })
   ]);
+
+  for (let i = 0; i < 4; i++) {
+    await Upvote.create({
+      packageId: 1,
+      userId: i + 1
+    });
+    await Upvote.create({
+      packageId: 2,
+      userId: i + 1
+    }),
+      await Upvote.create({
+        packageId: 3,
+        userId: i + 1
+      }),
+      await Upvote.create({
+        packageId: 4,
+        userId: i + 1
+      }),
+      await Upvote.create({
+        packageId: 5,
+        userId: i + 1
+      });
+  }
 
   // --------- CATEGORIES -------- \\
   const categories = await Promise.all([
