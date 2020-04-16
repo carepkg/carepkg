@@ -156,7 +156,7 @@ body,
 #landing-cat-footer {
     width: 100vw;
     height: 35vh;
-    margin: 60px;
+    margin: 72px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -187,10 +187,14 @@ body,
 .footer-category-name {
     margin: 2px 8px;
 }
+.footer-category-name:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
 .landing-page-break {
-    background-color: #444;
+    background-color: rgba(51, 51, 51, 0.25);
     width: 95%;
-    height: 1.5px;
+    height: 1px;
 }
 
 

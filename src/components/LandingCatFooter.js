@@ -6,9 +6,9 @@ const LandingCatFooter = props => {
   const secondHalf = categories.slice(categories.length / 2);
   return (
     <div id="landing-cat-footer">
-      <h2 id="cat-footer-header">
+      <h1 id="cat-footer-header">
         Premium Outdoors Gear <span>&#x26;</span> Clothing
-      </h2>
+      </h1>
       <h4 id="cat-footer-subheader">Shop by Category</h4>
       <div id="landing-cat-container">
         <div id="cat-col1-container">
