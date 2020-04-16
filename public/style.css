@@ -108,7 +108,7 @@ body,
 .landing-ad {
     width: 612.5px;
     height: 375px;
-    background-color: turquoise;
+    background-color: rgb(61, 187, 175);
     margin: 0 16px;
 }
 #featured-pkgs-container {
