@@ -93,10 +93,14 @@ body,
     align-items: center;
 }
 .sponsor-container {
+    color: white;
     width: 125px;
     height: 100px;
     background-color: gray;
     margin: 8px 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #landing-sponsors-ads {
     margin-top: 16px;
@@ -106,10 +110,14 @@ body,
     justify-content: space-around;
 }
 .landing-ad {
+    color: white;
     width: 612.5px;
     height: 375px;
     background-color: rgb(61, 187, 175);
     margin: 0 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #featured-pkgs-container {
     margin-top: 40px;
