@@ -8,6 +8,7 @@ import {
   addUpvoteThunk,
   deleteUpvoteThunk
 } from "../store/upvote";
+import LandingSponsors from "./LandingSponsors";
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -21,13 +22,7 @@ class LandingPage extends Component {
       this.props.fetchCart(this.props.user.id);
     }
     //fetch packages
-    this.props.fetchPackages().then(
-      res =>
-        this.setState({
-          packages: res
-        })
-      // ^^^^ not working
-    );
+    this.props.fetchPackages();
   }
   render() {
     const { packages, user } = this.props;
@@ -43,6 +38,7 @@ class LandingPage extends Component {
           </div>
         </div>
         <div id="landing-section-2">
+          <LandingSponsors />
           <h1>Featured Packages</h1>
           <div id="featured-pkgs-container">
             {packages
