@@ -70,13 +70,8 @@ class LandingPage extends Component {
                           this.props.fetchUpvote(user.id, pkg.id).then(() => {
                             if (this.props.upvote.exists) {
                               this.props.deleteUpvote(user.id, pkg.id);
-                              this.setState({ state: this.state });
                             } else {
-                              this.state.packages[pkg.id - 1] = 1;
                               this.props.createUpvote(user.id, pkg.id);
-                              this.setState({
-                                state: this.state
-                              });
                             }
                           })
                         }
