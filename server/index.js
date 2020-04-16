@@ -18,7 +18,8 @@ const {
   Order,
   PurchaseProfile,
   Package,
-  PackageLineItem
+  PackageLineItem,
+  Upvote
 } = require("./db/models");
 const PORT = 5000;
 console.log(session);
@@ -103,6 +104,9 @@ const createApp = () => {
                         model: Product
                       }
                     ]
+                  },
+                  {
+                    model: Upvote
                   }
                 ]
               }

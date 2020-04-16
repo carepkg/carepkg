@@ -22,37 +22,42 @@ body,
 }
 #landing-page{
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-width: 100vw;
     
 }
-.bg-image {
+#bg-img-content {
     width: 100vw;
     height: 100vh;
+    background-image: url("./background-images/main-bg.jpg");
+    background-size: cover;
     
 }
-
 #landing-text {
-    position: absolute;
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
+    margin-top: 270px;
 }
 #landing-text-1 {
-    font-size: 2.5em;
-    font-weight: 300;
+    font-size: 3em;
+    font-weight: 200;
 }
 #landing-text-2 {
     font-size: 2.875em;
+    font-weight: 200;
     margin: 4px;
 }
 #landing-text-3 {
-    font-size: 1.25em;
+    font-size: 2em;
+    font-weight: 200;
     margin: 8px;
 }
 #landing-text-btn {
@@ -60,14 +65,59 @@ body,
     border-radius: 8px;
     width: 150px;
     height: 32px;
-    background-color: white;
-    font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 1.15em;
+    font-weight: 500;
 }
 #landing-text-btn:hover {
     cursor: pointer;
     transform: scale(1.1)
 }
+#landing-section-2 {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#featured-pkgs-container {
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.featured-pkg {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 220px;
+    height: 300px;
+    border: 1px solid rgba(51, 51, 51, 0.2);
+    margin: 12px;
+    padding: 24px;
+}
+.featured-pkg-img {
+    width: 160px;
+    height: 160px;
+}
+.featured-pkg-name {
+    text-decoration: underline;
+    margin-top: 8px;
+}
+.upvote-pkg-btn {
+    margin-top: 24px;
+    background-color: rgb(92, 92, 254);
+    color: white;
+    width: 60px;
+    border-radius: 6px;
+}
 
+
+/* NAVBAR */
 #navbar-wrapper{
     width: 100%;
     height: 17.25%;
@@ -144,6 +194,7 @@ body,
     color: white;
     font-size: calc(1.25em + 1vw);
     padding-bottom: 12px;
+    font-weight: 300;
 }
 .navlink{
     color: white;
@@ -152,6 +203,7 @@ body,
     cursor: pointer;
     text-decoration: none;
     margin-top: 12px;
+    font-weight: 200;
     /* temp fix^ */
 }
 .nav-product-link {

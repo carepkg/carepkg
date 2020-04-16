@@ -6,13 +6,18 @@ const Package = db.define("package", {
     type: Sequelize.STRING,
     allowNull: false
   },
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue:
+      "http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png"
+  },
   numPurchases: {
     type: Sequelize.INTEGER,
     validate: {
       min: 0
     }
   },
-  upvotes: {
+  numUpvotes: {
     type: Sequelize.INTEGER,
     validate: {
       min: 0

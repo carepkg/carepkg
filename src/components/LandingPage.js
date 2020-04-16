@@ -2,39 +2,108 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import FeaturedPkgs from "./FeaturedPkgs";
 import { getCartThunk } from "../store/cart";
+import { getPackagesThunk } from "../store/packages";
+import {
+  getUpvoteThunk,
+  addUpvoteThunk,
+  deleteUpvoteThunk
+} from "../store/upvote";
 class LandingPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      packages: []
+    };
+  }
   componentDidMount() {
-    //fetch cart
     if (this.props.user.id) {
       console.log("here");
       this.props.fetchCart(this.props.user.id);
     }
-    //fetch bundles
+    //fetch packages
+    this.props.fetchPackages().then(
+      res =>
+        this.setState({
+          packages: res
+        })
+      // ^^^^ not working
+    );
   }
   render() {
+    const { packages, user } = this.props;
+    console.log(this.state.packages);
     return (
       <div id="landing-page">
-        <img src="/background-images/main-bg.jpg" className="bg-image" />
-        <div id="landing-text">
-          <p id="landing-text-1">carepkg</p>
-          <p id="landing-text-2">The One and Only Place to Shop</p>
-          <p id="landing-text-3">All things nature</p>
-          <button id="landing-text-btn">See Sales</button>
+        <div id="bg-img-content">
+          <div id="landing-text">
+            <p id="landing-text-1">carepkg</p>
+            <p id="landing-text-2">The One and Only Place to Shop</p>
+            <p id="landing-text-3">All things nature</p>
+            <button id="landing-text-btn">See Sales</button>
+          </div>
         </div>
-        {/* <h1 id="featured-pkg-text">Featured Packages</h1>
-        <div id="main-half-2">
-          <FeaturedPkgs />
-        </div> */}
+        <div id="landing-section-2">
+          <h1>Featured Packages</h1>
+          <div id="featured-pkgs-container">
+            {packages
+              ? packages.map(pkg => {
+                  const price =
+                    pkg.packageLineItems &&
+                    pkg.packageLineItems
+                      .reduce(
+                        (acc, item) => acc + item.product.price * item.qty,
+                        0
+                      )
+                      .toFixed(2);
+                  return (
+                    <div className="featured-pkg">
+                      <img
+                        src={pkg.imageUrl}
+                        className="featured-pkg-img"
+                      ></img>
+                      <h5 className="featured-pkg-name">{pkg.name}</h5>
+                      <h5>Total: ${price}</h5>
+                      <h5>Upvotes: {pkg.upvotes.length}</h5>
+                      <button
+                        className="upvote-pkg-btn"
+                        onClick={() =>
+                          this.props.fetchUpvote(user.id, pkg.id).then(() => {
+                            if (this.props.upvote.exists) {
+                              this.props.deleteUpvote(user.id, pkg.id);
+                            } else {
+                              this.props.createUpvote(user.id, pkg.id);
+                            }
+                          })
+                        }
+                      >
+                        Like
+                      </button>
+                    </div>
+                  );
+                })
+              : null}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 const mapState = state => ({
-  user: state.user
+  user: state.user,
+  packages: state.packages,
+  upvote: state.upvote,
+  upvotePkg: state.pkg
 });
 const mapDispatch = dispatch => ({
-  fetchCart: userId => dispatch(getCartThunk(userId))
+  fetchCart: userId => dispatch(getCartThunk(userId)),
+  fetchPackages: () => dispatch(getPackagesThunk()),
+  fetchUpvote: (userId, packageId) =>
+    dispatch(getUpvoteThunk(userId, packageId)),
+  createUpvote: (userId, packageId) =>
+    dispatch(addUpvoteThunk(userId, packageId)),
+  deleteUpvote: (userId, packageId) =>
+    dispatch(deleteUpvoteThunk(userId, packageId))
 });
 
 export default connect(mapState, mapDispatch)(LandingPage);
