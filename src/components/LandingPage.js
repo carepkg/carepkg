@@ -11,6 +11,8 @@ import {
 import { getCategoriesThunk } from "../store/categories";
 import LandingSponsors from "./LandingSponsors";
 import LandingCatFooter from "./LandingCatFooter";
+import CarepkgHelp from "./CarepkgHelp";
+import CarepkgNewsletter from "./CarepkgNewsletter";
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -84,6 +86,13 @@ class LandingPage extends Component {
               : null}
           </div>
           <LandingCatFooter categories={categories} />
+        </div>
+        <div id="landing-footer-main">
+          <div className="landing-page-break"></div>
+          <div id="info-footer">
+            <CarepkgHelp />
+            <CarepkgNewsletter />
+          </div>
           <div className="landing-page-break"></div>
         </div>
       </div>

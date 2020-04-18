@@ -73,9 +73,10 @@ body,
     cursor: pointer;
     transform: scale(1.1)
 }
+/* 182.5vh LANDING SECTION 2 */
 #landing-section-2 {
     width: 100%;
-    height: 200vh;
+    height: 182.5vh;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -119,6 +120,7 @@ body,
     justify-content: center;
     align-items: center;
 }
+/* FEATURED PACKAGES */
 #featured-pkgs-container {
     margin: 40px 0;
     display: flex;
@@ -153,6 +155,7 @@ body,
     width: 60px;
     border-radius: 6px;
 }
+/* LANDING CATEGORY FOOTER */
 #landing-cat-footer {
     width: 100vw;
     height: 35vh;
@@ -191,10 +194,40 @@ body,
     cursor: pointer;
     text-decoration: underline;
 }
+
+
+/* LANDING FOOTER MAIN */
+
+#landing-footer-main {
+    width: 100vw;
+    height: 85vh;
+}
 .landing-page-break {
     background-color: rgba(51, 51, 51, 0.25);
     width: 95%;
     height: 1px;
+}
+#info-footer {
+    width: 100vw;
+    height: 325px;
+    display: flex;
+}
+.footer-snippet {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#chat-btn {
+    background-color: black;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 6px;
+    
+
 }
 
 
