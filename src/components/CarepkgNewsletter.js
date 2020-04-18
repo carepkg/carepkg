@@ -23,14 +23,22 @@ class CarepkgNewsletter extends React.Component {
           <label htmlFor="email">
             <strong>Email:</strong>
           </label>
-          <input
-            id="email-sub-input"
-            type="text"
-            name="email"
-            value={this.state.email}
-            onChange={e => this.handleType(e)}
-          />
-          <button className="footer-btn">Submit</button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}
+          >
+            <input
+              id="email-sub-input"
+              type="text"
+              name="email"
+              value={this.state.email}
+              onChange={e => this.handleType(e)}
+            />
+            <button className="footer-btn">Submit</button>
+          </div>
         </form>
       </div>
     );
