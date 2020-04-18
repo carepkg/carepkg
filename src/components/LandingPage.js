@@ -47,6 +47,7 @@ class LandingPage extends Component {
         <div id="landing-section-2">
           <LandingSponsors />
           <h1>Featured Packages</h1>
+          <h3>Our user top-rated packages for you to browse</h3>
           <div id="featured-pkgs-container">
             {packages
               ? packages.map(pkg => {
