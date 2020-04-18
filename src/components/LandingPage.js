@@ -8,6 +8,12 @@ import {
   addUpvoteThunk,
   deleteUpvoteThunk
 } from "../store/upvote";
+import { getCategoriesThunk } from "../store/categories";
+import LandingSponsors from "./LandingSponsors";
+import LandingCatFooter from "./LandingCatFooter";
+import CarepkgHelp from "./CarepkgHelp";
+import CarepkgNewsletter from "./CarepkgNewsletter";
+import FooterBottom from "./FooterBottom";
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -21,17 +27,13 @@ class LandingPage extends Component {
       this.props.fetchCart(this.props.user.id);
     }
     //fetch packages
-    this.props.fetchPackages().then(
-      res =>
-        this.setState({
-          packages: res
-        })
-      // ^^^^ not working
-    );
+    this.props.fetchPackages();
+    this.props.fetchCategories();
   }
   render() {
-    const { packages, user } = this.props;
+    const { packages, user, categories } = this.props;
     console.log(this.state.packages);
+    console.log(categories);
     return (
       <div id="landing-page">
         <div id="bg-img-content">
@@ -43,6 +45,7 @@ class LandingPage extends Component {
           </div>
         </div>
         <div id="landing-section-2">
+          <LandingSponsors />
           <h1>Featured Packages</h1>
           <div id="featured-pkgs-container">
             {packages
@@ -83,6 +86,16 @@ class LandingPage extends Component {
                 })
               : null}
           </div>
+          <LandingCatFooter categories={categories} />
+        </div>
+        <div id="landing-footer-main">
+          <div className="landing-page-break"></div>
+          <div id="info-footer">
+            <CarepkgHelp />
+            <CarepkgNewsletter />
+          </div>
+          <div className="landing-page-break"></div>
+          <FooterBottom />
         </div>
       </div>
     );
@@ -93,7 +106,8 @@ const mapState = state => ({
   user: state.user,
   packages: state.packages,
   upvote: state.upvote,
-  upvotePkg: state.pkg
+  upvotePkg: state.pkg,
+  categories: state.categories
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),
@@ -103,7 +117,8 @@ const mapDispatch = dispatch => ({
   createUpvote: (userId, packageId) =>
     dispatch(addUpvoteThunk(userId, packageId)),
   deleteUpvote: (userId, packageId) =>
-    dispatch(deleteUpvoteThunk(userId, packageId))
+    dispatch(deleteUpvoteThunk(userId, packageId)),
+  fetchCategories: () => dispatch(getCategoriesThunk())
 });
 
 export default connect(mapState, mapDispatch)(LandingPage);
