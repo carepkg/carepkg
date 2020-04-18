@@ -4,6 +4,9 @@ import { withRouter, NavLink } from "react-router-dom";
 import { getProductsThunk } from "../store/products";
 import { addToCartThunk } from "../store/cart";
 import AddToCart from "./AddToCart";
+import CarepkgHelp from "./CarepkgHelp";
+import CarepkgNewsletter from "./CarepkgNewsletter";
+import FooterBottom from "./FooterBottom";
 
 class AllProducts extends React.Component {
   componentDidMount() {
@@ -39,6 +42,19 @@ class AllProducts extends React.Component {
               </div>
             );
           })}
+        </div>
+        <div id="shop-all-footer">
+          <p>Shop more:</p>
+          <button className="footer-btn">Shop all</button>
+        </div>
+        <div id="landing-footer-main">
+          <div className="landing-page-break"></div>
+          <div id="info-footer">
+            <CarepkgHelp />
+            <CarepkgNewsletter />
+          </div>
+          <div className="landing-page-break"></div>
+          <FooterBottom />
         </div>
       </div>
     ) : null;
