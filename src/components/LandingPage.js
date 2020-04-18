@@ -13,6 +13,7 @@ import LandingSponsors from "./LandingSponsors";
 import LandingCatFooter from "./LandingCatFooter";
 import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
+import FooterBottom from "./FooterBottom";
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -94,6 +95,7 @@ class LandingPage extends Component {
             <CarepkgNewsletter />
           </div>
           <div className="landing-page-break"></div>
+          <FooterBottom />
         </div>
       </div>
     );

@@ -238,6 +238,18 @@ body,
     width: 250px;
     border-radius: 6px;
 }
+/* FOOTER BOTTOM */
+#footer-bottom-page {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+#copyright-text {
+    margin-bottom: 8px;
+}
 
 
 /* NAVBAR */
