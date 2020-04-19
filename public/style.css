@@ -687,8 +687,8 @@ button[type='submit'] {
     padding: 10px;
 }
 #user-initial {
-    width: 70px;
-    height: 70px;
+    width: 64px;
+    height: 64px;
     background-color: rgb(242, 242, 242);
     /* color: rgb(143, 143, 143); */
     color: #DDC9A3;
