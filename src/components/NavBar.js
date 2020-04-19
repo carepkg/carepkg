@@ -23,7 +23,7 @@ const NavBar = props => {
             {isLoggedIn ? (
               <React.Fragment>
                 <NavLink to="/profile" className="navlink">
-                  Profile
+                  Welcome, {props.user.firstName}!
                 </NavLink>
                 <NavLink to="/login" className="navlink" onClick={handleLogout}>
                   Logout
@@ -63,7 +63,8 @@ const NavBar = props => {
 };
 
 const mapStateToProps = state => ({
-  isLoggedIn: !!state.user.id
+  isLoggedIn: !!state.user.id,
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({

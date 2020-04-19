@@ -4,13 +4,20 @@ import { NavLink } from "react-router-dom";
 import ReviewList from "./ReviewCard";
 import { render } from "@testing-library/react";
 import CompanyProfile from "./CompanyProfile";
+import CarepkgHelp from "./CarepkgHelp";
+import CarepkgNewsletter from "./CarepkgNewsletter";
+import FooterBottom from "./FooterBottom";
 
 // SMOOTH SCROLL FOR NAV (?)
 const UserProfile = props => {
   const [profileBody, setProfileBody] = useState("cart");
   const { user } = props;
   const { reviews, orders } = user;
-  console.log(user);
+  let firstInitial;
+  user.firstName
+    ? (firstInitial = user.firstName.charAt(0))
+    : (firstInitial = "");
+  console.log(user.firstName);
 
   const myCart = () => {
     setProfileBody("cart");
@@ -26,63 +33,81 @@ const UserProfile = props => {
     <CompanyProfile />
   ) : (
     <div id="profile-page">
-      <div id="profile-header">
-        <div id="profile-user-info">
-          <img
-            id="profile-user-pic"
-            src={user.profilePic}
-            alt="profile picture"
-          />
-          <div id="profile-user-names">
-            <h1 id="profile-user-fullname">
-              {user.firstName + " " + user.lastName}
-            </h1>
-            <h3 id="profile-user-username">{user.userName}</h3>
+      <div id="profile-top">
+        <div id="profile-left">
+          <div id="user-specs">
+            <div id="user-initial">{firstInitial}</div>
+            <div id="user-name-div">
+              <h2 id="user-name">{user.firstName + " " + user.lastName}</h2>
+              <h4>Sign out</h4>
+            </div>
+          </div>
+          <nav id="profile-nav-menu">
+            <div
+              className="profile-nav-btn"
+              to="/profile/orders"
+              onClick={myOrders}
+            >
+              Order History
+            </div>
+            <div className="profile-nav-btn">Wishlist</div>
+            <div className="profile-nav-btn" onClick={myCart}>
+              Cart
+            </div>
+            <div
+              className="profile-nav-btn"
+              to="/profile/reviews"
+              onClick={myReviews}
+            >
+              Reviews
+            </div>
+            <div className="profile-nav-btn">Account Settings</div>
+          </nav>
+        </div>
+        <div id="profile-column-split"></div>
+        <div id="profile-body">
+          <div id="profile-content">
+            {reviews && profileBody === "reviews"
+              ? reviews.map(rev => {
+                  return (
+                    <React.Fragment>
+                      <div>{rev.product.name}</div>
+                      <div>{rev.rating}</div>
+                      <div>{rev.text}</div>
+                    </React.Fragment>
+                  );
+                })
+              : null}
+            {orders && profileBody === "orders"
+              ? orders.map(order => {
+                  return (
+                    <React.Fragment>
+                      <div>{order.id}</div>
+                      {order.lineItems.map(lineItem => (
+                        <div>
+                          <h3>{lineItem.product.name}</h3>
+                          <img
+                            style={{ width: "50px", height: "50px" }}
+                            src={lineItem.product.image}
+                            alt="product in your order"
+                          />
+                        </div>
+                      ))}
+                    </React.Fragment>
+                  );
+                })
+              : null}
           </div>
         </div>
       </div>
-      <div id="profile-body">
-        <nav id="profile-nav-menu">
-          <button onClick={myCart}>Your Cart</button>
-          <button to="/profile/orders" onClick={myOrders}>
-            Your Orders
-          </button>
-          <button to="/profile/reviews" onClick={myReviews}>
-            Your Reviews
-          </button>
-        </nav>
-        <div id="profile-content">
-          {reviews && profileBody === "reviews"
-            ? reviews.map(rev => {
-                return (
-                  <React.Fragment>
-                    <div>{rev.product.name}</div>
-                    <div>{rev.rating}</div>
-                    <div>{rev.text}</div>
-                  </React.Fragment>
-                );
-              })
-            : null}
-          {orders && profileBody === "orders"
-            ? orders.map(order => {
-                return (
-                  <React.Fragment>
-                    <div>{order.id}</div>
-                    {order.lineItems.map(lineItem => (
-                      <div>
-                        <h3>{lineItem.product.name}</h3>
-                        <img
-                          style={{ width: "50px", height: "50px" }}
-                          src={lineItem.product.image}
-                          alt="product in your order"
-                        />
-                      </div>
-                    ))}
-                  </React.Fragment>
-                );
-              })
-            : null}
+      <div id="landing-footer-main">
+        <div className="landing-page-break"></div>
+        <div id="info-footer">
+          <CarepkgHelp />
+          <CarepkgNewsletter />
         </div>
+        <div className="landing-page-break"></div>
+        <FooterBottom />
       </div>
     </div>
   );
