@@ -7,6 +7,7 @@ import CompanyProfile from "./CompanyProfile";
 import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
 import FooterBottom from "./FooterBottom";
+import OrderCard from "./OrderCard";
 
 // SMOOTH SCROLL FOR NAV (?)
 const UserProfile = props => {
@@ -80,21 +81,7 @@ const UserProfile = props => {
               : null}
             {orders && profileBody === "orders"
               ? orders.map(order => {
-                  return (
-                    <React.Fragment>
-                      <div>{order.id}</div>
-                      {order.lineItems.map(lineItem => (
-                        <div>
-                          <h3>{lineItem.product.name}</h3>
-                          <img
-                            style={{ width: "50px", height: "50px" }}
-                            src={lineItem.product.image}
-                            alt="product in your order"
-                          />
-                        </div>
-                      ))}
-                    </React.Fragment>
-                  );
+                  return <OrderCard order={order} />;
                 })
               : null}
           </div>
