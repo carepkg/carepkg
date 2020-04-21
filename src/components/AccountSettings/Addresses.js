@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddAddress from "./AddAddress";
 
-const Address = props => {
+const Addresses = props => {
   const { user } = props;
   const [adding, setAdding] = useState(false);
   const addAddress = () => setAdding(true);
@@ -27,4 +27,4 @@ const Address = props => {
   );
 };
 
-export default Address;
+export default Addresses;
