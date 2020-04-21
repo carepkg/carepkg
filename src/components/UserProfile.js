@@ -8,6 +8,7 @@ import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
 import FooterBottom from "./FooterBottom";
 import OrderCard from "./OrderCard";
+import UserReviewCard from "./UserReviewCard";
 
 // SMOOTH SCROLL FOR NAV (?)
 const UserProfile = props => {
@@ -69,20 +70,10 @@ const UserProfile = props => {
         <div id="profile-body">
           <div id="profile-content">
             {reviews && profileBody === "reviews"
-              ? reviews.map(rev => {
-                  return (
-                    <React.Fragment>
-                      <div>{rev.product.name}</div>
-                      <div>{rev.rating}</div>
-                      <div>{rev.text}</div>
-                    </React.Fragment>
-                  );
-                })
+              ? reviews.map(rev => <UserReviewCard review={rev} />)
               : null}
             {orders && profileBody === "orders"
-              ? orders.map(order => {
-                  return <OrderCard order={order} />;
-                })
+              ? orders.map(order => <OrderCard order={order} />)
               : null}
           </div>
         </div>

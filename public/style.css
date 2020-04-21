@@ -678,8 +678,9 @@ button[type='submit'] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 200px;
-    padding-top: 50px;
+    margin-left: 72px;
+    padding-top: 60px;
+    width: 30vw;
 }
 #user-specs {
     display: flex;
@@ -732,10 +733,10 @@ button[type='submit'] {
     width: 1px;
     background-color: #d8d7d7;
     height: 82.5vh;
-    margin: 80px 64px 0 64px;
+    margin: 80px 64px 0 40px;
 }
 #profile-body {
-    width: 60vw;
+    width: 55vw;
     display: flex;
     margin-top: 80px;
     max-height: 72.5vh;
@@ -820,6 +821,32 @@ button[type='submit'] {
     margin-right: 5px;
 }
 
+/* ##### REVIEW CARD ############# */
+
+.user-review-card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(51, 51, 51, 0.2);
+    border-radius: 10px;
+}
+.review-card-header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 0 10px 0;
+}
+.review-card-text {
+    font-size: .85em;
+}
+.review-card-rating {
+    margin: 0 24px;
+}
+.review-star {
+    margin-left: 2px;
+    font-size: .89em;
+    vertical-align: text-top;
+}
 
 /* ------- CART -------- */
 
