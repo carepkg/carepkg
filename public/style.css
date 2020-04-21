@@ -1,12 +1,13 @@
 :root {
     --main-text-color: #554;
 }
+/* font-family: 'Dosis', sans-serif */
 html,
 body,
 #root{
     width: 100%;
     height: 100%;
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     min-width: 100vw;
     background-size: cover;
@@ -15,8 +16,8 @@ body,
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 #landing-page{
     width: 100%;
@@ -669,6 +670,7 @@ button[type='submit'] {
     height: 82.75%;
     display: flex;
     flex-direction: column;
+    font-family: 'Dosis', 'sans-serif'
 }
 #profile-top {
     display: flex;
@@ -678,8 +680,9 @@ button[type='submit'] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 200px;
-    padding-top: 50px;
+    margin-left: 72px;
+    padding-top: 60px;
+    width: 30vw;
 }
 #user-specs {
     display: flex;
@@ -703,7 +706,6 @@ button[type='submit'] {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
 }
 #user-name {
     margin: 0 8px;
@@ -723,23 +725,31 @@ button[type='submit'] {
     padding: 10px;
     margin: 10px 0 10px 64px;
     background-color: none;
-    color: rgb(157, 123, 123);
+    color: rgb(116, 116, 116);
 }
 .profile-nav-btn:hover {
-    color: rgb(80, 35, 35)
+    color: black;
+    cursor: pointer;
 }
 #profile-column-split {
     width: 1px;
     background-color: #d8d7d7;
     height: 82.5vh;
-    margin: 80px 64px 0 64px;
+    margin: 80px 64px 0 40px;
 }
 #profile-body {
-    width: 60vw;
+    width: 55vw;
     display: flex;
     margin-top: 80px;
     max-height: 72.5vh;
     overflow: hidden;
+}
+.profile-signout {
+    color: rgb(172, 172, 172);
+    margin-left: 8px;
+}
+.profile-signout:hover {
+    color: #554;
 }
 
 /* ###### ORDER CARD ########## */
@@ -820,6 +830,33 @@ button[type='submit'] {
     margin-right: 5px;
 }
 
+/* ##### REVIEW CARD ############# */
+
+.user-review-card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(51, 51, 51, 0.2);
+    border-radius: 10px;
+}
+.review-card-header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 0 10px 0;
+}
+.review-card-text {
+    font-size: .85em;
+}
+.review-card-rating {
+    margin: 0 24px;
+   
+}
+.review-star {
+    margin-left: 2px;
+    font-size: .89em;
+    vertical-align: text-top;
+}
 
 /* ------- CART -------- */
 

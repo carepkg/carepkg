@@ -8,11 +8,13 @@ import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
 import FooterBottom from "./FooterBottom";
 import OrderCard from "./OrderCard";
+import UserReviewCard from "./UserReviewCard";
+import { logout } from "../store/user";
 
 // SMOOTH SCROLL FOR NAV (?)
 const UserProfile = props => {
   const [profileBody, setProfileBody] = useState("cart");
-  const { user } = props;
+  const { user, handleLogout } = props;
   const { reviews, orders } = user;
   let firstInitial;
   user.firstName
@@ -40,7 +42,13 @@ const UserProfile = props => {
             <div id="user-initial">{firstInitial}</div>
             <div id="user-name-div">
               <h2 id="user-name">{user.firstName + " " + user.lastName}</h2>
-              <h4>Sign out</h4>
+              <NavLink
+                className="profile-signout"
+                to="/login"
+                onClick={handleLogout}
+              >
+                Sign out
+              </NavLink>
             </div>
           </div>
           <nav id="profile-nav-menu">
@@ -69,20 +77,10 @@ const UserProfile = props => {
         <div id="profile-body">
           <div id="profile-content">
             {reviews && profileBody === "reviews"
-              ? reviews.map(rev => {
-                  return (
-                    <React.Fragment>
-                      <div>{rev.product.name}</div>
-                      <div>{rev.rating}</div>
-                      <div>{rev.text}</div>
-                    </React.Fragment>
-                  );
-                })
+              ? reviews.map(rev => <UserReviewCard review={rev} />)
               : null}
             {orders && profileBody === "orders"
-              ? orders.map(order => {
-                  return <OrderCard order={order} />;
-                })
+              ? orders.map(order => <OrderCard order={order} />)
               : null}
           </div>
         </div>
@@ -100,8 +98,13 @@ const UserProfile = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapState = state => ({
   user: state.user
 });
+const mapDispatch = dispatch => ({
+  handleLogout() {
+    dispatch(logout());
+  }
+});
 
-export default connect(mapStateToProps, null)(UserProfile);
+export default connect(mapState, mapDispatch)(UserProfile);
