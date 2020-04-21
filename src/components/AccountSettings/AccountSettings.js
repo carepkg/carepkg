@@ -11,16 +11,16 @@ const AccountSettings = props => {
   return (
     <div id="acct-settings-page">
       <div id="AS-slide-hdr">
-        <span className="AS-slide-unit" onClick={setSetting("addressses")}>
+        <span className="AS-slide-unit" onClick={() => setSetting("addresses")}>
           Addresses
         </span>
-        <span className="AS-slide-unit" onClick={setSetting("email")}>
+        <span className="AS-slide-unit" onClick={() => setSetting("email")}>
           Change Email
         </span>
-        <span className="AS-slide-unit" onClick={setSetting("password")}>
+        <span className="AS-slide-unit" onClick={() => setSetting("password")}>
           Password
         </span>
-        <span className="AS-slide-unit" onClick={setSetting("ccs")}>
+        <span className="AS-slide-unit" onClick={() => setSetting("ccs")}>
           Credit Cards
         </span>
       </div>
