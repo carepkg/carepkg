@@ -931,7 +931,7 @@ button[type='submit'] {
     border: 1px solid green;
     border-radius: 8px;
 }
-.add-address-country-select {
+.add-address-select {
     background-color: white;
 	display: block;
 	font-size: .8em;
