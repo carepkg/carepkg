@@ -35,6 +35,7 @@ class AddAddress extends React.Component {
             value={this.state.address1}
             onChange={this.handleChange}
             placeholder="Address"
+            autoComplete="off"
           />
           <input
             name="address2"
@@ -42,6 +43,7 @@ class AddAddress extends React.Component {
             value={this.state.address2}
             onChange={this.handleChange}
             placeholder="Address"
+            autoComplete="off"
           />
           <input
             name="city"
@@ -49,6 +51,7 @@ class AddAddress extends React.Component {
             value={this.state.city}
             onChange={this.handleChange}
             placeholder="City"
+            autoComplete="off"
           />
           <input
             name="state"
@@ -56,20 +59,26 @@ class AddAddress extends React.Component {
             value={this.state.state}
             onChange={this.handleChange}
             placeholder="State"
+            autoComplete="off"
           />
-          <input
+          <select
             name="country"
-            type="text"
-            value={this.state.country}
+            className="add-address-country-select"
+            value={this.state.country || "United States"}
             onChange={this.handleChange}
-            placeholder="Country"
-          />
+          >
+            <option value="">Select</option>
+            <option value="Canada">Canada</option>
+            <option value="United States">United States</option>
+            <option value="Other">Other</option>
+          </select>
           <input
             name="zip"
             type="text"
             value={this.state.zip}
             onChange={this.handleChange}
             placeholder="Zip Code"
+            autoComplete="off"
           />
           <input
             name="phone"
@@ -77,6 +86,7 @@ class AddAddress extends React.Component {
             value={this.state.phone}
             onChange={this.handleChange}
             placeholder="Phone"
+            autoComplete="off"
           />
         </form>
         <div id="add-address-btn-menu">
