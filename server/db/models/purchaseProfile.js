@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const PurchaseProfile = db.define(
-  "purchaseProfile",
+const Address = db.define(
+  "address",
   {
     email: {
       type: Sequelize.STRING,
@@ -10,6 +10,13 @@ const PurchaseProfile = db.define(
         isEmail: true
       }
     },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    }
     shipToAddress: {
       type: Sequelize.STRING,
       allowNull: false,
