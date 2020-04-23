@@ -5,7 +5,7 @@
 const db = require("../server/db");
 const {
   User,
-  PurchaseProfile,
+  Address,
   Category,
   Product,
   Review,
@@ -602,16 +602,16 @@ async function seed() {
     })
   ]);
 
-  // ----- PURCHASE PROFILE ----- \\
+  // ----- ADDRESS ----- \\
 
-  const purchaseProfiles = await Promise.all([
-    PurchaseProfile.create({
+  const addresses = await Promise.all([
+    Address.create({
       userId: 2,
       email: "isley@carepkg.com",
-      shipToAddress: faker.address.streetAddress(),
-      shipToCity: faker.address.city(),
-      shipToState: faker.address.stateAbbr(),
-      shipToPostalCode: faker.address.zipCode()
+      address1: faker.address.streetAddress(),
+      city: faker.address.city(),
+      state: faker.address.stateAbbr(),
+      postalCode: faker.address.zipCode()
     })
   ]);
 

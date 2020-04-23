@@ -16,29 +16,32 @@ const Address = db.define(
       validate: {
         notEmpty: true
       }
-    }
-    shipToAddress: {
+    },
+    address1: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
-    shipToCity: {
+    address2: {
+      type: Sequelize.STRING
+    },
+    city: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
-    shipToState: {
+    state: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
-    shipToPostalCode: {
+    postalCode: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
@@ -53,4 +56,4 @@ const Address = db.define(
   }
 );
 
-module.exports = PurchaseProfile;
+module.exports = Address;

@@ -5,7 +5,7 @@ const {
   Order,
   Product,
   LineItem,
-  PurchaseProfile,
+  Address,
   Company,
   Package,
   PackageLineItem
@@ -41,7 +41,7 @@ router.post("/login", async (req, res, next) => {
           ]
         },
         {
-          model: PurchaseProfile
+          model: Address
         },
         {
           model: Package,

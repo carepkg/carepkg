@@ -1,7 +1,7 @@
 const User = require("./user");
 const Product = require("./product");
 const Review = require("./review");
-const PurchaseProfile = require("./purchaseProfile");
+const Address = require("./address");
 const OrderProduct = require("./lineItem");
 const Category = require("./category");
 const PricingHistory = require("./pricingHistory");
@@ -17,7 +17,7 @@ const Upvote = require("./upvotes");
 // --------- ASSOCIATIONS --------- \\
 
 //User can have multiple addresses/shipTo locations saved
-User.hasMany(PurchaseProfile);
+User.hasMany(Address);
 User.hasMany(Review);
 User.hasMany(Order);
 User.hasMany(CartLineItem);
@@ -46,7 +46,7 @@ CartLineItem.belongsTo(Product);
 PackageLineItem.belongsTo(Package);
 PackageLineItem.belongsTo(Product);
 
-PurchaseProfile.belongsTo(User);
+Address.belongsTo(User);
 Review.belongsTo(User);
 Order.belongsTo(User);
 
@@ -57,7 +57,7 @@ module.exports = {
   User,
   Product,
   Review,
-  PurchaseProfile,
+  Address,
   OrderProduct,
   Category,
   PricingHistory,

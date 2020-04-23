@@ -16,7 +16,7 @@ const {
   Product,
   LineItem,
   Order,
-  PurchaseProfile,
+  Address,
   Package,
   PackageLineItem,
   Upvote
@@ -72,7 +72,7 @@ const createApp = () => {
                 ]
               },
               {
-                model: PurchaseProfile
+                model: Address
               },
               {
                 model: Package,
