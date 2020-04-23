@@ -3,6 +3,7 @@ import AddAddress from "./AddAddress";
 
 const Addresses = props => {
   const { user } = props;
+  console.log(user);
   const [adding, setAdding] = useState(false);
   const addAddress = () => setAdding(true);
   return (
@@ -10,7 +11,14 @@ const Addresses = props => {
       {adding ? (
         <AddAddress />
       ) : user && user.addresses ? (
-        <p>{user.addresses[0]}</p>
+        <div>
+          <p>{user.addresses[0].name}</p>
+          <p>{user.addresses[0].address1}</p>
+          <p>{user.addresses[0].address2 && user.addresses[0].address2}</p>
+          <p>{user.addresses[0].city}</p>
+          <p>{user.addresses[0].state}</p>
+          <p>{user.addresses[0].country}</p>
+        </div>
       ) : (
         <div id="addresses-dflt">
           <h2>No Addresses Found</h2>

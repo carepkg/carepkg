@@ -16,6 +16,7 @@ import AccountSettings from "./AccountSettings/AccountSettings";
 const UserProfile = props => {
   const [profileBody, setProfileBody] = useState("cart");
   const { user, handleLogout } = props;
+  console.log(user);
   const { reviews, orders } = user;
   let firstInitial;
   user.firstName
