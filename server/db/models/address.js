@@ -41,6 +41,13 @@ const Address = db.define(
         notEmpty: true
       }
     },
+    country: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
     postalCode: {
       type: Sequelize.STRING,
       allowNull: false,

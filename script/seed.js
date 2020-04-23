@@ -607,10 +607,12 @@ async function seed() {
   const addresses = await Promise.all([
     Address.create({
       userId: 2,
+      name: "Home",
       email: "isley@carepkg.com",
       address1: faker.address.streetAddress(),
       city: faker.address.city(),
       state: faker.address.stateAbbr(),
+      country: "United States",
       postalCode: faker.address.zipCode()
     })
   ]);
