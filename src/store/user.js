@@ -26,7 +26,6 @@ export const me = () => async dispatch => {
     const res = await axios.get("/auth/me", {
       withCredentials: true
     });
-    console.log(res.data);
     dispatch(getUser(res.data || guest));
   } catch (err) {
     console.error(err);

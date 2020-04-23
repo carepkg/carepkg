@@ -110,7 +110,6 @@ router.post("/logout", (req, res, next) => {
 
 router.get("/me", (req, res) => {
   try {
-    console.log(req.session);
     if (req.user) {
       res.json(req.user);
     } else {

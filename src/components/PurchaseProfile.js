@@ -17,7 +17,6 @@ const PurchaseProfile = props => {
       {pps && pps.length ? (
         <div id="purch-profile-container">
           {pps.map((pp, idx) => {
-            console.log(pp);
             return (
               <div
                 className={isActive ? "pp-card-selected" : "pp-card"}

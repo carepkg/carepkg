@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 
 const ReviewCard = props => {
   const { review, onProfilePage, user } = props;
-  console.log(props);
   return (
     <div className="review-container">
       {/* {onProfilePage ? (

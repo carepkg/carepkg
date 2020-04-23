@@ -23,7 +23,6 @@ class LandingPage extends Component {
   }
   componentDidMount() {
     if (this.props.user.id) {
-      console.log("here");
       this.props.fetchCart(this.props.user.id);
     }
     //fetch packages
@@ -32,8 +31,6 @@ class LandingPage extends Component {
   }
   render() {
     const { packages, user, categories } = this.props;
-    console.log(this.state.packages);
-    console.log(categories);
     return (
       <div id="landing-page">
         <div id="bg-img-content">

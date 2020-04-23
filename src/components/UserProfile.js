@@ -21,7 +21,6 @@ const UserProfile = props => {
   user.firstName
     ? (firstInitial = user.firstName.charAt(0))
     : (firstInitial = "");
-  console.log(user.firstName);
 
   const myCart = () => {
     setProfileBody("cart");
