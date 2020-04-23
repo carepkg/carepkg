@@ -613,7 +613,41 @@ async function seed() {
       city: faker.address.city(),
       state: faker.address.stateAbbr(),
       country: "United States",
-      postalCode: faker.address.zipCode()
+      postalCode: faker.address.zipCode(),
+      phone: "(123)-456-7890"
+    }),
+    Address.create({
+      userId: 2,
+      name: "Colorado Springs Apt.",
+      email: "isley@carepkg.com",
+      address1: faker.address.streetAddress(),
+      city: "Colorado Springs",
+      state: "CO",
+      country: "United States",
+      postalCode: faker.address.zipCode(),
+      phone: "(123)-456-7890"
+    }),
+    Address.create({
+      userId: 2,
+      name: "Malibu Beach House",
+      email: "isley@carepkg.com",
+      address1: faker.address.streetAddress(),
+      city: "Malibu",
+      state: "CA",
+      country: "United States",
+      postalCode: faker.address.zipCode(),
+      phone: "(123)-456-7890"
+    }),
+    Address.create({
+      userId: 2,
+      name: "Mom's",
+      email: "isley@carepkg.com",
+      address1: faker.address.streetAddress(),
+      city: "Los Angeles",
+      state: "CA",
+      country: "United States",
+      postalCode: faker.address.zipCode(),
+      phone: "(123)-456-7890"
     })
   ]);
 
