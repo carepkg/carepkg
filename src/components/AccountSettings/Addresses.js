@@ -11,13 +11,42 @@ const Addresses = props => {
       {adding ? (
         <AddAddress />
       ) : user && user.addresses ? (
-        <div>
-          <p>{user.addresses[0].name}</p>
-          <p>{user.addresses[0].address1}</p>
-          <p>{user.addresses[0].address2 && user.addresses[0].address2}</p>
-          <p>{user.addresses[0].city}</p>
-          <p>{user.addresses[0].state}</p>
-          <p>{user.addresses[0].country}</p>
+        <div id="user-addresses">
+          {user.addresses.map((address, idx) => {
+            return (
+              <React.Fragment>
+                <div className="user-address-container">
+                  <div className="address-header">
+                    <h3>{address.name}</h3>
+                    {idx === 0 ? (
+                      <button className="address-check-mark">&#10003;</button>
+                    ) : null}
+                  </div>
+                  <div className="address-details-box">
+                    <p className="address-line">{address.address1}</p>
+                    <p className="address-line">
+                      {address.address2 && address.address2}
+                    </p>
+                    <p className="address-line">
+                      {address.city}, {address.state} {address.postalCode}
+                    </p>
+                    <p className="address-line">{address.country}</p>
+                    <p className="address-line">
+                      Phone number: {address.phone}
+                    </p>
+                  </div>
+                  <div className="address-util-menu">
+                    <p className="address-util-1">Edit</p>
+                    <p className="address-util-1">Remove</p>
+                    <p className="address-util-2">Set as Default</p>
+                  </div>
+                </div>
+                <div className="user-address-container"></div>
+                <div className="user-address-container"></div>
+                <div className="user-address-container"></div>
+              </React.Fragment>
+            );
+          })}
         </div>
       ) : (
         <div id="addresses-dflt">

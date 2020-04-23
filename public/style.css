@@ -681,7 +681,7 @@ button[type='submit'] {
     justify-content: flex-start;
     align-items: center;
     margin-left: 120px;
-    padding-top: 64px;
+    padding-top: 40px;
     width: 20vw;
 }
 #user-specs {
@@ -740,7 +740,7 @@ button[type='submit'] {
 #profile-body {
     width: 55vw;
     display: flex;
-    margin-top: 80px;
+    margin-top: 56px;
     max-height: 82.5vh;
     overflow: hidden;
 }
@@ -888,6 +888,68 @@ button[type='submit'] {
 }
 #addresses-dflt > * {
     margin: 4px;
+}
+#user-addresses {
+    display: flex;
+    flex-flow: row wrap;
+}
+.user-address-container {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 220px;
+    border: 1px solid rgba(51, 51, 51, 0.2);
+    margin: 16px;
+    border-radius: 6px;
+    
+}
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+    text-indent: 14px;
+}
+.address-header > h3 {
+    margin: 4px 0;
+}
+.address-check-mark {
+    width: 16px;
+    height: 16px;
+    border-radius: 24px;
+    color: green;
+    border: 1px solid green;
+    margin-right: 8px;
+}
+.address-details-box {
+    padding-left: 14px;
+    padding-top: 8px;
+    height: 148px;
+}
+.address-line {
+    font-weight: 200;
+    margin: 4px 0;
+}
+.address-util-menu {
+    font-size: 0.725em;
+    display: flex;
+    height: 16px;
+    margin-top: 10px;
+    color: rgb(28, 28, 247);
+}
+.address-util-1 {
+    padding: 0 14px;
+    border-right: 1px solid rgba(51, 51, 51, 0.2);
+    text-decoration: underline;
+}
+.address-util-2 {
+    padding: 0 19px;
+    text-decoration: underline;
+}
+.address-util-1:hover,
+.address-util-2:hover {
+    cursor: pointer;
 }
 .add-address-btn {
     font-size: .875em;
