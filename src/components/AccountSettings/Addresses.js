@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
 import AddAddress from "./AddAddress";
-import { getAddressesThunk, removeAddressThunk } from "../../store/addresses";
+import {
+  getAddressesThunk,
+  removeAddressThunk,
+  removeCurrentDefaultThunk,
+  setDefaultThunk
+} from "../../store/addresses";
 import { connect } from "react-redux";
 
 const Addresses = props => {
-  const { user, addresses, fetchAddresses, removeAddress } = props;
+  const {
+    user,
+    addresses,
+    fetchAddresses,
+    removeAddress,
+    setNewDefault,
+    removeDefault
+  } = props;
   useEffect(() => {
     if (props.user) {
       fetchAddresses(user.id);
@@ -19,13 +31,13 @@ const Addresses = props => {
         <AddAddress />
       ) : addresses ? (
         <div id="user-addresses">
-          {addresses.map((address, idx) => {
+          {addresses.map(address => {
             return (
               <React.Fragment>
                 <div className="user-address-container">
                   <div className="address-header">
                     <h4>{address.name}</h4>
-                    {idx === 0 ? (
+                    {address.default ? (
                       <button className="address-check-mark">&#10003;</button>
                     ) : null}
                   </div>
@@ -50,7 +62,14 @@ const Addresses = props => {
                     >
                       Remove
                     </p>
-                    <p className="address-util-2">Set as Default</p>
+                    <p
+                      className="address-util-2"
+                      onClick={() =>
+                        removeDefault().then(() => setNewDefault(address))
+                      }
+                    >
+                      Set as Default
+                    </p>
                   </div>
                 </div>
               </React.Fragment>
@@ -78,7 +97,9 @@ const mapState = state => ({
 });
 const mapDispatch = dispatch => ({
   fetchAddresses: userId => dispatch(getAddressesThunk(userId)),
-  removeAddress: addressId => dispatch(removeAddressThunk(addressId))
+  removeAddress: () => dispatch(removeAddressThunk()),
+  removeDefault: address => dispatch(removeCurrentDefaultThunk(address)),
+  setNewDefault: address => dispatch(setDefaultThunk(address))
 });
 
 export default connect(mapState, mapDispatch)(Addresses);

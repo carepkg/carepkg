@@ -26,8 +26,28 @@ router.delete("/:addressId", async (req, res, next) => {
     next(err);
   }
 });
-router.update("/", async (req, res, next) => {
+router.put("/removeDefault", async (req, res, next) => {
   try {
+    const address = await Address.findOne({
+      where: {
+        default: true
+      }
+    });
+    await address.update({
+      default: false
+    });
+    res.json(address);
+  } catch (err) {
+    next(err);
+  }
+});
+router.put("/set/:addressId", async (req, res, next) => {
+  try {
+    const address = await Address.findByPk(req.params.addressId);
+    await address.update({
+      default: true
+    });
+    res.json(address);
   } catch (err) {
     next(err);
   }
