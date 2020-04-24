@@ -11,7 +11,6 @@ import { connect } from "react-redux";
 const Addresses = props => {
   const {
     user,
-    addresses,
     fetchAddresses,
     removeAddress,
     setNewDefault,
@@ -22,7 +21,14 @@ const Addresses = props => {
       fetchAddresses(user.id);
     }
   }, []);
-  console.log(addresses);
+  let addresses = props.addresses;
+  for (let i = 0; i < addresses.length; i++) {
+    if (addresses[i].default) {
+      let temp = addresses[i];
+      addresses[i] = addresses[0];
+      addresses[0] = temp;
+    }
+  }
   const [adding, setAdding] = useState(false);
   const addAddress = () => setAdding(true);
   return (
