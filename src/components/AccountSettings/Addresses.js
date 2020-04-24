@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddAddress from "./AddAddress";
+import { getAddressesThunk } from "../../store/addresses";
+import { connect } from "react-redux";
 
 const Addresses = props => {
-  const { addresses } = props;
+  const { user, addresses } = props;
+  useEffect(() => {
+    if (props.user) {
+      props.fetchAddresses(user.id);
+    }
+  }, []);
   console.log(addresses);
   const [adding, setAdding] = useState(false);
   const addAddress = () => setAdding(true);
@@ -61,4 +68,11 @@ const Addresses = props => {
   );
 };
 
-export default Addresses;
+const mapState = state => ({
+  addresses: state.addresses
+});
+const mapDispatch = dispatch => ({
+  fetchAddresses: userId => dispatch(getAddressesThunk(userId))
+});
+
+export default connect(mapState, mapDispatch)(Addresses);

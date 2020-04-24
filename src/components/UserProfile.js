@@ -11,18 +11,10 @@ import OrderCard from "./OrderCard";
 import UserReviewCard from "./UserReviewCard";
 import { logout } from "../store/user";
 import AccountSettings from "./AccountSettings/AccountSettings";
-import { getAddressesThunk } from "../store/addresses";
 
 const UserProfile = props => {
   const [profileBody, setProfileBody] = useState("cart");
-
   const { user, handleLogout } = props;
-  useEffect(() => {
-    if (props.user) {
-      props.fetchAddresses(props.user.id);
-    }
-  }, []);
-  console.log(user);
   const { reviews, orders } = user;
   let firstInitial;
   user.firstName
@@ -94,9 +86,7 @@ const UserProfile = props => {
             {orders && profileBody === "orders"
               ? orders.map(order => <OrderCard order={order} />)
               : null}
-            {profileBody === "acct-settings" ? (
-              <AccountSettings addresses={props.addresses} />
-            ) : null}
+            {profileBody === "acct-settings" ? <AccountSettings /> : null}
           </div>
         </div>
       </div>
@@ -114,14 +104,12 @@ const UserProfile = props => {
 };
 
 const mapState = state => ({
-  user: state.user,
-  addresses: state.addresses
+  user: state.user
 });
 const mapDispatch = dispatch => ({
   handleLogout() {
     dispatch(logout());
-  },
-  fetchAddresses: userId => dispatch(getAddressesThunk(userId))
+  }
 });
 
 export default connect(mapState, mapDispatch)(UserProfile);
