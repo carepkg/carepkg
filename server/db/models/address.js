@@ -54,6 +54,10 @@ const Address = db.define(
       validate: {
         notEmpty: true
       }
+    },
+    default: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false
     }
   },
   {

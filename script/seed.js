@@ -614,7 +614,8 @@ async function seed() {
       state: faker.address.stateAbbr(),
       country: "United States",
       postalCode: faker.address.zipCode(),
-      phone: "(123)-456-7890"
+      phone: "(123)-456-7890",
+      default: true
     }),
     Address.create({
       userId: 2,
@@ -625,7 +626,8 @@ async function seed() {
       state: "CO",
       country: "United States",
       postalCode: faker.address.zipCode(),
-      phone: "(123)-456-7890"
+      phone: "(123)-456-7890",
+      default: false
     }),
     Address.create({
       userId: 2,
@@ -636,7 +638,8 @@ async function seed() {
       state: "CA",
       country: "United States",
       postalCode: faker.address.zipCode(),
-      phone: "(123)-456-7890"
+      phone: "(123)-456-7890",
+      default: false
     }),
     Address.create({
       userId: 2,
@@ -647,7 +650,8 @@ async function seed() {
       state: "CA",
       country: "United States",
       postalCode: faker.address.zipCode(),
-      phone: "(123)-456-7890"
+      phone: "(123)-456-7890",
+      default: false
     })
   ]);
 

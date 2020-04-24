@@ -26,5 +26,11 @@ router.delete("/:addressId", async (req, res, next) => {
     next(err);
   }
 });
+router.update("/", async (req, res, next) => {
+  try {
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
