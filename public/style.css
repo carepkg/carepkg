@@ -1064,21 +1064,21 @@ input[type='text'], input[type='email'] {
 
 /* ######## CHANGE EMAIL ######### */
 
-#change-email-page {
+.change-cred-page {
     padding-top: 40px;
 }
-#change-email-page > h3 {
+.change-email-hdr {
     font-size: 1.25em;
     margin: 4px;
     font-weight: 400;
 }
-#change-email-page > h5 {
+.change-cred-page > h5 {
     color: rgb(126, 126, 126);
-    margin: 4px;
+    margin: 8px 4px;
     padding-bottom: 4px;
     font-weight: 400;
 }
-.change-email-btn {
+.change-cred-btn {
     border: 1px solid black;
     font-size: .875em;
     font-weight: 500;
@@ -1090,18 +1090,23 @@ input[type='text'], input[type='email'] {
     border-radius: 24px;
     transition: 0.325s ease
 }
-.change-email-btn:hover {
+.change-cred-btn:hover {
     background-color: rgb(24, 24, 24);
     color: white;
     cursor: pointer;
 }
-.change-email-btn:focus {
+.change-cred-btn:focus {
     outline: none;
+}
+.change-password-hdr {
+    margin: 0 0 12px 4px;
+    font-size: 1.25em;
+    font-weight: 400;
 }
 
 /*  ##### EMAIL ERROR ######## */
 
-.email-error {
+.cred-error {
     line-height: 40px;
     text-align: center;
     color: red;
@@ -1117,7 +1122,7 @@ input[type='text'], input[type='email'] {
     animation-duration: 1.25s;
     animation-delay: 4.75s;
 }
-.email-error > span {
+.cred-error > span {
     padding-right: 8px;
 }
 

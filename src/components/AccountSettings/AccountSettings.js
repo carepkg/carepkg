@@ -29,7 +29,7 @@ const AccountSettings = props => {
       ) : setting === "email" ? (
         <ChangeEmail />
       ) : setting === "password" ? (
-        <ChangePassword user={user} />
+        <ChangePassword />
       ) : setting === "ccs" ? (
         <CreditCards />
       ) : null}

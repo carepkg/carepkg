@@ -95,8 +95,17 @@ export const updateEmailThunk = (originalEmail, newEmail) => async dispatch => {
   }
 };
 
-export const updatePasswordThunk = password => async dispatch => {
+export const updatePasswordThunk = (
+  originalPass,
+  newPass
+) => async dispatch => {
   try {
+    const response = await axios.put("/api/users/update/password", {
+      originalPass,
+      newPass
+    });
+    const user = response.data;
+    dispatch(updatePassword(user));
   } catch (err) {
     console.error(err);
   }
@@ -113,8 +122,8 @@ const userReducer = (state = guest, action) => {
       return guest;
     case UPDATE_EMAIL:
       return action.user;
-    // case UPDATE_PASSWORD:
-    //   return action.user;
+    case UPDATE_PASSWORD:
+      return action.user;
     default:
       return state;
   }

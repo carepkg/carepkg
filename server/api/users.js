@@ -42,4 +42,21 @@ router.put("/update/email", async (req, res, next) => {
   }
 });
 
+router.put("/update/password", async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const user = await User.findOne({
+      where: {
+        password: req.body.originalPass
+      }
+    });
+    await user.update({
+      password: req.body.newPass
+    });
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
