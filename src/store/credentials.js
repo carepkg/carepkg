@@ -26,3 +26,12 @@ export const updatePasswordThunk = password => async dispatch => {
     console.error(err);
   }
 };
+
+const credentialsReducer = (state = {}, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+export default credentialsReducer;

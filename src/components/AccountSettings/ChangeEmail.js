@@ -1,12 +1,15 @@
 import React from "react";
 import { updateEmailThunk } from "../../store/credentials";
 import MatchError from "./MatchError";
+import ChangeSuccess from "./ChangeSuccess";
 import InvalidEmailError from "./InvalidEmailError";
 import { connect } from "react-redux";
 
 const initialState = {
   email: "",
-  confirmEmail: ""
+  confirmEmail: "",
+  error: "",
+  success: false
 };
 class ChangeEmail extends React.Component {
   constructor(props) {
@@ -14,7 +17,8 @@ class ChangeEmail extends React.Component {
     this.state = {
       email: "",
       confirmEmail: "",
-      error: ""
+      error: "",
+      success: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,14 +39,16 @@ class ChangeEmail extends React.Component {
         error: "matching"
       });
     } else {
-      updateEmailThunk(this.state.email);
+      updateEmailThunk(this.state.email).then(() =>
+        this.setState({ success: true })
+      );
     }
 
     this.setState(initialState);
   }
   render() {
     const originalEmail = this.props.user.email;
-    const { error } = this.state;
+    const { error, success } = this.state;
     return (
       <div id="change-email-page">
         <h3>Change Email</h3>
@@ -74,6 +80,7 @@ class ChangeEmail extends React.Component {
         ) : error === "matching" ? (
           <MatchError />
         ) : null}
+        {success && <ChangeSuccess type={"email"} />}
       </div>
     );
   }
