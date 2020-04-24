@@ -14,6 +14,11 @@ const getAddresses = addresses => {
   };
 };
 
+const removeAddress = addressId => ({
+  type: REMOVE_ADDRESS,
+  addressId
+});
+
 export const getAddressesThunk = userId => async dispatch => {
   try {
     const response = await axios.get(`/api/addresses/${userId}`);
@@ -25,14 +30,21 @@ export const getAddressesThunk = userId => async dispatch => {
   }
 };
 
+export const removeAddressThunk = addressId => async dispatch => {
+  try {
+    dispatch(removeAddress(addressId));
+    await axios.delete(`/api/addresses/${addressId}`);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const addressesReducer = (state = [], action) => {
   switch (action.type) {
     case GET_ADDRESSES:
-      return action.addresses; //state = action.addresses
-    // case ADD_ADDRESS:
-    //   return [...state, address];
-    // case REMOVE_ADDRESS:
-    //   return state.filter(); ///takes addressId will do later
+      return action.addresses;
+    case REMOVE_ADDRESS:
+      return state.filter(address => address.id !== action.addressId);
     default:
       return state;
   }

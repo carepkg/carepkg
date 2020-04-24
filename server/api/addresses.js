@@ -15,4 +15,16 @@ router.get("/:userId", async (req, res, next) => {
   }
 });
 
+router.delete("/:addressId", async (req, res, next) => {
+  try {
+    await Address.destroy({
+      where: {
+        id: req.params.addressId
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

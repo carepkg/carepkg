@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import AddAddress from "./AddAddress";
-import { getAddressesThunk } from "../../store/addresses";
+import { getAddressesThunk, removeAddressThunk } from "../../store/addresses";
 import { connect } from "react-redux";
 
 const Addresses = props => {
-  const { user, addresses } = props;
+  const { user, addresses, fetchAddresses, removeAddress } = props;
   useEffect(() => {
     if (props.user) {
-      props.fetchAddresses(user.id);
+      fetchAddresses(user.id);
     }
   }, []);
   console.log(addresses);
@@ -44,7 +44,12 @@ const Addresses = props => {
                   </div>
                   <div className="address-util-menu">
                     <p className="address-util-1">Edit</p>
-                    <p className="address-util-1">Remove</p>
+                    <p
+                      className="address-util-1"
+                      onClick={() => removeAddress(address.id)}
+                    >
+                      Remove
+                    </p>
                     <p className="address-util-2">Set as Default</p>
                   </div>
                 </div>
@@ -72,7 +77,8 @@ const mapState = state => ({
   addresses: state.addresses
 });
 const mapDispatch = dispatch => ({
-  fetchAddresses: userId => dispatch(getAddressesThunk(userId))
+  fetchAddresses: userId => dispatch(getAddressesThunk(userId)),
+  removeAddress: addressId => dispatch(removeAddressThunk(addressId))
 });
 
 export default connect(mapState, mapDispatch)(Addresses);
