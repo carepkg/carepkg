@@ -97,8 +97,8 @@ const mapState = state => ({
 });
 const mapDispatch = dispatch => ({
   fetchAddresses: userId => dispatch(getAddressesThunk(userId)),
-  removeAddress: () => dispatch(removeAddressThunk()),
-  removeDefault: address => dispatch(removeCurrentDefaultThunk(address)),
+  removeAddress: addressId => dispatch(removeAddressThunk(addressId)),
+  removeDefault: () => dispatch(removeCurrentDefaultThunk()),
   setNewDefault: address => dispatch(setDefaultThunk(address))
 });
 
