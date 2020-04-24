@@ -43,7 +43,7 @@ class AddAddress extends React.Component {
     return (
       <div id="add-address-page">
         <h3>Add Address</h3>
-        <form id="add-address-form">
+        <form className="acct-settings-form">
           <input
             name="name"
             type="text"

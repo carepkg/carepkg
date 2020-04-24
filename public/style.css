@@ -644,7 +644,7 @@ label {
 input[type='text'], input[type='email'] {
     width: 50%;
 }
-button[type='submit'] {
+.signup-form > button[type='submit'] {
     width: 120px;
     height: 50px;
     background-color: rgb(12, 142, 12);
@@ -979,7 +979,9 @@ button[type='submit'] {
 #add-address-page h3 {
     margin: 0 0 12px 4px;
 }
-#add-address-form > input {
+.acct-settings-form > input {
+    display: flex;
+    flex-direction: column;
     border: none;
     border: 1px solid rgb(210, 209, 209);
     height: 28px;
@@ -988,7 +990,7 @@ button[type='submit'] {
     text-indent: 6px;
     font-size: .8em;
 }
-#add-address-form > input:focus {
+.acct-settings-form > input:focus {
     outline: none;
     border: 1px solid green;
     border-radius: 8px;
@@ -1056,6 +1058,60 @@ button[type='submit'] {
     font-weight: 400;
 }
 
+/* ######## CHANGE EMAIL ######### */
+
+#change-email-page {
+    padding-top: 40px;
+}
+#change-email-page > h3 {
+    font-size: 1.25em;
+    margin: 4px;
+    font-weight: 400;
+}
+#change-email-page > h5 {
+    color: rgb(126, 126, 126);
+    margin: 4px;
+    padding-bottom: 4px;
+    font-weight: 400;
+}
+.change-email-btn {
+    border: 1px solid black;
+    font-size: .875em;
+    font-weight: 500;
+    background-color: white;
+    color: black;
+    width: 140px;
+    height: 32px;
+    margin: 4px;
+    border-radius: 24px;
+    transition: 0.325s ease
+}
+.change-email-btn:hover {
+    background-color: rgb(24, 24, 24);
+    color: white;
+    cursor: pointer;
+}
+.change-email-btn:focus {
+    outline: none;
+}
+
+/*  ##### EMAIL ERROR ######## */
+
+.email-error {
+    line-height: 40px;
+    text-align: center;
+    color: red;
+    font-size: 1em;
+    font-weight: 400;
+    width: 300px;
+    height: 40px;
+    border: 1px solid red;
+    border-radius: 8px;
+    margin-top: 24px;
+}
+.email-error > span {
+    padding-right: 8px;
+}
 
 /* ------- CART -------- */
 
