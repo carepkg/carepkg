@@ -27,7 +27,7 @@ const AccountSettings = props => {
       {setting === "addresses" ? (
         <Addresses user={user} addresses={addresses} />
       ) : setting === "email" ? (
-        <ChangeEmail user={user} />
+        <ChangeEmail />
       ) : setting === "password" ? (
         <ChangePassword user={user} />
       ) : setting === "ccs" ? (

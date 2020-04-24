@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const Sequelize = require("sequelize");
 const { User, Product, Order } = require("../db/models");
 
 const isAdmin = (req, res, next) => {
@@ -23,24 +24,22 @@ router.get("/", isAdmin, async (req, res, next) => {
     next(err);
   }
 });
-// router.get("/user", async (req, res, next) => {
-//   try {
-//     //currently grabbing Henry Griffith's cart for testing purposes
-//     const user = await User.findByPk(1, {
-//       include: [
-//         {
-//           model: Order,
-//           where: {
-//             userId: 1
-//           },
-//           include: [{ model: Product }]
-//         }
-//       ]
-//     });
-//     if (user) res.json(user);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
+
+router.put("/update/email", async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const user = await User.findOne({
+      where: {
+        email: req.body.originalEmail
+      }
+    });
+    await user.update({
+      email: req.body.newEmail
+    });
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;

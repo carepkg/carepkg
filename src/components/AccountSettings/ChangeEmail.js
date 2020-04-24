@@ -1,9 +1,10 @@
 import React from "react";
-import { updateEmailThunk } from "../../store/credentials";
+import { updateEmailThunk } from "../../store/user";
 import MatchError from "./MatchError";
 import ChangeSuccess from "./ChangeSuccess";
 import InvalidEmailError from "./InvalidEmailError";
 import { connect } from "react-redux";
+import { me } from "../../store/user";
 
 const initialState = {
   email: "",
@@ -30,29 +31,34 @@ class ChangeEmail extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    const { user, updateEmail, fetchMe } = this.props;
+    console.log("in");
     if (this.state.email.indexOf("@") === -1) {
+      console.log("before invalid");
       this.setState({
         error: "invalid email"
       });
+      console.log("after invalid");
     } else if (this.state.email !== this.state.confirmEmail) {
       this.setState({
         error: "matching"
       });
     } else {
-      updateEmailThunk(this.state.email).then(() =>
-        this.setState({ success: true })
-      );
+      console.log("else");
+      updateEmail(user.email, this.state.email);
+      fetchMe();
+      this.setState({ success: true });
     }
-
-    this.setState(initialState);
+    this.setState({ email: "", confirmEmail: "" });
+    setTimeout(() => this.setState(initialState), 6000);
   }
   render() {
-    const originalEmail = this.props.user.email;
     const { error, success } = this.state;
+    console.log(error);
     return (
       <div id="change-email-page">
         <h3>Change Email</h3>
-        <h5>Current Email: {originalEmail}</h5>
+        <h5>Current Email: {this.props.user.email}</h5>
         <form className="acct-settings-form" onSubmit={this.handleSubmit}>
           <input
             name="email"
@@ -86,8 +92,13 @@ class ChangeEmail extends React.Component {
   }
 }
 
+const mapState = state => ({
+  user: state.user
+});
 const mapDispatch = dispatch => ({
-  updateEmail: email => dispatch(updateEmailThunk(email))
+  updateEmail: (originalEmail, newEmail) =>
+    dispatch(updateEmailThunk(originalEmail, newEmail)),
+  fetchMe: () => dispatch(me)
 });
 
-export default connect(null, mapDispatch)(ChangeEmail);
+export default connect(mapState, mapDispatch)(ChangeEmail);
