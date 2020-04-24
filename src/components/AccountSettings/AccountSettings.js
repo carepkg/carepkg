@@ -6,7 +6,7 @@ import ChangePassword from "./ChangePassword";
 import CreditCards from "./CreditCards";
 
 const AccountSettings = props => {
-  const { user } = props;
+  const { user, addresses } = props;
   const [setting, setSetting] = useState("addresses");
   return (
     <div id="acct-settings-page">
@@ -25,7 +25,7 @@ const AccountSettings = props => {
         </span>
       </div>
       {setting === "addresses" ? (
-        <Addresses user={user} />
+        <Addresses user={user} addresses={addresses} />
       ) : setting === "email" ? (
         <ChangeEmail user={user} />
       ) : setting === "password" ? (

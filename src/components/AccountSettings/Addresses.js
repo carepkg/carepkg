@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import AddAddress from "./AddAddress";
 
 const Addresses = props => {
-  const { user } = props;
-  console.log(user);
+  const { addresses } = props;
+  console.log(addresses);
   const [adding, setAdding] = useState(false);
   const addAddress = () => setAdding(true);
   return (
     <div id="addresses-body">
       {adding ? (
         <AddAddress />
-      ) : user && user.addresses ? (
+      ) : addresses ? (
         <div id="user-addresses">
-          {user.addresses.map((address, idx) => {
+          {addresses.map((address, idx) => {
             return (
               <React.Fragment>
                 <div className="user-address-container">
                   <div className="address-header">
-                    <h3>{address.name}</h3>
+                    <h4>{address.name}</h4>
                     {idx === 0 ? (
                       <button className="address-check-mark">&#10003;</button>
                     ) : null}
@@ -41,9 +41,6 @@ const Addresses = props => {
                     <p className="address-util-2">Set as Default</p>
                   </div>
                 </div>
-                <div className="user-address-container"></div>
-                <div className="user-address-container"></div>
-                <div className="user-address-container"></div>
               </React.Fragment>
             );
           })}
