@@ -21,7 +21,6 @@ export const getUpvoteThunk = (userId, packageId) => async dispatch => {
   try {
     const res = await axios.get(`/api/upvotes/${packageId}/${userId}`);
     const upvote = res.data;
-    console.log(upvote);
     dispatch(getUpvote(upvote));
   } catch (err) {
     console.error(err);
@@ -32,7 +31,6 @@ export const addUpvoteThunk = (userId, packageId) => async dispatch => {
     const pkg = await axios.post(`/api/upvotes/${packageId}`, {
       userId
     });
-    console.log("post: ", pkg.data);
     dispatch(mapAddUpvote(pkg.data));
   } catch (err) {
     console.error(err);
@@ -41,7 +39,6 @@ export const addUpvoteThunk = (userId, packageId) => async dispatch => {
 export const deleteUpvoteThunk = (userId, packageId) => async dispatch => {
   try {
     const pkg = await axios.delete(`/api/upvotes/${packageId}/${userId}`);
-    console.log("delete: ", pkg.data);
     dispatch(mapDelUpvote(pkg.data));
   } catch (err) {
     console.error(err);

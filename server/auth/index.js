@@ -5,7 +5,7 @@ const {
   Order,
   Product,
   LineItem,
-  PurchaseProfile,
+  Address,
   Company,
   Package,
   PackageLineItem
@@ -41,7 +41,7 @@ router.post("/login", async (req, res, next) => {
           ]
         },
         {
-          model: PurchaseProfile
+          model: Address
         },
         {
           model: Package,
@@ -110,7 +110,6 @@ router.post("/logout", (req, res, next) => {
 
 router.get("/me", (req, res) => {
   try {
-    console.log(req.session);
     if (req.user) {
       res.json(req.user);
     } else {

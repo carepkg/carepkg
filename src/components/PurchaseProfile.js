@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const PurchaseProfile = props => {
   const [isActive, setActive] = useState(false);
-  const pps = props.purchaseProfiles;
+  const pps = props.addresses;
   const ToggleActive = () => {
     setActive(!isActive);
   };
@@ -17,7 +17,6 @@ const PurchaseProfile = props => {
       {pps && pps.length ? (
         <div id="purch-profile-container">
           {pps.map((pp, idx) => {
-            console.log(pp);
             return (
               <div
                 className={isActive ? "pp-card-selected" : "pp-card"}
@@ -44,7 +43,7 @@ const PurchaseProfile = props => {
 };
 
 const mapState = state => ({
-  purchaseProfiles: state.user.purchaseProfiles
+  addresses: state.user.addresses
 });
 
 const mapDispatch = dispatch => ({});

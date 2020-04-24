@@ -8,6 +8,7 @@ import cart from "./cart";
 import packages from "./packages";
 import upvote from "./upvote";
 import categories from "./categories";
+import addresses from "./addresses";
 
 const reducer = combineReducers({
   products: products,
@@ -16,8 +17,8 @@ const reducer = combineReducers({
   cart: cart,
   packages: packages,
   upvote: upvote,
-  categories,
-  categories
+  categories: categories,
+  addresses: addresses
 });
 
 // const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware));

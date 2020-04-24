@@ -3,11 +3,9 @@ import React, { useState } from "react";
 const AddToCart = props => {
   const [qty, setQty] = useState(1);
   const { productId, userId } = props;
-  console.log(props);
 
   const handleClick = e => {
     e.preventDefault();
-    console.log(productId);
     props.addToCartThunk(qty, productId, userId);
   };
   return (

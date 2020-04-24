@@ -16,13 +16,12 @@ const {
   Product,
   LineItem,
   Order,
-  PurchaseProfile,
+  Address,
   Package,
   PackageLineItem,
   Upvote
 } = require("./db/models");
 const PORT = 5000;
-console.log(session);
 const app = express();
 
 const createApp = () => {
@@ -72,7 +71,7 @@ const createApp = () => {
                 ]
               },
               {
-                model: PurchaseProfile
+                model: Address
               },
               {
                 model: Package,

@@ -19,6 +19,10 @@ body,
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
+@keyframes success-msg-fade {
+    from {opacity: 1}
+    to {opacity: 0}
+}
 #landing-page{
     width: 100%;
     /* height: 100%; */
@@ -644,7 +648,7 @@ label {
 input[type='text'], input[type='email'] {
     width: 50%;
 }
-button[type='submit'] {
+.signup-form > button[type='submit'] {
     width: 120px;
     height: 50px;
     background-color: rgb(12, 142, 12);
@@ -680,9 +684,9 @@ button[type='submit'] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 72px;
-    padding-top: 60px;
-    width: 30vw;
+    margin-left: 120px;
+    padding-top: 40px;
+    width: 20vw;
 }
 #user-specs {
     display: flex;
@@ -740,8 +744,8 @@ button[type='submit'] {
 #profile-body {
     width: 55vw;
     display: flex;
-    margin-top: 80px;
-    max-height: 72.5vh;
+    margin-top: 56px;
+    max-height: 82.5vh;
     overflow: hidden;
 }
 .profile-signout {
@@ -856,6 +860,292 @@ button[type='submit'] {
     margin-left: 2px;
     font-size: .89em;
     vertical-align: text-top;
+}
+
+/* ###### ACCOUNT SETTINGS ########### */
+
+#acct-settings-page {
+    height: 72.5vh;
+}
+#AS-slide-hdr {
+    padding: 8px 48px 16px 12px;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+}
+.AS-slide-unit {
+    color: rgb(116, 116, 116);
+    margin: 4px 24px;
+}
+.AS-slide-unit:hover {
+    cursor: pointer;
+    color: black;
+}
+
+/* ##### ADDRESS ######## */
+
+#addresses-body {
+    padding-top: 24px;
+}
+#addresses-dflt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#addresses-dflt > * {
+    margin: 4px;
+}
+#user-addresses {
+    display: flex;
+    flex-flow: row wrap;
+}
+.user-address-container {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 220px;
+    border: 1px solid rgba(51, 51, 51, 0.2);
+    margin: 16px;
+    border-radius: 6px;
+    
+}
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+    text-indent: 14px;
+}
+.address-header > h4 {
+    margin: 4px 0;
+}
+.address-check-mark {
+    width: 16px;
+    height: 16px;
+    border-radius: 24px;
+    color: green;
+    border: 1px solid green;
+    margin-right: 8px;
+}
+.address-details-box {
+    padding-left: 14px;
+    padding-top: 8px;
+    height: 148px;
+}
+.address-line {
+    font-weight: 200;
+    margin: 4px 0;
+}
+.address-util-menu {
+    font-size: 0.725em;
+    display: flex;
+    height: 16px;
+    margin-top: 10px;
+    color: rgb(28, 28, 247);
+}
+.address-util-1 {
+    padding: 0 14px;
+    border-right: 1px solid rgba(51, 51, 51, 0.2);
+    text-decoration: underline;
+}
+.address-util-2 {
+    padding: 0 19px;
+    text-decoration: underline;
+}
+.address-util-1:hover,
+.address-util-2:hover {
+    cursor: pointer;
+}
+.add-address-btn {
+    font-size: .875em;
+    font-weight: 500;
+    background-color: white;
+    color: black;
+    width: 140px;
+    height: 32px;
+    margin: 6px;
+    border-radius: 24px;
+    transition: 0.325s ease
+}
+.add-address-btn:hover {
+    background-color: rgb(24, 24, 24);
+    color: white;
+    cursor: pointer;
+}
+.add-address-btn:focus {
+    outline: none;
+}
+/* #### ADD ADDRESS ########### */
+
+#add-address-form {
+    display: flex;
+    flex-direction: column;
+}
+#add-address-page h3 {
+    margin: 0 0 12px 4px;
+}
+.acct-settings-form > input {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border: 1px solid rgb(210, 209, 209);
+    height: 28px;
+    border-radius: 8px;
+    margin: 0 0 16px 4px;
+    text-indent: 6px;
+    font-size: .8em;
+}
+.acct-settings-form > input:focus {
+    outline: none;
+    border: 1px solid green;
+    border-radius: 8px;
+}
+.add-address-select {
+    background-color: white;
+	display: block;
+	font-size: .8em;
+    font-weight: 400;
+	color: #444;
+	line-height: 1.3;
+    padding: .6em 1.4em .5em 0;
+    width: 240px;
+	box-sizing: border-box;
+    margin: 0 0 16px 4px;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+	  linear-gradient(to bottom, #ffffff 0%,#f4f4f4 100%);
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+    text-indent: 6px;
+}
+.add-address-select::-ms-expand {
+	display: none;
+}
+.add-address-select:hover {
+	border-color: #888;
+}
+.add-address-select:focus {
+	outline: none;
+}
+.add-address-select option {
+	font-weight:normal;
+}
+#add-address-btn-menu {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    margin-left: 4px;
+}
+.add-address-save-btn {
+    color: white;
+    background-color: rgb(24, 24, 24);
+    width: 140px;
+    height: 32px;
+    margin-right: 24px;
+    border-radius: 24px;
+    font-weight: 400;
+}
+.add-address-cancel-btn {
+    background-color: white;
+    color: rgb(24, 24, 24);
+    width: 140px;
+    height: 32px;
+    margin-left: 24px;
+    border-radius: 24px;
+    font-weight: 400;
+}
+
+/* ######## CHANGE EMAIL ######### */
+
+.change-cred-page {
+    padding-top: 40px;
+}
+.change-email-hdr {
+    font-size: 1.25em;
+    margin: 4px;
+    font-weight: 400;
+}
+.change-cred-page > h5 {
+    color: rgb(126, 126, 126);
+    margin: 8px 4px;
+    padding-bottom: 4px;
+    font-weight: 400;
+}
+.change-cred-btn {
+    border: 1px solid black;
+    font-size: .875em;
+    font-weight: 500;
+    background-color: white;
+    color: black;
+    width: 140px;
+    height: 32px;
+    margin: 4px;
+    border-radius: 24px;
+    transition: 0.325s ease
+}
+.change-cred-btn:hover {
+    background-color: rgb(24, 24, 24);
+    color: white;
+    cursor: pointer;
+}
+.change-cred-btn:focus {
+    outline: none;
+}
+.change-password-hdr {
+    margin: 0 0 12px 4px;
+    font-size: 1.25em;
+    font-weight: 400;
+}
+
+/*  ##### EMAIL ERROR ######## */
+
+.cred-error {
+    line-height: 40px;
+    text-align: center;
+    color: red;
+    font-size: 1em;
+    font-weight: 400;
+    width: 300px;
+    height: 40px;
+    border: 1px solid red;
+    border-radius: 8px;
+    margin-top: 24px;
+    opacity: 1;
+    animation-name: success-msg-fade;
+    animation-duration: 1.25s;
+    animation-delay: 4.75s;
+}
+.cred-error > span {
+    padding-right: 8px;
+}
+
+/* ##### CHANGE SUCCESS ######### */
+
+.change-success {
+    line-height: 40px;
+    text-align: center;
+    color: green;
+    font-size: 1em;
+    font-weight: 400;
+    width: 450px;
+    height: 40px;
+    border: 1px solid green;
+    border-radius: 8px;
+    margin-top: 24px;
+    animation-name: success-msg-fade;
+    animation-delay: 4.75s;
+    animation-duration: 1.25s;
+}
+.change-success > span {
+    font-size: 1.25em;
+    padding-right: 8px;
 }
 
 /* ------- CART -------- */

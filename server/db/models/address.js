@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const PurchaseProfile = db.define(
-  "purchaseProfile",
+const Address = db.define(
+  "address",
   {
     email: {
       type: Sequelize.STRING,
@@ -10,33 +10,54 @@ const PurchaseProfile = db.define(
         isEmail: true
       }
     },
-    shipToAddress: {
+    name: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
-    shipToCity: {
+    address1: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
-    shipToState: {
+    address2: {
+      type: Sequelize.STRING
+    },
+    city: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
-    shipToPostalCode: {
+    state: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true
       }
+    },
+    country: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    postalCode: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    default: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false
     }
   },
   {
@@ -46,4 +67,4 @@ const PurchaseProfile = db.define(
   }
 );
 
-module.exports = PurchaseProfile;
+module.exports = Address;

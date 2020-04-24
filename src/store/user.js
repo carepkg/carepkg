@@ -6,6 +6,8 @@ import history from "../history";
  */
 const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
+const UPDATE_EMAIL = "UPDATE EMAIL";
+const UPDATE_PASSWORD = "UPDATE PASSWORD";
 
 /**
  * INITIAL STATE
@@ -17,6 +19,15 @@ const guest = {};
  */
 const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
+const updateEmail = user => ({
+  type: UPDATE_EMAIL,
+  user
+});
+
+const updatePassword = user => ({
+  type: UPDATE_PASSWORD,
+  user
+});
 
 /**
  * THUNK CREATORS
@@ -26,7 +37,6 @@ export const me = () => async dispatch => {
     const res = await axios.get("/auth/me", {
       withCredentials: true
     });
-    console.log(res.data);
     dispatch(getUser(res.data || guest));
   } catch (err) {
     console.error(err);
@@ -72,6 +82,34 @@ export const logout = () => async dispatch => {
     console.error(err);
   }
 };
+export const updateEmailThunk = (originalEmail, newEmail) => async dispatch => {
+  try {
+    const response = await axios.put("/api/users/update/email", {
+      originalEmail,
+      newEmail
+    });
+    const user = response.data;
+    dispatch(updateEmail(user));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const updatePasswordThunk = (
+  originalPass,
+  newPass
+) => async dispatch => {
+  try {
+    const response = await axios.put("/api/users/update/password", {
+      originalPass,
+      newPass
+    });
+    const user = response.data;
+    dispatch(updatePassword(user));
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 /**
  * REDUCER
@@ -82,6 +120,10 @@ const userReducer = (state = guest, action) => {
       return action.user;
     case REMOVE_USER:
       return guest;
+    case UPDATE_EMAIL:
+      return action.user;
+    case UPDATE_PASSWORD:
+      return action.user;
     default:
       return state;
   }
