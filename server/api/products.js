@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   Product,
   Category,
+  ProductCategory,
   PricingHistory,
   Review,
   User
@@ -33,9 +34,12 @@ router.get("/:productId", async (req, res, next) => {
           include: [
             {
               model: User
-              // where: {
-              //   id: Review.userId
-              // }
+            }
+          ],
+          model: ProductCategory,
+          include: [
+            {
+              model: Category
             }
           ]
         }

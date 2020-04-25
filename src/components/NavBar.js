@@ -17,10 +17,10 @@ const NavBar = props => {
             <MainSearchBar />
           </div>
           <div id="navbar-top-right">
-            <NavLink to="/bundles" className="navlink nav-product-link">
+            <NavLink to="/bundles" className="navlink">
               Packages
             </NavLink>
-            <NavLink to="/products" className="navlink nav-product-link">
+            <NavLink to="/products" className="navlink">
               Products
             </NavLink>
             <NavLink to="/cart" className="navlink">

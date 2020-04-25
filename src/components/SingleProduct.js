@@ -9,6 +9,7 @@ class SingleProduct extends React.Component {
   }
   render() {
     const { product } = this.props;
+    console.log(product);
     const { reviews } = product;
     return (
       <div id="page-container">

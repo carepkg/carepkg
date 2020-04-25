@@ -34,6 +34,9 @@ Product.hasMany(Review);
 Product.hasMany(CartLineItem);
 Product.hasMany(PricingHistory);
 Product.hasMany(LineItem);
+Product.hasMany(ProductCategory);
+
+Category.hasMany(ProductCategory);
 
 Order.hasMany(LineItem);
 

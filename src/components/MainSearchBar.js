@@ -14,7 +14,7 @@ const MainSearchBar = () => {
         style={{
           lineHeight: "32px",
           width: "58.3%",
-          height: "45px",
+          height: "44px",
           borderRadius: 8,
           margin: "4px"
         }}

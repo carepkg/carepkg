@@ -16,17 +16,23 @@ class AllProducts extends React.Component {
   }
   render() {
     const { products, userId, addToCartThunk, categories } = this.props;
+    const filters = ["Best Sellers", "New Arrivals", "Shop All"];
     return products ? (
       <div id="products-component">
         <div id="products-header">
           <h2 id="products-header-text">Products</h2>
         </div>
-        <div id="product-filters">
+        <div id="product-categories">
           {categories
             ? categories.map(cat => {
                 return <span>{cat.name}</span>;
               })
             : null}
+        </div>
+        <div id="product-filters">
+          {filters.map(filter => (
+            <span>{filter}</span>
+          ))}
         </div>
         <div id="products-container">
           {products.map(product => {
@@ -46,11 +52,11 @@ class AllProducts extends React.Component {
                     </h6>
                   </NavLink>
                 </div>
-                <AddToCart
+                {/* <AddToCart
                   userId={userId}
                   productId={product.id}
                   addToCartThunk={addToCartThunk}
-                />
+                /> */}
               </div>
             );
           })}
