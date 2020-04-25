@@ -17,6 +17,12 @@ const NavBar = props => {
             <MainSearchBar />
           </div>
           <div id="navbar-top-right">
+            <NavLink to="/bundles" className="navlink nav-product-link">
+              Packages
+            </NavLink>
+            <NavLink to="/products" className="navlink nav-product-link">
+              Products
+            </NavLink>
             <NavLink to="/cart" className="navlink">
               Cart
             </NavLink>
@@ -41,22 +47,6 @@ const NavBar = props => {
             )}
           </div>
         </div>
-      </div>
-      <hr className="nav-break" />
-      <div id="navbar-bot">
-        <div className="navlinks navleft">
-          <NavLink to="/bundles" className="navlink nav-product-link">
-            Packages
-          </NavLink>
-          <NavLink to="/products" className="navlink nav-product-link">
-            Products
-          </NavLink>
-          <NavLink to="/bundles" className="navlink nav-product-link">
-            Contact
-          </NavLink>
-        </div>
-
-        <div className="navlinks navright"></div>
       </div>
     </div>
   );

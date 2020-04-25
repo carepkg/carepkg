@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, NavLink } from "react-router-dom";
 import { getProductsThunk } from "../store/products";
 import { addToCartThunk } from "../store/cart";
+import { getCategoriesThunk } from "../store/categories";
 import AddToCart from "./AddToCart";
 import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
@@ -11,13 +12,21 @@ import FooterBottom from "./FooterBottom";
 class AllProducts extends React.Component {
   componentDidMount() {
     this.props.getProductsThunk();
+    this.props.fetchCategories();
   }
   render() {
-    const { products, userId, addToCartThunk } = this.props;
+    const { products, userId, addToCartThunk, categories } = this.props;
     return products ? (
       <div id="products-component">
         <div id="products-header">
           <h2 id="products-header-text">Products</h2>
+        </div>
+        <div id="product-filters">
+          {categories
+            ? categories.map(cat => {
+                return <span>{cat.name}</span>;
+              })
+            : null}
         </div>
         <div id="products-container">
           {products.map(product => {
@@ -31,7 +40,10 @@ class AllProducts extends React.Component {
                     <h4 className="product-name">{product.name}</h4>
                   </NavLink>
                   <NavLink to={`/products/${product.id}`}>
-                    <h6 className="product-price">${product.price}</h6>
+                    <h6 className="product-price">
+                      <span>$</span>
+                      {product.price}
+                    </h6>
                   </NavLink>
                 </div>
                 <AddToCart
@@ -64,7 +76,8 @@ class AllProducts extends React.Component {
 const mapStateToProps = state => {
   return {
     products: state.products,
-    userId: state.user.id
+    userId: state.user.id,
+    categories: state.categories
   };
 };
 
@@ -72,7 +85,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getProductsThunk: () => dispatch(getProductsThunk()),
     addToCartThunk: (qty, productId, userId) =>
-      dispatch(addToCartThunk(qty, productId, userId))
+      dispatch(addToCartThunk(qty, productId, userId)),
+    fetchCategories: () => dispatch(getCategoriesThunk())
   };
 };
 

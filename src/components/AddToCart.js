@@ -9,7 +9,7 @@ const AddToCart = props => {
     props.addToCartThunk(qty, productId, userId);
   };
   return (
-    <form>
+    <form className="add-to-cart-form">
       <label htmlFor="qty">Qty:</label>
       <input
         name="qty"
@@ -17,11 +17,11 @@ const AddToCart = props => {
         min="1"
         value={qty}
         onChange={e => setQty(e.target.value)}
+        className="qty-input"
       />
-      <button
-        style={{ width: "20px", height: "20px", backgroundColor: "yellow" }}
-        onClick={handleClick}
-      ></button>
+      <button className="add-to-cart-btn" onClick={handleClick}>
+        + Add to Cart
+      </button>
     </form>
   );
 };
