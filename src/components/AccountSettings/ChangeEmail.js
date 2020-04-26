@@ -71,7 +71,7 @@ class ChangeEmail extends React.Component {
             placeholder="Confirm New Email"
             autoComplete="off"
           ></input>
-          <button type="submit" className="change-cred-btn">
+          <button type="submit" className="white-btn">
             Save
           </button>
         </form>

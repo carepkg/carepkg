@@ -4,7 +4,6 @@ import { withRouter, NavLink } from "react-router-dom";
 import { getProductsThunk } from "../store/products";
 import { addToCartThunk } from "../store/cart";
 import { getCategoriesThunk } from "../store/categories";
-import AddToCart from "./AddToCart";
 import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
 import FooterBottom from "./FooterBottom";
