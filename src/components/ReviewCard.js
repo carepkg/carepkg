@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 const ReviewCard = props => {
-  const { review, onProfilePage, user } = props;
+  const { review, onProfilePage, author } = props;
   return (
     <div className="review-container">
       {/* {onProfilePage ? (
@@ -10,7 +10,7 @@ const ReviewCard = props => {
       ) : (
          */}
       <h4 className="review-author">
-        {user.firstName} {user.lastName}
+        {author.firstName} {author.lastName}
       </h4>
       {/* )} */}
       <div className="review-info">Rating: {review.rating}/5</div>

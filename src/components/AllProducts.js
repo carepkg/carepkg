@@ -51,11 +51,6 @@ class AllProducts extends React.Component {
                     </h6>
                   </NavLink>
                 </div>
-                {/* <AddToCart
-                  userId={userId}
-                  productId={product.id}
-                  addToCartThunk={addToCartThunk}
-                /> */}
               </div>
             );
           })}
@@ -89,8 +84,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getProductsThunk: () => dispatch(getProductsThunk()),
-    addToCartThunk: (qty, productId, userId) =>
-      dispatch(addToCartThunk(qty, productId, userId)),
     fetchCategories: () => dispatch(getCategoriesThunk())
   };
 };

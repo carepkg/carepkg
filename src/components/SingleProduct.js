@@ -26,6 +26,7 @@ class SingleProduct extends React.Component {
     const { product, addToCartThunk, user } = this.props;
     console.log(product);
     const { reviews, productCategories } = product;
+    console.log(reviews);
     return (
       <div className="single-prod-page">
         <div className="ad-space-thin">
@@ -102,15 +103,14 @@ class SingleProduct extends React.Component {
             </h6>
           </div>
         </div>
-        {/* /*{" "}
+
         <div>
           <ReviewList
             reviews={reviews}
             product={product}
-            onProfilePage={false}
+            // onProfilePage={false}
           />
-        </div>{" "}
-        */}
+        </div>
       </div>
     );
   }

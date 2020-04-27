@@ -35,7 +35,9 @@ router.get("/:productId", async (req, res, next) => {
             {
               model: User
             }
-          ],
+          ]
+        },
+        {
           model: ProductCategory,
           include: [
             {
