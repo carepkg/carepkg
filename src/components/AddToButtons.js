@@ -2,7 +2,14 @@ import React, { useState } from "react";
 
 const AddToButtons = props => {
   const [qty, setQty] = useState(1);
-  const { addToCartThunk, productId, userId } = props;
+  const {
+    addToCartThunk,
+    productId,
+    userId,
+    inStock,
+    stock,
+    limitedStock
+  } = props;
 
   const addToCart = e => {
     e.preventDefault();
@@ -11,7 +18,7 @@ const AddToButtons = props => {
   return (
     <form className="add-to-cart-form">
       <div className="sp-qty-container">
-        <span>Quantity:</span>{" "}
+        <span className="qty-text">Quantity:</span>{" "}
         <input
           name="qty"
           type="number"
@@ -20,6 +27,16 @@ const AddToButtons = props => {
           value={qty}
           onChange={e => setQty(e.target.value)}
         />
+        {inStock ? (
+          <span className="in-stock">
+            <span>&#10003;</span>In Stock
+          </span>
+        ) : (
+          <span className="out-of-stock">Out of Stock</span>
+        )}
+        {limitedStock && (
+          <span className="out-of-stock">Quick! Only {stock} left.</span>
+        )}
       </div>
       <div className="sp-btn-menu">
         <button className="black-btn" onClick={addToCart}>

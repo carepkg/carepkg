@@ -674,11 +674,21 @@ a{
 .sp-qty-input:focus {
     outline: none;
 }
-.sp-qty-container > span {
+.sp-qty-container .qty-text {
     margin-left: 4px;
     color: black;
     font-weight: 500;
     font-size: 0.75em;
+}
+.in-stock {
+    color: green;
+}
+.in-stock span {
+    padding: 0 8px 0 12px;
+}
+.out-of-stock {
+    color: red;
+    padding: 0 8px;
 }
 .sp-btn-menu {
     margin: 24px 0 40px 0;
