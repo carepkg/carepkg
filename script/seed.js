@@ -151,7 +151,7 @@ async function seed() {
 
   // --------- CATEGORIES -------- \\
   const categories = await Promise.all([
-    Category.create({ name: "Camp Furniture" }),
+    Category.create({ name: "Furniture" }),
     Category.create({ name: "Clothing" }),
     Category.create({ name: "Gadgets" }),
     Category.create({ name: "Hiking" }),

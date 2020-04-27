@@ -34,6 +34,9 @@ Product.hasMany(Review);
 Product.hasMany(CartLineItem);
 Product.hasMany(PricingHistory);
 Product.hasMany(LineItem);
+Product.hasMany(ProductCategory);
+
+Category.hasMany(ProductCategory);
 
 Order.hasMany(LineItem);
 
@@ -45,6 +48,9 @@ CartLineItem.belongsTo(Product);
 
 PackageLineItem.belongsTo(Package);
 PackageLineItem.belongsTo(Product);
+
+ProductCategory.belongsTo(Product);
+ProductCategory.belongsTo(Category);
 
 Address.belongsTo(User);
 Review.belongsTo(User);

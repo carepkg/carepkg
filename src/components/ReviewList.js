@@ -14,7 +14,7 @@ const ReviewList = props => {
               <ReviewCard
                 key={review.id}
                 review={review}
-                user={review.user}
+                author={review.user}
                 product={product}
                 onProfilePage={onProfilePage}
               />

@@ -89,7 +89,7 @@ const Addresses = props => {
           <div>
             <h2>Call 1-234-567-8910</h2>
           </div>
-          <button className="add-address-btn" onClick={addAddress}>
+          <button className="black-btn" onClick={addAddress}>
             Add New Address
           </button>
         </div>
