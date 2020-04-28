@@ -541,7 +541,7 @@ async function seed() {
       productId: 5
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 1,
       productId: 7
     }),
@@ -551,7 +551,7 @@ async function seed() {
       productId: 10
     }),
     PackageLineItem.create({
-      qty: 3,
+      qty: 1,
       packageId: 2,
       productId: 11
     }),
@@ -561,7 +561,7 @@ async function seed() {
       productId: 8
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 2,
       productId: 9
     }),
@@ -571,27 +571,27 @@ async function seed() {
       productId: 4
     }),
     PackageLineItem.create({
-      qty: 3,
+      qty: 1,
       packageId: 3,
       productId: 1
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 4,
       productId: 3
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 4,
       productId: 7
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 4,
       productId: 3
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 5,
       productId: 2
     }),

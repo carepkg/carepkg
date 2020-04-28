@@ -25,9 +25,7 @@ class SingleProduct extends React.Component {
   }
   render() {
     const { product, addToCartThunk, user } = this.props;
-    console.log(product);
     const { reviews, productCategories } = product;
-    console.log(reviews);
     let inStock = product.qty > 10;
     let limitedStock = product.qty > 0 && product.qty < 10;
     return (

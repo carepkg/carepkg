@@ -10,7 +10,6 @@ const PackagesWithProduct = props => {
   const { product, packages } = props;
   let numFillerPackages = 0;
   if (packages.length < 5) numFillerPackages = 5 - packages.length;
-  console.log(packages);
 
   return (
     <div className="pkgs-with-prod-container">

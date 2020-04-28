@@ -8,7 +8,9 @@ const getPackages = packages => ({
   packages
 });
 const getPackagesWithProduct = pkgLineItems => {
-  const packages = Array.from(new Set(pkgLineItems.map(li => li.package)));
+  console.log(pkgLineItems);
+  const packages = Array.from(new Set(pkgLineItems.map(li => li.package.name)));
+  console.log(packages);
   return {
     type: GET_PACKAGES_WITH_PRODUCT,
     packages
