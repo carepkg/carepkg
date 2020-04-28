@@ -45,21 +45,24 @@ body,
     
 }
 #landing-text {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    margin-top: 270px;
+    margin-top: 240px;
+}
+#landing-text > p {
+    font-family: 'Playfair Display', serif;
 }
 #landing-text-1 {
     font-size: 3em;
-    font-weight: 200;
+    font-weight: 300;
 }
 #landing-text-2 {
     font-size: 2.875em;
-    font-weight: 200;
+    font-weight: 400;
     margin: 4px;
 }
 #landing-text-3 {
@@ -72,18 +75,24 @@ body,
     border-radius: 8px;
     width: 150px;
     height: 32px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(147, 66, 66, 0.7);
+    box-shadow: 1px 1px 1px black;
+    border: none;
+    color: white;
+    text-shadow: 0.5px 0.5px gray;
     font-size: 1.15em;
     font-weight: 500;
+    cursor: pointer;
 }
 #landing-text-btn:hover {
+    text-decoration: underline;
     cursor: pointer;
-    transform: scale(1.1)
+    transform: scale(1.025)
 }
 /* 200vh LANDING SECTION 2 */
 #landing-section-2 {
     width: 100vw;
-    height: 200vh;
+    height: 210vh;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -92,6 +101,7 @@ body,
 #landing-sponsors-page {
     width: 100%;
     height: 40%;
+    margin-bottom: 64px;
 }
 #landing-sponsored-cos {
     width: 100vw;
@@ -111,30 +121,89 @@ body,
     align-items: center;
 }
 #landing-sponsors-ads {
-    margin-top: 16px;
+    margin: 16px 0;
     width: 100vw;
-    height: 75vh;
     display: flex;
     justify-content: space-around;
 }
 .landing-ad {
+    max-width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: white;
     width: 612.5px;
     height: 375px;
+    /* height: auto; */
     background-color: rgb(61, 187, 175);
     margin: 0 16px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.landing-ad1 {
+    background-image: url("./background-images/snow-leave-your-mark.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.landing-ad1-textbox {
+    margin-top: 32px;
+}
+.landing-ad1-textbox > p {
+    font-family: 'Playfair Display', serif;
+}
+.landing-ad1-text1 {
+    font-weight: 600;
+    font-size: 3em;
+    color: black;
+}
+.landing-ad1-text2 {
+    color: black;
+    font-weight: 400;
+}
+.landing-ad2 {
+    background-image: url('./background-images/backpacks-one-bag.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.landing-ad2-textbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    color: rgb(255, 255, 255);
+}
+.landing-ad2-textbox > p {
+    font-family: 'Playfair Display', serif;
+}
+.landing-ad2-text1 {
+    font-size: 2em;
+    font-weight: 700;
+}
+.landing-ad2-text2 {
+    font-weight: 400;
+}
+.landing-ad2-text2 span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25em;
+}
 /* FEATURED PACKAGES */
 #featured-pkgs-container {
-    margin: 64px 0;
+    margin: 16px 0 64px 0;
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
     
+}
+#landing-section-2 > h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+#landing-section-2 > h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400
 }
 .featured-pkg {
     display: flex;

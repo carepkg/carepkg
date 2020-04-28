@@ -38,7 +38,7 @@ class LandingPage extends Component {
             <p id="landing-text-1">carepkg</p>
             <p id="landing-text-2">The One and Only Place to Shop</p>
             <p id="landing-text-3">All things nature</p>
-            <button id="landing-text-btn">See Sales</button>
+            <button id="landing-text-btn">Shop Now</button>
           </div>
         </div>
         <div id="landing-section-2">
