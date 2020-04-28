@@ -2,6 +2,7 @@ import axios from "axios";
 
 const GET_PACKAGES = "GET_PACKAGES";
 const GET_PACKAGES_WITH_PRODUCT = "GET_PACKAGES_WITH_PRODUCT";
+
 const getPackages = packages => ({
   type: GET_PACKAGES,
   packages
@@ -17,8 +18,8 @@ const getPackagesWithProduct = pkgLineItems => {
 export const getPackagesThunk = () => async dispatch => {
   try {
     const res = await axios.get("/api/packages");
-    const pkgLineItems = res.data;
-    dispatch(getPackagesWithProduct(pkgLineItems));
+    const packages = res.data;
+    dispatch(getPackages(packages));
   } catch (err) {
     console.error(err);
   }
@@ -28,7 +29,7 @@ export const getPackagesWithProductThunk = productId => async dispatch => {
   try {
     const res = await axios.get(`/api/packages/${productId}`);
     const packageLineItems = res.data;
-    dispatch(getPackages(packageLineItems));
+    dispatch(getPackagesWithProduct(packageLineItems));
   } catch (err) {
     console.error(err);
   }

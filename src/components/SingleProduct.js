@@ -110,7 +110,7 @@ class SingleProduct extends React.Component {
               </h6>
             </div>
           </div>
-          <PackagesWithProduct />
+          <PackagesWithProduct product={product} />
           <div>
             <ReviewList
               reviews={reviews}

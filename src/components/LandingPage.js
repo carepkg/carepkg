@@ -32,6 +32,7 @@ class LandingPage extends Component {
   }
   render() {
     const { packages, user, categories } = this.props;
+    console.log(packages);
     return (
       <div id="landing-page">
         <div id="bg-img-content">
@@ -57,7 +58,14 @@ class LandingPage extends Component {
                         0
                       )
                       .toFixed(2);
-                  return <PackageCard pkg={pkg} price={price} user={user} />;
+                  return (
+                    <PackageCard
+                      pkg={pkg}
+                      price={price}
+                      user={user}
+                      landing={true}
+                    />
+                  );
                 })
               : null}
           </div>
