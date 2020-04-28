@@ -27,4 +27,23 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:productId", async (req, res, next) => {
+  try {
+    const packagesLineItems = await PackageLineItem.findAll({
+      where: {
+        productId: req.params.productId
+      },
+      limit: 5,
+      include: [
+        {
+          model: Package
+        }
+      ]
+    });
+    res.json(packageLineItems);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
