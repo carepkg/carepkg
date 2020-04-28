@@ -45,21 +45,24 @@ body,
     
 }
 #landing-text {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    margin-top: 270px;
+    margin-top: 240px;
+}
+#landing-text > p {
+    font-family: 'Playfair Display', serif;
 }
 #landing-text-1 {
     font-size: 3em;
-    font-weight: 200;
+    font-weight: 300;
 }
 #landing-text-2 {
     font-size: 2.875em;
-    font-weight: 200;
+    font-weight: 400;
     margin: 4px;
 }
 #landing-text-3 {
@@ -72,18 +75,24 @@ body,
     border-radius: 8px;
     width: 150px;
     height: 32px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(147, 66, 66, 0.7);
+    box-shadow: 1px 1px 1px black;
+    border: none;
+    color: white;
+    text-shadow: 0.5px 0.5px gray;
     font-size: 1.15em;
     font-weight: 500;
+    cursor: pointer;
 }
 #landing-text-btn:hover {
+    text-decoration: underline;
     cursor: pointer;
-    transform: scale(1.1)
+    transform: scale(1.025)
 }
 /* 200vh LANDING SECTION 2 */
 #landing-section-2 {
     width: 100vw;
-    height: 200vh;
+    height: 230vh;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -92,49 +101,120 @@ body,
 #landing-sponsors-page {
     width: 100%;
     height: 40%;
+    margin-bottom: 64px;
 }
 #landing-sponsored-cos {
     width: 100vw;
     height: 20vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    padding: 20px 0;
 }
-.sponsor-container {
-    color: white;
-    width: 125px;
+.brand-logo {
+    width: 100px;
     height: 100px;
-    background-color: gray;
-    margin: 8px 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    filter: grayscale(100%);
+}
+.brand-logo-small {
+    width: 100px;
+    height: 80px;
+    filter: grayscale(100%)
 }
 #landing-sponsors-ads {
-    margin-top: 16px;
+    margin: 16px 0;
     width: 100vw;
-    height: 75vh;
     display: flex;
     justify-content: space-around;
 }
 .landing-ad {
+    max-width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
     color: white;
     width: 612.5px;
     height: 375px;
-    background-color: rgb(61, 187, 175);
+    /* height: auto; */
+    background-color: rgba(0,0,0,.2);
     margin: 0 16px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+/* .overlay {
+    z-index: 1;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7)
+} */
+.landing-ad1 {
+    background-image: url("./background-images/snow-leave-your-mark.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+.landing-ad1-textbox {
+    margin-right: 72px;
+}
+.landing-ad1-textbox > p {
+    font-family: 'Playfair Display', serif;
+}
+.landing-ad1-text1 {
+    font-weight: 600;
+    font-size: 2em;
+    color: white;
+}
+.landing-ad1-text2 {
+    color: white;
+    font-weight: 400;
+}
+.landing-ad2 {
+    background-image: url('./background-images/backpacks-one-bag.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.landing-ad2-textbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(255, 255, 255);
+}
+.landing-ad2-textbox > p {
+    font-family: 'Playfair Display', serif;
+}
+.landing-ad2-text1 {
+    font-size: 2em;
+    font-weight: 700;
+}
+.landing-ad2-text2 {
+    font-weight: 400;
+}
+.landing-ad2-text2 span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25em;
+}
 /* FEATURED PACKAGES */
 #featured-pkgs-container {
-    margin: 64px 0;
+    margin: 16px 0 16px 0;
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
     
+}
+#landing-section-2 > h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+#landing-section-2 > h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400
 }
 .featured-pkg {
     display: flex;
@@ -166,11 +246,14 @@ body,
 #landing-cat-footer {
     width: 100vw;
     height: 35vh;
-    margin: 72px;
+    margin: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+#cat-footer-header {
+    font-family: 'Playfair Display', serif;
 }
 #cat-footer-subheader {
     color: #777;
@@ -178,7 +261,7 @@ body,
 #landing-cat-container {
     width: 200px;
     display: flex;
-    margin-top: 24px;
+    margin: 40px 0;
     font-weight: 300;
     justify-content: space-around;
 }
@@ -376,18 +459,33 @@ body,
     width: 72%;
     display: none;
 }
-.user-dropdown-menu .nav-dropdown-item:hover {
-    background-color: white;
-    color: black
-}
 .nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     color: white;
-    padding: 4px;
+    padding: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background-color: transparent;
+    position: relative;
+}
+/* .nav-dropdown-item:hover, .nav-dropdown-item::before {
+   
+} */
+.nav-dropdown-item:hover:before {
+    content: '\0203A   ';
+    position: absolute;
+    left: 8px;
+    color: rgba(199, 85, 85, 0.7);
+    font-weight: 800;
+    font-size: 1.5em;
+}
+.nav-dropdown-item:hover {
+    padding-left: 20px;
+    font-size: 1.06125em;
 }
 .user-dropdown-container:hover .user-dropdown-menu {
-    top: 95%;
+    top: 93%;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -615,7 +713,7 @@ a{
     margin: 0 6px;
 }
 .detail-img {
-    background: linear-gradient(to right, lightblue, lightgreen);
+    background: linear-gradient(to right, gray, lightgray);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -664,8 +762,7 @@ a{
 }
 .sp-co-name {
     font-family: 'Playfair Display', serif;
-    margin-top: 24px;
-    margin-bottom: 16px;
+    margin: 24px 0;
 }
 .sp-price > span {
     font-size: 0.75em;
