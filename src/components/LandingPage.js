@@ -14,6 +14,7 @@ import LandingCatFooter from "./LandingCatFooter";
 import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
 import FooterBottom from "./FooterBottom";
+import PackageCard from "./PackageCard";
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -56,31 +57,7 @@ class LandingPage extends Component {
                         0
                       )
                       .toFixed(2);
-                  return (
-                    <div className="featured-pkg">
-                      <img
-                        src={pkg.imageUrl}
-                        className="featured-pkg-img"
-                      ></img>
-                      <h5 className="featured-pkg-name">{pkg.name}</h5>
-                      <h5>Total: ${price}</h5>
-                      <h5>Upvotes: {pkg.upvotes.length}</h5>
-                      <button
-                        className="upvote-pkg-btn"
-                        onClick={() =>
-                          this.props.fetchUpvote(user.id, pkg.id).then(() => {
-                            if (this.props.upvote.exists) {
-                              this.props.deleteUpvote(user.id, pkg.id);
-                            } else {
-                              this.props.createUpvote(user.id, pkg.id);
-                            }
-                          })
-                        }
-                      >
-                        Like
-                      </button>
-                    </div>
-                  );
+                  return <PackageCard pkg={pkg} price={price} user={user} />;
                 })
               : null}
           </div>

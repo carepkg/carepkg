@@ -109,7 +109,10 @@ class SingleProduct extends React.Component {
               </h6>
             </div>
           </div>
-
+          <div className="pkgs-with-prod-container">
+            <h1>Browse packages containing this product</h1>
+            <div className="browse-pkgs-container"></div>
+          </div>
           <div>
             <ReviewList
               reviews={reviews}

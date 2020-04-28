@@ -17,6 +17,16 @@ export const getPackagesThunk = () => async dispatch => {
   }
 };
 
+export const getPackagesWithProductThunk = productId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/packages/${productId}`);
+    const packages = res.data;
+    dispatch(getPackages(packages));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const packagesReducer = (state = [], action) => {
   switch (action.type) {
     case GET_PACKAGES:
