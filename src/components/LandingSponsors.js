@@ -1,13 +1,23 @@
 import React from "react";
 
 const LandingSponsors = () => {
-  const sponsors = Array(7).fill("");
+  const sponsors = [
+    "eddiebauer-icon.png",
+    "fjallraven-icon.png",
+    "canadagoose-icon.png",
+    "sorel-icon.png",
+    "mammut-icon.png",
+    "northface-icon.jpeg",
+    "patagonia-icon.png"
+  ];
   return (
     <div id="landing-sponsors-page">
       <div id="landing-sponsored-cos">
         {sponsors
           ? sponsors.map(sponsor => {
-              return <div className="sponsor-container">CO LOGO</div>;
+              return (
+                <img className="brand-logo" src={`/company-icons/${sponsor}`} />
+              );
             })
           : null}
       </div>
