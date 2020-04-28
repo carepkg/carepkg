@@ -25,6 +25,7 @@ class SingleProduct extends React.Component {
   }
   render() {
     const { product, addToCartThunk, user } = this.props;
+    console.log(product.id);
     const { reviews, productCategories } = product;
     let inStock = product.qty > 10;
     let limitedStock = product.qty > 0 && product.qty < 10;
@@ -108,7 +109,7 @@ class SingleProduct extends React.Component {
               </h6>
             </div>
           </div>
-          <PackagesWithProduct product={product} />
+          <PackagesWithProduct productId={this.props.match.params.id} />
           <div>
             <ReviewList
               reviews={reviews}

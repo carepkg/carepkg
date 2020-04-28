@@ -9,7 +9,7 @@ const getPackages = packages => ({
 });
 const getPackagesWithProduct = pkgLineItems => {
   console.log(pkgLineItems);
-  const packages = Array.from(new Set(pkgLineItems.map(li => li.package.name)));
+  const packages = pkgLineItems.map(li => li.package);
   console.log(packages);
   return {
     type: GET_PACKAGES_WITH_PRODUCT,
@@ -29,6 +29,7 @@ export const getPackagesThunk = () => async dispatch => {
 
 export const getPackagesWithProductThunk = productId => async dispatch => {
   try {
+    console.log(productId);
     const res = await axios.get(`/api/packages/${productId}`);
     const packageLineItems = res.data;
     dispatch(getPackagesWithProduct(packageLineItems));

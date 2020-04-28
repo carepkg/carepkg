@@ -29,9 +29,10 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:productId", async (req, res, next) => {
   try {
+    console.log(req.params.productId);
     const packageLineItems = await PackageLineItem.findAll({
       where: {
-        productId: Number(req.params.productId)
+        productId: req.params.productId
       },
       limit: 5,
       include: [

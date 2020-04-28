@@ -858,8 +858,8 @@ h6 > span {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #333;
-    padding-bottom: 24px;
+    background-color: #222;
+    padding-bottom: 60px;
 }
 .pkgs-with-prod-container h1 {
     color: white;

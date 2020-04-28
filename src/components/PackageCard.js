@@ -7,7 +7,7 @@ const PackageCard = props => {
       <img src={pkg.imageUrl} className="featured-pkg-img"></img>
       <h5 className="featured-pkg-name">{pkg.name}</h5>
       <h5>Total: ${price}</h5>
-      {landing && (
+      {pkg && landing && (
         <React.Fragment>
           <h5>Upvotes: {pkg.upvotes.length}</h5>
           <button

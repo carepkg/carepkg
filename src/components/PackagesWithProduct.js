@@ -5,9 +5,9 @@ import PackageCard from "./PackageCard";
 
 const PackagesWithProduct = props => {
   useEffect(() => {
-    props.fetchPackagesWithProduct(product.id);
+    props.fetchPackagesWithProduct(productId);
   }, []);
-  const { product, packages } = props;
+  const { productId, packages } = props;
   let numFillerPackages = 0;
   if (packages.length < 5) numFillerPackages = 5 - packages.length;
 
