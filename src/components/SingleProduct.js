@@ -5,6 +5,7 @@ import { getSingleProductThunk } from "../store/singleProduct";
 import ReviewList from "./ReviewList";
 import AddToButtons from "./AddToButtons";
 import { addToCartThunk } from "../store/cart";
+import PackagesWithProduct from "./PackagesWithProduct";
 
 class SingleProduct extends React.Component {
   constructor() {
@@ -109,10 +110,7 @@ class SingleProduct extends React.Component {
               </h6>
             </div>
           </div>
-          <div className="pkgs-with-prod-container">
-            <h1>Browse packages containing this product</h1>
-            <div className="browse-pkgs-container"></div>
-          </div>
+          <PackagesWithProduct />
           <div>
             <ReviewList
               reviews={reviews}
