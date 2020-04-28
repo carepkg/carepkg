@@ -762,8 +762,7 @@ a{
 }
 .sp-co-name {
     font-family: 'Playfair Display', serif;
-    margin-top: 24px;
-    margin-bottom: 16px;
+    margin: 24px 0;
 }
 .sp-price > span {
     font-size: 0.75em;
