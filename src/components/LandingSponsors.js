@@ -14,9 +14,14 @@ const LandingSponsors = () => {
     <div id="landing-sponsors-page">
       <div id="landing-sponsored-cos">
         {sponsors
-          ? sponsors.map(sponsor => {
-              return (
+          ? sponsors.map((sponsor, idx) => {
+              return idx !== 3 ? (
                 <img className="brand-logo" src={`/company-icons/${sponsor}`} />
+              ) : (
+                <img
+                  className="brand-logo-small"
+                  src={`/company-icons/${sponsor}`}
+                />
               );
             })
           : null}

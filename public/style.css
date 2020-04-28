@@ -116,6 +116,11 @@ body,
     height: 100px;
     filter: grayscale(100%);
 }
+.brand-logo-small {
+    width: 100px;
+    height: 80px;
+    filter: grayscale(100%)
+}
 #landing-sponsors-ads {
     margin: 16px 0;
     width: 100vw;
@@ -462,18 +467,22 @@ body,
     padding: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background-color: transparent;
+    position: relative;
 }
 /* .nav-dropdown-item:hover, .nav-dropdown-item::before {
    
 } */
 .nav-dropdown-item:hover:before {
-    content: '\0203A';
+    content: '\0203A   ';
+    position: absolute;
+    left: 8px;
     color: rgba(199, 85, 85, 0.7);
     font-weight: 800;
     font-size: 1.5em;
 }
 .nav-dropdown-item:hover {
     padding-left: 20px;
+    font-size: 1.06125em;
 }
 .user-dropdown-container:hover .user-dropdown-menu {
     top: 93%;
@@ -704,7 +713,7 @@ a{
     margin: 0 6px;
 }
 .detail-img {
-    background: linear-gradient(to right, lightblue, lightgreen);
+    background: linear-gradient(to right, gray, lightgray);
     display: flex;
     justify-content: center;
     align-items: center;
