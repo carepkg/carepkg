@@ -130,48 +130,58 @@ body,
     max-width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+    background-blend-mode: multiply;
     color: white;
     width: 612.5px;
     height: 375px;
     /* height: auto; */
-    background-color: rgb(61, 187, 175);
+    background-color: rgba(0,0,0,.2);
     margin: 0 16px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+/* .overlay {
+    z-index: 1;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7)
+} */
 .landing-ad1 {
     background-image: url("./background-images/snow-leave-your-mark.jpg");
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center
 }
 .landing-ad1-textbox {
-    margin-top: 32px;
+    margin-right: 72px;
 }
 .landing-ad1-textbox > p {
     font-family: 'Playfair Display', serif;
 }
 .landing-ad1-text1 {
     font-weight: 600;
-    font-size: 3em;
-    color: black;
+    font-size: 2em;
+    color: white;
 }
 .landing-ad1-text2 {
-    color: black;
+    color: white;
     font-weight: 400;
 }
 .landing-ad2 {
     background-image: url('./background-images/backpacks-one-bag.jpg');
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
 }
 .landing-ad2-textbox {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 32px;
     color: rgb(255, 255, 255);
 }
 .landing-ad2-textbox > p {
