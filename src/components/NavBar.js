@@ -5,7 +5,11 @@ import { logout } from "../store/user";
 import MainSearchBar from "./MainSearchBar";
 
 const NavBar = props => {
-  const { isLoggedIn, handleLogout } = props;
+  const { isLoggedIn, handleLogout, user } = props;
+  let firstInitial;
+  user.firstName
+    ? (firstInitial = user.firstName.charAt(0))
+    : (firstInitial = "");
   return (
     <div id="navbar-wrapper">
       <div id="navbar-top">
@@ -28,12 +32,25 @@ const NavBar = props => {
             </NavLink>
             {isLoggedIn ? (
               <React.Fragment>
-                <NavLink to="/profile" className="navlink">
-                  Welcome, {props.user.firstName}!
-                </NavLink>
-                <NavLink to="/login" className="navlink" onClick={handleLogout}>
-                  Logout
-                </NavLink>
+                <div className="user-dropdown-container">
+                  <button className="menu-button">
+                    Welcome, {props.user.firstName}!{" "}
+                    <div id="nav-user-initial">{firstInitial}</div>
+                    <span>&#x25BE;</span>
+                  </button>
+                  <div className="user-dropdown-menu">
+                    <NavLink to="/profile" className="nav-dropdown-item">
+                      Your Profile
+                    </NavLink>
+                    <NavLink
+                      to="/login"
+                      className="nav-dropdown-item"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </NavLink>
+                  </div>
+                </div>
               </React.Fragment>
             ) : (
               <React.Fragment>

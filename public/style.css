@@ -10,8 +10,8 @@ body,
     height: 100%;
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
-    min-width: 100vw;
     background-size: cover;
+    /* overflow-x: hidden; */
 }
 *{
     box-sizing: border-box;
@@ -32,14 +32,15 @@ body,
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 100vw;
-    overflow-x: hidden;
+    /* max-width: 100vw; */
+    overflow: hidden;
     
 }
 #bg-img-content {
     width: 100vw;
-    height: 100vh;
+    height: 96vh;
     background-image: url("./background-images/main-bg.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
     
 }
@@ -81,7 +82,7 @@ body,
 }
 /* 200vh LANDING SECTION 2 */
 #landing-section-2 {
-    width: 100%;
+    width: 100vw;
     height: 200vh;
     background-color: white;
     display: flex;
@@ -293,24 +294,23 @@ body,
     align-items: center;
 }
 #navbar-top-left {
-    width: 60%;
+    width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
 }
 #navbar-top-right {
-    width: 40%;
+    width: 50%;
     height: 100%;
     font-size: 0.9em;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 #nav-coname{
-    margin: 0 32px;
+    padding: 0 32px 6px 32px;
     color: white;
     font-size: calc(1.25em + 1vw);
-    padding-bottom: 6px;
     font-weight: 300;
 }
 .navlink{
@@ -321,6 +321,7 @@ body,
     text-decoration: none;
     font-weight: 300;
 }
+
 #home-main{
     width: 100%;
     height: 90%;
@@ -337,6 +338,62 @@ body,
 }
 .home-search-input{
     height: 100%;
+}
+/* DROPDOWNS */
+.user-dropdown-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-button {
+    background-color: transparent;
+    color: white;
+    padding: 1.8em 2em;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+}
+.menu-button span {
+    color: darkgray;
+    margin-left: 4px;
+}
+#nav-user-initial {
+    margin-left: 8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: white;
+    color: black;
+}
+.user-dropdown-menu{
+    width: 72%;
+    display: none;
+}
+.user-dropdown-menu .nav-dropdown-item:hover {
+    background-color: white;
+    color: black
+}
+.nav-dropdown-item {
+    color: white;
+    padding: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: transparent;
+}
+.user-dropdown-container:hover .user-dropdown-menu {
+    top: 95%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    z-index: 1;
+    
 }
 /* #endregion */
 /* #region ALL PRODUCTS */
