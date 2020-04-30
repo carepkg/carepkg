@@ -29,11 +29,12 @@ class SingleProduct extends React.Component {
     const { reviews, productCategories } = product;
     if (reviews) {
       const avgRating = (
-        reviews.reduce((acc, rev) => acc + rev.rating) / reviews.length
+        reviews.reduce((acc, rev) => {
+          return acc + rev.rating;
+        }, 0) / reviews.length
       ).toFixed(1);
       console.log(avgRating);
     }
-
     let inStock = product.qty > 10;
     let limitedStock = product.qty > 0 && product.qty < 10;
     return (
@@ -119,6 +120,7 @@ class SingleProduct extends React.Component {
           <PackagesWithProduct productId={this.props.match.params.id} />
           <div>
             <ReviewList
+              avgRating={avgRating}
               reviews={reviews}
               product={product}
               // onProfilePage={false}

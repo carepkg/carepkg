@@ -13,10 +13,10 @@ const ReviewCard = props => {
         <h3>Rating</h3>
         <h3>Date</h3>
       </div>
-      <h2>Title</h2>
+      <h2>{review.title}</h2>
       <div className="sp-review-text-container">
         <h4 className="sp-review-familiarity">
-          <span>Familiarity:</span> Used twice.
+          <span>Familiarity:</span> {review.familiarity}
         </h4>
         <p className="sp-review-desc">{review.text}</p>
       </div>
