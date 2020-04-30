@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 
 const ReviewCard = props => {
   const { review, author } = props;
+  const rating = review.rating;
   let firstInitial;
   author.firstName
     ? (firstInitial = author.firstName.charAt(0))
@@ -10,7 +11,18 @@ const ReviewCard = props => {
   return (
     <div className="sp-review-card">
       <div className="sp-review-card-header">
-        <h3>Rating</h3>
+        <div className="sp-review-card-rating">
+          {Array(rating)
+            .fill("")
+            .map(star => (
+              <span>&#9733;</span>
+            ))}
+          {Array(5 - rating)
+            .fill("")
+            .map(star => (
+              <span>&#9734;</span>
+            ))}
+        </div>
         <h3>Date</h3>
       </div>
       <h2>{review.title}</h2>

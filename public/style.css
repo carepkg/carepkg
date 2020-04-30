@@ -1,5 +1,8 @@
 :root {
     --main-text-color: #554;
+    --percent: calc(var(--rating) * 100%);
+    --star-color: #fff;
+    --star-background: #fc0;
     /* --nav-height: 10.25%; */
 }
 /* font-family: 'Playfair Display', sans-serif */
@@ -905,13 +908,13 @@ h6 > span {
     justify-content: center;
     align-items: center;
 }
-#sp-review-stats > div {
+/* #sp-review-stats > div {
     width: 40%;
     height: 100%;
     background-color: gray;
     border: 1px solid rgba(51, 51, 51, 0.1);
     margin: 40px;
-}
+} */
 #sp-write-review-container {
     width: 100vw;
     height: 30vh;

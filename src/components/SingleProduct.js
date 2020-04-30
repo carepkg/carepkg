@@ -27,8 +27,9 @@ class SingleProduct extends React.Component {
     const { product, addToCartThunk, user } = this.props;
     console.log(product.id);
     const { reviews, productCategories } = product;
+    let avgRating;
     if (reviews) {
-      const avgRating = (
+      avgRating = (
         reviews.reduce((acc, rev) => {
           return acc + rev.rating;
         }, 0) / reviews.length
