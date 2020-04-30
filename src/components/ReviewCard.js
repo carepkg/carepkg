@@ -18,7 +18,7 @@ const ReviewCard = props => {
         <h4 className="sp-review-familiarity">
           <span>Familiarity:</span> Used twice.
         </h4>
-        <p className="review-desc"> &nbsp;&nbsp;&nbsp;{review.text}</p>
+        <p className="sp-review-desc">{review.text}</p>
       </div>
       <div className="sp-author-box">
         <div className="nav-user-initial">{firstInitial}</div>

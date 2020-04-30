@@ -27,6 +27,13 @@ class SingleProduct extends React.Component {
     const { product, addToCartThunk, user } = this.props;
     console.log(product.id);
     const { reviews, productCategories } = product;
+    if (reviews) {
+      const avgRating = (
+        reviews.reduce((acc, rev) => acc + rev.rating) / reviews.length
+      ).toFixed(1);
+      console.log(avgRating);
+    }
+
     let inStock = product.qty > 10;
     let limitedStock = product.qty > 0 && product.qty < 10;
     return (

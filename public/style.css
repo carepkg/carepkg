@@ -929,6 +929,7 @@ h6 > span {
 }
 .sp-review-card {
     max-width: 700px;
+    width: 700px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -958,10 +959,13 @@ h6 > span {
 .sp-review-familiarity span {
     font-weight: 500;
 }
+.sp-review-desc {
+    font-size: .95em;
+}
 .sp-author-box {
     display: flex;
     align-items: center;
-    padding: 16px 0;
+    padding: 8px 0;
 }
 .sp-review-card .nav-user-initial {
     background-color: white;
@@ -972,6 +976,7 @@ h6 > span {
     align-items: center;
     border: 1px solid black;
     text-align: center;
+    margin: 0;
 }
 .sp-review-author-name {
     padding-left: 8px;
