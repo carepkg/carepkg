@@ -491,7 +491,7 @@ body,
 .user-dropdown-container:hover .user-dropdown-menu {
     top: 93%;
     position: absolute;
-    display: flex;
+    display: block;
     flex-direction: column;
     background-color: black;
     z-index: 10;
