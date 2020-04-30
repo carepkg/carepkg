@@ -947,6 +947,9 @@ h6 > span {
     flex-direction: row;
     justify-content: space-between;
 }
+.sp-review-card-rating  span{
+    font-size: 1.5em;
+}
 .sp-review-card h2 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
