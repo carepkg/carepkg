@@ -494,7 +494,7 @@ body,
     display: flex;
     flex-direction: column;
     background-color: black;
-    z-index: 1;
+    z-index: 10;
     
 }
 /* #endregion */
@@ -509,6 +509,7 @@ body,
     flex-direction: column;
     align-items: center;
     background-color: white;
+    overflow: hidden;
 }
 #products-header{
     font-weight: 900;
@@ -652,13 +653,15 @@ a{
     top: 10.25%;
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
 }
 .ad-space-thin {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 24px 0 8px 0;
+    margin: 24px 0;
     height: 6vh;
     background: linear-gradient(to right, lightblue, rgb(225, 225, 118));
     width: 100vw;
@@ -729,9 +732,8 @@ a{
     border: 1px solid black;
 }
 .sp-main-center {
-    width: 52.5vw;
+    width: 50vw;
     height: 80vh;
-    background-color: rgb(247, 247, 247);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -739,7 +741,6 @@ a{
     overflow-x: hidden;
 }
 .sp-main-img-container {
-    margin: 24px;
     width: 540px;
     height: 540px;
     border: 1px solid black;
@@ -754,7 +755,7 @@ a{
     height: 300px;
 }
 .sp-main-right {
-    padding: 16px 16px;
+    padding: 16px 0;
     width: 32.5vw;
     height: 100vh;
     background-color: white
@@ -862,12 +863,12 @@ h6 > span {
     justify-content: center;
     align-items: center;
     background-color: #222;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
 }
 .pkgs-with-prod-container h1 {
     color: white;
     font-family: 'Playfair Display', serif;
-    margin: 8px;
+    /* margin: 8px; */
     font-weight: 700;
 }
 .browse-pkgs-container {
@@ -879,7 +880,6 @@ h6 > span {
     width: 220px;
     height: 300px;
     margin: 12px;
-    padding: 24px;
     background-color: white;
 }
 
@@ -893,7 +893,7 @@ h6 > span {
     align-items: center
 }
 #sp-reviews-page-header {
-    padding: 64px 0px;
+    padding-top: 64px;
     
 }
 #sp-reviews-page-header span {
@@ -908,13 +908,39 @@ h6 > span {
     justify-content: center;
     align-items: center;
 }
-/* #sp-review-stats > div {
-    width: 40%;
+#sp-review-stats > div {
+    width: 35%;
     height: 100%;
-    background-color: gray;
-    border: 1px solid rgba(51, 51, 51, 0.1);
-    margin: 40px;
-} */
+    margin: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sp-overall-rating h3 {
+    font-weight: 500;
+    padding: 3px 0 6px 0;
+}
+.sp-overall-rating h5 {
+    font-weight: 400;
+    padding: 3px;
+
+}
+.sp-review-summary h3 {
+    font-weight: 500;
+    padding: 3px 0 6px 0;
+}
+.sp-review-statline {
+    display: flex;
+    padding: 4px;
+}
+.sp-review-statline div {
+    height: 10px;
+    margin-top: 4px;
+}
+.sp-review-statline span {
+    padding: 0 8px;
+}
 #sp-write-review-container {
     width: 100vw;
     height: 30vh;
@@ -1083,7 +1109,8 @@ input[type='text'], input[type='email'] {
     height: 82.75%;
     display: flex;
     flex-direction: column;
-    font-family: 'Dosis', 'sans-serif'
+    font-family: 'Dosis', 'sans-serif';
+    overflow: hidden;
 }
 #profile-top {
     display: flex;
