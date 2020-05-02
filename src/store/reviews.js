@@ -4,9 +4,9 @@ const ADD_REVIEW = "ADD_REVIEW";
 
 const addReview = review => ({ type: ADD_REVIEW, review });
 
-export const addReviewThunk = (review) => {
+export const addReviewThunk = review => async dispatch => {
   try {
-    const response = await axios.post('/api/reviews/add', review)
+    const response = await axios.post("/api/reviews/add", review);
     const review = response.data;
     //dispatch but we dont need to update state, unless on the review list we change how we get the reviews
     //in which case we would get all reviews associated and not use the reviews from props

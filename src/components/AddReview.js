@@ -1,4 +1,5 @@
 import React from "react";
+import { addReviewThunk } from "../store/reviews";
 
 const resetState = {
   rating: 0,
@@ -18,6 +19,8 @@ class AddReview extends React.Component {
       isWriting: true
     };
     this.handleChange = this.handleChange.bind(this);
+    this.cancelReview = this.cancelReview.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     this.setState({
@@ -26,7 +29,6 @@ class AddReview extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    //thunk here
   }
   cancelReview(event) {
     event.preventDefault();
@@ -40,7 +42,7 @@ class AddReview extends React.Component {
       "I use it all the time"
     ];
     return this.state.isWriting ? (
-      <form className="add-review-form">
+      <form className="add-review-form" onSubmit={this.handleSubmit}>
         <div className="add-review-stars-container">
           <label>
             Rating <span>*</span>
