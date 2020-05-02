@@ -27,7 +27,6 @@ router.get("/", isAdmin, async (req, res, next) => {
 
 router.put("/update/email", async (req, res, next) => {
   try {
-    console.log(req.body);
     const user = await User.findOne({
       where: {
         email: req.body.originalEmail
@@ -44,7 +43,6 @@ router.put("/update/email", async (req, res, next) => {
 
 router.put("/update/password", async (req, res, next) => {
   try {
-    console.log(req.body);
     const user = await User.findOne({
       where: {
         password: req.body.originalPass

@@ -29,7 +29,6 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:productId", async (req, res, next) => {
   try {
-    console.log(req.params.productId);
     const packageLineItems = await PackageLineItem.findAll({
       where: {
         productId: req.params.productId
@@ -41,7 +40,6 @@ router.get("/:productId", async (req, res, next) => {
         }
       ]
     });
-    console.log(packageLineItems);
     res.json(packageLineItems);
   } catch (err) {
     next(err);

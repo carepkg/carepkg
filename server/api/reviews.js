@@ -4,7 +4,13 @@ const { Review } = require("../db/models");
 
 router.post("/add", async (req, res, next) => {
   try {
-    const review = await Review.create(req.body);
+    const { star, familiarity, title, text } = req.body;
+    const review = await Review.create({
+      rating: star,
+      familiarity: familiarity,
+      title: title,
+      text: text
+    });
     res.json(review);
   } catch (err) {
     next(err);

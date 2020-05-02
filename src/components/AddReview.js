@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { addReviewThunk } from "../store/reviews";
 
 const resetState = {
@@ -12,7 +13,7 @@ class AddReview extends React.Component {
   constructor() {
     super();
     this.state = {
-      rating: 0,
+      star: 0,
       title: "",
       familiarity: "",
       text: "",
@@ -29,6 +30,12 @@ class AddReview extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    const star = this.state.star;
+    const familiarity = event.target.familiarity.value;
+    const title = event.target.title.value;
+    const text = event.target.text.value;
+
+    this.props.postReview({ star, familiarity, title, text });
   }
   cancelReview(event) {
     event.preventDefault();
@@ -41,6 +48,7 @@ class AddReview extends React.Component {
       "I use it fairly often",
       "I use it all the time"
     ];
+    console.log(this.state.star);
     return this.state.isWriting ? (
       <form className="add-review-form" onSubmit={this.handleSubmit}>
         <div className="add-review-stars-container">
@@ -55,40 +63,45 @@ class AddReview extends React.Component {
                     type="radio"
                     value="5"
                     className="radio-btn hide"
+                    onChange={this.handleChange}
                   />
-                  <label for="star5">☆</label>
+                  <label htmlFor="star5">☆</label>
                   <input
                     id="star4"
                     name="star"
                     type="radio"
                     value="4"
                     className="radio-btn hide"
+                    onChange={this.handleChange}
                   />
-                  <label for="star4">☆</label>
+                  <label htmlFor="star4">☆</label>
                   <input
                     id="star3"
                     name="star"
                     type="radio"
                     value="3"
                     className="radio-btn hide"
+                    onChange={this.handleChange}
                   />
-                  <label for="star3">☆</label>
+                  <label htmlFor="star3">☆</label>
                   <input
                     id="star2"
                     name="star"
                     type="radio"
                     value="2"
                     className="radio-btn hide"
+                    onChange={this.handleChange}
                   />
-                  <label for="star2">☆</label>
+                  <label htmlFor="star2">☆</label>
                   <input
                     id="star1"
                     name="star"
                     type="radio"
                     value="1"
                     className="radio-btn hide"
+                    onChange={this.handleChange}
                   />
-                  <label for="star1">☆</label>
+                  <label htmlFor="star1">☆</label>
                   <div className="clear"></div>
                 </div>
               </form>
@@ -143,4 +156,8 @@ class AddReview extends React.Component {
   }
 }
 
-export default AddReview;
+const mapDispatch = dispatch => ({
+  postReview: review => dispatch(addReviewThunk(review))
+});
+
+export default connect(null, mapDispatch)(AddReview);
