@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import ReviewCard from "./ReviewCard";
 import StarRatings from "react-star-ratings";
+import AddReview from "./AddReview";
 
 const ReviewList = props => {
   const { reviews, product, avgRating } = props;
   const [writing, isWriting] = useState(false);
+
   let avg, flooredAvg, fullstars;
   avgRating && (avg = Number(avgRating));
   avg && (flooredAvg = Math.floor(avg));
@@ -16,8 +18,6 @@ const ReviewList = props => {
       reviewSummary[reviews[i].rating - 1]++;
     }
   }
-  console.log(reviews);
-  console.log(reviewSummary);
   return (
     <div id="sp-reviews-page">
       <div id="sp-reviews-page-header">
@@ -67,7 +67,10 @@ const ReviewList = props => {
       </div>
       <div id="sp-write-review-container">
         <h1>What did you think about this product?</h1>
-        <button className="white-btn">Write a Review</button>
+        <button className="white-btn" onClick={() => isWriting(true)}>
+          Write a Review
+        </button>
+        {writing && <AddReview />}
       </div>
       {reviews
         ? reviews.map(review => {
