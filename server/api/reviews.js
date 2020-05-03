@@ -44,7 +44,6 @@ router.post("/add", async (req, res, next) => {
         }
       ]
     });
-    console.log("here", review);
 
     res.json(updatedReview);
   } catch (err) {
