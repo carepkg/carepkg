@@ -25,7 +25,6 @@ class SingleProduct extends React.Component {
   }
   render() {
     const { product, addToCartThunk, user } = this.props;
-    console.log(product.id);
     const { reviews, productCategories } = product;
     let avgRating;
     if (reviews) {
@@ -34,7 +33,6 @@ class SingleProduct extends React.Component {
           return acc + rev.rating;
         }, 0) / reviews.length
       ).toFixed(1);
-      console.log(avgRating);
     }
     let inStock = product.qty > 10;
     let limitedStock = product.qty > 0 && product.qty < 10;
@@ -122,9 +120,8 @@ class SingleProduct extends React.Component {
           <div>
             <ReviewList
               avgRating={avgRating}
-              reviews={reviews}
               product={product}
-              // onProfilePage={false}
+              productId={this.props.match.params.id}
             />
           </div>
         </div>

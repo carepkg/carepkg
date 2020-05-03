@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addReviewThunk } from "../store/reviews";
+import { getAuthorThunk } from "../store/author";
 
 const resetState = {
   rating: 0,
@@ -10,8 +11,8 @@ const resetState = {
   isWriting: false
 };
 class AddReview extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       star: 0,
       title: "",
@@ -23,6 +24,9 @@ class AddReview extends React.Component {
     this.cancelReview = this.cancelReview.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount() {
+    this.props.getAuthor(this.props.userId);
+  }
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -30,12 +34,23 @@ class AddReview extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    const productId = this.props.productId;
+    const userId = this.props.userId;
     const star = this.state.star;
     const familiarity = event.target.familiarity.value;
     const title = event.target.title.value;
     const text = event.target.text.value;
+    const author = this.props.author;
 
-    this.props.postReview({ star, familiarity, title, text });
+    this.props.postReview({
+      productId,
+      star,
+      familiarity,
+      title,
+      text,
+      userId,
+      author
+    });
   }
   cancelReview(event) {
     event.preventDefault();
@@ -48,7 +63,6 @@ class AddReview extends React.Component {
       "I use it fairly often",
       "I use it all the time"
     ];
-    console.log(this.state.star);
     return this.state.isWriting ? (
       <form className="add-review-form" onSubmit={this.handleSubmit}>
         <div className="add-review-stars-container">
@@ -155,9 +169,13 @@ class AddReview extends React.Component {
     ) : null;
   }
 }
-
+const mapState = state => ({
+  author: state.author,
+  userId: state.user.id
+});
 const mapDispatch = dispatch => ({
-  postReview: review => dispatch(addReviewThunk(review))
+  postReview: review => dispatch(addReviewThunk(review)),
+  getAuthor: userId => dispatch(getAuthorThunk(userId))
 });
 
-export default connect(null, mapDispatch)(AddReview);
+export default connect(mapState, mapDispatch)(AddReview);

@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 import StarRatings from "react-star-ratings";
 import AddReview from "./AddReview";
+import { connect } from "react-redux";
+import { getReviewsByProdThunk } from "../store/reviews";
+import { getAuthorThunk } from "../store/author";
 
 const ReviewList = props => {
-  const { reviews, product, avgRating } = props;
+  const { reviews, product, productId, avgRating, fetchReviews } = props;
+  console.log(reviews);
   const [writing, isWriting] = useState(false);
+  useEffect(() => {
+    fetchReviews(productId);
+  }, []);
 
   let avg, flooredAvg, fullstars;
   avgRating && (avg = Number(avgRating));
@@ -70,21 +77,23 @@ const ReviewList = props => {
         <button className="white-btn" onClick={() => isWriting(true)}>
           Write a Review
         </button>
-        {writing && <AddReview />}
+        {writing && <AddReview productId={productId} />}
       </div>
       {reviews
         ? reviews.map(review => {
             return (
-              <ReviewCard
-                key={review.id}
-                review={review}
-                author={review.user}
-                product={product}
-              />
+              <ReviewCard key={review.id} review={review} product={product} />
             );
           })
         : null}
     </div>
   );
 };
-export default ReviewList;
+
+const mapState = state => ({
+  reviews: state.reviews
+});
+const mapDispatch = dispatch => ({
+  fetchReviews: productId => dispatch(getReviewsByProdThunk(productId))
+});
+export default connect(mapState, mapDispatch)(ReviewList);

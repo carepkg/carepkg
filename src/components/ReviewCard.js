@@ -2,7 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 const ReviewCard = props => {
-  const { review, author } = props;
+  const { review } = props;
+  const author = review.user;
   const rating = review.rating;
   let firstInitial;
   author.firstName
