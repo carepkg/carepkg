@@ -4,7 +4,6 @@ import StarRatings from "react-star-ratings";
 import AddReview from "./AddReview";
 import { connect } from "react-redux";
 import { getReviewsByProdThunk } from "../store/reviews";
-import { getAuthorThunk } from "../store/author";
 
 const ReviewList = props => {
   const { reviews, product, productId, avgRating, fetchReviews } = props;

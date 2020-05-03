@@ -19,25 +19,10 @@ router.get("/:productId", async (req, res, next) => {
     next(err);
   }
 });
-router.get("/author/:userId", async (req, res, next) => {
-  try {
-    const author = await User.findByPk(Number(req.params.userId));
-    res.json(author);
-  } catch (err) {
-    next(err);
-  }
-});
+
 router.post("/add", async (req, res, next) => {
   try {
-    const {
-      star,
-      familiarity,
-      title,
-      text,
-      author,
-      userId,
-      productId
-    } = req.body;
+    const { star, familiarity, title, text, userId, productId } = req.body;
     const user = await User.findByPk(Number(userId));
     const review = await Review.create({
       productId: productId,

@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addReviewThunk } from "../store/reviews";
-import { getAuthorThunk } from "../store/author";
 
 const resetState = {
   rating: 0,
@@ -24,9 +23,7 @@ class AddReview extends React.Component {
     this.cancelReview = this.cancelReview.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
-    this.props.getAuthor(this.props.userId);
-  }
+  componentDidMount() {}
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -170,12 +167,10 @@ class AddReview extends React.Component {
   }
 }
 const mapState = state => ({
-  author: state.author,
   userId: state.user.id
 });
 const mapDispatch = dispatch => ({
-  postReview: review => dispatch(addReviewThunk(review)),
-  getAuthor: userId => dispatch(getAuthorThunk(userId))
+  postReview: review => dispatch(addReviewThunk(review))
 });
 
 export default connect(mapState, mapDispatch)(AddReview);

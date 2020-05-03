@@ -10,7 +10,6 @@ import upvote from "./upvote";
 import categories from "./categories";
 import addresses from "./addresses";
 import reviews from "./reviews";
-import author from "./author";
 
 const reducer = combineReducers({
   products: products,
@@ -21,8 +20,7 @@ const reducer = combineReducers({
   upvote: upvote,
   categories: categories,
   addresses: addresses,
-  reviews: reviews,
-  author: author
+  reviews: reviews
 });
 
 // const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware));
