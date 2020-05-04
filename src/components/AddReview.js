@@ -2,13 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { addReviewThunk } from "../store/reviews";
 
-const resetState = {
-  rating: 0,
-  title: "",
-  familiarity: "",
-  text: "",
-  isWriting: false
-};
 class AddReview extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +10,7 @@ class AddReview extends React.Component {
       title: "",
       familiarity: "",
       text: "",
-      isWriting: true
+      writing: this.props.writing
     };
     this.handleChange = this.handleChange.bind(this);
     this.clearReview = this.clearReview.bind(this);
@@ -47,11 +40,17 @@ class AddReview extends React.Component {
       userId,
       author
     });
-    this.cancelReview();
+    this.clearReview(event);
   }
   clearReview(event) {
     event.preventDefault();
-    this.setState(resetState);
+    this.setState({
+      star: 0,
+      title: "",
+      familiarity: "",
+      text: ""
+    });
+    this.props.isWriting(false);
   }
   render() {
     const familiarities = [
@@ -60,7 +59,7 @@ class AddReview extends React.Component {
       "I use it fairly often",
       "I use it all the time"
     ];
-    return this.state.isWriting ? (
+    return this.state.writing ? (
       <form className="add-review-form" onSubmit={this.handleSubmit}>
         <div className="add-review-stars-container">
           <label>

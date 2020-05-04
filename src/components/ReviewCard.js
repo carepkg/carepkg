@@ -25,8 +25,6 @@ const ReviewCard = props => {
   const formattedDate = `${months[monthAsNum - 1]} ${dayAsNum}, ${
     unformattedDate[0]
   }`;
-
-  console.log(unformattedDate);
   let firstInitial;
   author.firstName
     ? (firstInitial = author.firstName.charAt(0))

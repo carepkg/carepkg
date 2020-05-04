@@ -7,7 +7,6 @@ import { getReviewsByProdThunk } from "../store/reviews";
 
 const ReviewList = props => {
   const { reviews, product, productId, avgRating, fetchReviews } = props;
-  console.log(reviews);
   const [writing, isWriting] = useState(false);
   useEffect(() => {
     fetchReviews(productId);
@@ -79,7 +78,13 @@ const ReviewList = props => {
         <button className="white-btn" onClick={() => isWriting(true)}>
           Write a Review
         </button>
-        {writing && <AddReview productId={productId} />}
+        {writing && (
+          <AddReview
+            productId={productId}
+            writing={writing}
+            isWriting={bool => isWriting(bool)}
+          />
+        )}
       </div>
       {sortedReviews
         ? sortedReviews.map(review => {
