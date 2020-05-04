@@ -20,10 +20,9 @@ class AddReview extends React.Component {
       isWriting: true
     };
     this.handleChange = this.handleChange.bind(this);
-    this.cancelReview = this.cancelReview.bind(this);
+    this.clearReview = this.clearReview.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {}
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -48,8 +47,9 @@ class AddReview extends React.Component {
       userId,
       author
     });
+    this.cancelReview();
   }
-  cancelReview(event) {
+  clearReview(event) {
     event.preventDefault();
     this.setState(resetState);
   }
@@ -160,7 +160,9 @@ class AddReview extends React.Component {
           <button type="submit" className="black-btn submit-review-btn">
             Submit Review
           </button>
-          <button className="add-review-cancel-btn">Cancel</button>
+          <button className="add-review-cancel-btn" onClick={this.clearReview}>
+            Cancel
+          </button>
         </div>
       </form>
     ) : null;

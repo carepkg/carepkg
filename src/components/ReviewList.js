@@ -12,6 +12,9 @@ const ReviewList = props => {
   useEffect(() => {
     fetchReviews(productId);
   }, []);
+  const sortedReviews = reviews.sort((a, b) =>
+    a.createdAt < b.createdAt ? 1 : -1
+  );
 
   let avg, flooredAvg, fullstars;
   avgRating && (avg = Number(avgRating));
@@ -78,8 +81,8 @@ const ReviewList = props => {
         </button>
         {writing && <AddReview productId={productId} />}
       </div>
-      {reviews
-        ? reviews.map(review => {
+      {sortedReviews
+        ? sortedReviews.map(review => {
             return (
               <ReviewCard key={review.id} review={review} product={product} />
             );

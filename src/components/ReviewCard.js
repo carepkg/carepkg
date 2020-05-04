@@ -5,6 +5,28 @@ const ReviewCard = props => {
   const { review } = props;
   const author = review.user;
   const rating = review.rating;
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const unformattedDate = review.createdAt.split("-");
+  const monthAsNum = Number(unformattedDate[1]);
+  const dayAsNum = Number(unformattedDate[2].slice(1, 2));
+  const formattedDate = `${months[monthAsNum - 1]} ${dayAsNum}, ${
+    unformattedDate[0]
+  }`;
+
+  console.log(unformattedDate);
   let firstInitial;
   author.firstName
     ? (firstInitial = author.firstName.charAt(0))
@@ -24,7 +46,7 @@ const ReviewCard = props => {
               <span>&#9734;</span>
             ))}
         </div>
-        <h3>Date</h3>
+        <h3>{formattedDate}</h3>
       </div>
       <h2>{review.title}</h2>
       <div className="sp-review-text-container">
