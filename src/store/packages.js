@@ -1,11 +1,21 @@
 import axios from "axios";
 
 const GET_PACKAGES = "GET_PACKAGES";
+const GET_PACKAGES_WITH_PRODUCT = "GET_PACKAGES_WITH_PRODUCT";
 
 const getPackages = packages => ({
   type: GET_PACKAGES,
   packages
 });
+const getPackagesWithProduct = pkgLineItems => {
+  console.log(pkgLineItems);
+  const packages = pkgLineItems.map(li => li.package);
+  console.log(packages);
+  return {
+    type: GET_PACKAGES_WITH_PRODUCT,
+    packages
+  };
+};
 
 export const getPackagesThunk = () => async dispatch => {
   try {
@@ -17,9 +27,22 @@ export const getPackagesThunk = () => async dispatch => {
   }
 };
 
+export const getPackagesWithProductThunk = productId => async dispatch => {
+  try {
+    console.log(productId);
+    const res = await axios.get(`/api/packages/${productId}`);
+    const packageLineItems = res.data;
+    dispatch(getPackagesWithProduct(packageLineItems));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const packagesReducer = (state = [], action) => {
   switch (action.type) {
     case GET_PACKAGES:
+      return action.packages;
+    case GET_PACKAGES_WITH_PRODUCT:
       return action.packages;
     default:
       return state;

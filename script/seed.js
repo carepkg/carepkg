@@ -20,10 +20,34 @@ const {
   Upvote
 } = require("../server/db/models/");
 const faker = require("faker");
+const familiarities = [
+  "Never used it",
+  "I've used it once or twice",
+  "I use it fairly often",
+  "I use it all the time"
+];
+const reviewTitles = [
+  "Cozy, Perfect",
+  "Quality Beginner Setup",
+  "Unmatched Product",
+  "It's Okay...",
+  "100% Would Buy Again",
+  "Pretty Standard, Not The Best",
+  "Trying To Be Something It's Not",
+  "Such A Blessing",
+  "I Love This Thing",
+  "I Do Not Recommend",
+  "The Material Is Wonderful",
+  "This Was Made For A Camper",
+  "Beautiful",
+  "Terrible"
+];
 const randomPrice = () => Math.floor(Math.random() * 100) + 0.99;
 const randomNum = num => Math.floor(Math.random() * num) + 1;
 const randomInd = num => Math.floor(Math.random() * num);
-
+const randomFamiliarity = (num = randomInd(familiarities.length)) =>
+  familiarities[num];
+const randomTitle = (num = randomInd(reviewTitles.length)) => reviewTitles[num];
 class Price {
   constructor() {
     this.price = randomPrice();
@@ -469,12 +493,14 @@ async function seed() {
 
   // --------- REVIEWS -------- \\
   const reviews = [];
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 50; i++) {
     reviews.push(
       await Review.create({
+        title: randomTitle(),
+        familiarity: randomFamiliarity(),
         productId: randomNum(products.length),
         rating: randomNum(5),
-        text: faker.lorem.sentence(randomNum(100))
+        text: faker.lorem.sentence(randomNum(150))
       }).then(rev => {
         rev.setUser(users[randomInd(users.length)]);
       })
@@ -541,7 +567,7 @@ async function seed() {
       productId: 5
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 1,
       productId: 7
     }),
@@ -551,7 +577,7 @@ async function seed() {
       productId: 10
     }),
     PackageLineItem.create({
-      qty: 3,
+      qty: 1,
       packageId: 2,
       productId: 11
     }),
@@ -561,7 +587,7 @@ async function seed() {
       productId: 8
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 2,
       productId: 9
     }),
@@ -571,27 +597,27 @@ async function seed() {
       productId: 4
     }),
     PackageLineItem.create({
-      qty: 3,
+      qty: 1,
       packageId: 3,
       productId: 1
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 4,
       productId: 3
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 4,
       productId: 7
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 4,
       productId: 3
     }),
     PackageLineItem.create({
-      qty: 2,
+      qty: 1,
       packageId: 5,
       productId: 2
     }),

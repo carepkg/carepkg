@@ -12,6 +12,10 @@ const PackageLineItem = db.define("packageLineItem", {
   productId: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  packageId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 });
 

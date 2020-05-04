@@ -5,6 +5,7 @@ import { getSingleProductThunk } from "../store/singleProduct";
 import ReviewList from "./ReviewList";
 import AddToButtons from "./AddToButtons";
 import { addToCartThunk } from "../store/cart";
+import PackagesWithProduct from "./PackagesWithProduct";
 
 class SingleProduct extends React.Component {
   constructor() {
@@ -24,9 +25,15 @@ class SingleProduct extends React.Component {
   }
   render() {
     const { product, addToCartThunk, user } = this.props;
-    console.log(product);
     const { reviews, productCategories } = product;
-    console.log(reviews);
+    let avgRating;
+    if (reviews) {
+      avgRating = (
+        reviews.reduce((acc, rev) => {
+          return acc + rev.rating;
+        }, 0) / reviews.length
+      ).toFixed(1);
+    }
     let inStock = product.qty > 10;
     let limitedStock = product.qty > 0 && product.qty < 10;
     return (
@@ -109,12 +116,12 @@ class SingleProduct extends React.Component {
               </h6>
             </div>
           </div>
-
+          <PackagesWithProduct productId={this.props.match.params.id} />
           <div>
             <ReviewList
-              reviews={reviews}
+              avgRating={avgRating}
               product={product}
-              // onProfilePage={false}
+              productId={this.props.match.params.id}
             />
           </div>
         </div>

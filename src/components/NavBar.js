@@ -35,7 +35,7 @@ const NavBar = props => {
                 <div className="user-dropdown-container">
                   <button className="menu-button">
                     Welcome, {props.user.firstName}!{" "}
-                    <div id="nav-user-initial">{firstInitial}</div>
+                    <div className="nav-user-initial">{firstInitial}</div>
                     <span>&#x25BE;</span>
                   </button>
                   <div className="user-dropdown-menu">
