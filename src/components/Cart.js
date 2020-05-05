@@ -3,7 +3,15 @@ import { connect } from "react-redux";
 import { render } from "@testing-library/react";
 import { getCartThunk, deleteFromCartThunk } from "../store/cart";
 import { NavLink } from "react-router-dom";
+import CartEmpty from "./CartEmpty";
+import Wishlist from "./Wishlist";
 class Cart extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      menuTab: "Cart"
+    };
+  }
   componentDidMount() {
     if (this.props.user) {
       this.props.fetchCart(this.props.user.id);
@@ -11,12 +19,35 @@ class Cart extends React.Component {
   }
   render() {
     const { user, cart, removeFromCart } = this.props;
+    const { menuTab } = this.state;
+    let defaultStyle = {
+      color: "gray",
+      fontWeight: "300"
+    };
+    let activeStyle = {
+      color: "black",
+      borderBottom: "2px solid black",
+      fontWeight: "500"
+    };
     return (
       <div id="cart-page">
-        <h1>{`${user.firstName}'s` || "Your"} cart</h1>
-
-        <div id="cart-container">
-          {cart && cart.length ? (
+        <h1 className="your-cart-header">Your Cart</h1>
+        <div className="cart-btn-menu">
+          <div
+            style={menuTab === "Cart" ? activeStyle : defaultStyle}
+            onClick={() => this.setState({ menuTab: "Cart" })}
+          >
+            <span>Cart ({cart.length})</span>
+          </div>
+          <div
+            style={menuTab === "Wishlist" ? activeStyle : defaultStyle}
+            onClick={() => this.setState({ menuTab: "Wishlist" })}
+          >
+            <span>Wishlist ({0})</span>
+          </div>
+        </div>
+        <div id="cart-content-container">
+          {menuTab === "Cart" && cart && cart.length ? (
             cart.map(lineItem => {
               const { product } = lineItem;
               return (
@@ -33,14 +64,16 @@ class Cart extends React.Component {
                 </div>
               );
             })
-          ) : (
-            <h1>Your Cart is Empty</h1>
-          )}
-          {cart.length && (
+          ) : menuTab === "Cart" ? (
+            <CartEmpty />
+          ) : null}
+          {menuTab === "Wishlist" ? <Wishlist /> : null}
+
+          {/* {cart.length && (
             <NavLink to="/cart/pp">
               <button id="cart-review-btn">Review Order</button>
             </NavLink>
-          )}
+          )} */}
         </div>
       </div>
     );
