@@ -5,6 +5,7 @@ import { getCartThunk, deleteFromCartThunk } from "../store/cart";
 import { NavLink } from "react-router-dom";
 import CartEmpty from "./CartEmpty";
 import Wishlist from "./Wishlist";
+import CartItems from "./CartItems";
 class Cart extends React.Component {
   constructor() {
     super();
@@ -31,7 +32,6 @@ class Cart extends React.Component {
       borderBottom: "2px solid black",
       fontWeight: "500"
     };
-    console.log(cart);
     return (
       <div id="cart-page">
         <h1 className="your-cart-header">Your Cart</h1>
@@ -51,52 +51,15 @@ class Cart extends React.Component {
         </div>
         <div id="cart-content-container">
           {menuTab === "Cart" && cart && cart.length ? (
-            <div className="cart-items-container">
-              <div className="cart-items-header-table">
-                <span className="cart-header-desc">Item Description</span>
-                <span className="cart-header-edit">Edit</span>
-                <span className="cart-header-price">Each</span>
-                <span className="cart-header-quantity">Qty</span>
-                <span className="cart-header-total">Total</span>
-              </div>
-              {cart.map((lineItem, idx) => {
-                const { product } = lineItem;
-                return (
-                  <div className="cart-item">
-                    <div className="cart-item-desc-box">
-                      <img
-                        src={product.image}
-                        style={{ width: 80, height: 80 }}
-                      />
-                      <div>
-                        <h4>{product.name}</h4>
-                        <div className="cart-item-desc-specs">
-                          <span>Color: default</span>&nbsp;&nbsp;
-                          <span>Size: default</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="cart-item-edit-box">
-                      <button className="white-btn">Move to Wishlist</button>
-                      <button
-                        onClick={() => removeFromCart(product.id, user.id)}
-                      >
-                        Remove
-                      </button>
-                    </div>
-                    <div className="cart-item-price-box">
-                      <span className="dollar-sign">$</span>
-                      {product.price}
-                    </div>
-                    <div className="cart-item-quantity-box">{lineItem.qty}</div>
-                    <div className="cart-item-total-box">
-                      <span className="dollar-sign">$</span>
-                      {totals[idx]}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <React.Fragment>
+              <CartItems
+                cart={cart}
+                totals={totals}
+                removeFromCart={removeFromCart}
+                user={user}
+              />
+              <div></div>
+            </React.Fragment>
           ) : menuTab === "Cart" ? (
             <CartEmpty />
           ) : null}
