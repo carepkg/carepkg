@@ -13,6 +13,7 @@ const Package = require("./package");
 const Company = require("./company");
 const PackageLineItem = require("./packageLineItem");
 const Upvote = require("./upvotes");
+const Shipping = require("./shipping");
 
 // --------- ASSOCIATIONS --------- \\
 
@@ -39,9 +40,12 @@ Product.hasMany(ProductCategory);
 Category.hasMany(ProductCategory);
 
 Order.hasMany(LineItem);
+Order.belongsTo(Shipping);
 
 LineItem.belongsTo(Product);
 LineItem.belongsTo(Order);
+
+Shipping.hasMany(Order);
 
 CartLineItem.belongsTo(User);
 CartLineItem.belongsTo(Product);

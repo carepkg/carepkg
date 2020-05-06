@@ -6,11 +6,11 @@ import AllProducts from "./components/AllProducts";
 import SingleProduct from "./components/SingleProduct";
 import { Login } from "./components/AuthForm";
 import { Signup } from "./components/AuthForm";
-import Cart from "./components/Cart";
+import Cart from "./components/CheckoutProcess/Cart";
 import UserProfile from "./components/UserProfile";
-import PurchaseProfile from "./components/PurchaseProfile";
-import Checkout from "./components/Checkout";
-import CheckoutSuccess from "./components/CheckoutSuccess";
+import PurchaseProfile from "./components/CheckoutProcess/PurchaseProfile";
+import Checkout from "./components/CheckoutProcess/Checkout";
+import CheckoutSuccess from "./components/CheckoutProcess/CheckoutSuccess";
 import { me } from "./store/user";
 import { connect } from "react-redux";
 

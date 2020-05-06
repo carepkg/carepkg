@@ -1,5 +1,4 @@
 import axios from "axios";
-import { RadioButton } from "material-ui";
 
 //# ###### ACTION CONSTANTS
 const GET_ADDRESSES = "GET_ADDRESSES";

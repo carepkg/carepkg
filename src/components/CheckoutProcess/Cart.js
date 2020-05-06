@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { render } from "@testing-library/react";
-import { getCartThunk, deleteFromCartThunk } from "../store/cart";
+import { getCartThunk, deleteFromCartThunk } from "../../store/cart";
 import { NavLink } from "react-router-dom";
 import CartEmpty from "./CartEmpty";
-import Wishlist from "./Wishlist";
+import Wishlist from "../Wishlist";
 import CartItems from "./CartItems";
+import ShippingOptions from "./ShippingOptions";
 class Cart extends React.Component {
   constructor() {
     super();
@@ -58,7 +59,10 @@ class Cart extends React.Component {
                 removeFromCart={removeFromCart}
                 user={user}
               />
-              <div></div>
+              <div>
+                <ShippingOptions />
+                {/* <OrderSummary /> */}
+              </div>
             </React.Fragment>
           ) : menuTab === "Cart" ? (
             <CartEmpty />
