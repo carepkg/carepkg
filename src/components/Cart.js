@@ -48,22 +48,46 @@ class Cart extends React.Component {
         </div>
         <div id="cart-content-container">
           {menuTab === "Cart" && cart && cart.length ? (
-            cart.map(lineItem => {
-              const { product } = lineItem;
-              return (
-                <div className="cart-item">
-                  <p>Product: {product.name}</p>
-                  <p>qty: {lineItem.qty}</p>
-                  <img
-                    style={{ width: "100px", height: "100px" }}
-                    src={product.image}
-                  />
-                  <button onClick={() => removeFromCart(product.id, user.id)}>
-                    X
-                  </button>
-                </div>
-              );
-            })
+            <div className="cart-items-container">
+              <div className="cart-items-header-table">
+                <span className="cart-header-desc">Item Description</span>
+                <span className="cart-header-edit">Edit</span>
+                <span className="cart-header-price">Each</span>
+                <span className="cart-header-quantity">Qty</span>
+                <span className="cart-header-total">Total</span>
+              </div>
+              {cart.map(lineItem => {
+                const { product } = lineItem;
+                return (
+                  <div className="cart-item">
+                    <div className="cart-item-desc-box">
+                      <img
+                        src={product.image}
+                        style={{ width: 80, height: 80 }}
+                      />
+                      <div>
+                        <h4>{product.name}</h4>
+                        <div className="cart-item-desc-specs">
+                          <span>Color: default</span>&nbsp;&nbsp;
+                          <span>Size: default</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="cart-item-edit-box">
+                      <button className="white-btn">Move to Wishlist</button>
+                      <button
+                        onClick={() => removeFromCart(product.id, user.id)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                    <div className="cart-item-price-box"></div>
+                    <div className="cart-item-quantity-box"></div>
+                    <div className="cart-item-total-box"></div>
+                  </div>
+                );
+              })}
+            </div>
           ) : menuTab === "Cart" ? (
             <CartEmpty />
           ) : null}

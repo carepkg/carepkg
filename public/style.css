@@ -1221,7 +1221,7 @@ input[type='text'], input[type='email'] {
 }
 .cart-btn-menu div {
     padding: 0 12px;
-    margin: 0 12px;
+    margin: 0 12px 40px 12px;
 }
 .cart-btn-menu div span {
     width: 100px;
@@ -1233,9 +1233,115 @@ input[type='text'], input[type='email'] {
     flex-direction: column;
     align-items: flex-start
 }
+.cart-items-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.cart-items-header-table {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+    color: rgb(51, 51, 51, 0.45)
+}
+.cart-header-desc {
+    width: 45%;
+}
+.cart-header-edit {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+.cart-header-price {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+.cart-header-quantity {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+.cart-header-total {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
 .cart-item {
-    border: 1px solid black;
-    height: 40%;
+    display: flex;
+    padding: 16px 0 8px 0;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.1)
+}
+.cart-item-desc-box {
+    width: 45%;
+    display: flex;
+}
+.cart-item-desc-box > div {
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+    flex-flow: column wrap;
+}
+.cart-item-desc-box div h4 {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+.car-item-desc-specs {
+    display: flex;
+    flex-direction: row;
+}
+.cart-item-desc-specs span {
+    font-size: 0.8em;
+}
+.cart-item-edit-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    
+}
+.cart-item-edit-box button:first-of-type {
+    height: 26px;
+    width: 140px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.cart-item-edit-box button:first-of-type:hover {
+    cursor: pointer;
+}
+.cart-item-edit-box button:nth-child(2) {
+    border: none;
+    border-bottom: 1px solid gray;
+    color: gray;
+    cursor: pointer;
+}
+.cart-item-edit-box button:nth-child(2):hover {
+    border: none;
+    border-bottom: 1px solid black;
+    font-weight: 400;
+    color: black;
+    cursor: pointer;
+}
+.cart-item-price-box {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-item-quantity-box {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-item-total-box {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #cart-review-btn {
     position: absolute;
@@ -1250,7 +1356,7 @@ input[type='text'], input[type='email'] {
 .cart-empty-container {
     display: flex;
     flex-direction: column;
-    margin: 40px 0;
+    margin-bottom: 40px;
 }
 .cart-empty-container h1 {
     font-family: 'Playfair Display', serif;
