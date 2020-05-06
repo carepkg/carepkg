@@ -17,7 +17,8 @@ const {
   Company,
   Package,
   PackageLineItem,
-  Upvote
+  Upvote,
+  Shipping
 } = require("../server/db/models/");
 const faker = require("faker");
 const familiarities = [
@@ -506,7 +507,20 @@ async function seed() {
       })
     );
   }
-
+  const shippingOptions = await Promise.all([
+    Shipping.create({
+      name: "Standard (5-10 Business Days)",
+      cost: 0
+    }),
+    Shipping.create({
+      name: "Two Business Days",
+      cost: 12.99
+    }),
+    Shipping.create({
+      name: "One Business Day",
+      cost: 19.99
+    })
+  ]);
   // --------- Orders -------- \\
   const orders = [];
   for (let i = 0; i < 12; i++) {
@@ -515,6 +529,7 @@ async function seed() {
         status: "completed"
       }).then(order => {
         order.setUser(users[i % users.length]);
+        order.setShipping(shippingOptions[randomInd(shippingOptions.length)]);
       })
     );
   }

@@ -78,5 +78,6 @@ module.exports = {
   Company,
   PackageLineItem,
   Package,
-  Upvote
+  Upvote,
+  Shipping
 };
