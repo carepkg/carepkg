@@ -70,12 +70,6 @@ class Cart extends React.Component {
             <CartEmpty />
           ) : null}
           {menuTab === "Wishlist" ? <Wishlist /> : null}
-
-          {/* {cart.length && (
-            <NavLink to="/cart/pp">
-              <button id="cart-review-btn">Review Order</button>
-            </NavLink>
-          )} */}
         </div>
         <div id="landing-footer-main">
           <div className="landing-page-break"></div>
