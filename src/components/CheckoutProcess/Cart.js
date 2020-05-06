@@ -26,7 +26,9 @@ class Cart extends React.Component {
     const { user, cart, removeFromCart } = this.props;
     const { menuTab } = this.state;
     let totals;
-    totals = cart.length ? cart.map(item => item.product.price * item.qty) : [];
+    totals = cart.length
+      ? cart.map(item => (item.product.price * item.qty).toFixed(2))
+      : [];
     let defaultStyle = {
       color: "gray",
       fontWeight: "300"
@@ -62,7 +64,7 @@ class Cart extends React.Component {
                 removeFromCart={removeFromCart}
                 user={user}
               />
-              <ShippingOptions />
+              <ShippingOptions totals={totals} />
             </React.Fragment>
           ) : menuTab === "Cart" ? (
             <CartEmpty />

@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getShippingsThunk } from "../../store/shippings";
+import BriefOrderSummary from "./BriefOrderSummary";
 
 class ShippingOptions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      option: ""
+      option: "",
+      cost: 0
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -15,62 +17,65 @@ class ShippingOptions extends React.Component {
   }
   handleChange(event) {
     this.setState({
-      option: event.target.value
+      option: event.target.value.split(" ")[0],
+      cost: Number(event.target.value.split(" ")[1])
     });
   }
   render() {
-    const { shippingOptions } = this.props;
-    console.log(shippingOptions);
+    const { shippingOptions, totals } = this.props;
+    let subtotal = totals
+      ? totals.reduce((acc, curr) => acc + Number(curr), 0).toFixed(2)
+      : 0;
     const [standard, twoDay, oneDay] = shippingOptions;
     return shippingOptions.length ? (
       <div className="cart-selection-container">
         <form className="shipping-option-form">
-          <h1>Select Shipping Option:</h1>
+          <h3>Select Shipping Option:</h3>
           <div className="shipping-input-group">
-            <span>
+            <span className="shipping-name">
               <input
                 defaultChecked={true}
                 name="option"
                 type="radio"
-                value="free"
+                value="free 0"
                 onChange={this.handleChange}
               />
               {standard.name}
             </span>
-            <span>FREE!</span>
+            <span className="shipping-free">FREE!</span>
           </div>
           <div className="shipping-input-group">
-            <span>
+            <span className="shipping-name">
               <input
                 name="option"
                 type="radio"
-                value="two"
+                value="two 12.99"
                 onChange={this.handleChange}
               />
               {twoDay.name}
             </span>
-            <span className="">
+            <span className="shipping-cost">
               <span className="dollar-sign">$</span>
               {twoDay.cost}
             </span>
           </div>
           <div className="shipping-input-group">
-            <span>
+            <span className="shipping-name">
               <input
                 name="option"
                 type="radio"
-                value="one"
+                value="one 19.99"
                 onChange={this.handleChange}
               />
               {oneDay.name}
             </span>
-            <span>
+            <span className="shipping-cost">
               <span className="dollar-sign">$</span>
               {oneDay.cost}
             </span>
           </div>
         </form>
-        <div className="cart-order-summary"></div>
+        <BriefOrderSummary subtotal={subtotal} shippingCost={this.state.cost} />
       </div>
     ) : null;
   }
