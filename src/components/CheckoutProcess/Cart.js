@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { render } from "@testing-library/react";
 import { getCartThunk, deleteFromCartThunk } from "../../store/cart";
 import { NavLink } from "react-router-dom";
+import CarepkgHelp from "../CarepkgHelp";
+import CarepkgNewsletter from "../CarepkgNewsletter";
+import FooterBottom from "../FooterBottom";
 import CartEmpty from "./CartEmpty";
 import Wishlist from "../Wishlist";
 import CartItems from "./CartItems";
@@ -59,10 +62,7 @@ class Cart extends React.Component {
                 removeFromCart={removeFromCart}
                 user={user}
               />
-              <div>
-                <ShippingOptions />
-                {/* <OrderSummary /> */}
-              </div>
+              <ShippingOptions />
             </React.Fragment>
           ) : menuTab === "Cart" ? (
             <CartEmpty />
@@ -74,6 +74,15 @@ class Cart extends React.Component {
               <button id="cart-review-btn">Review Order</button>
             </NavLink>
           )} */}
+        </div>
+        <div id="landing-footer-main">
+          <div className="landing-page-break"></div>
+          <div id="info-footer">
+            <CarepkgHelp />
+            <CarepkgNewsletter />
+          </div>
+          <div className="landing-page-break"></div>
+          <FooterBottom />
         </div>
       </div>
     );
