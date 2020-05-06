@@ -20,6 +20,8 @@ class Cart extends React.Component {
   render() {
     const { user, cart, removeFromCart } = this.props;
     const { menuTab } = this.state;
+    let totals;
+    totals = cart.length ? cart.map(item => item.product.price * item.qty) : [];
     let defaultStyle = {
       color: "gray",
       fontWeight: "300"
@@ -29,6 +31,7 @@ class Cart extends React.Component {
       borderBottom: "2px solid black",
       fontWeight: "500"
     };
+    console.log(cart);
     return (
       <div id="cart-page">
         <h1 className="your-cart-header">Your Cart</h1>
@@ -37,7 +40,7 @@ class Cart extends React.Component {
             style={menuTab === "Cart" ? activeStyle : defaultStyle}
             onClick={() => this.setState({ menuTab: "Cart" })}
           >
-            <span>Cart ({cart.length})</span>
+            <span>Cart ({cart.length || 0})</span>
           </div>
           <div
             style={menuTab === "Wishlist" ? activeStyle : defaultStyle}
@@ -56,7 +59,7 @@ class Cart extends React.Component {
                 <span className="cart-header-quantity">Qty</span>
                 <span className="cart-header-total">Total</span>
               </div>
-              {cart.map(lineItem => {
+              {cart.map((lineItem, idx) => {
                 const { product } = lineItem;
                 return (
                   <div className="cart-item">
@@ -81,9 +84,15 @@ class Cart extends React.Component {
                         Remove
                       </button>
                     </div>
-                    <div className="cart-item-price-box"></div>
-                    <div className="cart-item-quantity-box"></div>
-                    <div className="cart-item-total-box"></div>
+                    <div className="cart-item-price-box">
+                      <span className="dollar-sign">$</span>
+                      {product.price}
+                    </div>
+                    <div className="cart-item-quantity-box">{lineItem.qty}</div>
+                    <div className="cart-item-total-box">
+                      <span className="dollar-sign">$</span>
+                      {totals[idx]}
+                    </div>
                   </div>
                 );
               })}

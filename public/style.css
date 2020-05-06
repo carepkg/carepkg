@@ -1330,18 +1330,22 @@ input[type='text'], input[type='email'] {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.8em;
 }
 .cart-item-quantity-box {
     width: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.8em;
 }
 .cart-item-total-box {
     width: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.8em;
+
 }
 #cart-review-btn {
     position: absolute;
@@ -1546,7 +1550,8 @@ input[type='text'], input[type='email'] {
     text-decoration: underline;
 }
 .dollar-sign {
-    font-size: 0.35em;
+    font-size: 0.75em;
+    font-weight: 500;
     vertical-align: text-top;
 }
 .line-item-price-hdr {
