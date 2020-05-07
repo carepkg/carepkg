@@ -17,9 +17,7 @@ const Addresses = props => {
     removeDefault
   } = props;
   useEffect(() => {
-    if (props.user) {
-      fetchAddresses(user.id);
-    }
+    fetchAddresses();
   }, []);
   let addresses = props.addresses;
   for (let i = 0; i < addresses.length; i++) {
@@ -102,7 +100,7 @@ const mapState = state => ({
   addresses: state.addresses
 });
 const mapDispatch = dispatch => ({
-  fetchAddresses: userId => dispatch(getAddressesThunk(userId)),
+  fetchAddresses: () => dispatch(getAddressesThunk()),
   removeAddress: addressId => dispatch(removeAddressThunk(addressId)),
   removeDefault: () => dispatch(removeCurrentDefaultThunk()),
   setNewDefault: address => dispatch(setDefaultThunk(address))

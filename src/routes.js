@@ -22,7 +22,11 @@ class Routes extends React.Component {
     return (
       <Switch>
         <Route exact path="/cart/success" component={CheckoutSuccess} />
-        <Route exact path="/cart/checkout" component={Checkout} />
+        <Route
+          exact
+          path="/cart/checkout"
+          render={() => <Checkout user={this.props.user} />}
+        />
         <Route exact path="/cart/pp" component={PurchaseProfile} />
         <Route exact path="/profile" component={UserProfile} />
         <Route exact path="/cart" component={Cart} />
@@ -35,7 +39,10 @@ class Routes extends React.Component {
     );
   }
 }
+const mapState = state => ({
+  user: state.user
+});
 const mapDispatch = dispatch => ({
   loadInitialData: () => dispatch(me())
 });
-export default withRouter(connect(null, mapDispatch)(Routes));
+export default withRouter(connect(mapState, mapDispatch)(Routes));

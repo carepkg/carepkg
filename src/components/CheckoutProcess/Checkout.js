@@ -14,14 +14,10 @@ class Checkout extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-    if (this.props.user) {
-      this.props.fetchAddresses(this.props.user.id);
-    }
+    this.props.fetchAddresses();
   }
   render() {
     const {
-      user,
-      fetchAddresses,
       removeAddress,
       setNewDefault,
       removeDefault,
@@ -33,6 +29,7 @@ class Checkout extends React.Component {
           <h3>Review and Place your Order</h3>
         </div>
         <h3>Select your Billing Address</h3>
+        <div className="billing-addresses-container"></div>
         <Addresses
           addresses={addresses}
           removeAddress={removeAddress}
@@ -45,11 +42,10 @@ class Checkout extends React.Component {
 }
 
 const mapState = state => ({
-  user: state.user,
   addresses: state.addresses
 });
 const mapDispatch = dispatch => ({
-  fetchAddresses: userId => dispatch(getAddressesThunk(userId)),
+  fetchAddresses: () => dispatch(getAddressesThunk()),
   removeAddress: addressId => dispatch(removeAddressThunk(addressId)),
   removeDefault: () => dispatch(removeCurrentDefaultThunk()),
   setNewDefault: address => dispatch(setDefaultThunk(address))

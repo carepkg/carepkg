@@ -28,9 +28,9 @@ const removeAddress = addressId => ({
   addressId
 });
 
-export const getAddressesThunk = userId => async dispatch => {
+export const getAddressesThunk = () => async dispatch => {
   try {
-    const response = await axios.get(`/api/addresses/${userId}`);
+    const response = await axios.get(`/api/addresses`);
     const addresses = response.data;
     console.log(addresses);
     dispatch(getAddresses(addresses));
