@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 const BriefOrderSummary = props => {
   const { subtotal, shippingCost } = props;
@@ -37,9 +38,14 @@ const BriefOrderSummary = props => {
           {total}
         </span>
       </div>
-      <button className="black-btn">Proceed With Order</button>
+      <button
+        className="black-btn"
+        onClick={() => props.history.push("/cart/checkout")}
+      >
+        Proceed With Order
+      </button>
     </div>
   );
 };
 
-export default BriefOrderSummary;
+export default withRouter(BriefOrderSummary);
