@@ -11,12 +11,22 @@ import {
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      billingAddress: {}
+    };
+    this.setBillingAddress = this.setBillingAddress.bind(this);
   }
   componentDidMount() {
     this.props.fetchAddresses();
   }
+
+  setBillingAddress(address) {
+    this.setState({
+      billingAddress: address
+    });
+  }
   render() {
+    console.log("checkout", this.state.billingAddress);
     const {
       removeAddress,
       setNewDefault,
@@ -26,16 +36,21 @@ class Checkout extends React.Component {
     return (
       <div id="checkout-page">
         <div className="checkout-header">
-          <h3>Review and Place your Order</h3>
+          <h3>Review and Place your Order </h3>
         </div>
-        <h3>Select your Billing Address</h3>
-        <div className="billing-addresses-container"></div>
-        <Addresses
-          addresses={addresses}
-          removeAddress={removeAddress}
-          removeDefault={removeDefault}
-          setNewDefault={setNewDefault}
-        />
+
+        <div className="billing-addresses-container">
+          <h3 className="checkout-step-header">
+            <span>1</span> &nbsp;&nbsp;Select your Billing Address
+          </h3>
+          <Addresses
+            addresses={addresses}
+            removeAddress={removeAddress}
+            removeDefault={removeDefault}
+            setNewDefault={setNewDefault}
+            setBillingAddress={this.setBillingAddress}
+          />
+        </div>
       </div>
     );
   }
