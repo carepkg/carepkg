@@ -11,7 +11,7 @@ class ShippingAddresses extends React.Component {
   handleSelect(name) {
     this.setState({ activeShipping: name });
     const address = this.props.addresses.find(address => address.name === name);
-    this.props.setShippingAddress(name, address);
+    this.props.setShippingAddress("", address);
   }
 
   render() {

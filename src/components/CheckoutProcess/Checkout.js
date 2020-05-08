@@ -29,18 +29,21 @@ class Checkout extends React.Component {
     });
   }
   setShippingAddress(sameAddress, payload = false) {
-    if (sameAddress && !payload)
+    //the if clause below doesnt change shippingAddress when billing changes. Figure out later.
+    if (sameAddress && !payload) {
       this.setState({ shippingAddress: this.state.billingAddress });
-    else this.setState({ shippingAddress: payload });
+    } else if (!sameAddress && payload) {
+      this.setState({ shippingAddress: payload });
+    }
   }
   render() {
-    console.log("checkout", this.state.billingAddress);
     const {
       removeAddress,
       setNewDefault,
       removeDefault,
       addresses
     } = this.props;
+    console.log("checkout: ", this.state.shippingAddress);
     return (
       <div id="checkout-page">
         <div className="checkout-header">
