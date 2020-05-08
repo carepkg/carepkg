@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import BillingAddresses from "./BillingAddresses";
 import ShippingAddress from "./ShippingAddress";
+import GiftOption from "./GiftOption";
 import {
   getAddressesThunk,
   removeAddressThunk,
@@ -14,10 +15,12 @@ class Checkout extends React.Component {
     super(props);
     this.state = {
       billingAddress: {},
-      shippingAddress: {}
+      shippingAddress: {},
+      isGift: false
     };
     this.setBillingAddress = this.setBillingAddress.bind(this);
     this.setShippingAddress = this.setShippingAddress.bind(this);
+    this.toggleGift = this.toggleGift.bind(this);
   }
   componentDidMount() {
     this.props.fetchAddresses();
@@ -36,6 +39,11 @@ class Checkout extends React.Component {
       this.setState({ shippingAddress: payload });
     }
   }
+  toggleGift() {
+    this.setState({
+      isGift: !this.state.isGift
+    });
+  }
   render() {
     const {
       removeAddress,
@@ -43,7 +51,7 @@ class Checkout extends React.Component {
       removeDefault,
       addresses
     } = this.props;
-    console.log("checkout: ", this.state.shippingAddress);
+    console.log("checkout: ", this.state.isGift);
     return (
       <div id="checkout-page">
         <div className="checkout-header">
@@ -73,6 +81,13 @@ class Checkout extends React.Component {
             removeDefault={removeDefault}
             setNewDefault={setNewDefault}
           />
+        </div>
+        <div className="checkout-step-container">
+          <h3 className="checkout-step-header">
+            <span>3</span>&nbsp;&nbsp;Select Gift Options{" "}
+            <span className="optional">(Optional)</span>
+          </h3>
+          <GiftOption toggleGift={this.toggleGift} />
         </div>
       </div>
     );
