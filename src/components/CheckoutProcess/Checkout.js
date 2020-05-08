@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import Addresses from "./Addresses";
+import BillingAddresses from "./BillingAddresses";
+import ShippingAddress from "./ShippingAddress";
 import {
   getAddressesThunk,
   removeAddressThunk,
@@ -12,9 +13,11 @@ class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      billingAddress: {}
+      billingAddress: {},
+      shippingAddress: {}
     };
     this.setBillingAddress = this.setBillingAddress.bind(this);
+    this.setShippingAddress = this.setShippingAddress.bind(this);
   }
   componentDidMount() {
     this.props.fetchAddresses();
@@ -24,6 +27,11 @@ class Checkout extends React.Component {
     this.setState({
       billingAddress: address
     });
+  }
+  setShippingAddress(sameAddress, payload = false) {
+    if (sameAddress && !payload)
+      this.setState({ shippingAddress: this.state.billingAddress });
+    else this.setState({ shippingAddress: payload });
   }
   render() {
     console.log("checkout", this.state.billingAddress);
@@ -39,16 +47,28 @@ class Checkout extends React.Component {
           <h3>Review and Place your Order </h3>
         </div>
 
-        <div className="billing-addresses-container">
+        <div className="checkout-step-container">
           <h3 className="checkout-step-header">
             <span>1</span> &nbsp;&nbsp;Select your Billing Address
           </h3>
-          <Addresses
+          <BillingAddresses
             addresses={addresses}
             removeAddress={removeAddress}
             removeDefault={removeDefault}
             setNewDefault={setNewDefault}
             setBillingAddress={this.setBillingAddress}
+          />
+        </div>
+        <div className="checkout-step-container">
+          <h3 className="checkout-step-header">
+            <span>2</span>&nbsp;&nbsp;Choose a Shipping Address
+          </h3>
+          <ShippingAddress
+            setShippingAddress={this.setShippingAddress}
+            addresses={addresses}
+            removeAddress={removeAddress}
+            removeDefault={removeDefault}
+            setNewDefault={setNewDefault}
           />
         </div>
       </div>

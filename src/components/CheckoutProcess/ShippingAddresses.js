@@ -1,22 +1,22 @@
 import React from "react";
 
-class Addresses extends React.Component {
+class ShippingAddresses extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeBilling: ""
+      activeShipping: ""
     };
     this.handleSelect = this.handleSelect.bind(this);
   }
   handleSelect(name) {
-    this.setState({ activeBilling: name });
+    this.setState({ activeShipping: name });
     const address = this.props.addresses.find(address => address.name === name);
-    this.props.setBillingAddress(address);
+    this.props.setShippingAddress(name, address);
   }
 
   render() {
     const { removeAddress, setNewDefault, removeDefault } = this.props;
-    const { activeBilling } = this.state;
+    const { activeShipping } = this.state;
     const addresses = this.props.addresses;
     for (let i = 0; i < addresses.length; i++) {
       if (addresses[i].default) {
@@ -25,7 +25,6 @@ class Addresses extends React.Component {
         addresses[0] = temp;
       }
     }
-    console.log(activeBilling);
     return (
       <div id="addresses-body">
         {addresses ? (
@@ -35,7 +34,7 @@ class Addresses extends React.Component {
                 <div
                   key={address.id}
                   className={`user-address-container billing-address-card${
-                    activeBilling === address.name ? `-active` : ``
+                    activeShipping === address.name ? `-active` : ``
                   }`}
                   onClick={() => this.handleSelect(address.name)}
                 >
@@ -94,4 +93,4 @@ class Addresses extends React.Component {
   }
 }
 
-export default Addresses;
+export default ShippingAddresses;
