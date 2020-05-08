@@ -89,6 +89,12 @@ class Checkout extends React.Component {
           </h3>
           <GiftOption toggleGift={this.toggleGift} />
         </div>
+        <div className="checkout-step-container">
+          <h3 className="checkout-step-header">
+            <span>4</span>&nbsp;&nbsp;Select Payment Method
+          </h3>
+          <SelectPayment />
+        </div>
       </div>
     );
   }
