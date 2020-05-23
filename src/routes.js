@@ -6,11 +6,11 @@ import AllProducts from "./components/AllProducts";
 import SingleProduct from "./components/SingleProduct";
 import { Login } from "./components/AuthForm";
 import { Signup } from "./components/AuthForm";
-import Cart from "./components/Cart";
+import Cart from "./components/CheckoutProcess/Cart";
 import UserProfile from "./components/UserProfile";
-import PurchaseProfile from "./components/PurchaseProfile";
-import Checkout from "./components/Checkout";
-import CheckoutSuccess from "./components/CheckoutSuccess";
+import PurchaseProfile from "./components/CheckoutProcess/PurchaseProfile";
+import Checkout from "./components/CheckoutProcess/Checkout";
+import CheckoutSuccess from "./components/CheckoutProcess/CheckoutSuccess";
 import { me } from "./store/user";
 import { connect } from "react-redux";
 
@@ -22,7 +22,11 @@ class Routes extends React.Component {
     return (
       <Switch>
         <Route exact path="/cart/success" component={CheckoutSuccess} />
-        <Route exact path="/cart/checkout" component={Checkout} />
+        <Route
+          exact
+          path="/cart/checkout"
+          render={() => <Checkout user={this.props.user} />}
+        />
         <Route exact path="/cart/pp" component={PurchaseProfile} />
         <Route exact path="/profile" component={UserProfile} />
         <Route exact path="/cart" component={Cart} />
@@ -35,7 +39,10 @@ class Routes extends React.Component {
     );
   }
 }
+const mapState = state => ({
+  user: state.user
+});
 const mapDispatch = dispatch => ({
   loadInitialData: () => dispatch(me())
 });
-export default withRouter(connect(null, mapDispatch)(Routes));
+export default withRouter(connect(mapState, mapDispatch)(Routes));

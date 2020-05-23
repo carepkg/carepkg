@@ -2,11 +2,12 @@ const router = require("express").Router();
 const Sequelize = "sequelize";
 const { Address } = require("../db/models");
 
-router.get("/:userId", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
+    console.log(req.user);
     const addresses = await Address.findAll({
       where: {
-        userId: req.params.userId
+        userId: req.user.id
       }
     });
     res.json(addresses);
