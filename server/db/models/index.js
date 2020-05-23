@@ -14,6 +14,7 @@ const Company = require("./company");
 const PackageLineItem = require("./packageLineItem");
 const Upvote = require("./upvotes");
 const Shipping = require("./shipping");
+const WishlistLineItem = require("./wishlistLineItem");
 
 // --------- ASSOCIATIONS --------- \\
 
@@ -22,6 +23,7 @@ User.hasMany(Address);
 User.hasMany(Review);
 User.hasMany(Order);
 User.hasMany(CartLineItem);
+User.hasMany(WishlistLineItem);
 User.hasMany(Package);
 User.hasMany(Upvote);
 
@@ -33,6 +35,7 @@ Package.hasMany(PackageLineItem);
 Product.hasMany(PackageLineItem);
 Product.hasMany(Review);
 Product.hasMany(CartLineItem);
+Product.hasMany(WishlistLineItem);
 Product.hasMany(PricingHistory);
 Product.hasMany(LineItem);
 Product.hasMany(ProductCategory);
@@ -49,6 +52,9 @@ Shipping.hasMany(Order);
 
 CartLineItem.belongsTo(User);
 CartLineItem.belongsTo(Product);
+
+WishlistLineItem.belongsTo(User);
+WishlistLineItem.belongsTo(Product);
 
 PackageLineItem.belongsTo(Package);
 PackageLineItem.belongsTo(Product);
@@ -79,5 +85,6 @@ module.exports = {
   PackageLineItem,
   Package,
   Upvote,
-  Shipping
+  Shipping,
+  WishlistLineItem
 };
