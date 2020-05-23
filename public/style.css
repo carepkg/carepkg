@@ -1253,10 +1253,16 @@ input[type='text'], input[type='email'] {
     display: flex;
     justify-content: center;
 }
+.wishlist-header-edit {
+    width: 45%;
+}
 .cart-header-price {
     width: 10%;
     display: flex;
     justify-content: center;
+}
+.wishlist-header-price {
+    width: 20%;
 }
 .cart-header-quantity {
     width: 10%;
@@ -1303,6 +1309,9 @@ input[type='text'], input[type='email'] {
     width: 25%;
     
 }
+.wishlist-item-edit-box {
+    width: 45%;
+}
 .cart-item-edit-box button:first-of-type {
     height: 26px;
     width: 140px;
@@ -1331,6 +1340,9 @@ input[type='text'], input[type='email'] {
     justify-content: center;
     align-items: center;
     font-size: 0.8em;
+}
+.wishlist-item-price-box {
+    width: 20%;
 }
 .cart-item-quantity-box {
     width: 10%;
