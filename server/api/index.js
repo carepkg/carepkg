@@ -10,6 +10,7 @@ router.use("/categories", require("./categories"));
 router.use("/addresses", require("./addresses"));
 router.use("/reviews", require("./reviews"));
 router.use("/shippings", require("./shippings"));
+router.use("/wishlist", require("./wishlist"));
 
 router.use((req, res, next) => {
   const error = new Error("Not Found");
