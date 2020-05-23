@@ -18,12 +18,11 @@ router.get("/", async (req, res, next) => {
 
 router.post("/:productId", async (req, res, next) => {
   try {
-    const { qty, userId } = req.body;
-    const product = await Product.findByPk(req.params.productId);
+    const { qty } = req.body;
     const cartLineItem = await CartLineItem.create({
       qty: qty,
       totalPriceAtPurchase: product.price * qty,
-      userId: userId,
+      userId: req.user.id,
       productId: req.params.productId
     });
   } catch (err) {
@@ -35,7 +34,7 @@ router.delete("/:productId", async (req, res, next) => {
   try {
     await CartLineItem.destroy({
       where: {
-        userId: req.body.userId,
+        userId: req.user.id,
         productId: req.params.productId
       }
     });

@@ -27,10 +27,9 @@ export const getCartThunk = () => async dispatch => {
     console.error(err);
   }
 };
-export const addToCartThunk = (qty, productId, userId) => async dispatch => {
+export const addToCartThunk = (qty, productId) => async dispatch => {
   try {
     await axios.post(`/api/cart/${productId}`, {
-      userId,
       qty
     });
     dispatch(addToCart());
@@ -38,12 +37,10 @@ export const addToCartThunk = (qty, productId, userId) => async dispatch => {
     console.error(err);
   }
 };
-export const deleteFromCartThunk = (productId, userId) => async dispatch => {
+export const deleteFromCartThunk = productId => async dispatch => {
   try {
     dispatch(deleteFromCart(productId));
-    await axios.delete(`/api/cart/${productId}`, {
-      data: { userId: userId }
-    });
+    await axios.delete(`/api/cart/${productId}`);
   } catch (err) {
     console.error(err);
   }

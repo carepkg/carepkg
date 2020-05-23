@@ -29,9 +29,7 @@ const CartItems = props => {
             </div>
             <div className="cart-item-edit-box">
               <button className="white-btn">Move to Wishlist</button>
-              <button onClick={() => removeFromCart(product.id, user.id)}>
-                Remove
-              </button>
+              <button onClick={() => removeFromCart(product.id)}>Remove</button>
             </div>
             <div className="cart-item-price-box">
               <span className="dollar-sign">$</span>

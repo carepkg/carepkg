@@ -1,9 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { render } from "@testing-library/react";
-import { getCartThunk, deleteFromCartThunk } from "../../store/cart";
-import { getUserWishlistThunk } from "../../store/wishlist";
-import { NavLink } from "react-router-dom";
+import {
+  getCartThunk,
+  deleteFromCartThunk,
+  addToCartThunk
+} from "../../store/cart";
+import {
+  getUserWishlistThunk,
+  addToWishlistThunk,
+  removeFromWishlistThunk
+} from "../../store/wishlist";
 import CarepkgHelp from "../CarepkgHelp";
 import CarepkgNewsletter from "../CarepkgNewsletter";
 import FooterBottom from "../FooterBottom";
@@ -64,15 +71,17 @@ class Cart extends React.Component {
               <CartItems
                 cart={cart}
                 totals={totals}
-                removeFromCart={removeFromCart}
                 user={user}
+                removeFromCart={removeFromCart}
               />
               <ShippingOptions totals={totals} />
             </React.Fragment>
           ) : menuTab === "Cart" ? (
             <CartEmpty />
           ) : null}
-          {menuTab === "Wishlist" ? <Wishlist wishlist={wishlist} /> : null}
+          {menuTab === "Wishlist" ? (
+            <Wishlist wishlist={wishlist} user={user} />
+          ) : null}
         </div>
         <div id="landing-footer-main">
           <div className="landing-page-break"></div>
@@ -95,8 +104,10 @@ const mapState = state => ({
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),
-  removeFromCart: (productId, userId) =>
-    dispatch(deleteFromCartThunk(productId, userId)),
-  fetchWishlist: userId => dispatch(getUserWishlistThunk(userId))
+  addToCart: productId => dispatch(addToCartThunk(1, productId)),
+  removeFromCart: productId => dispatch(deleteFromCartThunk(productId)),
+  fetchWishlist: userId => dispatch(getUserWishlistThunk(userId)),
+  addToWishlist: productId => dispatch(addToWishlistThunk(productId)),
+  removeFromWishlist: productId => dispatch(removeFromWishlistThunk(productId))
 });
 export default connect(mapState, mapDispatch)(Cart);
