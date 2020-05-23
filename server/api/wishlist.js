@@ -19,5 +19,29 @@ router.get("/:userId", async (req, res, next) => {
     next(err);
   }
 });
+router.post("/lineItem", async (req, res, next) => {
+  try {
+    const { userId, productId } = req.body;
+    await WishlistLineItem.create({
+      userId,
+      productId
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+router.delete("/lineItem", async (req, res, next) => {
+  try {
+    const { userId, productId } = req.body;
+    await WishlistLineItem.destroy({
+      where: {
+        userId,
+        productId
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
