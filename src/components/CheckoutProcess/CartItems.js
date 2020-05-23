@@ -1,7 +1,10 @@
 import React from "react";
 
 const CartItems = props => {
-  const { cart, totals, removeFromCart, user } = props;
+  const { cart, totals, removeFromCart, addToWishlist, user } = props;
+  const handleMove = productId => {
+    removeFromCart(user.Id, productId).then(() => addToWishlist(productId));
+  };
   return (
     <div className="cart-items-container">
       <div className="cart-items-header-table">
@@ -28,8 +31,15 @@ const CartItems = props => {
               </div>
             </div>
             <div className="cart-item-edit-box">
-              <button className="white-btn">Move to Wishlist</button>
-              <button onClick={() => removeFromCart(product.id)}>Remove</button>
+              <button
+                className="white-btn"
+                onClick={() => handleMove(product.id)}
+              >
+                Move to Wishlist
+              </button>
+              <button onClick={() => removeFromCart(user.id, product.id)}>
+                Remove
+              </button>
             </div>
             <div className="cart-item-price-box">
               <span className="dollar-sign">$</span>

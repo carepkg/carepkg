@@ -19,26 +19,26 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
-router.post("/lineItem", async (req, res, next) => {
+router.post("/:productId", async (req, res, next) => {
   try {
-    const { userId, productId } = req.body;
-    await WishlistLineItem.create({
-      userId,
-      productId
+    const item = await WishlistLineItem.create({
+      userId: req.user.id,
+      productId: req.params.productId
     });
+    res.json(item);
   } catch (err) {
     next(err);
   }
 });
-router.delete("/lineItem", async (req, res, next) => {
+router.delete("/:productId", async (req, res, next) => {
   try {
-    const { userId, productId } = req.body;
     await WishlistLineItem.destroy({
       where: {
-        userId,
-        productId
+        userId: req.user.id,
+        productId: req.params.productId
       }
     });
+    res.end();
   } catch (err) {
     next(err);
   }

@@ -8,8 +8,9 @@ const getCart = cart => ({
   type: GET_CART,
   cart
 });
-const addToCart = () => ({
-  type: ADD_TO_CART
+const addToCart = item => ({
+  type: ADD_TO_CART,
+  item
 });
 const deleteFromCart = productId => {
   return {
@@ -29,18 +30,19 @@ export const getCartThunk = () => async dispatch => {
 };
 export const addToCartThunk = (qty, productId) => async dispatch => {
   try {
-    await axios.post(`/api/cart/${productId}`, {
+    const res = await axios.post(`/api/cart/${productId}`, {
       qty
     });
-    dispatch(addToCart());
+    const item = res.data;
+    dispatch(addToCart(item));
   } catch (err) {
     console.error(err);
   }
 };
-export const deleteFromCartThunk = productId => async dispatch => {
+export const deleteFromCartThunk = (userId, productId) => async dispatch => {
   try {
     dispatch(deleteFromCart(productId));
-    await axios.delete(`/api/cart/${productId}`);
+    await axios.delete(`/api/cart/${userId}/${productId}`);
   } catch (err) {
     console.error(err);
   }
@@ -51,7 +53,7 @@ const cartReducer = (state = {}, action) => {
     case GET_CART:
       return action.cart;
     case ADD_TO_CART:
-      return action.cart;
+      return [...state, action.cart];
     case DELETE_FROM_CART:
       return [
         ...state.filter(lineItem => lineItem.productId !== action.productId)

@@ -5,7 +5,7 @@ const ADD_TO_WISHLIST = "ADD_TO_WISHLIST";
 const REMOVE_FROM_WISHLIST = "REMOVE_FROM_WISHLIST";
 
 const getUserWishlist = wishlist => ({ type: GET_USER_WISHLIST, wishlist });
-const addToWishlist = lineItem => ({ type: ADD_TO_WISHLIST, lineItem });
+const addToWishlist = () => ({ type: ADD_TO_WISHLIST });
 const removeFromWishlist = productId => ({
   type: REMOVE_FROM_WISHLIST,
   productId

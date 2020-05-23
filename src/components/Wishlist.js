@@ -1,8 +1,11 @@
 import React from "react";
 
 const Wishlist = props => {
-  const { wishlist } = props;
+  const { wishlist, removeFromWishlist, addToCart } = props;
   console.log(wishlist);
+  const handleMove = productId => {
+    removeFromWishlist(productId).then(() => addToCart(productId));
+  };
   return wishlist ? (
     <div className="cart-items-container">
       <div className="cart-items-header-table">
@@ -29,8 +32,15 @@ const Wishlist = props => {
               </div>
             </div>
             <div className="cart-item-edit-box wishlist-item-edit-box">
-              <button className="white-btn">Move to Cart</button>
-              <button>Remove</button>
+              <button
+                className="white-btn"
+                onClick={() => handleMove(product.id)}
+              >
+                Move to Cart
+              </button>
+              <button onClick={() => removeFromWishlist(product.id)}>
+                Remove
+              </button>
             </div>
             <div className="cart-item-price-box wishlist-item-price-box">
               <span className="dollar-sign">$</span>

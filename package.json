@@ -12,7 +12,6 @@
     "axios": "^0.19.2",
     "compression": "^1.7.4",
     "connect-session-sequelize": "^6.1.1",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "faker": "^4.1.0",
@@ -59,5 +58,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:8000",
+  "secure": false
 }

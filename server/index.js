@@ -1,5 +1,4 @@
 const path = require("path");
-const cors = require("cors");
 const express = require("express");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
@@ -21,13 +20,12 @@ const {
   PackageLineItem,
   Upvote
 } = require("./db/models");
-const PORT = 5000;
+const PORT = 8000;
 const app = express();
 
 const createApp = () => {
   // logging middleware
   app.use(morgan("dev"));
-  app.use(cors());
 
   // body parsing middleware
   app.use(express.json());

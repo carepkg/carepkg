@@ -33,7 +33,15 @@ class Cart extends React.Component {
     }
   }
   render() {
-    const { user, cart, removeFromCart, wishlist } = this.props;
+    const {
+      user,
+      cart,
+      wishlist,
+      removeFromCart,
+      removeFromWishlist,
+      addToCart,
+      addToWishlist
+    } = this.props;
     const { menuTab } = this.state;
     let totals;
     totals = cart.length
@@ -73,6 +81,7 @@ class Cart extends React.Component {
                 totals={totals}
                 user={user}
                 removeFromCart={removeFromCart}
+                addToWishlist={addToWishlist}
               />
               <ShippingOptions totals={totals} />
             </React.Fragment>
@@ -80,7 +89,12 @@ class Cart extends React.Component {
             <CartEmpty />
           ) : null}
           {menuTab === "Wishlist" ? (
-            <Wishlist wishlist={wishlist} user={user} />
+            <Wishlist
+              wishlist={wishlist}
+              user={user}
+              removeFromWishlist={removeFromWishlist}
+              addToCart={addToCart}
+            />
           ) : null}
         </div>
         <div id="landing-footer-main">
@@ -105,7 +119,8 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),
   addToCart: productId => dispatch(addToCartThunk(1, productId)),
-  removeFromCart: productId => dispatch(deleteFromCartThunk(productId)),
+  removeFromCart: (userId, productId) =>
+    dispatch(deleteFromCartThunk(userId, productId)),
   fetchWishlist: userId => dispatch(getUserWishlistThunk(userId)),
   addToWishlist: productId => dispatch(addToWishlistThunk(productId)),
   removeFromWishlist: productId => dispatch(removeFromWishlistThunk(productId))
