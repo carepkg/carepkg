@@ -18,7 +18,8 @@ const {
   Package,
   PackageLineItem,
   Upvote,
-  Shipping
+  Shipping,
+  WishlistLineItem
 } = require("../server/db/models/");
 const faker = require("faker");
 const familiarities = [
@@ -570,6 +571,24 @@ async function seed() {
       qty: 3,
       userId: 2,
       productId: 10
+    })
+  ]);
+  const wishlistLineItems = await Promise.all([
+    WishlistLineItem.create({
+      userId: 2,
+      productId: 4
+    }),
+    WishlistLineItem.create({
+      userId: 2,
+      productId: 10
+    }),
+    WishlistLineItem.create({
+      userId: 1,
+      productId: 2
+    }),
+    WishlistLineItem.create({
+      userId: 1,
+      productId: 1
     })
   ]);
 
