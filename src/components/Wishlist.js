@@ -4,7 +4,8 @@ const Wishlist = props => {
   const { wishlist, removeFromWishlist, addToCart } = props;
   console.log(wishlist);
   const handleMove = productId => {
-    removeFromWishlist(productId).then(() => addToCart(productId));
+    removeFromWishlist(productId);
+    addToCart(1, productId);
   };
   return wishlist ? (
     <div className="cart-items-container">

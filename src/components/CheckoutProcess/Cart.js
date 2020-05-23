@@ -29,8 +29,15 @@ class Cart extends React.Component {
   componentDidMount() {
     if (this.props.user) {
       this.props.fetchCart();
-      this.props.fetchWishlist();
     }
+  }
+  switchToWishlist() {
+    this.props.fetchWishlist();
+    this.setState({ menuTab: "Wishlist" });
+  }
+  switchToCart() {
+    this.props.fetchCart();
+    this.setState({ menuTab: "Cart" });
   }
   render() {
     const {
@@ -44,6 +51,7 @@ class Cart extends React.Component {
     } = this.props;
     const { menuTab } = this.state;
     let totals;
+    console.log(cart);
     totals = cart.length
       ? cart.map(item => (item.product.price * item.qty).toFixed(2))
       : [];
@@ -62,15 +70,15 @@ class Cart extends React.Component {
         <div className="cart-btn-menu">
           <div
             style={menuTab === "Cart" ? activeStyle : defaultStyle}
-            onClick={() => this.setState({ menuTab: "Cart" })}
+            onClick={() => this.switchToCart()}
           >
-            <span>Cart ({cart.length || 0})</span>
+            <span>Cart</span>
           </div>
           <div
             style={menuTab === "Wishlist" ? activeStyle : defaultStyle}
-            onClick={() => this.setState({ menuTab: "Wishlist" })}
+            onClick={() => this.switchToWishlist()}
           >
-            <span>Wishlist ({0})</span>
+            <span>Wishlist</span>
           </div>
         </div>
         <div id="cart-content-container">

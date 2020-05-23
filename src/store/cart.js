@@ -53,7 +53,7 @@ const cartReducer = (state = {}, action) => {
     case GET_CART:
       return action.cart;
     case ADD_TO_CART:
-      return [...state, action.cart];
+      return [...state];
     case DELETE_FROM_CART:
       return [
         ...state.filter(lineItem => lineItem.productId !== action.productId)

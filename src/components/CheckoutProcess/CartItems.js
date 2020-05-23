@@ -3,7 +3,7 @@ import React from "react";
 const CartItems = props => {
   const { cart, totals, removeFromCart, addToWishlist, user } = props;
   const handleMove = productId => {
-    removeFromCart(user.Id, productId).then(() => addToWishlist(productId));
+    removeFromCart(user.id, productId).then(() => addToWishlist(productId));
   };
   return (
     <div className="cart-items-container">
