@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Sequelize = "sequelize";
 const { CartLineItem, Product } = require("../db/models");
 
-router.get("/:userId", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const cart = await CartLineItem.findAll({
       where: {

@@ -18,9 +18,9 @@ const deleteFromCart = productId => {
   };
 };
 
-export const getCartThunk = userId => async dispatch => {
+export const getCartThunk = () => async dispatch => {
   try {
-    const response = await axios.get(`/api/cart/${userId}`);
+    const response = await axios.get(`/api/cart/`);
     const cart = response.data;
     dispatch(getCart(cart));
   } catch (err) {

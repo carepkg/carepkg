@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { render } from "@testing-library/react";
 import { getCartThunk, deleteFromCartThunk } from "../../store/cart";
+import { getUserWishlistThunk } from "../../store/wishlist";
 import { NavLink } from "react-router-dom";
 import CarepkgHelp from "../CarepkgHelp";
 import CarepkgNewsletter from "../CarepkgNewsletter";
@@ -10,6 +11,7 @@ import CartEmpty from "./CartEmpty";
 import Wishlist from "../Wishlist";
 import CartItems from "./CartItems";
 import ShippingOptions from "./ShippingOptions";
+
 class Cart extends React.Component {
   constructor() {
     super();
@@ -19,11 +21,12 @@ class Cart extends React.Component {
   }
   componentDidMount() {
     if (this.props.user) {
-      this.props.fetchCart(this.props.user.id);
+      this.props.fetchCart();
+      this.props.fetchWishlist();
     }
   }
   render() {
-    const { user, cart, removeFromCart } = this.props;
+    const { user, cart, removeFromCart, wishlist } = this.props;
     const { menuTab } = this.state;
     let totals;
     totals = cart.length
@@ -69,7 +72,7 @@ class Cart extends React.Component {
           ) : menuTab === "Cart" ? (
             <CartEmpty />
           ) : null}
-          {menuTab === "Wishlist" ? <Wishlist /> : null}
+          {menuTab === "Wishlist" ? <Wishlist wishlist={wishlist} /> : null}
         </div>
         <div id="landing-footer-main">
           <div className="landing-page-break"></div>
@@ -87,11 +90,13 @@ class Cart extends React.Component {
 
 const mapState = state => ({
   cart: state.cart,
-  user: state.user
+  user: state.user,
+  wishlist: state.wishlist
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),
   removeFromCart: (productId, userId) =>
-    dispatch(deleteFromCartThunk(productId, userId))
+    dispatch(deleteFromCartThunk(productId, userId)),
+  fetchWishlist: userId => dispatch(getUserWishlistThunk(userId))
 });
 export default connect(mapState, mapDispatch)(Cart);

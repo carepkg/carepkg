@@ -14,7 +14,9 @@ const CartItems = props => {
       {cart.map((lineItem, idx) => {
         const { product } = lineItem;
         return (
-          <div className="cart-item">
+          <div
+            className={idx !== cart.length - 1 ? "cart-item" : "cart-item-last"}
+          >
             <div className="cart-item-desc-box">
               <img src={product.image} style={{ width: 80, height: 80 }} />
               <div>

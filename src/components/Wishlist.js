@@ -1,11 +1,6 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { getUserWishlistThunk } from "../store/wishlist";
+import React from "react";
 
 const Wishlist = props => {
-  useEffect(() => {
-    props.fetchWishlist(props.userId);
-  }, []);
   const { wishlist } = props;
   console.log(wishlist);
   return wishlist ? (
@@ -15,10 +10,14 @@ const Wishlist = props => {
         <span className="cart-header-edit wishlist-header-edit">Edit</span>
         <span className="cart-header-price wishlist-header-price">Each</span>
       </div>
-      {wishlist.map(lineItem => {
+      {wishlist.map((lineItem, idx) => {
         const { product } = lineItem;
         return (
-          <div className="cart-item">
+          <div
+            className={
+              idx !== wishlist.length - 1 ? "cart-item" : "cart-item-last"
+            }
+          >
             <div className="cart-item-desc-box">
               <img src={product.image} style={{ width: 80, height: 80 }} />
               <div>
@@ -44,9 +43,4 @@ const Wishlist = props => {
     </div>
   ) : null;
 };
-
-const mapState = state => ({ wishlist: state.wishlist, userId: state.user.id });
-const mapDispatch = dispatch => ({
-  fetchWishlist: userId => dispatch(getUserWishlistThunk(userId))
-});
-export default connect(mapState, mapDispatch)(Wishlist);
+export default Wishlist;
