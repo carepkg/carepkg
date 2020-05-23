@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import BillingAddresses from "./BillingAddresses";
 import ShippingAddress from "./ShippingAddress";
 import GiftOption from "./GiftOption";
+import SelectPayment from "./SelectPayment";
 import {
   getAddressesThunk,
   removeAddressThunk,
