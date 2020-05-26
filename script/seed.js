@@ -210,7 +210,7 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Tent",
+      name: "Brown Tent",
       description: "Place to sleep. Easy set up",
       image: "/product-images/tent.jpg"
     })
@@ -239,7 +239,7 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Tools").forEach(async id => {
+          getCategoryIdsFrom("Tools", "Gadgets").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
@@ -335,7 +335,7 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Clothing").forEach(async id => {
+          getCategoryIdsFrom("Clothing", "Storage").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
