@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 const BriefOrderSummary = props => {
   const { subtotal, shippingCost } = props;
   const tax = Number((subtotal * 0.09).toFixed(2));
-  const total = Number(subtotal) + Number(shippingCost) + tax;
+  const total = (Number(subtotal) + Number(shippingCost) + tax).toFixed(2);
   return (
     <div className="cart-order-summary">
       <h3>Order Summary:</h3>
