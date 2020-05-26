@@ -9,8 +9,7 @@ const {
   User
 } = require("../db/models");
 const Sequelize = require("sequelize");
-// const Op = Sequelize.Op;
-// const db = require("../db");
+const Op = Sequelize.Op;
 
 router.get("/", async (req, res, next) => {
   try {
@@ -25,6 +24,30 @@ router.get("/", async (req, res, next) => {
       ]
     });
     res.send(products);
+  } catch (err) {
+    next(err);
+  }
+});
+router.get("/:category", async (req, res, next) => {
+  try {
+    const category = Category.findOne({
+      where: {
+        name: {
+          [Op.like]: `%${req.params.category}%`
+        }
+      }
+    });
+    const productCategories = ProductCategory.findAll({
+      where: {
+        categoryId: category.id
+      },
+      include: [
+        {
+          model: Product
+        }
+      ]
+    });
+    res.json(productCategories);
   } catch (err) {
     next(err);
   }
