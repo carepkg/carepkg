@@ -15,9 +15,14 @@ const Sequelize = require("sequelize");
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
-      include: {
-        model: Review
-      }
+      include: [
+        {
+          model: Review
+        },
+        {
+          model: Category
+        }
+      ]
     });
     res.send(products);
   } catch (err) {
