@@ -11,7 +11,7 @@ const {
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
-router.get("/", async (req, res, next) => {
+router.get("/all", async (req, res, next) => {
   try {
     const products = await Product.findAll({
       include: [
@@ -19,7 +19,8 @@ router.get("/", async (req, res, next) => {
           model: Review
         },
         {
-          model: Category
+          model: ProductCategory,
+          include: [{ model: Category }]
         }
       ]
     });
@@ -28,16 +29,16 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
-router.get("/:category", async (req, res, next) => {
+router.get("/all/:category", async (req, res, next) => {
   try {
-    const category = Category.findOne({
+    const category = await Category.findOne({
       where: {
         name: {
           [Op.like]: `%${req.params.category}%`
         }
       }
     });
-    const productCategories = ProductCategory.findAll({
+    const productCategories = await ProductCategory.findAll({
       where: {
         categoryId: category.id
       },
@@ -47,13 +48,14 @@ router.get("/:category", async (req, res, next) => {
         }
       ]
     });
-    res.json(productCategories);
+    res.json(productCategories.map(prodCat => prodCat.product));
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/:productId", async (req, res, next) => {
+router.get("/id=:productId", async (req, res, next) => {
+  console.log(req.params);
   try {
     const product = await Product.findByPk(Number(req.params.productId), {
       include: [

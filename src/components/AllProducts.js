@@ -10,6 +10,7 @@ import FooterBottom from "./FooterBottom";
 
 class AllProducts extends React.Component {
   componentDidMount() {
+    const queryCat = this.props.category;
     this.props.getProductsThunk();
     this.props.fetchCategories();
   }
@@ -37,14 +38,14 @@ class AllProducts extends React.Component {
           {products.map(product => {
             return (
               <div key={product.id} className="product-card">
-                <NavLink to={`/products/${product.id}`}>
+                <NavLink to={`/products/id=${product.id}`}>
                   <img src={product.image} className="product-img" />
                 </NavLink>
                 <div className="product-info-container">
-                  <NavLink to={`/products/${product.id}`}>
+                  <NavLink to={`/products/id=${product.id}`}>
                     <h4 className="product-name">{product.name}</h4>
                   </NavLink>
-                  <NavLink to={`/products/${product.id}`}>
+                  <NavLink to={`/products/id=${product.id}`}>
                     <h6 className="product-price">
                       <span>$</span>
                       {product.price}

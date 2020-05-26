@@ -24,7 +24,7 @@ const NavBar = props => {
             <NavLink to="/bundles" className="navlink">
               Packages
             </NavLink>
-            <NavLink to="/products" className="navlink">
+            <NavLink to="/products/all" className="navlink">
               Products
             </NavLink>
             <NavLink to="/cart" className="navlink">
