@@ -23,12 +23,15 @@ class Cart extends React.Component {
   constructor() {
     super();
     this.state = {
-      menuTab: "Cart"
+      menuTab: "Cart",
+      numInWishlist: 0,
+      numInCart: 0
     };
   }
   componentDidMount() {
     if (this.props.user) {
       this.props.fetchCart();
+      this.props.fetchWishlist();
     }
   }
   switchToWishlist() {
