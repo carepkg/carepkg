@@ -38,7 +38,7 @@ const ReviewList = props => {
             {avg} based on {reviews && reviews.length} ratings
           </h5>
           <StarRatings
-            rating={avg}
+            rating={avg || 0}
             starRatedColor="black"
             numberOfStars={5}
             starDimension={"32px"}

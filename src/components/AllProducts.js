@@ -14,6 +14,10 @@ class AllProducts extends React.Component {
     this.props.getProductsThunk();
     this.props.fetchCategories();
   }
+  filterByCategory(name) {
+    this.props.history.push(`/products/${name}`);
+    this.props.getProductsThunk(name);
+  }
   render() {
     const { products, userId, addToCartThunk, categories } = this.props;
     const filters = ["Best Sellers", "New Arrivals", "Shop All"];
@@ -25,7 +29,11 @@ class AllProducts extends React.Component {
         <div id="product-categories">
           {categories
             ? categories.map(cat => {
-                return <span>{cat.name}</span>;
+                return (
+                  <span onClick={() => this.filterByCategory(cat.name)}>
+                    {cat.name}
+                  </span>
+                );
               })
             : null}
         </div>
@@ -38,14 +46,14 @@ class AllProducts extends React.Component {
           {products.map(product => {
             return (
               <div key={product.id} className="product-card">
-                <NavLink to={`/products/id=${product.id}`}>
+                <NavLink to={`/products/id/${product.id}`}>
                   <img src={product.image} className="product-img" />
                 </NavLink>
                 <div className="product-info-container">
-                  <NavLink to={`/products/id=${product.id}`}>
+                  <NavLink to={`/products/id/${product.id}`}>
                     <h4 className="product-name">{product.name}</h4>
                   </NavLink>
-                  <NavLink to={`/products/id=${product.id}`}>
+                  <NavLink to={`/products/id/${product.id}`}>
                     <h6 className="product-price">
                       <span>$</span>
                       {product.price}
@@ -84,7 +92,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProductsThunk: () => dispatch(getProductsThunk()),
+    getProductsThunk: (queryString = "all") =>
+      dispatch(getProductsThunk(queryString)),
     fetchCategories: () => dispatch(getCategoriesThunk())
   };
 };

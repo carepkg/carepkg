@@ -188,18 +188,22 @@ async function seed() {
     Category.create({ name: "Tools" }),
     Category.create({ name: "Storage" })
   ]);
+  categories.forEach(cat => console.log(cat.id));
 
-  const fetchCategory = name => {
-    return categories.find(cat => (cat.name = name));
+  const findCategoryByName = name => {
+    const category = categories.find(cat => cat.name === name);
+    return category.id;
   };
-  function fetchCategories() {
+  function getCategoryIdsFrom() {
     const found = [];
-    [...arguments].forEach(arg => {
-      found.push(fetchCategory(arg));
-    });
+    for (let i = 0; i < arguments.length; i++) {
+      const id = findCategoryByName(arguments[i]);
+      found.push(id);
+    }
     return found;
   }
-  // console.log(getCategories("Sleeping", "Tents"));
+
+  console.log("FOUND: ", getCategoryIdsFrom("Sleeping", "Tents"));
 
   // --------- PRODUCTS -------- \\
   const products = await Promise.all([
@@ -212,13 +216,12 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Sleeping", "Tents").forEach(async cat => {
+          getCategoryIdsFrom("Sleeping", "Tents").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
-
           prod.addPricingHistory(
             await PricingHistory.create({ price: prod.price })
           );
@@ -236,10 +239,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Tools").forEach(async cat => {
+          getCategoryIdsFrom("Tools").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -260,10 +263,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Gadgets").forEach(async cat => {
+          getCategoryIdsFrom("Gadgets").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -284,10 +287,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Sleeping").forEach(async cat => {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -308,10 +311,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Gadgets").forEach(async cat => {
+          getCategoryIdsFrom("Gadgets").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -332,10 +335,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Clothing").forEach(async cat => {
+          getCategoryIdsFrom("Clothing").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -356,10 +359,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Tools").forEach(async cat => {
+          getCategoryIdsFrom("Tools").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -380,10 +383,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Tools").forEach(async cat => {
+          getCategoryIdsFrom("Tools").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -404,10 +407,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Tools").forEach(async cat => {
+          getCategoryIdsFrom("Tools").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -428,10 +431,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Gadgets", "Tools").forEach(async cat => {
+          getCategoryIdsFrom("Gadgets", "Tools").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -452,10 +455,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Gadgets", "Tools").forEach(async cat => {
+          getCategoryIdsFrom("Gadgets", "Tools").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 
@@ -476,10 +479,10 @@ async function seed() {
     })
       .then(async prod => {
         try {
-          fetchCategories("Storage").forEach(async cat => {
+          getCategoryIdsFrom("Storage").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
-              categoryId: cat.id
+              categoryId: id
             });
           });
 

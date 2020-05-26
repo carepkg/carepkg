@@ -29,7 +29,7 @@ router.get("/all", async (req, res, next) => {
     next(err);
   }
 });
-router.get("/all/:category", async (req, res, next) => {
+router.get("/:category", async (req, res, next) => {
   try {
     const category = await Category.findOne({
       where: {
@@ -38,6 +38,8 @@ router.get("/all/:category", async (req, res, next) => {
         }
       }
     });
+    console.log(category.id);
+
     const productCategories = await ProductCategory.findAll({
       where: {
         categoryId: category.id
@@ -48,13 +50,14 @@ router.get("/all/:category", async (req, res, next) => {
         }
       ]
     });
+    console.log(productCategories);
     res.json(productCategories.map(prodCat => prodCat.product));
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/id=:productId", async (req, res, next) => {
+router.get("/id/:productId", async (req, res, next) => {
   console.log(req.params);
   try {
     const product = await Product.findByPk(Number(req.params.productId), {
