@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const LandingCatFooter = props => {
   const { categories } = props;
@@ -14,14 +15,22 @@ const LandingCatFooter = props => {
         <div id="cat-col1-container">
           {categories
             ? firstHalf.map(cat => {
-                return <div className="footer-category-name">{cat.name}</div>;
+                return (
+                  <div className="footer-category-name">
+                    <NavLink to={`/products/${cat.name}`}>{cat.name}</NavLink>
+                  </div>
+                );
               })
             : null}
         </div>
         <div id="cat-col2-container">
           {categories
             ? secondHalf.map(cat => {
-                return <div className="footer-category-name">{cat.name}</div>;
+                return (
+                  <div className="footer-category-name">
+                    <NavLink to={`/products/${cat.name}`}>{cat.name}</NavLink>
+                  </div>
+                );
               })
             : null}
         </div>
@@ -29,5 +38,4 @@ const LandingCatFooter = props => {
     </div>
   );
 };
-
 export default LandingCatFooter;

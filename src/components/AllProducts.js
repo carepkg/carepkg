@@ -10,7 +10,7 @@ import FooterBottom from "./FooterBottom";
 
 class AllProducts extends React.Component {
   componentDidMount() {
-    const queryCat = this.props.category;
+    window.scrollTo(0, 0);
     this.props.getProductsThunk();
     this.props.fetchCategories();
   }
@@ -92,8 +92,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProductsThunk: (queryString = "all") =>
-      dispatch(getProductsThunk(queryString)),
+    getProductsThunk: (category = "all") =>
+      dispatch(getProductsThunk(category)),
     fetchCategories: () => dispatch(getCategoriesThunk())
   };
 };

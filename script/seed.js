@@ -203,8 +203,6 @@ async function seed() {
     return found;
   }
 
-  console.log("FOUND: ", getCategoryIdsFrom("Sleeping", "Tents"));
-
   // --------- PRODUCTS -------- \\
   const products = await Promise.all([
     Product.create({
