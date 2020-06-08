@@ -28,6 +28,7 @@ class AllProducts extends React.Component {
     this.props.history.push(`/products/${name}`);
     this.props.getProductsThunk(name);
   }
+  //onClick for page numbers to be placed at top and bottom.
   shiftAndUpdatePage(pageNumber) {
     const textAsNumber = Number(pageNumber);
     const {
@@ -45,6 +46,19 @@ class AllProducts extends React.Component {
     } else {
       this.setState(initialState);
     }
+  }
+  changePageByOne(dir) {
+    const { PRODUCTS_PER_PAGE, leftPointer, rightPointer } = this.state;
+    this.setState({
+      leftPointer:
+        dir === "back"
+          ? leftPointer - PRODUCTS_PER_PAGE
+          : leftPointer + PRODUCTS_PER_PAGE,
+      rightPointer:
+        dir === "forward"
+          ? rightPointer - PRODUCTS_PER_PAGE
+          : rightPointer + PRODUCTS_PER_PAGE
+    });
   }
   render() {
     const { products, userId, addToCartThunk, categories } = this.props;

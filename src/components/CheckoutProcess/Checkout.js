@@ -24,6 +24,7 @@ class Checkout extends React.Component {
     this.toggleGift = this.toggleGift.bind(this);
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.fetchAddresses();
   }
 

@@ -29,6 +29,7 @@ class Cart extends React.Component {
     };
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
     if (this.props.user) {
       this.props.fetchCart();
       this.props.fetchWishlist();
