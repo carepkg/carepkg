@@ -8,7 +8,17 @@ import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
 import FooterBottom from "./FooterBottom";
 
+const initialState = {
+  PRODUCTS_PER_PAGE: 12,
+  pageNum: 1,
+  leftPointer: 0,
+  rightPointer: 12
+};
 class AllProducts extends React.Component {
+  constructor() {
+    super();
+    this.state = initialState;
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
     this.props.getProductsThunk();
@@ -18,8 +28,33 @@ class AllProducts extends React.Component {
     this.props.history.push(`/products/${name}`);
     this.props.getProductsThunk(name);
   }
+  shiftAndUpdatePage(pageNumber) {
+    const textAsNumber = Number(pageNumber);
+    const {
+      PRODUCTS_PER_PAGE,
+      pageNum,
+      leftPointer,
+      rightPointer
+    } = this.state;
+    if (pageNumber > 1) {
+      this.setState({
+        leftPointer: (pageNumber - 1) * PRODUCTS_PER_PAGE,
+        pageNum: textAsNumber,
+        rightPointer: pageNumber * PRODUCTS_PER_PAGE
+      });
+    } else {
+      this.setState(initialState);
+    }
+  }
   render() {
     const { products, userId, addToCartThunk, categories } = this.props;
+    const {
+      PRODUCTS_PER_PAGE,
+      pageNum,
+      leftPointer,
+      rightPointer
+    } = this.state;
+    const productsOnPage = products.slice(leftPointer, rightPointer);
     const filters = ["Best Sellers", "New Arrivals", "Shop All"];
     return products ? (
       <div id="products-component">
@@ -43,7 +78,7 @@ class AllProducts extends React.Component {
           ))}
         </div>
         <div id="products-container">
-          {products.map(product => {
+          {productsOnPage.map(product => {
             return (
               <div key={product.id} className="product-card">
                 <NavLink to={`/products/id/${product.id}`}>

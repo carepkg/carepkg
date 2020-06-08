@@ -16,6 +16,7 @@ class SingleProduct extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.getSingleProductThunk(this.props.match.params.id);
   }
   handleChange(event) {
