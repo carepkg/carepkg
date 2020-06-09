@@ -8,11 +8,20 @@ const getProducts = products => ({
 });
 
 // export const getProductsThunk = (queryString = "") => async dispatch => {
-export const getProductsThunk = queryString => async dispatch => {
+export const getProductsThunk = category => async dispatch => {
   try {
-    const response = await axios.get(`/api/products/${queryString}`);
+    const response = await axios.get(`/api/products/${category}`);
     const products = response.data;
     dispatch(getProducts(products));
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+export const getNewestProductsThunk = () => async dispatch => {
+  try {
+    const response = await axios.get("/api/products/new-arrivals");
+    const newArrivals = response.data;
+    dispatch(getProducts(newArrivals));
   } catch (error) {
     console.error(error.message);
   }

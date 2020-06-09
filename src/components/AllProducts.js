@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, NavLink } from "react-router-dom";
-import { getProductsThunk } from "../store/products";
+import { getProductsThunk, getNewestProductsThunk } from "../store/products";
 import { addToCartThunk } from "../store/cart";
 import { getCategoriesThunk } from "../store/categories";
 import CarepkgHelp from "./CarepkgHelp";
@@ -60,6 +60,10 @@ class AllProducts extends React.Component {
           : rightPointer + PRODUCTS_PER_PAGE
     });
   }
+  shopAll() {
+    this.props.history.push("/products/all");
+    this.props.getProductsThunk();
+  }
   render() {
     const { products, userId, addToCartThunk, categories } = this.props;
     const {
@@ -87,9 +91,11 @@ class AllProducts extends React.Component {
             : null}
         </div>
         <div id="product-filters">
-          {filters.map(filter => (
-            <span>{filter}</span>
-          ))}
+          <span>{filters[0]}</span>
+          <span onClick={() => this.props.fetchNewestProducts()}>
+            {filters[1]}
+          </span>
+          <span onClick={() => this.shopAll()}>{filters[2]}</span>
         </div>
         <div id="products-container">
           {productsOnPage.map(product => {
@@ -143,7 +149,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getProductsThunk: (category = "all") =>
       dispatch(getProductsThunk(category)),
-    fetchCategories: () => dispatch(getCategoriesThunk())
+    fetchCategories: () => dispatch(getCategoriesThunk()),
+    fetchNewestProducts: () => dispatch(getNewestProductsThunk())
   };
 };
 

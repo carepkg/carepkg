@@ -29,6 +29,26 @@ router.get("/all", async (req, res, next) => {
     next(err);
   }
 });
+router.get("/new-arrivals", async (req, res, next) => {
+  try {
+    const sortedProductsByDate = await Product.findAll({
+      limit: 6,
+      order: [["updatedAt", "DESC"]],
+      include: [
+        {
+          model: Review
+        },
+        {
+          model: ProductCategory,
+          include: [{ model: Category }]
+        }
+      ]
+    });
+    res.json(sortedProductsByDate);
+  } catch (err) {
+    next(err);
+  }
+});
 router.get("/:category", async (req, res, next) => {
   try {
     const category = await Category.findOne({
