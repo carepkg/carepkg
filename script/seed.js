@@ -1168,7 +1168,7 @@ async function seed() {
       qty: qty,
       name: "Fahrenheit Regular Sleeping Bag",
       description: "Execute your enemies",
-      image: "/product-images/FarenheitRegularSleepingBag.jpg"
+      image: "/product-images/FahrenheitRegularSleepingBag.jpg"
     })
       .then(async prod => {
         try {
@@ -1336,7 +1336,7 @@ async function seed() {
       qty: qty,
       name: "GEAR AID Repair Kit",
       description: "Does not work against polar bears",
-      image: "/product-images/GEARAIDRepearKit.jpg"
+      image: "/product-images/GEARAIDRepairKit.jpg"
     })
       .then(async prod => {
         try {
