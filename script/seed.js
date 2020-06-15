@@ -204,13 +204,15 @@ async function seed() {
   }
 
   // --------- PRODUCTS -------- \\
+
+  //added 6/14/20
   const products = await Promise.all([
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Brown Tent",
-      description: "Place to sleep. Easy set up",
-      image: "/product-images/tent.jpg"
+      name: "Waterproof Tent",
+      description: "1",
+      image: "/product-images/WaterproofTent.jpg"
     })
       .then(async prod => {
         try {
@@ -231,13 +233,13 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Swiss Army Knife",
+      name: "Elastic Lounge Chair",
       description: "A jack of all trades inside your pocket",
-      image: "/product-images/swiss-army-knife.jpg"
+      image: "/product-images/ElasticLoungeChair.jpg"
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Tools", "Gadgets").forEach(async id => {
+          getCategoryIdsFrom("Furniture").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
@@ -255,13 +257,13 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Headlamp",
+      name: "Black Camping Chair",
       description: "A lamp but for your head",
-      image: "/product-images/head-lamp.jpg"
+      image: "/product-images/BlackCampingChair.jpg"
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Gadgets").forEach(async id => {
+          getCategoryIdsFrom("Furniture").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
@@ -279,9 +281,822 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Tarp",
+      name: "Foldable Camp Chair",
       description: "Put this thing under tent",
-      image: "/product-images/tarp.jpg"
+      image: "/product-images/FoldingCampChair.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Furniture").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Collapsible Lounge Chair",
+      description: "Execute your enemies",
+      image: "/product-images/CollapsableLoungeChair.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Furniture").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Maximum Comfort Camp Chair",
+      description: "Make it like, camping",
+      image: "/product-images/MaximumComfortCampChair.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Furniture").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Popup Cabin Tent",
+      description: "Great fire starter that never doesn't ignite",
+      image: "/product-images/PopupCabinTent.png"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping", "Tents").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Coleman Octagon Tent",
+      description: "Minecraft style",
+      image: "/product-images/ColemanOctagonTent.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping", "Tents").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Ultralight Dome Tent",
+      description: "Unsung hero",
+      image: "/product-images/UltralightDomeTent.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping", "Tents").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Kid's Nursery Tent",
+      description: "Works 50% of the time",
+      image: "/product-images/KidsNurseryTent.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping", "Tents").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Cubic Work Tent",
+      description: "Flickers when you're scared",
+      image: "/product-images/CubicWorkTent.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping", "Tents").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Men's Pro Safari Shorts",
+      description: "Does not work against polar bears",
+      image: "/product-images/MensProSafariShorts.png"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Clothing").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "BTL Men's Cargo Shorts",
+      description: "Place to sleep. Easy set up",
+      image: "/product-images/BTLMensCargoShorts.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Clothing").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Standard Olive Cargo Shorts",
+      description: "A jack of all trades inside your pocket",
+      image: "/product-images/StandardOliveCargo.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Clothing").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Ultralight Titanium Cookware",
+      description: "A lamp but for your head",
+      image: "/product-images/UltralightTitaniumCookware.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Metric Steamer Pot",
+      description: "Put this thing under tent",
+      image: "/product-images/MetricSteamerPot.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Butane 1-Burner Stove",
+      description: "Execute your enemies",
+      image: "/product-images/ButaneOneBurnerStove.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Blue Tabletop Stove",
+      description: "Make it like, camping",
+      image: "/product-images/TabletopStoveBlue.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Double Burner Stove",
+      description: "Great fire starter that never doesn't ignite",
+      image: "/product-images/DoubleBurnerStove.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Sportsman Single Burner",
+      description: "Minecraft style",
+      image: "/product-images/SportsmanSingleBurner.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "FlameKing Portable Stove",
+      description: "Unsung hero",
+      image: "/product-images/FlameKingPortableStove.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Propane Cylinder",
+      description: "Works 50% of the time",
+      image: "/product-images/PropaneCylinder.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Lindal Valve Converter",
+      description: "Flickers when you're scared",
+      image: "/product-images/LindalValveConverter.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Gadgets", "Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Single Propane Grill",
+      description: "Does not work against polar bears",
+      image: "/product-images/SinglePropaneGrill.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Isobutane Adapter Hose",
+      description: "Place to sleep. Easy set up",
+      image: "/product-images/IsobutaneAdapterHose.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware", "Gadgets").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Refillable Steel Cylinder",
+      description: "A jack of all trades inside your pocket",
+      image: "/product-images/RefillableSteelCylinder.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Lightweight Propane Grill",
+      description: "A lamp but for your head",
+      image: "/product-images/LightweightPropaneGrill.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Keith Titanium Set",
+      description: "Put this thing under tent",
+      image: "/product-images/KeithTitaniumSet.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Widesea Tourist Cooker",
+      description: "Execute your enemies",
+      image: "/product-images/WideseaTouristCooker.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Collapsible Electric Kettle",
+      description: "Make it like, camping",
+      image: "/product-images/CollapsibleElectricKettle.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware", "Gadgets").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Titanium Pot",
+      description: "Great fire starter that never doesn't ignite",
+      image: "/product-images/TitaniumPot.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Stainless Steel Campfire Pot",
+      description: "Minecraft style",
+      image: "/product-images/StainlessSteelCampfirePot.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Navaris 3-in-1 Silverware Set",
+      description: "Unsung hero",
+      image: "/product-images/Navaris3in1Silverware.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Tools", "Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Utility Plastic Utensils",
+      description: "Works 50% of the time",
+      image: "/product-images/UtilityPlasticware.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware", "Tools").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Titanium Folding Cutlery",
+      description: "Flickers when you're scared",
+      image: "/product-images/TitaniumFoldingCutlery.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Cookinware Keyset",
+      description: "Does not work against polar bears",
+      image: "/product-images/CookingwareKeyset.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Kitchenware").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Outdoor Accessory Bag",
+      description: "Place to sleep. Easy set up",
+      image: "/product-images/OutdoorAcessoryBag.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Storage").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Noches Sleeping Bag",
+      description: "A jack of all trades inside your pocket",
+      image: "/product-images/NochesSleepingBag.jpg"
     })
       .then(async prod => {
         try {
@@ -303,13 +1118,61 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Claymore",
+      name: "Coleman Standard Sleeping Bag",
+      description: "A lamp but for your head",
+      image: "/product-images/ColemanStandard.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "FF 0 Degree Sleeping Bag",
+      description: "Put this thing under tent",
+      image: "/product-images/FashionFirst0DegreeBag.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Fahrenheit Regular Sleeping Bag",
       description: "Execute your enemies",
-      image: "/product-images/claymore.jpg"
+      image: "/product-images/FarenheitRegularSleepingBag.jpg"
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Gadgets").forEach(async id => {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
@@ -327,13 +1190,13 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Fanny Pack",
+      name: "Kid's Sleeping Bag",
       description: "Make it like, camping",
-      image: "/product-images/fanny-pack.jpg"
+      image: "/product-images/KidsSleepingBag.jpg"
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Clothing", "Storage").forEach(async id => {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
@@ -351,13 +1214,13 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Fire Starter",
+      name: "Eureka Minnow Sleeping Bag",
       description: "Great fire starter that never doesn't ignite",
-      image: "/product-images/fire-starter.jpg"
+      image: "/product-images/EurekaMinnowSleepingBag.jpg"
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Tools").forEach(async id => {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
@@ -375,13 +1238,13 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Flint and Steel",
+      name: "Camping Pillow",
       description: "Minecraft style",
-      image: "/product-images/flint-and-steel.jpg"
+      image: "/product-images/CampingPillow"
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Tools").forEach(async id => {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
@@ -399,9 +1262,81 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Cobblestone",
+      name: "Klymit Rollup Pillow",
       description: "Unsung hero",
-      image: "/product-images/cobblestone.jpg"
+      image: "/product-images/KlymitRollupPillow.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "NEMO Striped Pillow",
+      description: "Works 50% of the time",
+      image: "/product-images/NEMOStripedPillow.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Windproof Leisure Blanket",
+      description: "Flickers when you're scared",
+      image: "/product-images/WindproofLeisureBlanket.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "GEAR AID Repair Kit",
+      description: "Does not work against polar bears",
+      image: "/product-images/GEARAIDRepearKit.jpg"
     })
       .then(async prod => {
         try {
@@ -423,61 +1358,85 @@ async function seed() {
     Product.create({
       price: new Price().price,
       qty: qty,
-      name: "Compass",
-      description: "Works 50% of the time",
-      image: "/product-images/compass.jpg"
-    })
-      .then(async prod => {
-        try {
-          getCategoryIdsFrom("Gadgets", "Tools").forEach(async id => {
-            await ProductCategory.create({
-              productId: prod.id,
-              categoryId: id
-            });
-          });
-
-          prod.addPricingHistory(
-            await PricingHistory.create({ price: prod.price })
-          );
-        } catch (err) {
-          console.log(err);
-        }
-      })
-      .catch(error => console.error(error)),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Flashlight",
-      description: "Flickers when you're scared",
-      image: "/product-images/flashlight.jpg"
-    })
-      .then(async prod => {
-        try {
-          getCategoryIdsFrom("Gadgets", "Tools").forEach(async id => {
-            await ProductCategory.create({
-              productId: prod.id,
-              categoryId: id
-            });
-          });
-
-          prod.addPricingHistory(
-            await PricingHistory.create({ price: prod.price })
-          );
-        } catch (err) {
-          console.log(err);
-        }
-      })
-      .catch(error => console.error(error)),
-    Product.create({
-      price: new Price().price,
-      qty: qty,
-      name: "Bear Safe",
+      name: "Down Camping Blanket",
       description: "Does not work against polar bears",
-      image: "/product-images/bear-safe.jpg"
+      image: "/product-images/DownCampingBlanket.jpg"
     })
       .then(async prod => {
         try {
-          getCategoryIdsFrom("Storage").forEach(async id => {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Zefabak Down Blanket",
+      description: "Does not work against polar bears",
+      image: "/product-images/ZefabakDownBlanket.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Sleeping").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Blaze Hand Warmer",
+      description: "Does not work against polar bears",
+      image: "/product-images/BlazeHandWarmer.png"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Tools").forEach(async id => {
+            await ProductCategory.create({
+              productId: prod.id,
+              categoryId: id
+            });
+          });
+
+          prod.addPricingHistory(
+            await PricingHistory.create({ price: prod.price })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(error => console.error(error)),
+    Product.create({
+      price: new Price().price,
+      qty: qty,
+      name: "Steel Pocket Warmer",
+      description: "Does not work against polar bears",
+      image: "/product-images/SteelPocketWarmer.jpg"
+    })
+      .then(async prod => {
+        try {
+          getCategoryIdsFrom("Tools").forEach(async id => {
             await ProductCategory.create({
               productId: prod.id,
               categoryId: id
