@@ -745,7 +745,7 @@ a{
 .sp-main-img-container {
     width: 540px;
     height: 540px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -753,8 +753,8 @@ a{
 }
 
 .sp-main-img {
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
 }
 .sp-main-right {
     padding: 16px 0;

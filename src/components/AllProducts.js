@@ -4,6 +4,7 @@ import { withRouter, NavLink } from "react-router-dom";
 import { getProductsThunk, getNewestProductsThunk } from "../store/products";
 import { addToCartThunk } from "../store/cart";
 import { getCategoriesThunk } from "../store/categories";
+import ProdPagination from "./ProdPagination";
 import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
 import FooterBottom from "./FooterBottom";
@@ -18,6 +19,8 @@ class AllProducts extends React.Component {
   constructor() {
     super();
     this.state = initialState;
+    this.shiftAndUpdatePage = this.shiftAndUpdatePage.bind(this);
+    this.changePageByOne = this.changePageByOne.bind(this);
   }
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -31,12 +34,7 @@ class AllProducts extends React.Component {
   //onClick for page numbers to be placed at top and bottom.
   shiftAndUpdatePage(pageNumber) {
     const textAsNumber = Number(pageNumber);
-    const {
-      PRODUCTS_PER_PAGE,
-      pageNum,
-      leftPointer,
-      rightPointer
-    } = this.state;
+    const { PRODUCTS_PER_PAGE } = this.state;
     if (pageNumber > 1) {
       this.setState({
         leftPointer: (pageNumber - 1) * PRODUCTS_PER_PAGE,
@@ -72,6 +70,7 @@ class AllProducts extends React.Component {
       leftPointer,
       rightPointer
     } = this.state;
+    const numberOfPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
     const productsOnPage = products.slice(leftPointer, rightPointer);
     const filters = ["Best Sellers", "New Arrivals", "Shop All"];
     return products ? (
@@ -97,6 +96,12 @@ class AllProducts extends React.Component {
           </span>
           <span onClick={() => this.shopAll()}>{filters[2]}</span>
         </div>
+        <ProdPagination
+          start={leftPointer / PRODUCTS_PER_PAGE + 1}
+          numberOfPages={numberOfPages}
+          changePageByOne={this.changePageByOne}
+          shiftAndUpdatePage={this.shiftAndUpdatePage}
+        />
         <div id="products-container">
           {productsOnPage.map(product => {
             return (
@@ -118,6 +123,14 @@ class AllProducts extends React.Component {
               </div>
             );
           })}
+        </div>
+        <div>
+          <ProdPagination
+            start={leftPointer + 1}
+            numberOfPages={numberOfPages}
+            changePageByOne={this.changePageByOne}
+            shiftAndUpdatePage={this.shiftAndUpdatePage}
+          />
         </div>
         <div id="shop-all-footer">
           <p>Shop more:</p>
