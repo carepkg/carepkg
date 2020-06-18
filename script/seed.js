@@ -1240,7 +1240,7 @@ async function seed() {
       qty: qty,
       name: "Camping Pillow",
       description: "Minecraft style",
-      image: "/product-images/CampingPillow"
+      image: "/product-images/CampingPillow.jpg"
     })
       .then(async prod => {
         try {

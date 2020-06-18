@@ -571,6 +571,7 @@ body,
     align-items: space-around;
     background-color: rgb(250, 250, 250);
     padding: 1em 0;
+    margin: 12px 0;
 
 }
 .product-card{
@@ -646,6 +647,46 @@ a{
     align-items: center;
     height: 40vh;
 }
+/* #region PAGINATION */
+.prod-pagination-box {
+    display: flex;
+    justify-content: space-between;
+}
+.page-dir-arrow-box {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+}
+.page-dir-arrow {
+    height: 28.32px;
+    line-height: 28px;
+    font-size: 1.2em;
+    color: black;
+    cursor: pointer;
+}
+.page-box {
+    width: 131.79px;
+    height: 28.32px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 4px;
+}
+.page-box-btn {
+    padding: 0 4px;
+    margin: 0 1px;
+    cursor: pointer;
+}
+.page-num-selected {
+    color: rgb(2, 145, 2);
+    font-weight: 500;
+    text-decoration: underline;
+}
+.page-box-ell {
+    padding-left: 4px;
+    padding-right: 5px;
+}
+/* #endregion */
 /* #endregion */
 
 /* #region SINGLE PRODUCT */

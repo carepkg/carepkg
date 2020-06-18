@@ -47,16 +47,17 @@ class AllProducts extends React.Component {
   }
   changePageByOne(dir) {
     const { PRODUCTS_PER_PAGE, leftPointer, rightPointer } = this.state;
-    this.setState({
-      leftPointer:
-        dir === "back"
-          ? leftPointer - PRODUCTS_PER_PAGE
-          : leftPointer + PRODUCTS_PER_PAGE,
-      rightPointer:
-        dir === "forward"
-          ? rightPointer - PRODUCTS_PER_PAGE
-          : rightPointer + PRODUCTS_PER_PAGE
-    });
+    if (dir === "back") {
+      this.setState({
+        leftPointer: leftPointer - PRODUCTS_PER_PAGE,
+        rightPointer: rightPointer - PRODUCTS_PER_PAGE
+      });
+    } else {
+      this.setState({
+        leftPointer: leftPointer + PRODUCTS_PER_PAGE,
+        rightPointer: rightPointer + PRODUCTS_PER_PAGE
+      });
+    }
   }
   shopAll() {
     this.props.history.push("/products/all");
@@ -126,7 +127,7 @@ class AllProducts extends React.Component {
         </div>
         <div>
           <ProdPagination
-            start={leftPointer + 1}
+            start={leftPointer / PRODUCTS_PER_PAGE + 1}
             numberOfPages={numberOfPages}
             changePageByOne={this.changePageByOne}
             shiftAndUpdatePage={this.shiftAndUpdatePage}
