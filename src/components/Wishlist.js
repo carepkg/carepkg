@@ -1,4 +1,5 @@
 import React from "react";
+import WishlistEmpty from "./WishlistEmpty";
 
 const Wishlist = props => {
   const { wishlist, removeFromWishlist, addToCart } = props;
@@ -7,7 +8,7 @@ const Wishlist = props => {
     removeFromWishlist(productId);
     addToCart(productId);
   };
-  return wishlist ? (
+  return wishlist && wishlist.length ? (
     <div className="cart-items-container">
       <div className="cart-items-header-table">
         <span className="cart-header-desc">Item Description</span>
@@ -50,8 +51,9 @@ const Wishlist = props => {
           </div>
         );
       })}
-      {/* need to include product for wishlist so i can map thru */}
     </div>
-  ) : null;
+  ) : (
+    <WishlistEmpty />
+  );
 };
 export default Wishlist;
