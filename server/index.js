@@ -29,47 +29,42 @@ const createApp = () => {
   app.use(express.urlencoded({ extended: true }));
 
   // session middleware with passport
-  passport.serializeUser((obj, done) => {
-    if (obj instanceof User) {
-      done(null, { id: obj.id, type: "user" });
-    }
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
   });
 
-  passport.deserializeUser(async (obj, done) => {
+  passport.deserializeUser(async (id, done) => {
     try {
-      let user;
-      if (obj.type === "user") {
-        user = await db.models.user
-          .findByPk(obj.id, {
-            include: [
-              {
-                model: Order,
-                include: [
-                  {
-                    model: LineItem,
-                    include: [
-                      {
-                        model: Product
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                model: Review,
-                include: [
-                  {
-                    model: Product
-                  }
-                ]
-              },
-              {
-                model: Address
-              }
-            ]
-          })
-          .then(user => done(null, user));
-      }
+      const user = await db.models.user
+        .findByPk(id, {
+          include: [
+            {
+              model: Order,
+              include: [
+                {
+                  model: LineItem,
+                  include: [
+                    {
+                      model: Product
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              model: Review,
+              include: [
+                {
+                  model: Product
+                }
+              ]
+            },
+            {
+              model: Address
+            }
+          ]
+        })
+        .then(user => done(null, user));
     } catch (err) {
       done(err);
     }

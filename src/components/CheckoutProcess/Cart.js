@@ -31,11 +31,11 @@ class Cart extends React.Component {
     window.scrollTo(0, 0);
     if (this.props.user) {
       this.props.fetchCart(this.props.user.id);
-      this.props.fetchWishlist();
+      this.props.fetchWishlist(this.props.user.id);
     }
   }
   switchToWishlist() {
-    this.props.fetchWishlist();
+    this.props.fetchWishlist(this.props.user.id);
     this.setState({ menuTab: "Wishlist" });
   }
   switchToCart() {
@@ -129,12 +129,14 @@ const mapState = state => ({
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),
-  addToCart: productId =>
-    dispatch(addToCartThunk(1, productId, this.props.user.id)),
-  removeFromCart: (userId, productId) =>
-    dispatch(deleteFromCartThunk(userId, productId)),
+  addToCart: (productId, userId) =>
+    dispatch(addToCartThunk(1, productId, userId)),
+  removeFromCart: (productId, userId) =>
+    dispatch(deleteFromCartThunk(productId, userId)),
   fetchWishlist: userId => dispatch(getUserWishlistThunk(userId)),
-  addToWishlist: productId => dispatch(addToWishlistThunk(productId)),
-  removeFromWishlist: productId => dispatch(removeFromWishlistThunk(productId))
+  addToWishlist: (productId, userId) =>
+    dispatch(addToWishlistThunk(productId, userId)),
+  removeFromWishlist: (productId, userId) =>
+    dispatch(removeFromWishlistThunk(productId, userId))
 });
 export default connect(mapState, mapDispatch)(Cart);

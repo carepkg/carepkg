@@ -104,7 +104,6 @@ router.get("/me", async (req, res) => {
       }
     ]
   });
-  console.log(defaultUser);
   try {
     if (req.user) {
       res.json(req.user);

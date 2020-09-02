@@ -3,7 +3,9 @@ import React from "react";
 const CartItems = props => {
   const { cart, totals, removeFromCart, addToWishlist, user } = props;
   const handleMove = productId => {
-    removeFromCart(user.id, productId).then(() => addToWishlist(productId));
+    removeFromCart(productId, user.id).then(() =>
+      addToWishlist(productId, user.id)
+    );
   };
   return (
     <div className="cart-items-container">
@@ -37,7 +39,7 @@ const CartItems = props => {
               >
                 Move to Wishlist
               </button>
-              <button onClick={() => removeFromCart(user.id, product.id)}>
+              <button onClick={() => removeFromCart(product.id, user.id)}>
                 Remove
               </button>
             </div>

@@ -2,11 +2,11 @@ const router = require("express").Router();
 const Sequelize = require("sequelize");
 const { WishlistLineItem, Product } = require("../db/models");
 
-router.get("/", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const items = await WishlistLineItem.findAll({
       where: {
-        userId: req.user.id
+        userId: req.user ? req.user.id : req.params.id
       },
       include: [
         {
@@ -19,10 +19,10 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
-router.post("/:productId", async (req, res, next) => {
+router.post("/:userId/:productId", async (req, res, next) => {
   try {
     const item = await WishlistLineItem.create({
-      userId: req.user.id,
+      userId: req.user ? req.user.id : req.params.userId,
       productId: req.params.productId
     });
     res.json(item);
@@ -30,11 +30,11 @@ router.post("/:productId", async (req, res, next) => {
     next(err);
   }
 });
-router.delete("/:productId", async (req, res, next) => {
+router.delete("/:userId/:productId", async (req, res, next) => {
   try {
     await WishlistLineItem.destroy({
       where: {
-        userId: req.user.id,
+        userId: req.user ? req.user.id : req.params.userId,
         productId: req.params.productId
       }
     });

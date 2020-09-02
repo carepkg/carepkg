@@ -11,27 +11,30 @@ const removeFromWishlist = productId => ({
   productId
 });
 
-export const getUserWishlistThunk = () => async dispatch => {
+export const getUserWishlistThunk = userId => async dispatch => {
   try {
-    const res = await axios.get(`/api/wishlist/`);
+    const res = await axios.get(`/api/wishlist/${userId}`);
     const wishlist = res.data;
     dispatch(getUserWishlist(wishlist));
   } catch (err) {
     console.error(err);
   }
 };
-export const addToWishlistThunk = productId => async dispatch => {
+export const addToWishlistThunk = (productId, userId) => async dispatch => {
   try {
-    await axios.post(`/api/wishlist/${productId}`);
+    await axios.post(`/api/wishlist/${userId}/${productId}`);
     dispatch(addToWishlist());
   } catch (err) {
     console.error(err);
   }
 };
-export const removeFromWishlistThunk = productId => async dispatch => {
+export const removeFromWishlistThunk = (
+  productId,
+  userId
+) => async dispatch => {
   try {
     dispatch(removeFromWishlist(productId));
-    await axios.delete(`/api/wishlist/${productId}`);
+    await axios.delete(`/api/wishlist/${userId}/${productId}`);
   } catch (err) {
     console.error(err);
   }

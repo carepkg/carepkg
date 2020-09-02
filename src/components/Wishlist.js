@@ -2,11 +2,11 @@ import React from "react";
 import WishlistEmpty from "./WishlistEmpty";
 
 const Wishlist = props => {
-  const { wishlist, removeFromWishlist, addToCart } = props;
+  const { user, wishlist, removeFromWishlist, addToCart } = props;
   console.log(wishlist);
   const handleMove = productId => {
-    removeFromWishlist(productId);
-    addToCart(productId);
+    removeFromWishlist(productId, user.id);
+    addToCart(productId, user.id);
   };
   return wishlist && wishlist.length ? (
     <div className="cart-items-container">
@@ -40,7 +40,7 @@ const Wishlist = props => {
               >
                 Move to Cart
               </button>
-              <button onClick={() => removeFromWishlist(product.id)}>
+              <button onClick={() => removeFromWishlist(product.id, user.id)}>
                 Remove
               </button>
             </div>
