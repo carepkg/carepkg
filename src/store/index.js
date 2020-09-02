@@ -5,8 +5,6 @@ import products from "./products";
 import product from "./singleProduct";
 import user from "./user";
 import cart from "./cart";
-import packages from "./packages";
-import upvote from "./upvote";
 import categories from "./categories";
 import addresses from "./addresses";
 import reviews from "./reviews";
@@ -18,8 +16,6 @@ const reducer = combineReducers({
   product: product,
   user: user,
   cart: cart,
-  packages: packages,
-  upvote: upvote,
   categories: categories,
   addresses: addresses,
   reviews: reviews,

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ReviewList from "./ReviewCard";
-import { render } from "@testing-library/react";
-import CompanyProfile from "./CompanyProfile";
 import CarepkgHelp from "./CarepkgHelp";
 import CarepkgNewsletter from "./CarepkgNewsletter";
 import FooterBottom from "./FooterBottom";
@@ -34,9 +32,7 @@ const UserProfile = props => {
     setProfileBody("acct-settings");
   };
 
-  return user.type === "company" ? (
-    <CompanyProfile />
-  ) : (
+  return user ? (
     <div id="profile-page">
       <div id="profile-top">
         <div id="profile-left">
@@ -100,7 +96,7 @@ const UserProfile = props => {
         <FooterBottom />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 const mapState = state => ({

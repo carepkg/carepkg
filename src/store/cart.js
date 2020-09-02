@@ -19,18 +19,18 @@ const deleteFromCart = productId => {
   };
 };
 
-export const getCartThunk = () => async dispatch => {
+export const getCartThunk = id => async dispatch => {
   try {
-    const response = await axios.get(`/api/cart/`);
+    const response = await axios.get(`/api/cart/${id}`);
     const cart = response.data;
     dispatch(getCart(cart));
   } catch (err) {
     console.error(err);
   }
 };
-export const addToCartThunk = (qty, productId) => async dispatch => {
+export const addToCartThunk = (qty, productId, userId) => async dispatch => {
   try {
-    const res = await axios.post(`/api/cart/${productId}`, {
+    const res = await axios.post(`/api/cart/${userId}/${productId}`, {
       qty
     });
     const item = res.data;

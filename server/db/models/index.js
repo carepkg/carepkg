@@ -9,10 +9,6 @@ const Order = require("./order");
 const ProductCategory = require("./productCategory");
 const LineItem = require("./lineItem");
 const CartLineItem = require("./cartLineItem");
-const Package = require("./package");
-const Company = require("./company");
-const PackageLineItem = require("./packageLineItem");
-const Upvote = require("./upvotes");
 const Shipping = require("./shipping");
 const WishlistLineItem = require("./wishlistLineItem");
 
@@ -24,15 +20,7 @@ User.hasMany(Review);
 User.hasMany(Order);
 User.hasMany(CartLineItem);
 User.hasMany(WishlistLineItem);
-User.hasMany(Package);
-User.hasMany(Upvote);
 
-Company.hasMany(Package);
-
-Package.hasMany(Upvote);
-Package.hasMany(PackageLineItem);
-
-Product.hasMany(PackageLineItem);
 Product.hasMany(Review);
 Product.hasMany(CartLineItem);
 Product.hasMany(WishlistLineItem);
@@ -56,9 +44,6 @@ CartLineItem.belongsTo(Product);
 WishlistLineItem.belongsTo(User);
 WishlistLineItem.belongsTo(Product);
 
-PackageLineItem.belongsTo(Package);
-PackageLineItem.belongsTo(Product);
-
 ProductCategory.belongsTo(Product);
 ProductCategory.belongsTo(Category);
 
@@ -81,10 +66,6 @@ module.exports = {
   ProductCategory,
   LineItem,
   CartLineItem,
-  Company,
-  PackageLineItem,
-  Package,
-  Upvote,
   Shipping,
   WishlistLineItem
 };

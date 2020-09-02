@@ -21,9 +21,6 @@ const NavBar = props => {
             <MainSearchBar />
           </div>
           <div id="navbar-top-right">
-            <NavLink to="/bundles" className="navlink">
-              Packages
-            </NavLink>
             <NavLink to="/products/all" className="navlink">
               Products
             </NavLink>

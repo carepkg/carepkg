@@ -15,10 +15,7 @@ const {
   Product,
   LineItem,
   Order,
-  Address,
-  Package,
-  PackageLineItem,
-  Upvote
+  Address
 } = require("./db/models");
 const PORT = 8000;
 const app = express();
@@ -35,14 +32,12 @@ const createApp = () => {
   passport.serializeUser((obj, done) => {
     if (obj instanceof User) {
       done(null, { id: obj.id, type: "user" });
-    } else {
-      done(null, { id: obj.id, type: "company" });
     }
   });
 
   passport.deserializeUser(async (obj, done) => {
     try {
-      let user, company;
+      let user;
       if (obj.type === "user") {
         user = await db.models.user
           .findByPk(obj.id, {
@@ -70,46 +65,10 @@ const createApp = () => {
               },
               {
                 model: Address
-              },
-              {
-                model: Package,
-                include: [
-                  {
-                    model: PackageLineItem,
-                    include: [
-                      {
-                        model: Product
-                      }
-                    ]
-                  }
-                ]
               }
             ]
           })
           .then(user => done(null, user));
-      } else if (obj.type === "company") {
-        company = await db.models.company
-          .findByPk(obj.id, {
-            include: [
-              {
-                model: Package,
-                include: [
-                  {
-                    model: PackageLineItem,
-                    include: [
-                      {
-                        model: Product
-                      }
-                    ]
-                  },
-                  {
-                    model: Upvote
-                  }
-                ]
-              }
-            ]
-          })
-          .then(company => done(null, company));
       }
     } catch (err) {
       done(err);

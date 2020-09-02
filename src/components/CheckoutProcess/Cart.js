@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { render } from "@testing-library/react";
 import {
   getCartThunk,
   deleteFromCartThunk,
@@ -31,7 +30,7 @@ class Cart extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     if (this.props.user) {
-      this.props.fetchCart();
+      this.props.fetchCart(this.props.user.id);
       this.props.fetchWishlist();
     }
   }
@@ -40,7 +39,7 @@ class Cart extends React.Component {
     this.setState({ menuTab: "Wishlist" });
   }
   switchToCart() {
-    this.props.fetchCart();
+    this.props.fetchCart(this.props.user.id);
     this.setState({ menuTab: "Cart" });
   }
   render() {
@@ -130,7 +129,8 @@ const mapState = state => ({
 });
 const mapDispatch = dispatch => ({
   fetchCart: userId => dispatch(getCartThunk(userId)),
-  addToCart: productId => dispatch(addToCartThunk(1, productId)),
+  addToCart: productId =>
+    dispatch(addToCartThunk(1, productId, this.props.user.id)),
   removeFromCart: (userId, productId) =>
     dispatch(deleteFromCartThunk(userId, productId)),
   fetchWishlist: userId => dispatch(getUserWishlistThunk(userId)),

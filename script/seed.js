@@ -14,10 +14,6 @@ const {
   ProductCategory,
   LineItem,
   CartLineItem,
-  Company,
-  Package,
-  PackageLineItem,
-  Upvote,
   Shipping,
   WishlistLineItem
 } = require("../server/db/models/");
@@ -101,79 +97,6 @@ async function seed() {
       role: "Admin"
     })
   ]);
-
-  const companies = await Promise.all([
-    Company.create({
-      name: "Tentacity",
-      membership: "Basic",
-      coEmail: "tents@tentacity.com",
-      coPassword: "tentacity"
-    }),
-    Company.create({
-      name: "Climber's Haven",
-      membership: "Premium",
-      coEmail: "weclimb@climbershaven.com",
-      coPassword: "climbershaven"
-    })
-  ]);
-
-  // ----- PACKAGES ----- \\
-
-  const packages = await Promise.all([
-    Package.create({
-      name: "Beginner Climbing Gear",
-      numPurchases: 13,
-      numUpvotes: 10,
-      companyId: 1
-    }),
-    Package.create({
-      name: "Shelter Starter Kit",
-      numPurchases: 24,
-      numUpvotes: 75,
-      companyId: 2
-    }),
-    Package.create({
-      name: "My Favorites",
-      numPurchases: 2,
-      numUpvotes: 2,
-      userId: 2
-    }),
-    Package.create({
-      name: "Chef's Picks",
-      numPurchases: 22,
-      numUpvotes: 18,
-      userId: 1
-    }),
-    Package.create({
-      name: "Birthday Treat",
-      numPurchases: 100,
-      numUpvotes: 156,
-      companyId: 2
-    })
-  ]);
-
-  for (let i = 0; i < 4; i++) {
-    await Upvote.create({
-      packageId: 1,
-      userId: i + 1
-    });
-    await Upvote.create({
-      packageId: 2,
-      userId: i + 1
-    }),
-      await Upvote.create({
-        packageId: 3,
-        userId: i + 1
-      }),
-      await Upvote.create({
-        packageId: 4,
-        userId: i + 1
-      }),
-      await Upvote.create({
-        packageId: 5,
-        userId: i + 1
-      });
-  }
 
   // --------- CATEGORIES -------- \\
   const categories = await Promise.all([
@@ -1549,76 +1472,6 @@ async function seed() {
     WishlistLineItem.create({
       userId: 1,
       productId: 1
-    })
-  ]);
-
-  // ---- PACKAGE LINE ITEM ---- \\
-  //for companies and user Isley
-  const packageLineItems = await Promise.all([
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 1,
-      productId: 5
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 1,
-      productId: 7
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 1,
-      productId: 10
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 2,
-      productId: 11
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 2,
-      productId: 8
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 2,
-      productId: 9
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 3,
-      productId: 4
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 3,
-      productId: 1
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 4,
-      productId: 3
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 4,
-      productId: 7
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 4,
-      productId: 3
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 5,
-      productId: 2
-    }),
-    PackageLineItem.create({
-      qty: 1,
-      packageId: 5,
-      productId: 9
     })
   ]);
 

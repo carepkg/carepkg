@@ -5,8 +5,6 @@ import { getSingleProductThunk } from "../store/singleProduct";
 import ReviewList from "./ReviewList";
 import AddToButtons from "./AddToButtons";
 import { addToCartThunk } from "../store/cart";
-import PackagesWithProduct from "./PackagesWithProduct";
-
 class SingleProduct extends React.Component {
   constructor() {
     super();
@@ -117,7 +115,6 @@ class SingleProduct extends React.Component {
               </h6>
             </div>
           </div>
-          <PackagesWithProduct productId={this.props.match.params.id} />
           <div>
             <ReviewList
               avgRating={avgRating}

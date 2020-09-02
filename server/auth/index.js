@@ -5,14 +5,10 @@ const {
   Order,
   Product,
   LineItem,
-  Address,
-  Company,
-  Package,
-  PackageLineItem
+  Address
 } = require("../db/models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
-const session = require("express-session");
 
 router.post("/login", async (req, res, next) => {
   try {
@@ -42,45 +38,12 @@ router.post("/login", async (req, res, next) => {
         },
         {
           model: Address
-        },
-        {
-          model: Package,
-          include: [
-            {
-              model: PackageLineItem,
-              include: [
-                {
-                  model: Product
-                }
-              ]
-            }
-          ]
         }
       ]
     });
-    const company = await Company.findOne({
-      where: { coEmail: req.body.email, coPassword: req.body.password },
-      include: [
-        {
-          model: Package,
-          include: [
-            {
-              model: PackageLineItem,
-              include: [
-                {
-                  model: Product
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    });
-    if (!company && !user) {
+    if (!user) {
       res.status(401).send("Wrong username and/or password");
-    } else if (company) {
-      req.login(company, err => (err ? next(err) : res.json(company)));
-    } else if (user) {
+    } else {
       req.login(user, err => (err ? next(err) : res.json(user)));
     }
   } catch (err) {
@@ -108,12 +71,46 @@ router.post("/logout", (req, res, next) => {
   res.redirect("/");
 });
 
-router.get("/me", (req, res) => {
+router.get("/me", async (req, res) => {
+  const defaultUser = await User.findOne({
+    where: {
+      firstName: "Isley",
+      lastName: "Griffith"
+    },
+    include: [
+      {
+        model: Order,
+        include: [
+          {
+            model: LineItem,
+            include: [
+              {
+                model: Product
+              }
+            ]
+          }
+        ]
+      },
+      {
+        model: Review,
+        include: [
+          {
+            model: Product
+          }
+        ]
+      },
+      {
+        model: Address
+      }
+    ]
+  });
+  console.log(defaultUser);
   try {
     if (req.user) {
       res.json(req.user);
     } else {
-      res.json({ id: "1" });
+      console.log("yo");
+      res.json(defaultUser);
     }
   } catch (err) {
     next(err);
