@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ReviewList from "./ReviewCard";
-import CarepkgHelp from "./CarepkgHelp";
-import CarepkgNewsletter from "./CarepkgNewsletter";
-import FooterBottom from "./FooterBottom";
+import CarepkgHelp from "./Universal/CarepkgHelp";
+import CarepkgNewsletter from "./Universal/CarepkgNewsletter";
+import FooterBottom from "./Universal/FooterBottom";
 import OrderCard from "./OrderCard";
 import UserReviewCard from "./UserReviewCard";
 import { logout } from "../store/user";
 import AccountSettings from "./AccountSettings/AccountSettings";
 
-const UserProfile = props => {
+const UserProfile = (props) => {
   const [profileBody, setProfileBody] = useState("cart");
   const { user, handleLogout } = props;
   const { reviews, orders } = user;
@@ -77,10 +77,10 @@ const UserProfile = props => {
         <div id="profile-body">
           <div id="profile-content">
             {reviews && profileBody === "reviews"
-              ? reviews.map(rev => <UserReviewCard review={rev} />)
+              ? reviews.map((rev) => <UserReviewCard review={rev} />)
               : null}
             {orders && profileBody === "orders"
-              ? orders.map(order => <OrderCard order={order} />)
+              ? orders.map((order) => <OrderCard order={order} />)
               : null}
             {profileBody === "acct-settings" ? <AccountSettings /> : null}
           </div>
@@ -99,13 +99,13 @@ const UserProfile = props => {
   ) : null;
 };
 
-const mapState = state => ({
-  user: state.user
+const mapState = (state) => ({
+  user: state.user,
 });
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch) => ({
   handleLogout() {
     dispatch(logout());
-  }
+  },
 });
 
 export default connect(mapState, mapDispatch)(UserProfile);

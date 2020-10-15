@@ -1,7 +1,7 @@
 import React from "react";
 // import { connect } from "react-redux";
 import { withRouter, Route, Switch } from "react-router-dom";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/Landing/LandingPage";
 import AllProducts from "./components/AllProducts";
 import SingleProduct from "./components/SingleProduct";
 import { Login } from "./components/AuthForm";
@@ -39,10 +39,10 @@ class Routes extends React.Component {
     );
   }
 }
-const mapState = state => ({
-  user: state.user
+const mapState = (state) => ({
+  user: state.user,
 });
-const mapDispatch = dispatch => ({
-  loadInitialData: () => dispatch(me())
+const mapDispatch = (dispatch) => ({
+  loadInitialData: () => dispatch(me()),
 });
 export default withRouter(connect(mapState, mapDispatch)(Routes));

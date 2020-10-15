@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { logout } from "../store/user";
+import { logout } from "../../store/user";
 import MainSearchBar from "./MainSearchBar";
 
-const NavBar = props => {
+const NavBar = (props) => {
   const { isLoggedIn, handleLogout, user } = props;
   let firstInitial;
   user.firstName
@@ -66,15 +66,15 @@ const NavBar = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLoggedIn: !!state.user.id,
-  user: state.user
+  user: state.user,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   handleLogout() {
     dispatch(logout());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

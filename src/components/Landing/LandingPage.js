@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCartThunk } from "../store/cart";
-import { getCategoriesThunk } from "../store/categories";
+import { getCartThunk } from "../../store/cart";
+import { getCategoriesThunk } from "../../store/categories";
 import LandingSponsors from "./LandingSponsors";
 import LandingCatFooter from "./LandingCatFooter";
-import CarepkgHelp from "./CarepkgHelp";
-import CarepkgNewsletter from "./CarepkgNewsletter";
-import FooterBottom from "./FooterBottom";
+import CarepkgHelp from "../Universal/CarepkgHelp";
+import CarepkgNewsletter from "../Universal/CarepkgNewsletter";
+import FooterBottom from "../Universal/FooterBottom";
 
 class LandingPage extends Component {
   constructor(props) {
@@ -49,13 +49,13 @@ class LandingPage extends Component {
   }
 }
 
-const mapState = state => ({
+const mapState = (state) => ({
   user: state.user,
-  categories: state.categories
+  categories: state.categories,
 });
-const mapDispatch = dispatch => ({
-  fetchCart: userId => dispatch(getCartThunk(userId)),
-  fetchCategories: () => dispatch(getCategoriesThunk())
+const mapDispatch = (dispatch) => ({
+  fetchCart: (userId) => dispatch(getCartThunk(userId)),
+  fetchCategories: () => dispatch(getCategoriesThunk()),
 });
 
 export default connect(mapState, mapDispatch)(LandingPage);

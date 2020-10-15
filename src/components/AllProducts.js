@@ -5,15 +5,15 @@ import { getProductsThunk, getNewestProductsThunk } from "../store/products";
 import { addToCartThunk } from "../store/cart";
 import { getCategoriesThunk } from "../store/categories";
 import ProdPagination from "./ProdPagination";
-import CarepkgHelp from "./CarepkgHelp";
-import CarepkgNewsletter from "./CarepkgNewsletter";
-import FooterBottom from "./FooterBottom";
+import CarepkgHelp from "./Universal/CarepkgHelp";
+import CarepkgNewsletter from "./Universal/CarepkgNewsletter";
+import FooterBottom from "./Universal/FooterBottom";
 
 const initialState = {
   PRODUCTS_PER_PAGE: 12,
   pageNum: 1,
   leftPointer: 0,
-  rightPointer: 12
+  rightPointer: 12,
 };
 class AllProducts extends React.Component {
   constructor() {
@@ -39,7 +39,7 @@ class AllProducts extends React.Component {
       this.setState({
         leftPointer: (pageNumber - 1) * PRODUCTS_PER_PAGE,
         pageNum: textAsNumber,
-        rightPointer: pageNumber * PRODUCTS_PER_PAGE
+        rightPointer: pageNumber * PRODUCTS_PER_PAGE,
       });
     } else {
       this.setState(initialState);
@@ -50,12 +50,12 @@ class AllProducts extends React.Component {
     if (dir === "back") {
       this.setState({
         leftPointer: leftPointer - PRODUCTS_PER_PAGE,
-        rightPointer: rightPointer - PRODUCTS_PER_PAGE
+        rightPointer: rightPointer - PRODUCTS_PER_PAGE,
       });
     } else {
       this.setState({
         leftPointer: leftPointer + PRODUCTS_PER_PAGE,
-        rightPointer: rightPointer + PRODUCTS_PER_PAGE
+        rightPointer: rightPointer + PRODUCTS_PER_PAGE,
       });
     }
   }
@@ -69,7 +69,7 @@ class AllProducts extends React.Component {
       PRODUCTS_PER_PAGE,
       pageNum,
       leftPointer,
-      rightPointer
+      rightPointer,
     } = this.state;
     const numberOfPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
     const productsOnPage = products.slice(leftPointer, rightPointer);
@@ -81,7 +81,7 @@ class AllProducts extends React.Component {
         </div>
         <div id="product-categories">
           {categories
-            ? categories.map(cat => {
+            ? categories.map((cat) => {
                 return (
                   <span onClick={() => this.filterByCategory(cat.name)}>
                     {cat.name}
@@ -104,7 +104,7 @@ class AllProducts extends React.Component {
           shiftAndUpdatePage={this.shiftAndUpdatePage}
         />
         <div id="products-container">
-          {productsOnPage.map(product => {
+          {productsOnPage.map((product) => {
             return (
               <div key={product.id} className="product-card">
                 <NavLink to={`/products/id/${product.id}`}>
@@ -151,20 +151,20 @@ class AllProducts extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     products: state.products,
     userId: state.user.id,
-    categories: state.categories
+    categories: state.categories,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getProductsThunk: (category = "all") =>
       dispatch(getProductsThunk(category)),
     fetchCategories: () => dispatch(getCategoriesThunk()),
-    fetchNewestProducts: () => dispatch(getNewestProductsThunk())
+    fetchNewestProducts: () => dispatch(getNewestProductsThunk()),
   };
 };
 

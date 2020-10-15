@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import {
   getCartThunk,
   deleteFromCartThunk,
-  addToCartThunk
+  addToCartThunk,
 } from "../../store/cart";
 import {
   getUserWishlistThunk,
   addToWishlistThunk,
-  removeFromWishlistThunk
+  removeFromWishlistThunk,
 } from "../../store/wishlist";
-import CarepkgHelp from "../CarepkgHelp";
-import CarepkgNewsletter from "../CarepkgNewsletter";
-import FooterBottom from "../FooterBottom";
+import CarepkgHelp from "../Universal/CarepkgHelp";
+import CarepkgNewsletter from "../Universal/CarepkgNewsletter";
+import FooterBottom from "../Universal/FooterBottom";
 import CartEmpty from "./CartEmpty";
 import Wishlist from "../Wishlist";
 import CartItems from "./CartItems";
@@ -24,7 +24,7 @@ class Cart extends React.Component {
     this.state = {
       menuTab: "Cart",
       numInWishlist: 0,
-      numInCart: 0
+      numInCart: 0,
     };
   }
   componentDidMount() {
@@ -50,22 +50,22 @@ class Cart extends React.Component {
       removeFromCart,
       removeFromWishlist,
       addToCart,
-      addToWishlist
+      addToWishlist,
     } = this.props;
     const { menuTab } = this.state;
     let totals;
     console.log(cart);
     totals = cart.length
-      ? cart.map(item => (item.product.price * item.qty).toFixed(2))
+      ? cart.map((item) => (item.product.price * item.qty).toFixed(2))
       : [];
     let defaultStyle = {
       color: "gray",
-      fontWeight: "300"
+      fontWeight: "300",
     };
     let activeStyle = {
       color: "black",
       borderBottom: "2px solid black",
-      fontWeight: "500"
+      fontWeight: "500",
     };
     return (
       <div id="cart-page">
@@ -122,21 +122,21 @@ class Cart extends React.Component {
   }
 }
 
-const mapState = state => ({
+const mapState = (state) => ({
   cart: state.cart,
   user: state.user,
-  wishlist: state.wishlist
+  wishlist: state.wishlist,
 });
-const mapDispatch = dispatch => ({
-  fetchCart: userId => dispatch(getCartThunk(userId)),
+const mapDispatch = (dispatch) => ({
+  fetchCart: (userId) => dispatch(getCartThunk(userId)),
   addToCart: (productId, userId) =>
     dispatch(addToCartThunk(1, productId, userId)),
   removeFromCart: (productId, userId) =>
     dispatch(deleteFromCartThunk(productId, userId)),
-  fetchWishlist: userId => dispatch(getUserWishlistThunk(userId)),
+  fetchWishlist: (userId) => dispatch(getUserWishlistThunk(userId)),
   addToWishlist: (productId, userId) =>
     dispatch(addToWishlistThunk(productId, userId)),
   removeFromWishlist: (productId, userId) =>
-    dispatch(removeFromWishlistThunk(productId, userId))
+    dispatch(removeFromWishlistThunk(productId, userId)),
 });
 export default connect(mapState, mapDispatch)(Cart);
