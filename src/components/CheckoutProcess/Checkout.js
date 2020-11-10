@@ -52,14 +52,21 @@ class Checkout extends React.Component {
       setNewDefault,
       removeDefault,
       addresses,
+      user,
     } = this.props;
-    console.log("checkout: ", this.state.isGift);
     return (
       <div id="checkout-page">
         <div className="checkout-header">
           <h3>Review and Place your Order </h3>
         </div>
-
+        <div className="checkout-pre-form-container">
+          <div className="checkout-sample-advert">
+            <h4>Take 20% Off One Full-Price Item!</h4>
+            <p>Complete a quick survey to redeem coupon.</p>
+            <button className="medium-btn-white">Survey</button>
+          </div>
+          <div className="checkout-need-help"></div>
+        </div>
         <div className="checkout-step-container">
           <h3 className="checkout-step-header">
             1. Select your Billing Address
@@ -104,6 +111,7 @@ class Checkout extends React.Component {
 
 const mapState = (state) => ({
   addresses: state.addresses,
+  user: state.user,
 });
 const mapDispatch = (dispatch) => ({
   fetchAddresses: () => dispatch(getAddressesThunk()),

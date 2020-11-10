@@ -28,6 +28,26 @@ body,
     from {opacity: 1}
     to {opacity: 0}
 }
+/* #region BUTTONS */
+.medium-btn-white {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 200px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 6px;
+    border-radius: 24px;
+    transition: 0.25s ease;
+    cursor: pointer;
+}
+.medium-btn-white:hover {
+    background-color: rgb(24, 24, 24);
+    color: white;
+    cursor: pointer;  
+}
+/* #endregion */
 /* #region LANDING */
 #landing-page{
     width: 100%;
@@ -206,6 +226,7 @@ body,
     font-family: 'Playfair Display', serif;
     font-size: 1.25em;
 }
+/* #endregion */
 /* #region LANDING NEW ARRIVALS */
 .landing-ps-cont {
     width: 100%;
@@ -1946,7 +1967,6 @@ input[type='text'], input[type='email'] {
 }
 .black-btn {
     color: white;
-    background-color: rgb(24, 24, 24);
     width: 180px;
     height: 40px;
     margin: 0 6px;
@@ -1954,6 +1974,8 @@ input[type='text'], input[type='email'] {
     font-weight: 400;
     font-size: .875em;
     cursor: pointer;
+    background-color: rgb(24, 24, 24);
+
     transition: 0.25s ease;
 }
 .black-btn:hover {
@@ -2148,15 +2170,40 @@ input[type='text'], input[type='email'] {
     width: 100vw;
 }
 .checkout-header {
-    padding: 30px 0;
+    padding: 20px 0;
     font-size: 1.25rem;
     border-bottom: 1px solid rgba(0,0,0,0.4);
-    width: 70%;
+    width: 70vw;
 }
 .checkout-header h3 {
     font-size: 1.5em;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
+}
+.checkout-pre-form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+    padding: 16px 0px;
+}
+.checkout-sample-advert {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 12px;
+    width: 35vw;
+    height: 16vh;
+    border-left: 4px solid green;
+}
+.checkout-sample-advert h4 {
+    font-weight: bold;
+}
+.checkout-sample-advert p {
+    margin: 4px 0;
+}
+.checkout-need-help {
+    width: 25vw;
+    height: 16vh;
 }
 .checkout-step-header {
     font-family: 'Playfair Display', serif;
