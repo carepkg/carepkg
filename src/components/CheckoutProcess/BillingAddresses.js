@@ -5,13 +5,15 @@ class BillingAddresses extends React.Component {
     super(props);
     this.state = {
       billing: true,
-      activeBilling: ""
+      activeBilling: "",
     };
     this.handleSelect = this.handleSelect.bind(this);
   }
   handleSelect(name) {
     this.setState({ activeBilling: name });
-    const address = this.props.addresses.find(address => address.name === name);
+    const address = this.props.addresses.find(
+      (address) => address.name === name
+    );
     this.props.setBillingAddress(address);
   }
 
@@ -31,7 +33,7 @@ class BillingAddresses extends React.Component {
       <div id="addresses-body">
         {addresses ? (
           <div id="user-addresses">
-            {addresses.map(address => {
+            {addresses.map((address) => {
               return (
                 <div
                   key={address.id}
@@ -55,9 +57,6 @@ class BillingAddresses extends React.Component {
                       {address.city}, {address.state} {address.postalCode}
                     </p>
                     <p className="address-line">{address.country}</p>
-                    <p className="address-line">
-                      Phone number: {address.phone}
-                    </p>
                   </div>
                   <div className="address-util-menu">
                     <p className="address-util-1">Edit</p>
