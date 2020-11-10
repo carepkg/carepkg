@@ -4,20 +4,27 @@ class ShippingAddresses extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeShipping: ""
+      activeShipping: "",
     };
     this.handleSelect = this.handleSelect.bind(this);
   }
   handleSelect(name) {
     this.setState({ activeShipping: name });
-    const address = this.props.addresses.find(address => address.name === name);
+    const address = this.props.addresses.find(
+      (address) => address.name === name
+    );
     this.props.setShippingAddress("", address);
   }
 
   render() {
-    const { removeAddress, setNewDefault, removeDefault } = this.props;
+    const {
+      addresses,
+      removeAddress,
+      setNewDefault,
+      removeDefault,
+    } = this.props;
     const { activeShipping } = this.state;
-    const addresses = this.props.addresses;
+
     for (let i = 0; i < addresses.length; i++) {
       if (addresses[i].default) {
         let temp = addresses[i];
@@ -29,7 +36,7 @@ class ShippingAddresses extends React.Component {
       <div id="addresses-body">
         {addresses ? (
           <div id="user-addresses">
-            {addresses.map(address => {
+            {addresses.map((address) => {
               return (
                 <div
                   key={address.id}
