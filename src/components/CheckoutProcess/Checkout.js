@@ -8,7 +8,7 @@ import {
   getAddressesThunk,
   removeAddressThunk,
   removeCurrentDefaultThunk,
-  setDefaultThunk
+  setDefaultThunk,
 } from "../../store/addresses";
 
 class Checkout extends React.Component {
@@ -17,7 +17,7 @@ class Checkout extends React.Component {
     this.state = {
       billingAddress: {},
       shippingAddress: {},
-      isGift: false
+      isGift: false,
     };
     this.setBillingAddress = this.setBillingAddress.bind(this);
     this.setShippingAddress = this.setShippingAddress.bind(this);
@@ -30,7 +30,7 @@ class Checkout extends React.Component {
 
   setBillingAddress(address) {
     this.setState({
-      billingAddress: address
+      billingAddress: address,
     });
   }
   setShippingAddress(sameAddress, payload = false) {
@@ -43,7 +43,7 @@ class Checkout extends React.Component {
   }
   toggleGift() {
     this.setState({
-      isGift: !this.state.isGift
+      isGift: !this.state.isGift,
     });
   }
   render() {
@@ -51,7 +51,7 @@ class Checkout extends React.Component {
       removeAddress,
       setNewDefault,
       removeDefault,
-      addresses
+      addresses,
     } = this.props;
     console.log("checkout: ", this.state.isGift);
     return (
@@ -62,7 +62,7 @@ class Checkout extends React.Component {
 
         <div className="checkout-step-container">
           <h3 className="checkout-step-header">
-            <span>1</span> &nbsp;&nbsp;Select your Billing Address
+            1. Select your Billing Address
           </h3>
           <BillingAddresses
             addresses={addresses}
@@ -102,13 +102,13 @@ class Checkout extends React.Component {
   }
 }
 
-const mapState = state => ({
-  addresses: state.addresses
+const mapState = (state) => ({
+  addresses: state.addresses,
 });
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch) => ({
   fetchAddresses: () => dispatch(getAddressesThunk()),
-  removeAddress: addressId => dispatch(removeAddressThunk(addressId)),
+  removeAddress: (addressId) => dispatch(removeAddressThunk(addressId)),
   removeDefault: () => dispatch(removeCurrentDefaultThunk()),
-  setNewDefault: address => dispatch(setDefaultThunk(address))
+  setNewDefault: (address) => dispatch(setDefaultThunk(address)),
 });
 export default connect(mapState, mapDispatch)(Checkout);
