@@ -21,7 +21,7 @@ const NavBar = (props) => {
             <MainSearchBar />
           </div>
           <div id="navbar-top-right">
-            <NavLink to="/products/all" className="navlink">
+            <NavLink to="/products/all" className="navlink products-navlink">
               Products
             </NavLink>
             <NavLink to="/cart" className="navlink">
@@ -31,13 +31,13 @@ const NavBar = (props) => {
               <React.Fragment>
                 <div className="user-dropdown-container">
                   <button className="menu-button">
-                    Welcome, {props.user.firstName}!{" "}
+                    Hello, {props.user.firstName}!{" "}
                     <div className="nav-user-initial">{firstInitial}</div>
                     <span>&#x25BE;</span>
                   </button>
                   <div className="user-dropdown-menu">
                     <NavLink to="/profile" className="nav-dropdown-item">
-                      Your Profile
+                      Profile
                     </NavLink>
                     <NavLink
                       to="/login"

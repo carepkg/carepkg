@@ -12,6 +12,7 @@ body,
     width: 100%;
     height: 100%;
     font-family: 'Roboto', sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
     min-height: 100vh;
     background-size: cover;
     /* overflow-x: hidden; */
@@ -41,37 +42,41 @@ body,
 }
 #bg-img-content {
     width: 100vw;
-    height: 96vh;
-    background-image: url("./background-images/main-bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+    height: 98vh;
+    display: inline-flex;
+    justify-content: center;
+}
+.main-img {
+    width: 100%;
+    height: auto;
 }
 #landing-text {
+    position: absolute;
+    top: 160px;
     color: rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1;
-    margin-top: 240px;
+    z-index: 99;
 }
-#landing-text > p {
+
+#landing-text-1 {
+    font-size: 5vw;
+    font-weight: 300;
     font-family: 'Playfair Display', serif;
 }
-#landing-text-1 {
-    font-size: 3em;
-    font-weight: 300;
-}
 #landing-text-2 {
-    font-size: 2.875em;
+    font-size: 3vw;
     font-weight: 400;
     margin: 4px;
+    font-family: 'Playfair Display', serif;
 }
 #landing-text-3 {
-    font-size: 2em;
+    font-size: 3vw;
     font-weight: 200;
     margin: 8px;
+    font-family: 'Playfair Display', serif;
 }
 #landing-text-btn {
     margin-top: 16px;
@@ -95,7 +100,6 @@ body,
 /* 200vh LANDING SECTION 2 */
 #landing-section-2 {
     width: 100vw;
-    height: 216vh;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -202,55 +206,72 @@ body,
     font-family: 'Playfair Display', serif;
     font-size: 1.25em;
 }
-/* FEATURED PACKAGES */
-#featured-pkgs-container {
-    margin: 16px 0 16px 0;
-    display: flex;
+/* LANDING NEW ARRIVALS */
+.landing-ps-cont {
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    
-}
-#landing-section-2 > h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-}
-#landing-section-2 > h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400
-}
-.featured-pkg {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    width: 220px;
-    height: 300px;
-    border: 1px solid rgba(51, 51, 51, 0.2);
-    margin: 12px;
-    padding: 24px;
+    margin-bottom: 8vh;
+}
+.landing-ps-header {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 1vh 0;
+}
+.landing-ps-backdrop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(244, 244, 244);
+    width: 100%;
+}
+.landing-ps-card-wrapper {
+    cursor: pointer;
+}
+.landing-ps-card-wrapper:hover {
+    cursor: pointer;
+}
+.landing-ps-card {
+    width: 17vw;
+    margin: 6vh 1.5vw;
+    height: 48vh;
+}
+.landing-ps-card-top {
+    width: 100%;
+    height: 72%;
+    background-color: white;
+    border-bottom: 2px solid rgb(244, 244, 244); 
+}
+.landing-ps-card-bottom {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 27%;
     background-color: white;
 }
-.featured-pkg-img {
-    width: 160px;
-    height: 160px;
+.landing-ps-card-prod-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    margin: 3px 6px;
 }
-.featured-pkg-name {
-    text-decoration: underline;
-    margin-top: 8px;
+.landing-ps-card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    margin: 3px 6px;
 }
-.upvote-pkg-btn {
-    margin-top: 24px;
-    background-color: rgb(92, 92, 254);
-    color: white;
-    width: 60px;
-    border-radius: 6px;
+.landing-ps-card-price span {
+    font-family: 'Playfair Display', serif;
 }
-/* LANDING CATEGORY FOOTER */
+.landing-ps-card img {
+    width: 100%;
+    height: 100%;
+}
+/* #region LANDING CATEGORY FOOTER */
 #landing-cat-footer {
     width: 100vw;
     height: 35vh;
-    margin: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -258,39 +279,45 @@ body,
 }
 #cat-footer-header {
     font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 2rem;
 }
 #cat-footer-subheader {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
     color: #777;
 }
 #landing-cat-container {
-    width: 200px;
+    width: 300px;
     display: flex;
     margin: 40px 0;
     font-weight: 300;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 #cat-col1-container {
-    width: 120px;
-    height: 200px;
-    margin: 0 24px;
-    color: #444;
+    /* width: 120px; */
+    /* height: 200px; */
+    /* margin: 0 24px; */
+    /* color: black; */
 }
 #cat-col2-container {
-    width: 120px;
+    /* width: 120px;
     height: 200px;
     margin: 0 24px;
-    color: #444
+    color: black; */
 }
 .footer-category-name {
+    font-family: 'Times New Roman', Times, serif;
     margin: 2px 8px;
+    cursor: pointer;
 }
 .footer-category-name:hover {
     cursor: pointer;
     text-decoration: underline;
 }
+/* #endregion */
 
-
-/* LANDING FOOTER MAIN */
+/* #region LANDING FOOTER MAIN */
 
 #landing-footer-main {
     width: 100vw;
@@ -339,7 +366,8 @@ body,
     border-radius: 6px;
     text-indent: 8px;
 }
-/* FOOTER BOTTOM */
+/* #endregion */
+/* #region FOOTER BOTTOM */
 #footer-bottom-page {
     width: 100%;
     height: 60%;
@@ -363,7 +391,6 @@ body,
     justify-content: flex-start;
     position: absolute;
 }
-
 #navbar-top {
     width: 100%;
     height: 100%;
@@ -381,13 +408,13 @@ body,
     align-items: center;
 }
 #navbar-top-left {
-    width: 50%;
+    width: 65%;
     height: 100%;
     display: flex;
     align-items: center;
 }
 #navbar-top-right {
-    width: 50%;
+    width: 35%;
     height: 100%;
     font-size: 0.9em;
     display: flex;
@@ -402,11 +429,14 @@ body,
 }
 .navlink{
     color: white;
-    padding: 0 40px;
+    padding: 0 20px;
     font-size: calc(0.75em + 0.3vw);
     cursor: pointer;
     text-decoration: none;
-    font-weight: 300;
+    font-weight: 400;
+}
+.products-navlink {
+    margin-left: 20px;
 }
 
 #home-main{
@@ -437,7 +467,7 @@ body,
 .menu-button {
     background-color: transparent;
     color: white;
-    padding: 1.8em 2em;
+    padding: 0 20px;
     font-size: 1em;
     cursor: pointer;
     display: flex;
@@ -449,6 +479,8 @@ body,
     margin-left: 4px;
 }
 .nav-user-initial {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
     margin-left: 8px;
     width: 24px;
     height: 24px;
@@ -460,33 +492,33 @@ body,
     color: black;
 }
 .user-dropdown-menu{
-    width: 72%;
+    z-index: 90000;
+    width: 75%;
     display: none;
 }
 .nav-dropdown-item {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     color: white;
     padding: 10px;
+    padding-left: 24px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background-color: transparent;
     position: relative;
 }
-/* .nav-dropdown-item:hover, .nav-dropdown-item::before {
-   
-} */
-.nav-dropdown-item:hover:before {
+.nav-dropdown-item:before {
     content: '\0203A   ';
     position: absolute;
     left: 8px;
-    color: rgba(199, 85, 85, 0.7);
+    color: white;
     font-weight: 800;
     font-size: 1.5em;
 }
-.nav-dropdown-item:hover {
-    padding-left: 20px;
-    font-size: 1.06125em;
+.nav-dropdown-item:hover:before {
+    color: rgba(199, 85, 85, 0.7);
 }
 .user-dropdown-container:hover .user-dropdown-menu {
     top: 93%;
@@ -2051,7 +2083,7 @@ input[type='text'], input[type='email'] {
 .ship-address-input-group span {
     padding-left: 8px;
 }
-/* ----- PP -------*/
+/* #region ----- PP -------*/
 
 #pp-page {
     position: relative;
@@ -2103,8 +2135,8 @@ input[type='text'], input[type='email'] {
     background-color: rgb(233, 178, 76);
     border-radius: 6px;
 }
-
-/* ----- CHECKOUT ----- */
+/* #endregion */
+/* #region ----- CHECKOUT ----- */
 
 #checkout-page {
     position: relative;
@@ -2158,8 +2190,9 @@ input[type='text'], input[type='email'] {
 .gift-option-page span {
     padding-left: 8px;
 }
+/* #endregion */
 
-/* ---- CHECKOUT SUCCESS ---- */
+/* #region ---- CHECKOUT SUCCESS ---- */
 #checkout-success-page {
     position: relative;
     top: 17.25%;
@@ -2183,21 +2216,6 @@ input[type='text'], input[type='email'] {
     color: blue;
     text-decoration: underline;
 }
+ /* #endregion */
 
 
-/* ------ COMPANY PROFILE ------- */
-
-#company-profile-page {
-    position: relative;
-    top: 17.25%;
-    height: 82.75%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-.company-profile-pkg {
-    border: 1px dashed red;
-}
-.company-profile-prod-img {
-    border: 1px solid rgba(51, 51, 51, 0.1)
-}

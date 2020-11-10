@@ -6,7 +6,7 @@ const {
   ProductCategory,
   PricingHistory,
   Review,
-  User
+  User,
 } = require("../db/models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
@@ -16,13 +16,13 @@ router.get("/all", async (req, res, next) => {
     const products = await Product.findAll({
       include: [
         {
-          model: Review
+          model: Review,
         },
         {
           model: ProductCategory,
-          include: [{ model: Category }]
-        }
-      ]
+          include: [{ model: Category }],
+        },
+      ],
     });
     res.send(products);
   } catch (err) {
@@ -36,13 +36,13 @@ router.get("/new-arrivals", async (req, res, next) => {
       order: [["updatedAt", "DESC"]],
       include: [
         {
-          model: Review
+          model: Review,
         },
         {
           model: ProductCategory,
-          include: [{ model: Category }]
-        }
-      ]
+          include: [{ model: Category }],
+        },
+      ],
     });
     res.json(sortedProductsByDate);
   } catch (err) {
@@ -54,24 +54,24 @@ router.get("/:category", async (req, res, next) => {
     const category = await Category.findOne({
       where: {
         name: {
-          [Op.like]: `%${req.params.category}%`
-        }
-      }
+          [Op.like]: `%${req.params.category}%`,
+        },
+      },
     });
     console.log(category.id);
 
     const productCategories = await ProductCategory.findAll({
       where: {
-        categoryId: category.id
+        categoryId: category.id,
       },
       include: [
         {
-          model: Product
-        }
-      ]
+          model: Product,
+        },
+      ],
     });
     console.log(productCategories);
-    res.json(productCategories.map(prodCat => prodCat.product));
+    res.json(productCategories.map((prodCat) => prodCat.product));
   } catch (err) {
     next(err);
   }
@@ -86,19 +86,19 @@ router.get("/id/:productId", async (req, res, next) => {
           model: Review,
           include: [
             {
-              model: User
-            }
-          ]
+              model: User,
+            },
+          ],
         },
         {
           model: ProductCategory,
           include: [
             {
-              model: Category
-            }
-          ]
-        }
-      ]
+              model: Category,
+            },
+          ],
+        },
+      ],
     });
     if (product) res.json(product);
     else res.sendStatus(404);

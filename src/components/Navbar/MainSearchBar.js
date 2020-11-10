@@ -10,13 +10,13 @@ const MainSearchBar = () => {
       <SearchBar
         name="searchText"
         value={searchText}
-        onChange={newValue => setSearchText(newValue)}
+        onChange={(newValue) => setSearchText(newValue)}
         style={{
           lineHeight: "32px",
-          width: "58.3%",
+          width: "100%",
           height: "44px",
           borderRadius: 8,
-          margin: "4px"
+          margin: "4px",
         }}
       />
     </MuiThemeProvider>
