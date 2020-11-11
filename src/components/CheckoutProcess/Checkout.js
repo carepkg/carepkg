@@ -4,6 +4,10 @@ import BillingAddresses from "./BillingAddresses";
 import ShippingAddresses from "./ShippingAddresses";
 import GiftOption from "./GiftOption";
 import SelectPayment from "./SelectPayment";
+import RedeemCode from "./RedeemCode";
+import CarepkgHelp from "../Universal/CarepkgHelp";
+import CarepkgNewsletter from "../Universal/CarepkgNewsletter";
+import FooterBottom from "../Universal/FooterBottom";
 import {
   getAddressesThunk,
   removeAddressThunk,
@@ -19,12 +23,17 @@ class Checkout extends React.Component {
       shippingAddress: {},
       shippingAndBilling: "same",
       isGift: false,
+      showRedeemCodeModal: false,
+      redeemCode: "",
     };
     this.setBillingAddress = this.setBillingAddress.bind(this);
     this.setShippingAddress = this.setShippingAddress.bind(this);
     this.handleShippingAndBilling = this.handleShippingAndBilling.bind(this);
     this.sameInputChange = this.sameInputChange.bind(this);
     this.diffInputChange = this.diffInputChange.bind(this);
+    this.showRCModal = this.showRCModal.bind(this);
+    this.closeRCModal = this.closeRCModal.bind(this);
+    this.redeemCode = this.redeemCode.bind(this);
     this.toggleGift = this.toggleGift.bind(this);
   }
   componentDidMount() {
@@ -67,6 +76,15 @@ class Checkout extends React.Component {
   handleShippingAndBilling(status) {
     this.setState({ shippingAndBilling: status });
   }
+  showRCModal() {
+    this.setState({ showRedeemCodeModal: true });
+  }
+  closeRCModal() {
+    this.setState({ showRedeemCodeModal: false });
+  }
+  redeemCode(code) {
+    this.setState({ redeemCode: code }, () => this.closeRCModal());
+  }
   toggleGift() {
     this.setState({
       isGift: !this.state.isGift,
@@ -108,37 +126,37 @@ class Checkout extends React.Component {
           <h3 className="checkout-step-header">
             1. Select your Billing Address
           </h3>
-          <BillingAddresses
-            addresses={addresses}
-            removeAddress={removeAddress}
-            removeDefault={removeDefault}
-            setNewDefault={setNewDefault}
-            setBillingAddress={this.setBillingAddress}
-          />
+          <div className="billing-address-wrapper">
+            <BillingAddresses
+              addresses={addresses}
+              removeAddress={removeAddress}
+              removeDefault={removeDefault}
+              setNewDefault={setNewDefault}
+              setBillingAddress={this.setBillingAddress}
+            />
+          </div>
         </div>
         <div className="checkout-step-container">
           <h3 className="checkout-step-header">2. Choose a Shipping Address</h3>
-          <div className="select-ship-address-page">
-            <div className="ship-address-input-group">
-              <input
-                checked={this.state.shippingAndBilling === "same"}
-                name="shipAddress"
-                type="radio"
-                value="same"
-                onChange={this.sameInputChange}
-              />
-              <span>Ship to My Billing Address</span>
-            </div>
-            <div className="ship-address-input-group">
-              <input
-                checked={this.state.shippingAndBilling === "different"}
-                name="shipAddress"
-                type="radio"
-                value="different"
-                onChange={this.diffInputChange}
-              />
-              <span>Ship to Different Address</span>
-            </div>
+          <div className="ship-address-input-group">
+            <input
+              checked={this.state.shippingAndBilling === "same"}
+              name="shipAddress"
+              type="radio"
+              value="same"
+              onChange={this.sameInputChange}
+            />
+            <span>Ship to My Billing Address</span>
+          </div>
+          <div className="ship-address-input-group">
+            <input
+              checked={this.state.shippingAndBilling === "different"}
+              name="shipAddress"
+              type="radio"
+              value="different"
+              onChange={this.diffInputChange}
+            />
+            <span>Ship to Different Address</span>
           </div>
           {/* need to add a form for add address */}
           {shippingAndBilling === "different" ? (
@@ -158,8 +176,30 @@ class Checkout extends React.Component {
           <GiftOption toggleGift={this.toggleGift} />
         </div>
         <div className="checkout-step-container">
-          <h3 className="checkout-step-header">4. Select Payment Method</h3>
-          <SelectPayment />
+          <h3 className="checkout-step-header">
+            4. Verify Payment Information
+          </h3>
+          <div className="checkout-redeem-section-wrapper">
+            <button
+              className="checkout-rc-modal-btn"
+              onClick={(e) => {
+                this.showRCModal();
+              }}
+            >
+              <span>+</span>Redeem a promo code
+            </button>
+            {this.state.redeemCode && (
+              <p className="redeem-code">
+                Code: <span className="bold">{this.state.redeemCode}</span>
+              </p>
+            )}
+          </div>
+          <RedeemCode
+            redeemCode={this.redeemCode}
+            onClose={this.closeRCModal}
+            show={this.state.showRedeemCodeModal}
+          />
+          {/* <SelectPayment /> */}
         </div>
       </div>
     );
