@@ -14,7 +14,14 @@ class RedeemCode extends React.Component {
     });
   }
   render() {
-    const { show, onClose, redeemCode } = this.props;
+    const {
+      asteriskFillerText,
+      headerTitle,
+      redeemCode,
+      codeObj,
+      onClose,
+      show,
+    } = this.props;
     const showHideClassName = show
       ? "modal display-block"
       : "modal display-none";
@@ -23,12 +30,12 @@ class RedeemCode extends React.Component {
         <div className="modal-main">
           <div className="checkout-rc-modal-top">
             <span>
-              *Gift certificate codes should be redeemed <span>here</span>
+              *{asteriskFillerText} codes should be redeemed <span>here</span>
             </span>
-            <button onClick={(e) => onClose(e)}>X</button>
+            <button onClick={() => onClose(codeObj)}>X</button>
           </div>
           <div className="checkout-rc-modal-content">
-            <p>Redeem Code</p>
+            <p>{headerTitle}</p>
             <input
               name="redeemCode"
               value={this.state.redeemCode}
@@ -36,7 +43,7 @@ class RedeemCode extends React.Component {
             />
             <button
               className="medium-btn-black"
-              onClick={() => redeemCode(this.state.redeemCode)}
+              onClick={() => redeemCode(this.state.redeemCode, codeObj)}
             >
               Redeem
             </button>

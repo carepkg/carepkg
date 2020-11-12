@@ -31,7 +31,9 @@ class Checkout extends React.Component {
       shippingAndBilling: "same",
       isGift: false,
       showRedeemCodeModal: false,
+      showRedeemCodeModal2: false,
       redeemCode: "",
+      redeemCode2: "",
     };
     this.setBillingAddress = this.setBillingAddress.bind(this);
     this.setShippingAddress = this.setShippingAddress.bind(this);
@@ -84,14 +86,20 @@ class Checkout extends React.Component {
   handleShippingAndBilling(status) {
     this.setState({ shippingAndBilling: status });
   }
-  showRCModal() {
-    this.setState({ showRedeemCodeModal: true });
+  showRCModal(codeObj) {
+    codeObj.type === "promo"
+      ? this.setState({ showRedeemCodeModal: true })
+      : this.setState({ showRedeemCodeModal2: true });
   }
-  closeRCModal() {
-    this.setState({ showRedeemCodeModal: false });
+  closeRCModal(codeObj) {
+    codeObj.type === "promo"
+      ? this.setState({ showRedeemCodeModal: false })
+      : this.setState({ showRedeemCodeModal2: false });
   }
-  redeemCode(code) {
-    this.setState({ redeemCode: code }, () => this.closeRCModal());
+  redeemCode(code, codeObj) {
+    codeObj.type === "promo"
+      ? this.setState({ redeemCode: code }, () => this.closeRCModal(codeObj))
+      : this.setState({ redeemCode2: code }, () => this.closeRCModal(codeObj));
   }
   toggleGift() {
     this.setState({
@@ -206,7 +214,7 @@ class Checkout extends React.Component {
             <button
               className="checkout-rc-modal-btn"
               onClick={(e) => {
-                this.showRCModal();
+                this.showRCModal({ type: "promo" });
               }}
             >
               <span>+</span>Redeem a promo code
@@ -216,16 +224,42 @@ class Checkout extends React.Component {
                 Code: <span className="bold">{this.state.redeemCode}</span>
               </p>
             )}
+            <button
+              className="checkout-rc-modal-btn"
+              onClick={(e) => {
+                this.showRCModal({ type: "gift-certificate" });
+              }}
+            >
+              <span>+</span>Redeem a gift certificate
+            </button>
+            {this.state.redeemCode2 && (
+              <p className="redeem-code">
+                Code: <span className="bold">{this.state.redeemCode2}</span>
+              </p>
+            )}
           </div>
           <RedeemCode
+            asteriskFillerText="Gift certificate"
+            headerTitle="Redeem Code"
             redeemCode={this.redeemCode}
+            codeObj={{ type: "promo" }}
             onClose={this.closeRCModal}
             show={this.state.showRedeemCodeModal}
           />
+          <RedeemCode
+            asteriskFillerText="Promo"
+            headerTitle="Gift Certificate"
+            redeemCode={this.redeemCode}
+            codeObj={{ type: "gift-certificate" }}
+            onClose={this.closeRCModal}
+            show={this.state.showRedeemCodeModal2}
+          />
+
           <StripeCheckout
             stripeKey="pk_test_51HmPaAAYf0d6QX7h5V5wgTn8YhKdUwC5VgYHrrUmdS1ilzcWTs9kJLndhNnT8kw1eBP7k7IKv6hRBlbKu24IqnTU00aRBFrD6f"
             token={this.handleToken}
             amount={1 * 100}
+            style={{ width: "300px", margin: "8px 32px" }}
           />
         </div>
       </div>

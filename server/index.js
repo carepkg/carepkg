@@ -98,7 +98,7 @@ const createApp = () => {
 
   // STRIPE POST ROUTE
 
-  app.post("/checkout-stripe", async (req, res) => {
+  app.post("/stripe-checkout", async (req, res) => {
     let error;
     let status;
     try {

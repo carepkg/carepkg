@@ -2285,6 +2285,10 @@ input[type='text'], input[type='email'] {
     justify-content: center;
 
 }
+.checkout-redeem-section-wrapper button {
+    padding: 12px 0;
+    margin: 12px 0;
+}
 .checkout-rc-modal-btn {
     display: flex;
     align-items: center;
