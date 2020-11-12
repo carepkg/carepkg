@@ -4,16 +4,23 @@ import BillingAddresses from "./BillingAddresses";
 import ShippingAddresses from "./ShippingAddresses";
 import GiftOption from "./GiftOption";
 import SelectPayment from "./SelectPayment";
+import StripeCheckout from "react-stripe-checkout";
 import RedeemCode from "./RedeemCode";
 import CarepkgHelp from "../Universal/CarepkgHelp";
 import CarepkgNewsletter from "../Universal/CarepkgNewsletter";
 import FooterBottom from "../Universal/FooterBottom";
+import axios from "axios";
 import {
   getAddressesThunk,
   removeAddressThunk,
   removeCurrentDefaultThunk,
   setDefaultThunk,
 } from "../../store/addresses";
+
+//Toast success message for stripe checkout
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -35,6 +42,7 @@ class Checkout extends React.Component {
     this.closeRCModal = this.closeRCModal.bind(this);
     this.redeemCode = this.redeemCode.bind(this);
     this.toggleGift = this.toggleGift.bind(this);
+    this.handleToken = this.handleToken.bind(this);
   }
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -89,6 +97,21 @@ class Checkout extends React.Component {
     this.setState({
       isGift: !this.state.isGift,
     });
+  }
+  async handleToken(
+    token,
+    addresses = {
+      billing: this.state.billingAddress,
+      shipping: this.state.shippingAddress,
+    }
+  ) {
+    const response = await axios.post("/checkout-stripe", { token, addresses });
+    const { status } = response.data;
+    if (status === "success") {
+      toast("Success! Check email for details", { type: "success" });
+    } else {
+      toast("Oops! Something went wrong.", { type: "error" });
+    }
   }
   render() {
     const {
@@ -199,7 +222,11 @@ class Checkout extends React.Component {
             onClose={this.closeRCModal}
             show={this.state.showRedeemCodeModal}
           />
-          {/* <SelectPayment /> */}
+          <StripeCheckout
+            stripeKey="pk_test_51HmPaAAYf0d6QX7h5V5wgTn8YhKdUwC5VgYHrrUmdS1ilzcWTs9kJLndhNnT8kw1eBP7k7IKv6hRBlbKu24IqnTU00aRBFrD6f"
+            token={this.handleToken}
+            amount={1 * 100}
+          />
         </div>
       </div>
     );

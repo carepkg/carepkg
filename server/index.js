@@ -9,13 +9,16 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
+const stripe = require("stripe")(
+  "sk_test_51HmPaAAYf0d6QX7hNBJk9oFdipY81DrpYaLDJ1H2RKEpIUKaRxJteVd9uNamzMtGGkWXmiScuXZdbOyrRCBo0F2f00rsgVfEna"
+);
 const {
   User,
   Review,
   Product,
   LineItem,
   Order,
-  Address
+  Address,
 } = require("./db/models");
 const PORT = 8000;
 const app = express();
@@ -45,26 +48,26 @@ const createApp = () => {
                   model: LineItem,
                   include: [
                     {
-                      model: Product
-                    }
-                  ]
-                }
-              ]
+                      model: Product,
+                    },
+                  ],
+                },
+              ],
             },
             {
               model: Review,
               include: [
                 {
-                  model: Product
-                }
-              ]
+                  model: Product,
+                },
+              ],
             },
             {
-              model: Address
-            }
-          ]
+              model: Address,
+            },
+          ],
         })
-        .then(user => done(null, user));
+        .then((user) => done(null, user));
     } catch (err) {
       done(err);
     }
@@ -80,7 +83,7 @@ const createApp = () => {
       resave: false,
       saveUninitialized: true,
       // cookie: { secure: true },
-      proxy: true
+      proxy: true,
     })
   );
   app.use(passport.initialize());
@@ -92,6 +95,26 @@ const createApp = () => {
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, "..", "public")));
+
+  // STRIPE POST ROUTE
+
+  app.post("/checkout-stripe", async (req, res) => {
+    let error;
+    let status;
+    try {
+      const { token } = req.body;
+
+      await stripe.customers.create({
+        email: token.email,
+        source: token.id,
+      });
+      status = "success";
+    } catch (err) {
+      console.error("Error: ", error);
+      status = "failure";
+    }
+    res.json({ error, status });
+  });
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {

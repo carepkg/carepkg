@@ -2372,7 +2372,7 @@ input[type='text'], input[type='email'] {
     font-size: 2rem;
 }
 .checkout-rc-modal-content input {
-    margin: 48px 0 24px 0;
+    margin: 24px 0 24px 0;
     width: 70%;
     height: 50px;
     border: 1px solid black;
