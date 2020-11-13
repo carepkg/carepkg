@@ -573,6 +573,65 @@ body,
 }
 /* #endregion */
 /* #region ###### ABOUT ###### */
+
+.about-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.about-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+#about-content-navbar {
+    position: fixed;
+    color: rgba(255, 255, 255, 0.5);
+    width: 100vw;
+    height: 8vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: transparent;
+}
+.about-content-navbar-half {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+#about-nav-left h1 {
+    font-weight: bold;
+    transition: 0.1s ease;
+    cursor: pointer;
+
+}
+#about-nav-left h1:hover {
+    color: rgba(255,255,255,0.9);
+    
+}
+#about-nav-right {}
+#about-nav-right span {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin: 0px 20px;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+
+}
+#about-nav-right span:hover {
+    color: rgba(255,255,255,0.9);
+    cursor: pointer;
+
+}
+#about-main-image {
+    width: 100vw;
+    height: 100vh;
+}
+
+
 /* #endregion */
 /* #region ALL PRODUCTS */
 

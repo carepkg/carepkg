@@ -1,7 +1,12 @@
 import React from "react";
+import AboutContent from "./AboutContent";
 
 const About = () => {
-  return <div className="about-page-wrapper">About</div>;
+  return (
+    <div className="about-wrapper">
+      <AboutContent />
+    </div>
+  );
 };
 
 export default About;
