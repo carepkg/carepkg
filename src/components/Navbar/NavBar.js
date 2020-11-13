@@ -21,7 +21,10 @@ const NavBar = (props) => {
             <MainSearchBar />
           </div>
           <div id="navbar-top-right">
-            <NavLink to="/products/all" className="navlink products-navlink">
+            <NavLink to="/about" className="navlink about-navlink">
+              About
+            </NavLink>
+            <NavLink to="/products/all" className="navlink">
               Products
             </NavLink>
             <NavLink to="/cart" className="navlink">
