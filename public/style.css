@@ -28,7 +28,7 @@ body,
     from {opacity: 1}
     to {opacity: 0}
 }
-/* #region BUTTONS */
+/* #region ###### BUTTONS ###### */
 .medium-btn-white {
     color: black;
     background-color: white;
@@ -67,7 +67,7 @@ body,
     outline: none;
 }
 /* #endregion */
-/* #region LANDING */
+/* #region ###### LANDING ###### */
 #landing-page{
     width: 100%;
     /* height: 100%; */
@@ -246,7 +246,7 @@ body,
     font-size: 1.25em;
 }
 /* #endregion */
-/* #region LANDING NEW ARRIVALS */
+/* #region ######LANDING NEW ARRIVALS ###### */
 .landing-ps-cont {
     width: 100%;
     display: flex;
@@ -309,7 +309,7 @@ body,
     height: 100%;
 }
 /* #endregion */
-/* #region LANDING CATEGORY FOOTER */
+/* #region ###### LANDING CATEGORY FOOTER ###### */
 #landing-cat-footer {
     width: 100vw;
     height: 35vh;
@@ -358,7 +358,7 @@ body,
 }
 /* #endregion */
 
-/* #region LANDING FOOTER MAIN */
+/* #region ###### LANDING FOOTER MAIN ###### */
 
 #landing-footer-main {
     width: 100vw;
@@ -408,7 +408,7 @@ body,
     text-indent: 8px;
 }
 /* #endregion */
-/* #region FOOTER BOTTOM */
+/* #region ###### FOOTER BOTTOM ##### */
 #footer-bottom-page {
     width: 100%;
     height: 60%;
@@ -422,7 +422,8 @@ body,
 }
 /* #endregion */
 
-/* #region NAVBAR */
+/* #region ###### NAVBAR ###### */
+
 #navbar-wrapper{
     width: 100%;
     height: 10.25%;
@@ -570,6 +571,8 @@ body,
     z-index: 10;
     
 }
+/* #endregion */
+/* #region ###### ABOUT ###### */
 /* #endregion */
 /* #region ALL PRODUCTS */
 
@@ -1774,7 +1777,7 @@ input[type='text'], input[type='email'] {
 
 /* #endregion */
 
-/*  #region ##### USER REVIEW CARD ############# */
+/*  #region ###### USER REVIEW CARD ############# */
 
 .user-review-card {
     display: flex;
@@ -2098,7 +2101,7 @@ input[type='text'], input[type='email'] {
     padding-right: 8px;
 }
 /* #endregion */
-
+/* #region ###### CHECKOUT ###########*/
 .checkout-step-container {
     width: 70%;
     display: flex;
@@ -2107,6 +2110,7 @@ input[type='text'], input[type='email'] {
     border-bottom: 1px solid rgba(0,0,0,0.4);
     padding-bottom: 40px;
 }
+
 .billing-address-wrapper {
     padding: 0 12px;
 }
@@ -2128,60 +2132,6 @@ input[type='text'], input[type='email'] {
 .ship-address-input-group span {
     padding-left: 8px;
 }
-/* #region ----- PP -------*/
-
-#pp-page {
-    position: relative;
-    top: 17.25%;
-    height: 82.75%;
-    width: 100%;
-}
-.pp-card {
-    position: relative;
-    left: 40px;
-    margin-top: 24px;
-    width: 50%;
-    height: 180px;
-    border: 1px solid rgba(51, 51, 51, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 8px;
-}
-.pp-card-selected {
-    position: relative;
-    left: 40px;
-    margin-top: 24px;
-    width: 50%;
-    height: 180px;
-    border: 1px solid rgba(51, 51, 51, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 8px;
-    background-color: rgb(184, 183, 183);
-}
-.pp-address-no {
-    text-decoration: underline;
-    margin: 16px 8px;
-}
-.pp-ship-info {
-    height: 20px;
-    width: 100%;
-    margin-left: 8px;
-}
-#checkout-btn {
-    position: absolute;
-    bottom: 50px;
-    right: 100px;
-    width: 100px;
-    height: 50px;
-    color: white;
-    background-color: rgb(233, 178, 76);
-    border-radius: 6px;
-}
-/* #endregion */
-/* #region ----- CHECKOUT ----- */
 
 #checkout-page {
     position: relative;
@@ -2314,6 +2264,7 @@ input[type='text'], input[type='email'] {
 .redeem-code {
     padding: 8px;
 }
+/* #region MODALS */
 .modal {
     position: fixed;
     top: 0;
@@ -2392,31 +2343,7 @@ input[type='text'], input[type='email'] {
     height: 50px;
 }
 /* #endregion */
-
-/* #region ---- CHECKOUT SUCCESS ---- */
-#checkout-success-page {
-    position: relative;
-    top: 17.25%;
-    height: 82.75%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-#checkout-success-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 25%;
-    margin-top: 64px;
-}
-
-#checkout-success-details-link {
-    color: blue;
-    text-decoration: underline;
-}
+/* #endregion */
  /* #endregion */
 
 

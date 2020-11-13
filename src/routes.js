@@ -8,7 +8,6 @@ import { Login } from "./components/AuthForm";
 import { Signup } from "./components/AuthForm";
 import Cart from "./components/CheckoutProcess/Cart";
 import UserProfile from "./components/UserProfile";
-import PurchaseProfile from "./components/CheckoutProcess/PurchaseProfile";
 import Checkout from "./components/CheckoutProcess/Checkout";
 import CheckoutSuccess from "./components/CheckoutProcess/CheckoutSuccess";
 import { me } from "./store/user";
@@ -28,7 +27,6 @@ class Routes extends React.Component {
           path="/cart/checkout"
           render={() => <Checkout user={this.props.user} />}
         />
-        <Route exact path="/cart/pp" component={PurchaseProfile} />
         <Route exact path="/profile" component={UserProfile} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/login" component={Login} />

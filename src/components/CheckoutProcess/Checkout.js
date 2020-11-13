@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import BillingAddresses from "./BillingAddresses";
 import ShippingAddresses from "./ShippingAddresses";
 import GiftOption from "./GiftOption";
-import SelectPayment from "./SelectPayment";
 import StripeCheckout from "react-stripe-checkout";
 import RedeemCode from "./RedeemCode";
 import CarepkgHelp from "../Universal/CarepkgHelp";
