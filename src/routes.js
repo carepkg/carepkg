@@ -13,6 +13,7 @@ import Checkout from "./components/CheckoutProcess/Checkout";
 import CheckoutSuccess from "./components/CheckoutProcess/CheckoutSuccess";
 import { me } from "./store/user";
 import { connect } from "react-redux";
+import About from "./components/About/About";
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -32,6 +33,7 @@ class Routes extends React.Component {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/about" component={About} />
         <Route exact path="/products/id/:id" component={SingleProduct} />
         <Route exact path="/products/:filter" component={AllProducts} />
         <Route path="/" component={LandingPage} />
