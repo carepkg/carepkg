@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const ImageCarousel = ({ imageURLs }) => {
   const [currentImage, setImage] = useState(0);
   console.log(imageURLs);
+  // props.children? pass in the text ? trying to make this reusable
   return (
     <div className="carousel-wrapper">
       <img className="carousel-image" src={imageURLs[currentImage]} />

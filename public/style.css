@@ -654,7 +654,7 @@ body,
 #about-main-image {
     width: 100vw;
     height: 100vh;
-    opacity: 0.4;
+    opacity: 0.75;
     pointer-events: none;
 }
 
