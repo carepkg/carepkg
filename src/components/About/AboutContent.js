@@ -32,9 +32,8 @@ class AboutContent extends React.Component {
           <div id="why" className="about-section about-section-1">
             <AboutWhySection />
           </div>
-          <div id="who" className="about-section about-section-2"></div>
-          <div id="where" className="about-section about-section-3"></div>
-          <div id="when" className="about-section about-section-4"></div>
+          <div id="where" className="about-section about-section-2"></div>
+          <div id="when" className="about-section about-section-3"></div>
         </div>
       </div>
     );
