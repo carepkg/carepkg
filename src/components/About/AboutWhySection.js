@@ -1,8 +1,17 @@
-import React from "react";
-import { HashLink } from "react-router-hash-link";
-
+import React, { useState } from "react";
+import ImageCarousel from "../Universal/ImageCarousel";
 const AboutWhySection = () => {
-  return <div id="why" className="about-section about-section-1"></div>;
+  const aboutURLs = [
+    "/about-images/about-val-c1.jpg",
+    "/about-images/about-val-c2.jpg",
+    "/about-images/about-val-c3.jpg",
+    "/about-images/about-val-c4.jpg",
+  ];
+  return (
+    <div>
+      <ImageCarousel imageURLs={aboutURLs} />
+    </div>
+  );
 };
 
 export default AboutWhySection;

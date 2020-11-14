@@ -28,11 +28,14 @@ class AboutContent extends React.Component {
             <button className="large-btn-white">Go Shopping</button>
           </div>
         </div>
-        <AboutWhySection />
-        <section id="why"></section>
-        <section id="who" className="about-section about-section-2"></section>
-        <section id="where" className="about-section about-section-3"></section>
-        <section id="when" className="about-section about-section-4"></section>
+        <div id="sections-wrapper">
+          <div id="why" className="about-section about-section-1">
+            <AboutWhySection />
+          </div>
+          <div id="who" className="about-section about-section-2"></div>
+          <div id="where" className="about-section about-section-3"></div>
+          <div id="when" className="about-section about-section-4"></div>
+        </div>
       </div>
     );
   }

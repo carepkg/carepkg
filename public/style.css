@@ -596,18 +596,20 @@ body,
 /* #endregion */
 /* #region ###### ABOUT ###### */
 
+/* #region ##### ABOUT INTRO CONTENT ##### */
 .about-wrapper {
     position: relative;
     width: 100%;
     overflow: hidden;
 }
 .about-content-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
 }
 #about-content-navbar {
+    z-index: 100000;
     position: absolute;
     top: 12px;
     width: 100vw;
@@ -656,9 +658,7 @@ body,
     pointer-events: none;
 }
 
-.about-section {
-    height: 100vh;
-}
+
 #all-text-container {
     height: 120px;
     display: flex;
@@ -690,7 +690,73 @@ body,
     position: absolute;
     top: 25vh;
 }
+/* #endregion */
 
+/* #region ##### ABOUT SECTIONS ##### */
+#sections-wrapper {
+}
+.about-section {
+    height: 100vh;
+    width: 100vw;
+}
+/* #region ##### ABOUT SECTION 1 ##### */
+
+.about-section-1 {
+    background-color: black;
+}
+.carousel-image {
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+.carousel-btn-menu {
+    height: 48px;
+    position: relative;
+    bottom: 80px;
+    display: flex;
+    justify-content: center;
+}
+.carousel-btn {
+    font-weight: bold;
+    opacity: 0.8;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 16px;
+    margin: 0 8px;
+}
+
+
+/* #endregion */
+
+/* #region ##### ABOUT SECTION 2 ##### */
+
+.about-section-2 {
+    background-color: gray;
+}
+
+/* #endregion */
+
+/* #region ##### ABOUT SECTION 3 ##### */
+
+.about-section-3 {
+    background-color: white;
+}
+
+/* #endregion */
+
+
+/* #region ##### ABOUT SECTION 3 ##### */
+
+.about-section-4 {
+    background-color: gold;
+}
+/* #endregion */
+/* #endregion */
 /* #endregion */
 /* #region ALL PRODUCTS */
 
