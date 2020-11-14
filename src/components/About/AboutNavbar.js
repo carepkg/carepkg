@@ -1,4 +1,5 @@
 import React from "react";
+import { HashLink } from "react-router-hash-link";
 
 const AboutNavbar = () => {
   return (
@@ -7,10 +8,18 @@ const AboutNavbar = () => {
         <h1>CAREPKG</h1>
       </div>
       <div id="about-nav-right" className="about-content-navbar-half">
-        <span>WHY CAREPKG</span>
-        <span>WHO WE ARE</span>
-        <span>WHERE WE ARE</span>
-        <span>WHEN WE WERE</span>
+        <HashLink smooth to="/about#why" className="nav-right-p">
+          WHY CAREPKG
+        </HashLink>
+        <HashLink smooth to="/about#who" className="nav-right-p">
+          WHO WE ARE
+        </HashLink>
+        <HashLink smooth to="/about#where" className="nav-right-p">
+          WHERE WE ARE
+        </HashLink>
+        <HashLink smooth to="/about#when" className="nav-right-p">
+          WHEN WE WERE
+        </HashLink>
       </div>
     </div>
   );
