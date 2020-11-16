@@ -9,7 +9,7 @@ const AboutWhySection = () => {
   ];
   const headers = [
     { text1: "PUSH YOUR LIMITS", text2: "", textColor: "white" },
-    { text1: "FIRST IN", text2: "LAST OUT", textColor: "white" },
+    { text1: "LIVE A LITTLE", text2: "", textColor: "white" },
     { text1: "FIND YOUR PEAK", text2: "", textColor: "white" },
     { text1: "DO IT TOGETHER", text2: "", textColor: "white" },
   ];
