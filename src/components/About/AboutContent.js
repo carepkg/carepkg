@@ -1,6 +1,7 @@
 import React from "react";
 import AboutNavbar from "./AboutNavbar";
 import AboutWhySection from "./AboutWhySection";
+import AboutWhereSection from "./AboutWhereSection";
 
 class AboutContent extends React.Component {
   constructor() {
@@ -29,11 +30,16 @@ class AboutContent extends React.Component {
           </div>
         </div>
         <div id="sections-wrapper">
-          <div id="why" className="about-section about-section-1">
+          <div id="why" className="about-section-default about-section-1">
             <AboutWhySection />
           </div>
-          <div id="where" className="about-section about-section-2"></div>
-          <div id="when" className="about-section about-section-3"></div>
+          <div id="where" className="about-section about-section-2">
+            <AboutWhereSection />
+          </div>
+          <div
+            id="when"
+            className="about-section-default about-section-3"
+          ></div>
         </div>
       </div>
     );
