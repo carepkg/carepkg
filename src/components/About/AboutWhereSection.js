@@ -62,7 +62,7 @@ const AboutWhereSection = () => {
               <p>
                 It is a lovely time feeling the fresh ocean breeze throughout
                 the day. Coastal living, bike culture, and a rejuvenating ocean
-                dip keep us alive and thriving...
+                dip keep us up and thriving, but...
               </p>
             </div>
             <div className="s2-office-info-container">
@@ -72,9 +72,7 @@ const AboutWhereSection = () => {
                 className="s2-office-info-image"
                 src="/about-images/Yosemite-office.jpg"
               />
-              <p>
-                ...There is nothing better than the mountains, though. Period.
-              </p>
+              <p>...there is nothing better than the mountains! Period.</p>
               <p></p>
             </div>
           </div>
