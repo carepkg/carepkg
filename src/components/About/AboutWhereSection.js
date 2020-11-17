@@ -49,6 +49,36 @@ const AboutWhereSection = () => {
             </p>
           </div>
         </div>
+        <div className="s2-other-offices-wrapper">
+          <h2>OUR OTHER LOCATIONS...</h2>
+          <div className="s2-other-offices-container">
+            <div className="s2-office-info-container">
+              <h4>[ Santa Monica Office ]</h4>
+              <h1>SANTA MONICA, CA</h1>
+              <img
+                className="s2-office-info-image"
+                src="/about-images/Santa-Monica-office.jpg"
+              />
+              <p>
+                It is a lovely time feeling the fresh ocean breeze throughout
+                the day. Coastal living, bike culture, and a rejuvenating ocean
+                dip keep us alive and thriving...
+              </p>
+            </div>
+            <div className="s2-office-info-container">
+              <h4>[ Yosemite Office ]</h4>
+              <h1>YOSEMITE, CA</h1>
+              <img
+                className="s2-office-info-image"
+                src="/about-images/Yosemite-office.jpg"
+              />
+              <p>
+                ...There is nothing better than the mountains, though. Period.
+              </p>
+              <p></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
