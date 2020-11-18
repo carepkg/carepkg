@@ -416,9 +416,16 @@ body,
 .footer-sub-header {
     margin: 0 0 4px 0;
 }
+#footer-email-form {
+    padding-top: 12px;
+}
+#footer-email-form label{
+    font-size: 1rem;
+}
 #email-sub-input {
-    height: 32px;
-    width: 250px;
+    height: 44px;
+    margin: 4px 0;
+    width: 320px;
     border-radius: 6px;
     text-indent: 8px;
 }

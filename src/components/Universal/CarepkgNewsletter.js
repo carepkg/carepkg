@@ -19,7 +19,7 @@ class CarepkgNewsletter extends React.Component {
         <p className="footer-sub-header">
           Be the first to see new products and sales!
         </p>
-        <form>
+        <form id="footer-email-form">
           <label className="bold" htmlFor="email">
             Email Address
           </label>
