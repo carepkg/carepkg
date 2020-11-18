@@ -408,21 +408,14 @@ body,
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.footer-btn {
-    font-size: .875em;
-    background-color: rgb(24, 24, 24);
-    color: white;
-    width: 180px;
-    height: 40px;
-    margin: 6px;
-    border-radius: 24px;
+.footer-header {
+    padding: 4px;
 }
-.footer-btn:hover {
-    background-color: rgb(78, 128, 145);
-    cursor: pointer;
+.footer-sub-header {
+    margin: 0 0 4px 0;
 }
-
 #email-sub-input {
     height: 32px;
     width: 250px;

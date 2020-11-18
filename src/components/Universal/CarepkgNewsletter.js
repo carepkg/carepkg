@@ -4,30 +4,30 @@ class CarepkgNewsletter extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: ""
+      email: "",
     };
   }
-  handleType(event) {
+  handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   }
   render() {
     return (
       <div className="footer-snippet">
-        <p>
-          <strong>Stay in the know</strong>
+        <p className="bold footer-header">Stay in the know</p>
+        <p className="footer-sub-header">
+          Be the first to see new products and sales!
         </p>
-        <p>Sign up for information on carepkg sales and deals</p>
         <form>
-          <label htmlFor="email">
-            <strong>Email:</strong>
+          <label className="bold" htmlFor="email">
+            Email Address
           </label>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
             <input
@@ -35,9 +35,9 @@ class CarepkgNewsletter extends React.Component {
               type="text"
               name="email"
               value={this.state.email}
-              onChange={e => this.handleType(e)}
+              onChange={(e) => this.handleChange(e)}
             />
-            <button className="footer-btn">Submit</button>
+            <button className="medium-btn-black">Submit</button>
           </div>
         </form>
       </div>
