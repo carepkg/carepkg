@@ -7,7 +7,9 @@ const AboutWhenSection = () => {
       <h3>[ Our History ]</h3>
       <p className="s3-header">MAKING THE WORLD</p>
       <p className="s3-header">A BETTER PLACE</p>
-      <p className="s3-subheader">through care, packages, and distribution. </p>
+      <p className="s3-subheader">
+        through Paxos Algorithms for consensus protocols.{" "}
+      </p>
       <p className="s3-text">
         At the dawn of time - one hundred years ago - a cataclysmic celestial
         anomaly transpired that ushered in a new era of tiny electronic gadgets

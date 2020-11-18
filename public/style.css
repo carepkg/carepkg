@@ -941,7 +941,7 @@ body,
     padding: 0;
 }
 .s3-subheader {
-    text-indent: 12px;
+    margin-top: 12px;
 }
 .s3-text {
     margin-top: 24px;
