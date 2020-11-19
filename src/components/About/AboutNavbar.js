@@ -1,11 +1,14 @@
 import React from "react";
 import { HashLink } from "react-router-hash-link";
+import { NavLink } from "react-router-dom";
 
 const AboutNavbar = () => {
   return (
     <div id="about-content-navbar">
       <div id="about-nav-left" className="about-content-navbar-half">
-        <h1>CAREPKG</h1>
+        <NavLink to="/">
+          <h1>CAREPKG</h1>
+        </NavLink>
       </div>
       <div id="about-nav-right" className="about-content-navbar-half">
         <HashLink smooth to="/about#why" className="nav-right-p">

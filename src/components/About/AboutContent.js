@@ -3,6 +3,7 @@ import AboutNavbar from "./AboutNavbar";
 import AboutWhySection from "./AboutWhySection";
 import AboutWhereSection from "./AboutWhereSection";
 import AboutWhenSection from "./AboutWhenSection";
+import { NavLink } from "react-router-dom";
 
 class AboutContent extends React.Component {
   constructor() {
@@ -27,7 +28,9 @@ class AboutContent extends React.Component {
             </h3>
           </div>
           <div id="side-text-subcontainer">
-            <button className="large-btn-white">Go Shopping</button>
+            <NavLink to="/products/all">
+              <button className="large-btn-white">Go Shopping</button>
+            </NavLink>
           </div>
         </div>
         <div id="sections-wrapper">
