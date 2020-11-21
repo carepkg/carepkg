@@ -6,9 +6,7 @@ import { getProductsThunk } from "../../store/products";
 import LandingSponsors from "./LandingSponsors";
 import LandingProdStrip from "./LandingProdStrip";
 import LandingCatFooter from "./LandingCatFooter";
-import CarepkgHelp from "../Universal/CarepkgHelp";
-import CarepkgNewsletter from "../Universal/CarepkgNewsletter";
-import FooterBottom from "../Universal/FooterBottom";
+import Footer from "../Universal/Footer";
 
 class LandingPage extends Component {
   constructor() {
@@ -92,15 +90,7 @@ class LandingPage extends Component {
           {console.log(recommended)}
           <LandingCatFooter categories={categories} />
         </div>
-        <div id="landing-footer-main">
-          <div className="landing-page-break"></div>
-          <div id="info-footer">
-            <CarepkgHelp />
-            <CarepkgNewsletter />
-          </div>
-          <div className="landing-page-break"></div>
-          <FooterBottom />
-        </div>
+        <Footer />
       </div>
     ) : null;
   }

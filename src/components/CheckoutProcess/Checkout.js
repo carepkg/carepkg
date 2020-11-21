@@ -15,6 +15,7 @@ import {
   removeCurrentDefaultThunk,
   setDefaultThunk,
 } from "../../store/addresses";
+import Footer from "../Universal/Footer";
 
 //Toast success message for stripe checkout
 import { toast } from "react-toastify";
@@ -261,6 +262,7 @@ class Checkout extends React.Component {
             style={{ width: "300px", margin: "8px 32px" }}
           />
         </div>
+        <Footer />
       </div>
     );
   }

@@ -5,11 +5,12 @@ import { getSingleProductThunk } from "../store/singleProduct";
 import ReviewList from "./ReviewList";
 import AddToButtons from "./AddToButtons";
 import { addToCartThunk } from "../store/cart";
+import Footer from "./Universal/Footer";
 class SingleProduct extends React.Component {
   constructor() {
     super();
     this.state = {
-      size: ""
+      size: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -19,7 +20,7 @@ class SingleProduct extends React.Component {
   }
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   }
   render() {
@@ -122,24 +123,25 @@ class SingleProduct extends React.Component {
               productId={this.props.match.params.id}
             />
           </div>
+          <Footer />
         </div>
       )
     );
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
     product: state.product,
-    user: state.user
+    user: state.user,
   };
 };
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
-    getSingleProductThunk: productId =>
+    getSingleProductThunk: (productId) =>
       dispatch(getSingleProductThunk(productId)),
     addToCartThunk: (qty, productId, userId) =>
-      dispatch(addToCartThunk(qty, productId, userId))
+      dispatch(addToCartThunk(qty, productId, userId)),
   };
 };
 export default withRouter(connect(mapState, mapDispatch)(SingleProduct));

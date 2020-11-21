@@ -10,9 +10,7 @@ import {
   addToWishlistThunk,
   removeFromWishlistThunk,
 } from "../../store/wishlist";
-import CarepkgHelp from "../Universal/CarepkgHelp";
-import CarepkgNewsletter from "../Universal/CarepkgNewsletter";
-import FooterBottom from "../Universal/FooterBottom";
+import Footer from "../Universal/Footer";
 import CartEmpty from "./CartEmpty";
 import Wishlist from "../Wishlist";
 import CartItems from "./CartItems";
@@ -108,15 +106,7 @@ class Cart extends React.Component {
             />
           ) : null}
         </div>
-        <div id="landing-footer-main">
-          <div className="landing-page-break"></div>
-          <div id="info-footer">
-            <CarepkgHelp />
-            <CarepkgNewsletter />
-          </div>
-          <div className="landing-page-break"></div>
-          <FooterBottom />
-        </div>
+        <Footer />
       </div>
     );
   }

@@ -133,10 +133,6 @@ class AllProducts extends React.Component {
             shiftAndUpdatePage={this.shiftAndUpdatePage}
           />
         </div>
-        <div id="shop-all-footer">
-          <p>Shop more:</p>
-          <button className="footer-btn">Shop all</button>
-        </div>
         <div id="landing-footer-main">
           <div className="landing-page-break"></div>
           <div id="info-footer">
