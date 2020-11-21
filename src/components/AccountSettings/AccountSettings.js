@@ -4,7 +4,6 @@ import Addresses from "./Addresses";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 import CreditCards from "./CreditCards";
-import Footer from "../Universal/Footer";
 
 const AccountSettings = (props) => {
   const { user, addresses } = props;
