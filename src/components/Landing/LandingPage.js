@@ -67,7 +67,7 @@ class LandingPage extends Component {
         <div id="bg-img-content">
           <div>
             <img
-              src="background-images/main-bg-img.jpg"
+              src="background-images/main-bg.jpg"
               className="main-img"
               alt="main-bg-img"
             />
