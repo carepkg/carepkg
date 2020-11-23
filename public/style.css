@@ -477,6 +477,7 @@ body,
     width: 65%;
     height: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 #navbar-top-right {
@@ -485,7 +486,7 @@ body,
     font-size: 0.9em;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 }
 #nav-coname{
     padding: 0 32px 6px 32px;
@@ -513,14 +514,6 @@ body,
     justify-content: flex-end;
     align-items: center;
     
-}
-#home-search-bar{
-    width: 60%;
-    height: 6%;
-    margin-bottom: 48px;
-}
-.home-search-input{
-    height: 100%;
 }
 /* DROPDOWNS */
 .user-dropdown-container {
