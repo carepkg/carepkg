@@ -83,6 +83,7 @@ class LandingPage extends Component {
         </div>
         <div id="landing-section-2">
           <LandingSponsors />
+          <div className="gradient-break-lightgray"></div>
           {this.state.recommended && (
             <LandingProdStrip set={recommended} name="Recommended for You" />
           )}

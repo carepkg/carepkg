@@ -144,6 +144,12 @@ body,
     margin-bottom: 24px;
 }
 /* 200vh LANDING SECTION 2 */
+.gradient-break-lightgray {
+    width: 100vw;
+    height: 2.5vh;
+    background: linear-gradient(rgb(242, 242, 242), white);
+    margin-bottom: 12px;
+}
 #landing-section-2 {
     width: 100vw;
     background-color: white;
