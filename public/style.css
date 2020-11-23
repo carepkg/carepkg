@@ -33,7 +33,7 @@ body,
     color: black;
     background-color: white;
     border: 2px solid black;
-    width: 200px;
+    width: 18vw;
     height: 40px;
     font-size: 1rem;
     font-weight: 500;
@@ -114,50 +114,34 @@ body,
 }
 #landing-text {
     position: absolute;
-    top: 160px;
-    color: rgba(0, 0, 0, 0.8);
+    top: 20vh;
+    left: 8.5vw;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     z-index: 99;
 }
-
-#landing-text-1 {
+.landing-text-header-red {
     font-size: 5vw;
-    font-weight: 300;
+    font-weight: bold;
     font-family: 'Playfair Display', serif;
+    text-shadow: 2px 2px #ff0000;
+    margin-bottom: 12px;
+
+}
+.landing-text-header-green {
+    font-size: 5vw;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 2px 2px green;
 }
 #landing-text-2 {
-    font-size: 3vw;
-    font-weight: 400;
+    font-size: calc(10px + 1vw);
+    font-weight: 500;
     margin: 4px;
     font-family: 'Playfair Display', serif;
-}
-#landing-text-3 {
-    font-size: 3vw;
-    font-weight: 200;
-    margin: 8px;
-    font-family: 'Playfair Display', serif;
-}
-#landing-text-btn {
-    margin-top: 16px;
-    border-radius: 8px;
-    width: 150px;
-    height: 32px;
-    background-color: rgba(147, 66, 66, 0.7);
-    box-shadow: 1px 1px 1px black;
-    border: none;
-    color: white;
-    text-shadow: 0.5px 0.5px gray;
-    font-size: 1.15em;
-    font-weight: 500;
-    cursor: pointer;
-}
-#landing-text-btn:hover {
-    text-decoration: underline;
-    cursor: pointer;
-    transform: scale(1.025)
+    margin-bottom: 24px;
 }
 /* 200vh LANDING SECTION 2 */
 #landing-section-2 {
@@ -169,8 +153,7 @@ body,
 }
 #landing-sponsors-page {
     width: 100%;
-    height: 40%;
-    margin-bottom: 64px;
+    margin-bottom: 24px;
 }
 #landing-sponsored-cos {
     width: 100vw;
@@ -181,13 +164,13 @@ body,
     padding: 20px 0;
 }
 .brand-logo {
-    width: 100px;
-    height: 100px;
+    width: 8vw;
+    height: 8vw;
     filter: grayscale(100%);
 }
 .brand-logo-small {
-    width: 100px;
-    height: 80px;
+    width: 8vw;
+    height: 6vw;
     filter: grayscale(100%)
 }
 #landing-sponsors-ads {
@@ -197,79 +180,43 @@ body,
     justify-content: space-around;
 }
 .landing-ad {
-    max-width: 100%;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
     color: white;
-    width: 612.5px;
-    height: 375px;
-    /* height: auto; */
-    background-color: rgba(0,0,0,.2);
+    width: 48%;
+    max-width: 612.5px;
+    min-width: 306.25px;
+    height: 57.5vh;
+    /* background-color: rgba(0,0,0,.2); */
     margin: 0 16px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* .overlay {
-    z-index: 1;
-    position: fixed;
-    overflow: auto;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .7)
-} */
-.landing-ad1 {
+    align-items: flex-end;
+}.landing-ad1 {
     background-image: url("./background-images/snow-leave-your-mark.jpg");
-    display: flex;
-    flex-direction: column;
-    justify-content: center
-}
-.landing-ad1-textbox {
-    margin-right: 72px;
-}
-.landing-ad1-textbox > p {
-    font-family: 'Playfair Display', serif;
-}
-.landing-ad1-text1 {
-    font-weight: 600;
-    font-size: 2em;
-    color: white;
-}
-.landing-ad1-text2 {
-    color: white;
-    font-weight: 400;
 }
 .landing-ad2 {
     background-image: url('./background-images/backpacks-one-bag.jpg');
+}
+.landing-ad-textbox {
+    height: 20%;
+    width: 100%;
+    background-color: black;
+    font-family: 'Playfair Display', serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 8px;
+    opacity: 0.9;
 }
-.landing-ad2-textbox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: rgb(255, 255, 255);
+.landing-ad-header {
+    font-size: calc(10px + 0.875vw);
+    font-weight: bold;
 }
-.landing-ad2-textbox > p {
-    font-family: 'Playfair Display', serif;
-}
-.landing-ad2-text1 {
-    font-size: 2em;
-    font-weight: 700;
-}
-.landing-ad2-text2 {
-    font-weight: 400;
-}
-.landing-ad2-text2 span {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25em;
+.landing-ad-subheader {
+    font-size: calc(8px + 0.55vw);
+    font-weight: '400';
 }
 /* #endregion */
-/* #region ######LANDING NEW ARRIVALS ###### */
+/* #region ######LANDING PROD STRIPS ###### */
 .landing-ps-cont {
     width: 100%;
     display: flex;
@@ -287,7 +234,7 @@ body,
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(244, 244, 244);
+    background-color: rgb(249, 249, 249);
     width: 100%;
 }
 .landing-ps-card-wrapper {
@@ -297,15 +244,21 @@ body,
     cursor: pointer;
 }
 .landing-ps-card {
-    width: 17vw;
+    width: 14vw;
+    min-width: 200px;
     margin: 6vh 1.5vw;
-    height: 48vh;
+    min-height: 300px;
+    height: 40vh;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.landing-ps-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .landing-ps-card-top {
     width: 100%;
     height: 72%;
     background-color: white;
-    border-bottom: 2px solid rgb(244, 244, 244); 
+    border-bottom: 2px solid rgb(249, 249, 249); 
 }
 .landing-ps-card-bottom {
     display: flex;

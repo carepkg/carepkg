@@ -8,7 +8,7 @@ const LandingSponsors = () => {
     "sorel-icon.png",
     "mammut-icon.png",
     "northface-icon.jpeg",
-    "patagonia-icon.png"
+    "patagonia-icon.png",
   ];
   return (
     <div id="landing-sponsors-page">
@@ -28,18 +28,18 @@ const LandingSponsors = () => {
       </div>
       <div id="landing-sponsors-ads">
         <div className="landing-ad landing-ad1">
-          <div className="landing-ad1-textbox">
-            <p className="landing-ad1-text1">Leave your Mark</p>
-            <p className="landing-ad1-text2">
-              Snow Gear is 20% off. Get what you need before winter season!
+          <div className="landing-ad-textbox">
+            <p className="landing-ad-header">Leave your Mark</p>
+            <p className="landing-ad-subheader">
+              Snow Gear is 30% off. Get what you need before winter season!
             </p>
           </div>
         </div>
         <div className="landing-ad landing-ad2">
-          <div className="landing-ad2-textbox">
-            <p className="landing-ad2-text1">One Bag to Carry it All</p>
-            <p className="landing-ad2-text2">
-              All Purpose. Sturdy. Quality. <span>Bring it home now!</span>
+          <div className="landing-ad-textbox">
+            <p className="landing-ad-header">One Bag to Carry it All</p>
+            <p className="landing-ad-subheader">
+              All Purpose, Sturdy, and Quality. <span>Bring it home now!</span>
             </p>
           </div>
         </div>

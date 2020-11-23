@@ -73,10 +73,12 @@ class LandingPage extends Component {
             />
           </div>
           <div id="landing-text">
-            <p id="landing-text-1">carepkg</p>
-            <p id="landing-text-2">The One and Only Place to Shop</p>
-            <p id="landing-text-3">All things nature</p>
-            <button id="landing-text-btn">Shop Now</button>
+            <p className="landing-text-header-green">WE ARE</p>
+            <p className="landing-text-header-red">CAREPKG</p>
+            <p id="landing-text-2">
+              Holiday Sale! 25% off all products thru Dec 25, 2021
+            </p>
+            <button className="medium-btn-white">Shop Now</button>
           </div>
         </div>
         <div id="landing-section-2">
