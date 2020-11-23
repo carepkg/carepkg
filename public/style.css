@@ -150,6 +150,12 @@ body,
     background: linear-gradient(rgb(242, 242, 242), white);
     margin-bottom: 12px;
 }
+.gradient-break-lightgray-reverse {
+    width: 100vw;
+    height: 2.5vh;
+    background: linear-gradient(white, rgb(242,242,242));
+    margin-top: 12px;
+}
 #landing-section-2 {
     width: 100vw;
     background-color: white;
@@ -294,7 +300,7 @@ body,
 /* #endregion */
 /* #region ###### LANDING CATEGORY FOOTER ###### */
 #landing-cat-footer {
-    padding: 5vh 0 17.5vh 0;
+    padding: 10vh 0 17.5vh 0;
     width: 100vw;
     display: flex;
     flex-direction: column;

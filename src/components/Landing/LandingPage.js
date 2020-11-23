@@ -90,6 +90,8 @@ class LandingPage extends Component {
           {this.state.bestSellers && (
             <LandingProdStrip set={bestSellers} name="Best Sellers" />
           )}
+          <div className="gradient-break-lightgray-reverse"></div>
+
           {console.log(recommended)}
           <LandingCatFooter categories={categories} />
         </div>
