@@ -234,7 +234,7 @@ body,
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(249, 249, 249);
+    /* background-color: rgb(249, 249, 249); */
     width: 100%;
 }
 .landing-ps-card-wrapper {
@@ -249,10 +249,11 @@ body,
     margin: 6vh 1.5vw;
     min-height: 300px;
     height: 40vh;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+    border: 1px solid rgb(237, 237, 237, 0.5);
 }
 .landing-ps-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .landing-ps-card-top {
     width: 100%;
