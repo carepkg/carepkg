@@ -7,6 +7,11 @@ const LandingCatFooter = (props) => {
   const secondHalf = categories.slice(categories.length / 2);
   return (
     <div id="landing-cat-footer">
+      <div className="small-ad-banner">
+        <p>
+          Buy now, pay later with <span id="qwerty">Qwerty</span>.
+        </p>
+      </div>
       <h1 id="cat-footer-header">Premium Outdoors Gear and Clothing</h1>
       <h4 id="cat-footer-subheader">Shop by Category</h4>
       <div id="landing-cat-container">

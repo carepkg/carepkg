@@ -228,20 +228,20 @@ body,
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 8vh;
+    margin-bottom: 4vh;
 }
 .landing-ps-header {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     font-size: 2rem;
-    margin: 1vh 0;
+    /* margin: 1vh 0; */
 }
 .landing-ps-backdrop {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgb(249, 249, 249); */
     width: 100%;
+    padding: 2vh
 }
 .landing-ps-card-wrapper {
     cursor: pointer;
@@ -252,7 +252,7 @@ body,
 .landing-ps-card {
     width: 14vw;
     min-width: 200px;
-    margin: 6vh 1.5vw;
+    margin: 0 1.5vw;
     min-height: 300px;
     height: 40vh;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
@@ -294,17 +294,34 @@ body,
 /* #endregion */
 /* #region ###### LANDING CATEGORY FOOTER ###### */
 #landing-cat-footer {
-    padding: 10vh 0 17.5vh 0;
+    padding: 5vh 0 17.5vh 0;
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
+.small-ad-banner {
+    width: 88%;
+    height: 5vh;
+    margin-bottom: 5vh;
+    background-color: rgb(225, 225, 200);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.small-ad-banner p {
+    font-weight: 500;
+}
+.small-ad-banner #qwerty {
+    font-weight: 600;
+}
+
 #cat-footer-header {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
-    font-size: 2rem;
+    font-size: calc(0.8rem + 1vw);
 }
 #cat-footer-subheader {
     font-family: 'Playfair Display', serif;
@@ -312,7 +329,7 @@ body,
     color: #777;
 }
 #landing-cat-container {
-    width: 300px;
+    width: calc(200px + 5vw);
     display: flex;
     margin: 60px 0;
     font-weight: 300;
@@ -320,6 +337,7 @@ body,
 }
 .footer-category-name {
     font-family: 'Times New Roman', Times, serif;
+    font-size: calc(10px + 0.5vw);
     margin: 2px 8px;
     cursor: pointer;
 }
