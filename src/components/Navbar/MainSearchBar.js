@@ -3,8 +3,11 @@ import SearchBar from "material-ui-search-bar";
 // import AutoComplete from "material-ui/AutoComplete";
 import { MuiThemeProvider } from "material-ui/styles";
 
-const MainSearchBar = () => {
+const MainSearchBar = (props) => {
   const [searchText, setSearchText] = useState("");
+  const submitSearch = () => {
+    return;
+  };
   return (
     <MuiThemeProvider>
       <SearchBar
@@ -18,6 +21,7 @@ const MainSearchBar = () => {
           borderRadius: 8,
           margin: "4px",
         }}
+        onRequestSearch={() => submitSearch(searchText)}
       />
     </MuiThemeProvider>
   );

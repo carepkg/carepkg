@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getCartThunk } from "../../store/cart";
 import { getCategoriesThunk } from "../../store/categories";
 import { getProductsThunk } from "../../store/products";
@@ -73,12 +74,14 @@ class LandingPage extends Component {
             />
           </div>
           <div id="landing-text">
-            <p className="landing-text-header-green">WE ARE</p>
-            <p className="landing-text-header-red">CAREPKG</p>
+            <p className="landing-text-header-green">THIS HOLIDAY SEASON</p>
+            <p className="landing-text-header-red">A GIFT GOES A LONG WAY</p>
             <p id="landing-text-2">
               Holiday Sale! 25% off all products thru Dec 25, 2021
             </p>
-            <button className="medium-btn-white">Shop Now</button>
+            <NavLink to="/products/all">
+              <button className="large-btn-white">Shop Now</button>
+            </NavLink>
           </div>
         </div>
         <div id="landing-section-2">

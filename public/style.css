@@ -88,6 +88,7 @@ body,
 .large-btn-white:focus {
     outline: none;
 }
+
 /* #endregion */
 /* #region ###### LANDING ###### */
 #landing-page{
@@ -137,11 +138,13 @@ body,
     text-shadow: 2px 2px green;
 }
 #landing-text-2 {
-    font-size: calc(10px + 1vw);
-    font-weight: 500;
+    font-size: calc(10px + 1.125vw);
+    font-weight: bold;
     margin: 4px;
     font-family: 'Playfair Display', serif;
-    margin-bottom: 24px;
+    margin-bottom: 48px;
+    text-shadow: 1px 1px black;
+
 }
 /* 200vh LANDING SECTION 2 */
 .gradient-break-lightgray {
